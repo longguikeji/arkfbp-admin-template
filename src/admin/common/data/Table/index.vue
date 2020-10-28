@@ -1,5 +1,7 @@
 <template>
-  <el-table>
+  <el-table
+    :data="state.data"
+  >
     <TableColumns :state="state.columns" />
   </el-table>
 </template>
@@ -9,7 +11,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableState from './TableState'
 
 @Component({
-  name: 'FromPage',
+  name: 'Table',
   components: {
   }
 })

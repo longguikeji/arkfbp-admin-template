@@ -2,13 +2,10 @@
   <el-card>
     <div slot="header">
       <span>{{ state.title }}</span>
-      <div class="buttons">
-        <Button
-          v-for="button in state.buttons"
-          :key="state.buttons.indexOf(button)"
-          :state="button"
-        />
-      </div>
+      <ButtonArray
+        class="buttons"
+        :state="state.buttons"
+      />
     </div>
     <slot />
   </el-card>
@@ -17,12 +14,12 @@
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import CardState from './CardState'
-import Button from '@/admin/common/Button/index.vue'
+import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 
 @Component({
   name: 'FromPage',
   components: {
-    Button
+    ButtonArray
   }
 })
 export default class extends Vue {

@@ -1,46 +1,27 @@
 <template>
-  <FormPage :state="state" />
+  <Table :state="state" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import FormPage from '@/admin/FormPage/index.vue'
+import Table from '@/admin/common/data/Table/index.vue'
 
 export default Vue.extend({
   components: {
-    FormPage
+    Table
   },
   data() {
     return {
       state: {
-        title: '测试FormPage',
-        buttons: [
-          { label: '按钮1' },
-          { label: '按钮2' }
+        columns: [
+          { prop: 'id' },
+          { prop: 'name' }
         ],
-        form: {
-          items: [
-            [
-              {
-                type: 'el-input',
-                value: '',
-                label: '输入框A',
-                state: { type: 'textarea' },
-                on: {}
-              },
-              { type: 'el-input', value: '', label: '输入框A' },
-              { type: 'el-input', value: '', label: '输入框A' },
-              { type: 'el-input', value: '', label: '输入框A' },
-              { type: 'el-input', value: '', label: '输入框B' }
-            ],
-            [
-              { type: 'Button', state: { value: '', label: '按钮' } },
-              { type: 'Button', state: { value: '', label: '按钮' } },
-              { type: 'Button', state: { value: '', label: '按钮' } },
-              { type: 'Button', state: { value: '', label: '按钮' } }
-            ]
-          ]
-        }
+        data: [
+          { id: 1, name: 'asdf' },
+          { id: 2, name: 'qewr' },
+          { id: 3, name: 'zxcv' }
+        ]
       }
     }
   }
