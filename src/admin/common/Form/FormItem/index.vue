@@ -48,6 +48,10 @@ export default class extends Vue {
             // },
             input: (value: any) => {
               state.value = value
+              console.log('input value: ', value)
+            },
+            focus: () => {
+              console.log('get focus')
             }
           }
         })

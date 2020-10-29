@@ -14,16 +14,13 @@ export default Vue.extend({
     return {
       state: {
         title: '测试FormPage',
-        buttons: [
-          { label: '按钮1' },
-          { label: '按钮2' }
-        ],
+        buttons: [{ label: '按钮1' }, { label: '按钮2' }],
         form: {
           items: [
             [
               {
                 type: 'el-input',
-                value: '',
+                value: '请输入',
                 label: '输入框A',
                 state: { type: 'textarea' },
                 on: {}
@@ -38,6 +35,9 @@ export default Vue.extend({
               { type: 'Button', state: { value: '', label: '按钮' } },
               { type: 'Button', state: { value: '', label: '按钮' } },
               { type: 'Button', state: { value: '', label: '按钮' } }
+            ],
+            [
+              { type: 'el-radio' }
             ]
           ]
         }
