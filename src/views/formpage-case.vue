@@ -1,26 +1,29 @@
 <template>
-  <Table :state="state" />
+  <Form :state="state" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Table from '@/admin/common/data/Table/index.vue'
+import Form from '@/admin/common/Form/index.vue'
 
 export default Vue.extend({
   components: {
-    Table
+    Form
   },
   data() {
     return {
       state: {
-        columns: [
-          { prop: 'id' },
-          { prop: 'name' }
-        ],
-        data: [
-          { id: 1, name: 'asdf' },
-          { id: 2, name: 'qewr' },
-          { id: 3, name: 'zxcv' }
+        items: [
+          { type: 'Input', label: 'title1', state: { value: '' } },
+          [
+            { type: 'Input', label: 'title2', state: { value: '' } },
+            { type: 'Input', label: 'title3', state: { value: '' } }
+          ],
+          { type: 'Button', state: { label: 'button1' } },
+          [
+            { type: 'Button', state: { label: 'button2' } },
+            { type: 'Button', state: { label: 'button2' } }
+          ]
         ]
       }
     }
