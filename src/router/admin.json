@@ -4,7 +4,6 @@
       "path": "case", 
       "icon": "dashboard", 
       "children": [
-<<<<<<< HEAD
         {
           "title": "dashboard", 
           "path": "dashboard", 
@@ -19,17 +18,6 @@
           "title": "tablepage", 
           "path": "tablepage", 
           "icon": "dashboard" 
-=======
-          {
-              "title": "dashboard", 
-              "path": "dashboard", 
-              "icon": "dashboard" 
-          },
-          {
-            "title": "formpage", 
-            "path": "formpage", 
-            "icon": "dashboard" 
->>>>>>> 3fd16968d13d40de01f50bcc332ddfe2d52b2167
         }
       ]
   }
