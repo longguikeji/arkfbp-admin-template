@@ -54,6 +54,7 @@ export const constantRoutes: RouteConfig[] = [
     ]
   },
 
+<<<<<<< HEAD
   {
     path: '/case',
     component: Layout,
@@ -91,7 +92,6 @@ export const constantRoutes: RouteConfig[] = [
       }
     ]
   },
-
   {
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
