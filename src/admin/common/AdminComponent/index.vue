@@ -7,6 +7,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
+import Select from '@/admin/common/Form/Select/index.vue'
 
 @Component({
   name: 'AdminComponent',
@@ -28,7 +29,8 @@ export default class extends Vue {
     return {
       components: {
         Button,
-        Input
+        Input,
+        Select
       },
       render: (h: Function) => {
         return h(state.type, {
