@@ -1,30 +1,33 @@
 <template>
-  <Form :state="state" />
+  <FormPage :state="state" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Form from '@/admin/common/Form/index.vue'
+import FormPage from '@/admin/FormPage/index.vue'
 
 export default Vue.extend({
   components: {
-    Form
+    FormPage
   },
   data() {
     return {
       state: {
-        items: [
-          { type: 'Input', label: 'title1', state: { value: '' } },
-          [
-            { type: 'Input', label: 'title2', state: { value: '' } },
-            { type: 'Input', label: 'title3', state: { value: '' } }
-          ],
-          { type: 'Button', state: { label: 'button1' } },
-          [
-            { type: 'Button', state: { label: 'button2' } },
-            { type: 'Button', state: { label: 'button2' } }
+        title: 'formpage',
+        form: {
+          items: [
+            { type: 'Input', label: 'title1', state: { value: '' } },
+            [
+              { type: 'Input', label: 'title2', state: { value: '' } },
+              { type: 'Input', label: 'title3', state: { value: '' } }
+            ],
+            { type: 'Button', state: { label: 'button1' } },
+            [
+              { type: 'Button', state: { label: 'button2' } },
+              { type: 'Button', state: { label: 'button2' } }
+            ]
           ]
-        ]
+        }
       }
     }
   }
