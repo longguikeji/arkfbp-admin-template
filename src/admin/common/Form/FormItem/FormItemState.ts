@@ -1,7 +1,5 @@
-export default interface FormItemState {
-    type?:string
+import AdminComponentState from '@/admin/common/AdminComponent/AdminComponentState'
+
+export default interface FormItemState extends AdminComponentState {
     label?:string
-    value?:any
-    state?:object
-    on?:object
 }

@@ -4,60 +4,23 @@
       v-if="state.label"
       slot="label"
     >{{ state.label }}</span>
-    <component :is="item" />
+    <AdminComponent :state="state" />
   </el-form-item>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import FormItemState from './FormItemState'
-import Button from '@/admin/common/Button/index.vue'
+import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 
 @Component({
-  name: 'Form',
+  name: 'FormItem',
   components: {
-    Button
+    AdminComponent
   }
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: FormItemState;
-  // @Watch('state', { immediate: true, deep: true })
-  // fresh() {
-  //   this.item = this.getItem()
-  //   this.$forceUpdate()
-  // }
-
-  // item?:object
-
-  get item(): object {
-    const state = this.state
-    return {
-      components: {
-        Button
-      },
-      render: (h: Function) => {
-        return h(state.type, {
-          props: {
-            value: state.value,
-            state: state.state
-          },
-          on: {
-            ...state.on,
-            // click: () => {
-            //   runAction(state.on.click)
-            // },
-            input: (value: any) => {
-              state.value = value
-              console.log('input value: ', value)
-            },
-            focus: () => {
-              console.log('get focus')
-            }
-          }
-        })
-      }
-    }
-  }
 }
 </script>
 <style lang="scss" scoped>

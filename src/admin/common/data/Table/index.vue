@@ -1,19 +1,33 @@
 <template>
-  <el-table>
-    <TableColumns :state="state.columns" />
+  <el-table
+    :data="tableData"
+    :height="'70vh'"
+  >
+    <TableColumn
+      v-for="child in state.columns"
+      :key="state.columns.indexOf(child)"
+      :state="child"
+    />
   </el-table>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableState from './TableState'
+import TableColumn from './TableColumn/index.vue'
 
 @Component({
-  name: 'FromPage',
+  name: 'Table',
   components: {
+    TableColumn
   }
 })
 export default class extends Vue {
   @Prop({ required: true }) state!:TableState;
+
+  get tableData() {
+    console.log(this.state.data)
+    return this.state.data
+  }
 }
 </script>

@@ -1,3 +1,5 @@
+import AdminComponentState from '@/admin/common/AdminComponent/AdminComponentState'
+
 export default interface TableColumnState {
   type:string //  对应列的类型。如果设置了 selection 则显示多选框；如果设置了 index 则显示该行的索引（从 1 开始计算）；如果设置了 expand 则显示为一个可展开的按钮  string  selection/index/expand  —
   index:number | Function //  如果设置了 type=index，可以通过传递 index 属性来自定义索引  number, Function(index)  -  -
@@ -28,4 +30,5 @@ export default interface TableColumnState {
   filteredValue:Array<any> // 选中的数据过滤项，如果需要自定义表头过滤的渲染方式，可能会需要此属性。  Array  —  —
 
   children:Array<TableColumnState>
+  scope:AdminComponentState
 }
