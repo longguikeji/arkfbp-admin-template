@@ -1,5 +1,6 @@
 {
   "type": "form",
+<<<<<<< HEAD
   "title": "formpage",
   "buttons": [
     { "label": "button1" },
@@ -16,6 +17,33 @@
       [
         { "type": "Button", "state": { "label": "button2" } },
         { "type": "Button", "state": { "label": "button2" } }
+=======
+  "title": "测试FormPage",
+  "buttons": [
+    { "label": "按钮1" },
+    { "label": "按钮2" }
+  ],
+  "form": {
+    "items": [
+      [
+        {
+          "type": "el-input",
+          "value": "",
+          "label": "输入框A",
+          "state": { "type": "textarea" },
+          "on": {}
+        },
+        { "type": "el-input", "value": "", "label": "输入框A" },
+        { "type": "el-input", "value": "", "label": "输入框A" },
+        { "type": "el-input", "value": "", "label": "输入框A" },
+        { "type": "el-input", "value": "", "label": "输入框B" }
+      ],
+      [
+        { "type": "Button", "state": { "value": "", "label": "按钮" } },
+        { "type": "Button", "state": { "value": "", "label": "按钮" } },
+        { "type": "Button", "state": { "value": "", "label": "按钮" } },
+        { "type": "Button", "state": { "value": "", "label": "按钮" } }
+>>>>>>> 3fd16968d13d40de01f50bcc332ddfe2d52b2167
       ]
     ]
   }

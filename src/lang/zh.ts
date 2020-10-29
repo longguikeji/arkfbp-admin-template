@@ -26,7 +26,10 @@ export default {
     charts: '图表',
     case: '基础',
     formpage: ' 表单',
+<<<<<<< HEAD
     tablepage: '表格',
+=======
+>>>>>>> 3fd16968d13d40de01f50bcc332ddfe2d52b2167
     barChart: '柱状图表',
     lineChart: '折线图',
     mixedChart: '混合图表',
