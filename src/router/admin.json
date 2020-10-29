@@ -4,15 +4,20 @@
       "path": "case", 
       "icon": "dashboard", 
       "children": [
-          {
-              "title": "dashboard", 
-              "path": "dashboard", 
-              "icon": "dashboard" 
-          },
-          {
-            "title": "formpage", 
-            "path": "formpage", 
-            "icon": "formpage" 
+        {
+          "title": "dashboard", 
+          "path": "dashboard", 
+          "icon": "dashboard" 
+        },
+        {
+          "title": "formpage", 
+          "path": "formpage", 
+          "icon": "dashboard" 
+        },
+        {
+          "title": "tablepage", 
+          "path": "tablepage", 
+          "icon": "dashboard" 
         }
       ]
   }
