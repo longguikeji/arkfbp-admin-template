@@ -1,37 +1,115 @@
 <template>
-  <FormPage :state="state" />
+  <TablePage :state="state" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import FormPage from '@/admin/FormPage/index.vue'
+import TablePage from '@/admin/TablePage/index.vue'
 
 export default Vue.extend({
   components: {
-    FormPage
+    TablePage
   },
   data() {
     return {
       state: {
-        title: '测试FormPage',
+        title: 'TablePage',
         buttons: [
-          { label: '按钮1' },
-          { label: '按钮2' }
+          { label: 'Button1' },
+          { label: 'button2' }
         ],
-        form: {
-          items: [
-            [
-              { type: 'Input', label: '输入框A', state: { value: '', placeholder: 'asdf' } },
-              { type: 'Input', label: '输入框B', state: { value: '' } },
-              { type: 'Input', label: '输入框C', state: { value: '' } },
-              { type: 'Input', label: '输入框D', state: { value: '' } }
-            ],
-            [
-              { type: 'Button', state: { value: '', label: '按钮' } },
-              { type: 'Button', state: { value: '', label: '按钮' } },
-              { type: 'Button', state: { value: '', label: '按钮' } },
-              { type: 'Button', state: { value: '', label: '按钮' } }
+        filter: {
+          form: {
+            inline: true,
+            items: [
+              { type: 'Input', label: '参数1', state: { value: '' } },
+              { type: 'Input', label: '参数2', state: { value: '' } },
+              { type: 'Button', state: { label: 'search' } },
+              { type: 'Button', state: { label: 'check' } }
             ]
+          }
+        },
+        pagination: {
+          currentPage: 5, pageCount: 20, total: 100
+        },
+        table: {
+          columns: [
+            {
+              label: 'Date',
+              prop: 'date',
+              scope: {
+                type: 'Input', state: {}
+              }
+            },
+            // { label: 'Name', prop: 'name' },
+            // { label: 'Address', prop: 'address' },
+            // { label: 'Zip', prop: 'zip' },
+            {
+              label: 'Send Information',
+              children: [
+                { label: 'Name', prop: 'name' },
+                {
+                  label: 'Address',
+                  children: [
+                    { label: 'Province', prop: 'province' },
+                    { label: 'Address', prop: 'address' },
+                    { label: 'Zip', prop: 'zip' }
+                  ]
+                }
+              ]
+            }
+          ],
+          data: [
+            {
+              date: '2016-05-03',
+              name: '王小虎',
+              province: '上海',
+              city: '普陀区',
+              address: '上海市普陀区金沙江路 1518 弄',
+              zip: 200333
+            }, {
+              date: '2016-05-02',
+              name: '王小虎',
+              province: '上海',
+              city: '普陀区',
+              address: '上海市普陀区金沙江路 1518 弄',
+              zip: 200333
+            }, {
+              date: '2016-05-04',
+              name: '王小虎',
+              province: '上海',
+              city: '普陀区',
+              address: '上海市普陀区金沙江路 1518 弄',
+              zip: 200333
+            }, {
+              date: '2016-05-01',
+              name: '王小虎',
+              province: '上海',
+              city: '普陀区',
+              address: '上海市普陀区金沙江路 1518 弄',
+              zip: 200333
+            }, {
+              date: '2016-05-08',
+              name: '王小虎',
+              province: '上海',
+              city: '普陀区',
+              address: '上海市普陀区金沙江路 1518 弄',
+              zip: 200333
+            }, {
+              date: '2016-05-06',
+              name: '王小虎',
+              province: '上海',
+              city: '普陀区',
+              address: '上海市普陀区金沙江路 1518 弄',
+              zip: 200333
+            }, {
+              date: '2016-05-07',
+              name: '王小虎',
+              province: '上海',
+              city: '普陀区',
+              address: '上海市普陀区金沙江路 1518 弄',
+              zip: 200333
+            }
           ]
         }
       }

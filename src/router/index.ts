@@ -77,6 +77,16 @@ export const constantRoutes: RouteConfig[] = [
           icon: 'dashboard',
           affix: true
         }
+      },
+      {
+        path: 'tablepage',
+        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/tablepage-case.vue'),
+        name: 'tablepage',
+        meta: {
+          title: 'tablepage',
+          icon: 'dashboard',
+          affix: true
+        }
       }
     ]
   },

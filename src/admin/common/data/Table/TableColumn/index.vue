@@ -6,8 +6,22 @@
     :label="state.label"
     :prop="state.prop"
   >
+    <template
+      v-if="state.children"
+    >
+      <TableColumn
+        v-for="child in state.children"
+        :key="state.children.indexOf(child)"
+        :state="child"
+      />
+    </template>
     <template slot-scope="scope">
-      <AdminComponent :state="getComponentState(scope)" />
+      <template v-if="state.scope">
+        <AdminComponent :state="getComponentState(scope)" />
+      </template>
+      <template v-else>
+        <span>{{ scope.row[state.prop] }}</span>
+      </template>
     </template>
   </el-table-column>
 </template>
@@ -27,9 +41,10 @@ export default class extends Vue {
   @Prop({ required: true }) state!:TableColumnState;
 
   getComponentState(scope:any):object {
-    if (this.state.scope.state) {
-      this.state.scope.state.value = scope.row[this.state.prop]
+    if (!this.state.scope.state) {
+      this.state.scope.state = {}
     }
+    this.state.scope.state.value = scope.row[this.state.prop]
     return this.state.scope
   }
 }

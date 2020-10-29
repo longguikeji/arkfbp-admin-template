@@ -34,5 +34,8 @@ export default class extends Vue {
 <style lang="scss" scoped>
 .buttons {
   float: right;
+  position: relative;
+  top: -10px; /*偏移*/
+  // transform: translateY(-50%);
 }
 </style>
