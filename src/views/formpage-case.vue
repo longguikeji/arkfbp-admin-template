@@ -14,6 +14,10 @@ export default Vue.extend({
     return {
       state: {
         title: 'formpage',
+        buttons: [
+          { label: 'button1' },
+          { label: 'button2' }
+        ],
         form: {
           items: [
             { type: 'Input', label: 'title1', state: { value: '' } },
