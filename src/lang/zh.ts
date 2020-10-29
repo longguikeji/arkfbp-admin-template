@@ -24,7 +24,7 @@ export default {
     draggableList: '可拖拽列表',
     draggableSelect: '可拖拽选择',
     charts: '图表',
-    case: '基础',
+    case: '实例',
     formpage: ' 表单',
     tablepage: '表格',
     barChart: '柱状图表',
