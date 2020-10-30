@@ -1,6 +1,6 @@
 export default interface CascaderState {
   value: string; // v-model  绑定值  string / number  —  —
-  options: Array<string | null>; //可选项数据源，键名可通过 Props 属性配置
+  options: Array<any>; //可选项数据源，键名可通过 Props 属性配置
   props: object; //配置选项
   size: string; //  输入框尺寸  string  medium / small / mini  —
   placeholder: string; //输入框占位文本	string 请选择

@@ -1,10 +1,7 @@
 {
   "type": "form",
   "title": "formpage",
-  "buttons": [
-    { "label": "button1" },
-    { "label": "button2" }
-  ],
+  "buttons": [{ "label": "button1" }, { "label": "button2" }],
   "form": {
     "items": [
       { "type": "Input", "label": "title1", "state": { "value": "" } },
@@ -16,7 +13,14 @@
       [
         { "type": "Button", "state": { "label": "button2" } },
         { "type": "Button", "state": { "label": "button2" } }
-      ]
+      ],
+      {
+        "type": "Cascader",
+        "state": {
+          "value": "cascader",
+          "placeholder": "请选择"
+        }
+      }
     ]
   }
 }

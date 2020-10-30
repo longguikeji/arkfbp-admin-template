@@ -7,11 +7,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
-
+import Cascader from '@/admin/common/Form/Cascader/index.vue'
 @Component({
   name: 'AdminComponent',
-  components: {
-  }
+  components: {}
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: AdminComponentState;
@@ -28,7 +27,8 @@ export default class extends Vue {
     return {
       components: {
         Button,
-        Input
+        Input,
+        Cascader
       },
       render: (h: Function) => {
         return h(state.type, {
