@@ -66,11 +66,11 @@
               "label": "Part-One",
               "options": [
                 {
-                  "value": "option1",
+                  "value": "o1",
                   "label": "option1"
                 },
                 {
-                  "value": "option2",
+                  "value": "o2",
                   "label": "option2"
                 }
               ]
@@ -79,12 +79,12 @@
               "label": "Part-Two",
               "options": [
                 {
-                  "value": "option1",
-                  "label": "option1"
+                  "value": "t1",
+                  "label": "part-t-option1"
                 },
                 {
-                  "value": "option2",
-                  "label": "option2"
+                  "value": "t2",
+                  "label": "part-t-option1"
                 }
               ]
             }
