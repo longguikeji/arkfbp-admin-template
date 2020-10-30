@@ -226,7 +226,8 @@
             }
           ]
         }
-      },{
+      },
+      {
         "type": "CascaderPanel",
         "state": {
           "value": "",
