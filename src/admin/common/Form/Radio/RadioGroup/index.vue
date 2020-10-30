@@ -3,11 +3,10 @@
   <el-radio
     v-else
     v-model="state.value"
-    :label="state.label"
     :disabled="state.disabled"
-    :border="state.border"
+    :text-color="state.textColor"
     :size="state.size"
-    :name="state.name"
+    :fill="state.fill"
   />
 </template>
 
