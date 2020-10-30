@@ -2,28 +2,151 @@
   "type": "form",
   "title": "formpage",
   "buttons": [
-    { "label": "button1" },
-    { "label": "button2" }
+    {
+      "label": "button1"
+    },
+    {
+      "label": "button2"
+    }
   ],
   "form": {
     "items": [
-      { "type": "Input", "label": "title1", "state": { "value": "" } },
+      {
+        "type": "Input",
+        "label": "title1",
+        "state": {
+          "value": ""
+        }
+      },
       [
-        { "type": "Input", "label": "title2", "state": { "value": "" } },
-        { "type": "Input", "label": "title3", "state": { "value": "" } }
+        {
+          "type": "Input",
+          "label": "title2",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "title3",
+          "state": {
+            "value": ""
+          }
+        }
       ],
-      { "type": "Button", "state": { "label": "button1" } },
+      {
+        "type": "Button",
+        "state": {
+          "label": "button1"
+        }
+      },
       [
-        { "type": "Button", "state": { "label": "button2" } },
-        { "type": "Button", "state": { "label": "button2" } }
+        {
+          "type": "Button",
+          "state": {
+            "label": "button2"
+          }
+        },
+        {
+          "type": "Button",
+          "state": {
+            "label": "button2"
+          }
+        }
       ],
-      { "type": "Select", "state": { "value": "", "placeholder": "请选择相关内容", "multiple": true, "options": [{"label": "select1", "value": "select1"}] } },
-      { "type": "Select", "state": { "value": "", "placeholder": "请选择相关内容", "multiple": true, "disabled": true, "options": [{"label": "select1", "value": "select1"}] } },
-      { "type": "Select", "state": { "value": "", "placeholder": "请选择相关内容", "multiple": true, "size": "mini","disabled": true, "options": [{"label": "select1", "value": "select1"}] } },
+      {
+        "type": "Select",
+        "state": {
+          "type": "group",
+          "value": "",
+          "placeholder": "请选择相关内容",
+          "multiple": true,
+          "options": [
+            {
+              "label": "select1",
+              "options": [
+                {
+                  "value": "Shanghai",
+                  "label": "上海"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "state": {
+          "type": "group",
+          "value": "",
+          "placeholder": "请选择相关内容",
+          "multiple": true,
+          "disabled": true,
+          "options": [
+            {
+              "label": "select1",
+              "options": [
+                {
+                  "value": "Shanghai",
+                  "label": "上海"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "state": {
+          "value": "",
+          "placeholder": "请选择相关内容",
+          "multiple": true,
+          "size": "mini",
+          "disabled": true,
+          "options": [
+            {
+              "label": "select1",
+              "value": "select1"
+            }
+          ]
+        }
+      },
       [
-        { "type": "Select", "state": { "value": "", "options": [{"label": "select1", "value": "select1"}] } },
-        { "type": "Select", "state": { "value": "", "clearable": true, "options": [{"label": "select1", "value": "select1"}, {"label": "select2", "value": "select2"}] } },
-        { "type": "Select", "state": { "value": "", "clearable": true, "options": [{"label": "option-1", "value": "option-1"}, {"label": "option-2", "value": "option-2", "disabled": true}, {"label": "option-3", "value": "option-3"}] } }
+        {
+          "type": "Select",
+          "state": {
+            "type": "group",
+            "value": "",
+            "options": [
+              {
+                "label": "select1",
+                "options": [
+                  {
+                    "value": "Shanghai",
+                    "label": "上海"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "clearable": true,
+            "options": [
+              {
+                "label": "select1",
+                "value": "select1"
+              },
+              {
+                "label": "select2",
+                "value": "select2"
+              }
+            ]
+          }
+        }
       ]
     ]
   }
