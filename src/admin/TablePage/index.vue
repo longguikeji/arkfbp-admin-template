@@ -5,6 +5,7 @@
     </div>
     <Table :state="state.table" />
     <Pagination :state="state.pagination" />
+    <Tag :state="state.tag" />
   </Card>
 </template>
 
@@ -15,6 +16,7 @@ import Card from '@/admin/common/Card/index.vue'
 import Table from '@/admin/common/data/Table/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
+import Tag from '@/admin/common/data/Tag/index.vue'
 
 @Component({
   name: 'FromPage',
@@ -22,7 +24,8 @@ import Pagination from '@/admin/common/data/Pagination/index.vue'
     Form,
     Card,
     Table,
-    Pagination
+    Pagination,
+    Tag
   }
 })
 export default class extends Vue {
