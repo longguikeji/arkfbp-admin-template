@@ -2,6 +2,7 @@
   <el-cascader
     v-model="state.value"
     :options="state.options"
+    :prop="state.prop"
     :size="state.size"
     :placeholder="state.placeholder"
     :disabled="state.disabled"
@@ -25,15 +26,13 @@ import CascaderState from './CascaderState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: CascaderState;
-  //   options: Array<string | null>;
-  //   props: object; //配置选项
-  //   filterable: boolean; //  是否可搜索选项  boolean  —  -
-  //   filterMethod: Function;
-  //   beforeFilter: Function;
 
-  actionHandler(actionName: string) {
-    console.log(actionName)
-    // runAction(actionName)
-  }
+  // "children": [{ "value": "yizhi", "label": "一致" }]
+  //  "options": [
+  //           {
+  //             "lable": "指南",
+  //             "value": "zhinan"
+  //           }
+  //         ]
 }
 </script>
