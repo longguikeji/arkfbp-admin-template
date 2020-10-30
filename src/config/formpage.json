@@ -1,10 +1,7 @@
 {
   "type": "form",
   "title": "formpage",
-  "buttons": [
-    { "label": "button1" },
-    { "label": "button2" }
-  ],
+  "buttons": [{ "label": "button1" }, { "label": "button2" }],
   "form": {
     "items": [
       { "type": "Input", "label": "title1", "state": { "value": "" } },
@@ -17,6 +14,7 @@
         { "type": "Button", "state": { "label": "button2" } },
         { "type": "Button", "state": { "label": "button2" } }
       ],
+
       { "type": "Select", "state": { "value": "", "placeholder": "请选择相关内容", "multiple": true, "options": [{"label": "select1", "value": "select1"}] } },
       { "type": "Select", "state": { "value": "", "placeholder": "请选择相关内容", "multiple": true, "disabled": true, "options": [{"label": "select1", "value": "select1"}] } },
       { "type": "Select", "state": { "value": "", "placeholder": "请选择相关内容", "multiple": true, "size": "mini","disabled": true, "options": [{"label": "select1", "value": "select1"}] } },
@@ -24,7 +22,13 @@
         { "type": "Select", "state": { "value": "", "options": [{"label": "select1", "value": "select1"}] } },
         { "type": "Select", "state": { "value": "", "clearable": true, "options": [{"label": "select1", "value": "select1"}, {"label": "select2", "value": "select2"}] } },
         { "type": "Select", "state": { "value": "", "clearable": true, "options": [{"label": "option-1", "value": "option-1"}, {"label": "option-2", "value": "option-2", "disabled": true}, {"label": "option-3", "value": "option-3"}] } }
-      ]
+      ],
+      {
+        "type": "Cascader",
+        "state": {
+          "value": "", "placeholder": "请选择","options": [{"label": "select1", "value": "select1"}]
+        }
+      }
     ]
   }
 }
