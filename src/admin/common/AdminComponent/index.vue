@@ -8,6 +8,7 @@ import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
 import Cascader from '@/admin/common/Form/Cascader/index.vue'
+import CascaderPanel from '@/admin/common/Form/Cascader/CascaderPanel/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
 
 @Component({
@@ -31,6 +32,7 @@ export default class extends Vue {
         Button,
         Input,
         Cascader,
+        CascaderPanel,
         Select
       },
       render: (h: Function) => {

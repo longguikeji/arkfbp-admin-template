@@ -63,32 +63,28 @@
           "multiple": true,
           "options": [
             {
-              "label": "select1",
+              "label": "Part-One",
               "options": [
                 {
-                  "value": "Shanghai",
-                  "label": "上海"
+                  "value": "option1",
+                  "label": "option1"
+                },
+                {
+                  "value": "option2",
+                  "label": "option2"
                 }
               ]
-            }
-          ]
-        }
-      },
-      {
-        "type": "Select",
-        "state": {
-          "type": "group",
-          "value": "",
-          "placeholder": "请选择相关内容",
-          "multiple": true,
-          "disabled": true,
-          "options": [
+            },
             {
-              "label": "select1",
+              "label": "Part-Two",
               "options": [
                 {
-                  "value": "Shanghai",
-                  "label": "上海"
+                  "value": "option1",
+                  "label": "option1"
+                },
+                {
+                  "value": "option2",
+                  "label": "option2"
                 }
               ]
             }
@@ -101,7 +97,6 @@
           "value": "",
           "placeholder": "请选择相关内容",
           "multiple": true,
-          "size": "mini",
           "disabled": true,
           "options": [
             {
@@ -115,15 +110,36 @@
         {
           "type": "Select",
           "state": {
-            "type": "group",
             "value": "",
             "options": [
               {
                 "label": "select1",
+                "value": "select1"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "clearable": true,
+            "options": [
+              {
+                "label": "Part-One",
                 "options": [
                   {
-                    "value": "Shanghai",
-                    "label": "上海"
+                    "label": "select1",
+                    "value": "select1"
+                  }
+                ]
+              },
+              {
+                "label": "Part-Two",
+                "options": [
+                  {
+                    "label": "select2",
+                    "value": "select2"
                   }
                 ]
               }
@@ -137,17 +153,103 @@
             "clearable": true,
             "options": [
               {
-                "label": "select1",
-                "value": "select1"
+                "label": "option-1",
+                "value": "option-1"
               },
               {
-                "label": "select2",
-                "value": "select2"
+                "label": "option-2",
+                "value": "option-2",
+                "disabled": true
+              },
+              {
+                "label": "option-3",
+                "value": "option-3"
               }
             ]
           }
         }
-      ]
+      ],
+      {
+        "type": "Cascader",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "options": [
+            {
+              "label": "指南",
+              "value": "zhinan",
+              "children": [
+                {
+                  "label": "一致",
+                  "value": "yizhi"
+                },
+                {
+                  "label": "组件",
+                  "value": "zujian"
+                }
+              ]
+            },
+            {
+              "label": "组件",
+              "value": "zujian"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Cascader",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "showAllLevels": false,
+          "options": [
+            {
+              "label": "指南",
+              "value": "zhinan",
+              "children": [
+                {
+                  "label": "一致",
+                  "value": "yizhi"
+                },
+                {
+                  "label": "组件",
+                  "value": "zujian"
+                }
+              ]
+            },
+            {
+              "label": "组件",
+              "value": "zujian"
+            }
+          ]
+        }
+      },{
+        "type": "CascaderPanel",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "options": [
+            {
+              "label": "指南",
+              "value": "zhinan",
+              "children": [
+                {
+                  "label": "一致",
+                  "value": "yizhi"
+                },
+                {
+                  "label": "组件",
+                  "value": "zujian"
+                }
+              ]
+            },
+            {
+              "label": "组件",
+              "value": "zujian"
+            }
+          ]
+        }
+      }
     ]
   }
 }

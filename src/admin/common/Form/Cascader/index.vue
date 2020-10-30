@@ -26,13 +26,5 @@ import CascaderState from './CascaderState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: CascaderState;
-
-  // "children": [{ "value": "yizhi", "label": "一致" }]
-  //  "options": [
-  //           {
-  //             "lable": "指南",
-  //             "value": "zhinan"
-  //           }
-  //         ]
 }
 </script>
