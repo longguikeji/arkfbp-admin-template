@@ -26,7 +26,12 @@
       {
         "type": "Cascader",
         "state": {
-          "value": "", "placeholder": "请选择","options": [{"label": "select1", "value": "select1"}]
+          "value": "", "placeholder": "请选择","options": [{"label": "指南", "value": "zhinan","children":[{"label": "一致", "value": "yizhi"},{"label": "组件", "value": "zujian"}]},{"label": "组件", "value": "zujian"}]
+        }
+      },    {
+        "type": "Cascader",
+        "state": {
+          "value": "", "placeholder": "请选择","options": [{"label": "指南", "value": "zhinan","children":[{"label": "一致", "value": "yizhi"},{"label": "组件", "value": "zujian"}]},{"label": "组件", "value": "zujian"}]
         }
       }
     ]
