@@ -2,12 +2,17 @@
   <el-select
     v-model="state.value"
     :placeholder="state.placeholder"
+    :multiple="state.multiple"
+    :clearable="state.clearable"
+    :disabled="state.disabled"
+    :size="state.size"
   >
     <el-option
       v-for="(item, index) in state.options"
       :key="index"
       :label="item.label"
       :value="item.value"
+      :disabled="item.disabled"
     />
   </el-select>
 </template>
