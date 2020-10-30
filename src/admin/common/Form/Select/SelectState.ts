@@ -1,6 +1,7 @@
+import OptionState from './OptionState'
 export default interface SelectState {
   value: any; // 绑定值
-  options?: Array<object>; // 下拉框内容
+  options?: Array<OptionState>; // 下拉框内容
   multiple?: boolean; // 是否多选
   disabled?: boolean; // 是否禁用
   valueKey?: string; //作为 value 唯一标识的键名，绑定值为对象类型时必填
