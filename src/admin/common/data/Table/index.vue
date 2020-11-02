@@ -26,7 +26,7 @@ export default class extends Vue {
   @Prop({ required: true }) state!:TableState;
 
   get tableData() {
-    console.log(this.state.data)
+    // console.log(this.state.data)
     return this.state.data
   }
 }
