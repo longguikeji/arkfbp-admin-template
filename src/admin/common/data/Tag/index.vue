@@ -51,14 +51,18 @@ export default class extends Vue {
   private inputValue = '';
   private inputVisible = false;
   private dynamicTags: Array<TagState> = this.state;
+  private visibleFlags: Array<Boolean> = []
 
   get isNewTag() {
     const dynamicTagsFlags: Array<Number> = []
+    this.visibleFlags = []
     this.dynamicTags.forEach((tagItem) => {
       if (tagItem.newTagType) {
         dynamicTagsFlags.push(1)
+        this.visibleFlags.push(false)
       } else {
         dynamicTagsFlags.push(0)
+        this.visibleFlags.push(false)
       }
     })
     return dynamicTagsFlags
@@ -69,6 +73,7 @@ export default class extends Vue {
   }
 
   showInput(index: number) {
+    console.log(index)
     this.inputVisible = true
     this.$nextTick((): void => {
       const refItem = 'saveTagInput' + index

@@ -159,7 +159,8 @@
       "content": "one tag",
       "hit": true,
       "size": "small",
-      "effect": "light"
+      "effect": "light",
+      "newTagType": "success"
     },
     {
       "type": "info",
@@ -168,7 +169,7 @@
       "hit": true,
       "size": "small",
       "effect": "light",
-      "newTagType": "success"
+      "newTagType": "info"
     }
   ]
 }
