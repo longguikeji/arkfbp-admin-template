@@ -1,34 +1,39 @@
 <template>
-  <span class="tag-box">
-    <el-tag
-      v-for="(tag, index) in state"
+  <span>
+    <span
+      v-for="(tag, index) in dynamicTags"
       :key="index"
-      :type="tag.type"
-      :closable="tag.closable"
-      :disable-transitions="tag.disableTransitions"
-      :hit="tag.hit"
-      :color="tag.color"
-      :size="tag.size"
-      :effect="tag.effect"
-      @close="handleClose(tag)"
+      class="tag-box"
     >
-      {{ tag.content }}
-    </el-tag>
-    <el-input
-      v-if="inputVisible"
-      ref="saveTagInput"
-      v-model="inputValue"
-      :size="state[0].size"
-      class="new-tag-input"
-      @keyup.enter.native="handleInputConfirm"
-      @blur="handleInputConfirm"
-    />
-    <el-button
-      v-else
-      :size="state[0].size"
-      class="new-tag-button"
-      @click="showInput"
-    >+ New Tag</el-button>
+      <el-tag
+        :type="tag.type"
+        :closable="tag.closable"
+        :disable-transitions="tag.disableTransitions"
+        :hit="tag.hit"
+        :color="tag.color"
+        :size="tag.size"
+        :effect="tag.effect"
+        class="tag-item"
+        @close="handleClose(tag)"
+      >
+        {{ tag.content }}
+      </el-tag>
+      <el-input
+        v-if="isNewTag[index] === 1 && inputVisible"
+        :ref="'saveTagInput' + index"
+        v-model="inputValue"
+        :size="dynamicTags[index].size"
+        class="new-tag-input"
+        @keyup.enter.native="handleInputConfirm"
+        @blur="handleInputConfirm"
+      />
+      <el-button
+        v-if="isNewTag[index] === 1 && !inputVisible"
+        :size="dynamicTags[index].size"
+        class="new-tag-button"
+        @click="showInput(index)"
+      >+ New Tag</el-button>
+    </span>
   </span>
 </template>
 
@@ -45,24 +50,48 @@ export default class extends Vue {
 
   private inputValue = '';
   private inputVisible = false;
-  private dynamicTags: Array<TagState> = [];
+  private dynamicTags: Array<TagState> = this.state;
 
-  handleClose(tag: any) {
-    this.state.splice(this.state.indexOf(tag), 1)
+  get isNewTag() {
+    const dynamicTagsFlags: Array<Number> = []
+    this.dynamicTags.forEach((tagItem) => {
+      if (tagItem.newTagType) {
+        dynamicTagsFlags.push(1)
+      } else {
+        dynamicTagsFlags.push(0)
+      }
+    })
+    return dynamicTagsFlags
   }
 
-  showInput() {
+  handleClose(tag: any) {
+    this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1)
+  }
+
+  showInput(index: number) {
     this.inputVisible = true
     this.$nextTick((): void => {
-      const inputNewTag: any = this.$refs.saveTagInput
-      inputNewTag.focus()
+      const refItem = 'saveTagInput' + index
+      const inputNewTag: any = this.$refs[refItem]
+      inputNewTag.forEach((inputItem: any) => {
+        inputItem.focus()
+      })
     })
   }
 
   handleInputConfirm() {
     const inputValue = this.inputValue
     if (inputValue) {
-      this.dynamicTags.push()
+      this.isNewTag.forEach((flagItem, flagIndex) => {
+        if (flagItem === 1) {
+          const dynamicTagItem = JSON.parse(
+            JSON.stringify(this.dynamicTags[flagIndex])
+          )
+          dynamicTagItem.content = inputValue
+          delete this.dynamicTags[flagIndex].newTagType
+          this.dynamicTags.splice(flagIndex + 1, 0, dynamicTagItem)
+        }
+      })
     }
     this.inputVisible = false
     this.inputValue = ''
@@ -71,6 +100,9 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.tag-item {
+  margin-left: 5px;
+}
 .new-tag-input {
   display: inline-block;
   width: 90px;
@@ -84,7 +116,7 @@ export default class extends Vue {
 .new-tag-button {
   display: inline-block;
   margin-left: 5px;
-  padding: 6px;
+  padding: 5px;
   vertical-align: bottom;
 }
 </style>

@@ -1,4 +1,5 @@
 export default interface TagState {
+  content: string;
   type?: string; // 类型 可选值：success/info/warning/danger
   closable?: boolean; // 是否可关闭	
   disableTransitions?: boolean; // 是否禁用渐变动画	
@@ -6,5 +7,5 @@ export default interface TagState {
   color?: string; // 背景色
   size?: string; // 尺寸 medium / small / mini	
   effect?: string; // 主题 dark / light / plain
-  newTag?: boolean; // 是否要新建标签的功能
+  newTagType?: string;// 是否要新建标签的功能 默认值为空 传值为tag的type
 }
