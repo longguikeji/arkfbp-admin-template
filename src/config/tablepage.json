@@ -199,7 +199,7 @@
         "username",
         "password"
       ],
-      "valuse": {},
+      "values": {},
       "action": "create",
       "visible": false,
       "attributes": {}

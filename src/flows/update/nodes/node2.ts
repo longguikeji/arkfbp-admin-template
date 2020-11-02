@@ -3,13 +3,13 @@ import { FunctionNode } from 'arkfbp/lib/functionNode'
 export class Node2 extends FunctionNode {
   async run() {
     const state = this.$state.fetch()
-    if (this.inputs.error_code !== 0) {
-      throw new Error(this.inputs.error_msg)
+    if (this.inputs.errorCode !== 0) {
+      throw new Error(this.inputs.errorMsg)
     }
 
-    Object.keys(state.client_server).forEach((key) => {
+    Object.keys(state.clientServer).forEach((key) => {
       const ks = key.split('.')
-      const vs = state.client_server[key].split('.')
+      const vs = state.clientServer[key].split('.')
 
       let temp = state.client
       for (let i = 0; i < ks.length - 1; i++) {

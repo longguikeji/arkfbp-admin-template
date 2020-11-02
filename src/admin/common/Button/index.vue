@@ -34,7 +34,6 @@ export default class extends Vue {
 
   private async clickHandler() {
     console.log('action!!!')
-    console.log('this.state.action ', this.state.action)
     await AdminModule.adminAction({ action: this.state.action })
   }
 }

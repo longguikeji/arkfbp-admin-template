@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import DialogState from './DialogState'
 import Form from '@/admin/common/Form/index.vue'
 
@@ -32,6 +32,12 @@ import Form from '@/admin/common/Form/index.vue'
 export default class extends Vue {
   @Prop({ required: true }) state!: DialogState;
   @Prop({ required: false }) content!: any;
+
+  @Watch('this.state.visible', { immediate: true })
+  private getVisible(oldValue: any, newValue: any) {
+    console.log(newValue)
+    this.state.visible = newValue
+  }
 }
 </script>
 

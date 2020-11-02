@@ -8,7 +8,7 @@ export class Node1 extends APITokenNode {
 
     this.$state.commit((state: any) => {
       state.client = this.inputs.client
-      state.client_server = this.inputs.client_server
+      state.clientServer = this.inputs.clientServer
     })
 
     const outputs = await super.run()
