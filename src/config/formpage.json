@@ -174,6 +174,8 @@
         "state": {
           "value": "",
           "placeholder": "请选择",
+          "size": "mini",
+          "collapseTags": true,
           "options": [
             {
               "label": "指南",
@@ -201,6 +203,8 @@
         "state": {
           "value": "",
           "placeholder": "请选择",
+          "showAllLevels": false,
+          "clearable": true,
           "options": [
             {
               "label": "指南",
@@ -221,6 +225,157 @@
               "value": "zujian"
             }
           ]
+        }
+      },
+      {
+        "type": "CascaderPanel",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "options": [
+            {
+              "label": "指南",
+              "value": "zhinan",
+              "children": [
+                {
+                  "label": "一致",
+                  "value": "yizhi"
+                },
+                {
+                  "label": "组件",
+                  "value": "zujian"
+                }
+              ]
+            },
+            {
+              "label": "组件",
+              "value": "zujian"
+            }
+          ]
+        }
+      },
+      {
+        "type": "RadioGroup",
+        "state": {
+          "value": [],
+          "radio": ["radio1", "radio2"]
+        }
+      },
+      {
+        "type": "RadioGroup",
+        "state": {
+          "value": [],
+          "radioButton": ["radio1", "radio2", "radio3"]
+        }
+      },
+      {
+        "type": "CheckBoxGroup",
+        "state": {
+          "value": [],
+          "checkBox": ["check1", "check2"]
+        }
+      },
+      {
+        "type": "CheckBoxGroup",
+        "state": {
+          "value": [],
+          "checkButton": ["check1", "check2", "check3"]
+        }
+      },
+      {
+        "type": "InputNumber",
+        "state": { "value": "", "min": 0, "step": 2 }
+      },
+      {
+        "type": "SwitchButton",
+        "state": {
+          "value": "",
+          "activeColor": "#13ce66",
+          "inActiveColor": "#13ce66"
+        }
+      },
+      {
+        "type": "Slider",
+        "state": {
+          "value": 0,
+          "min": 0,
+          "max": 10
+        }
+      },
+      {
+        "type": "Slider",
+        "state": {
+          "value": 0,
+          "vertical": true,
+          "height": "200px"
+        }
+      },
+      {
+        "type": "Time",
+        "state": {
+          "value": "",
+          "placeholder": "请选择"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "type": "date"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "placeholder": "请选择周",
+          "type": "week",
+          "format": "yyyy 第 WW 周"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "startPlaceholder": "开始日期",
+          "rangeSeparator": "至",
+          "endPlaceholder": "结束日期",
+          "type": "daterange"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "startPlaceholder": "开始日期",
+          "rangeSeparator": "至",
+          "endPlaceholder": "结束日期",
+          "type": "datetimerange"
+        }
+      },
+      {
+        "type": "Rate",
+        "state": {
+          "value": 0,
+          "showText": true
+        }
+      },
+      {
+        "type": "ColorPicker",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Transfer",
+        "state": {
+          "data": [
+            { "key": "item1", "lable": "item1", "disabled": false },
+            { "key": "item2", "lable": "item2", "disabled": false },
+            { "key": "item3", "lable": "item3", "disabled": true }
+          ],
+          "filterable":true
         }
       }
     ]
