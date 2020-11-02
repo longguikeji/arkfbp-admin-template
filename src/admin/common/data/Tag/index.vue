@@ -19,16 +19,16 @@
         {{ tag.content }}
       </el-tag>
       <el-input
-        v-if="isNewTag[index] === 1 && inputVisible"
+        v-show="isNewTag[index] === 1 && visibleFlags[index] === true"
         :ref="'saveTagInput' + index"
-        v-model="inputValue"
+        v-model="inputValue[index]"
         :size="dynamicTags[index].size"
         class="new-tag-input"
-        @keyup.enter.native="handleInputConfirm"
-        @blur="handleInputConfirm"
+        @keyup.enter.native="handleInputConfirm(index)"
+        @blur="handleInputConfirm(index)"
       />
       <el-button
-        v-if="isNewTag[index] === 1 && !inputVisible"
+        v-show="isNewTag[index] === 1 && visibleFlags[index] === false"
         :size="dynamicTags[index].size"
         class="new-tag-button"
         @click="showInput(index)"
@@ -48,8 +48,7 @@ import TagState from './TagState'
 export default class extends Vue {
   @Prop({ required: true }) state!: Array<TagState>;
 
-  private inputValue = '';
-  private inputVisible = false;
+  private inputValue: Array<string> = [];
   private dynamicTags: Array<TagState> = this.state;
   private visibleFlags: Array<Boolean> = []
 
@@ -59,13 +58,17 @@ export default class extends Vue {
     this.dynamicTags.forEach((tagItem) => {
       if (tagItem.newTagType) {
         dynamicTagsFlags.push(1)
-        this.visibleFlags.push(false)
       } else {
         dynamicTagsFlags.push(0)
-        this.visibleFlags.push(false)
       }
+      this.visibleFlags.push(false)
+      this.inputValue.push('')
     })
     return dynamicTagsFlags
+  }
+
+  get visibleData() {
+    return this.visibleFlags
   }
 
   handleClose(tag: any) {
@@ -73,19 +76,16 @@ export default class extends Vue {
   }
 
   showInput(index: number) {
-    console.log(index)
-    this.inputVisible = true
+    this.visibleFlags[index] = true
     this.$nextTick((): void => {
       const refItem = 'saveTagInput' + index
       const inputNewTag: any = this.$refs[refItem]
-      inputNewTag.forEach((inputItem: any) => {
-        inputItem.focus()
-      })
+      inputNewTag[0].focus()
     })
   }
 
-  handleInputConfirm() {
-    const inputValue = this.inputValue
+  handleInputConfirm(inpIndex: number) {
+    const inputValue = this.inputValue[inpIndex]
     if (inputValue) {
       this.isNewTag.forEach((flagItem, flagIndex) => {
         if (flagItem === 1) {
@@ -98,8 +98,8 @@ export default class extends Vue {
         }
       })
     }
-    this.inputVisible = false
-    this.inputValue = ''
+    this.visibleFlags[inpIndex] = false
+    this.inputValue[inpIndex] = ''
   }
 }
 </script>

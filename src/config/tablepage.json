@@ -201,6 +201,23 @@
       "size": "small",
       "effect": "light",
       "newTagType": "info"
+    },
+    {
+      "type": "info",
+      "closable": true,
+      "content": "one tag",
+      "hit": true,
+      "size": "small",
+      "effect": "light"
+    },
+    {
+      "type": "info",
+      "closable": true,
+      "content": "one tag",
+      "hit": true,
+      "size": "small",
+      "effect": "light",
+      "newTagType": "info"
     }
   ],
   "dialogs": {
