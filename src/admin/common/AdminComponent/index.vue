@@ -10,6 +10,7 @@ import Input from '@/admin/common/Form/Input/index.vue'
 import Cascader from '@/admin/common/Form/Cascader/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
+import Progress from '@/admin/common/data/Progress/index.vue'
 
 @Component({
   name: 'AdminComponent',
@@ -33,7 +34,8 @@ export default class extends Vue {
         Input,
         Cascader,
         Select,
-        Tag
+        Tag,
+        Progress
       },
       render: (h: Function) => {
         return h(state.type, {

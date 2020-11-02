@@ -79,6 +79,17 @@
         }
       },
       {
+        "label": "Progress",
+        "prop": "progress",
+        "scope": {
+          "type": "Progress",
+          "state": {
+            "color": "#1aa",
+            "percentage": 20
+          }
+        }
+      },
+      {
         "label": "Send Information",
         "children": [
           {
