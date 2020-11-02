@@ -1,25 +1,34 @@
 <template>
-  <span v-if="state.readonly">{{ state.value }} </span>
-  <el-radio
-    v-else
-    v-model="state.value"
-    :label="state.label"
-    :disabled="state.disabled"
-    :border="state.border"
-    :size="state.size"
-    :name="state.name"
-  />
+  <el-radio-group v-model="state.value">
+    <template v-if="state.radio">
+      <el-radio
+        v-for="(item, index) in state.radio"
+        :key="index"
+        :label="item"
+      >
+        {{ item }}
+      </el-radio>
+    </template>
+    <template v-else-if="state.radioButton">
+      <el-radio-button
+        v-for="(item, index) in state.radioButton"
+        :key="index"
+        :label="item"
+      >
+        {{ item }}
+      </el-radio-button>
+    </template>
+  </el-radio-group>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import RadioState from './RadioState'
-
+import RadioGroupState from './RadioGroupState'
 @Component({
-  name: 'Radio',
+  name: 'RadioGroup',
   components: {}
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!: RadioState;
+  @Prop({ required: true }) state!: RadioGroupState;
 }
 </script>

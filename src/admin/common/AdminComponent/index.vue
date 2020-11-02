@@ -10,7 +10,16 @@ import Input from '@/admin/common/Form/Input/index.vue'
 import Cascader from '@/admin/common/Form/Cascader/index.vue'
 import CascaderPanel from '@/admin/common/Form/Cascader/CascaderPanel/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
-
+import RadioGroup from '@/admin/common/Form/Radio/index.vue'
+import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
+import InputNumber from '@/admin/common/Form/InputNumber/index.vue'
+import SwitchButton from '@/admin/common/Form/Switch/index.vue'
+import Slider from '@/admin/common/Form/Slider/index.vue'
+import Time from '@/admin/common/Form/TimePicker/index.vue'
+import DatePicker from '@/admin/common/Form/DatePicker/index.vue'
+import Rate from '@/admin/common/Form/Rate/index.vue'
+import ColorPicker from '@/admin/common/Form/ColorPicker/index.vue'
+import Transfer from '@/admin/common/Form/Transfer/index.vue'
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -33,7 +42,17 @@ export default class extends Vue {
         Input,
         Cascader,
         CascaderPanel,
-        Select
+        Select,
+        RadioGroup,
+        CheckBoxGroup,
+        InputNumber,
+        SwitchButton,
+        Slider,
+        Time,
+        DatePicker,
+        Rate,
+        ColorPicker,
+        Transfer
       },
       render: (h: Function) => {
         return h(state.type, {
