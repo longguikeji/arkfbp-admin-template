@@ -17,6 +17,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { AdminModule } from '@/store/modules/admin'
 import ButtonState from './ButtonState'
 
 @Component({
@@ -31,8 +32,10 @@ export default class extends Vue {
     this.$forceUpdate()
   }
 
-  private clickHandler() {
+  private async clickHandler() {
     console.log('action!!!')
+    console.log('this.state.action ', this.state.action)
+    await AdminModule.adminAction({ action: this.state.action })
   }
 }
 </script>

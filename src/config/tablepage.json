@@ -1,6 +1,24 @@
 {
   "type": "table",
   "title": "TablePage",
+  "form": {
+    "items": [
+      {
+        "type": "Input",
+        "label": "用户名",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "密码",
+        "state": {
+          "value": ""
+        }
+      }
+    ]
+  },
   "buttons": [
     {
       "label": "Button1"
@@ -30,7 +48,9 @@
         {
           "type": "Button",
           "state": {
-            "label": "search"
+            "label": "search",
+            "type": "primary",
+            "action": "showCreateDialog"
           }
         },
         {
@@ -171,5 +191,31 @@
       "effect": "light",
       "newTagType": "info"
     }
-  ]
+  ],
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        "username",
+        "password"
+      ],
+      "valuse": {},
+      "action": "create",
+      "visible": false,
+      "attributes": {}
+    }
+  },
+  "apis": {
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "common",
+          "type": "base",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ]
+    }
+  }
 }
