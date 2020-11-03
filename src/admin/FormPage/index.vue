@@ -18,6 +18,6 @@ import Form from '@/admin/common/Form/index.vue'
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:FormPageState;
+  @Prop({ required: true }) state!: FormPageState;
 }
 </script>

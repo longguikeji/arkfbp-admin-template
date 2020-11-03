@@ -7,11 +7,14 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
+import Cascader from '@/admin/common/Form/Cascader/index.vue'
+import Select from '@/admin/common/Form/Select/index.vue'
+import Tag from '@/admin/common/data/Tag/index.vue'
+import Progress from '@/admin/common/data/Progress/index.vue'
 
 @Component({
   name: 'AdminComponent',
-  components: {
-  }
+  components: {}
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: AdminComponentState;
@@ -28,7 +31,11 @@ export default class extends Vue {
     return {
       components: {
         Button,
-        Input
+        Input,
+        Cascader,
+        Select,
+        Tag,
+        Progress
       },
       render: (h: Function) => {
         return h(state.type, {
