@@ -219,7 +219,7 @@ export default class extends Vue {
       const imageUrl = URL.createObjectURL(file.raw)
       const img = new Image()
       img.src = imageUrl
-      // const vm = this;
+
     //   img.onload = function() {
     //     const maxL = 800;
     //     let maxl = img.height;
