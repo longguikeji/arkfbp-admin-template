@@ -11,6 +11,7 @@ import Cascader from '@/admin/common/Form/Cascader/index.vue'
 import CascaderPanel from '@/admin/common/Form/Cascader/CascaderPanel/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
+// import TagComponent from '@/admin/common/data/TagComponent/index.vue'
 import Progress from '@/admin/common/data/Progress/index.vue'
 
 import RadioGroup from '@/admin/common/Form/Radio/index.vue'
@@ -46,6 +47,7 @@ export default class extends Vue {
         Cascader,
         Select,
         Tag,
+        // TagComponent,
         Progress,
         CascaderPanel,
         RadioGroup,

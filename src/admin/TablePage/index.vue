@@ -5,6 +5,7 @@
     </div>
     <Table :state="state.table" />
     <Pagination :state="state.pagination" />
+    <!-- <TagComponent :state="state.tag" /> -->
     <Tag :state="state.tag" />
     <Dialog
       v-for="(dialogName, dialogIndex) in state.dialogs"
@@ -24,6 +25,7 @@ import Button from '@/admin/common/Button/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
+// import TagComponent from '@/admin/common/data/TagComponent/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
 
 @Component({
@@ -34,6 +36,7 @@ import Dialog from '@/admin/common/Others/Dialog/index.vue'
     Button,
     Table,
     Pagination,
+    // TagComponent,
     Tag,
     Dialog
   }
