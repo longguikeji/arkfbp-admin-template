@@ -7,7 +7,12 @@
     :src-set="state.srcSet"
     :alt="state.alt"
     :fit="state.fit"
-  />
+  >
+    <span
+      v-if="state.content"
+      :style="{'font-size': state.fontSize}"
+    >{{ state.content }}</span>
+  </el-avatar>
 </template>
 
 <script lang="ts">

@@ -30,6 +30,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
+import { type } from 'os'
 
 @Component({
   name: 'TableColumn',
@@ -42,10 +43,14 @@ export default class extends Vue {
 
   getComponentState(scope:any):object {
     if (!this.state.scope.state) {
-      this.state.scope.state = {}
+      this.state.scope.state.value = {}
     }
-    this.state.scope.state.value = scope.row[this.state.prop]
-    return this.state.scope
+    // this.state.scope.state.value = scope.row[this.state.prop]
+    const adminState = {
+      state: scope.row[this.state.prop],
+      type: this.state.scope.type
+    }
+    return adminState
   }
 }
 </script>

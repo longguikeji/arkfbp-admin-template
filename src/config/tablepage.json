@@ -69,7 +69,9 @@
         {
           "type": "Avator",
           "state": {
-            "icon": "el-icon-star-on"
+            "icon": "el-icon-star-on",
+            "content": "one tag",
+            "fontSize": 12
           }
         }
       ]
@@ -96,10 +98,7 @@
         "prop": "progress",
         "scope": {
           "type": "Progress",
-          "state": {
-            "color": "#1aa",
-            "percentage": 20
-          }
+          "state": {}
         }
       },
       {
@@ -131,7 +130,41 @@
     ],
     "data": [
       {
-        "date": "2016-05-03",
+        "date": {
+          "value": "2016-05-07"
+        },
+        "name": "王小虎",
+        "progress": {
+          "color": "#1aa",
+          "percentage": 30
+        },
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      },
+      {
+        "date": {
+          "value": "2016-05-06"
+        },
+        "name": "王小虎",
+        "progress": {
+          "color": "#1aa",
+          "percentage": 20
+        },
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      },
+      {
+        "date": {
+          "value": "2016-05-06"
+        },
+        "progress": {
+          "color": "#1aa",
+          "percentage": 20
+        },
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -139,7 +172,13 @@
         "zip": 200333
       },
       {
-        "date": "2016-05-02",
+        "date": {
+          "value": "2016-05-06"
+        },
+        "progress": {
+          "color": "#1aa",
+          "percentage": 30
+        },
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -147,7 +186,27 @@
         "zip": 200333
       },
       {
-        "date": "2016-05-04",
+        "date": {
+          "value": "2016-05-06"
+        },
+        "progress": {
+          "color": "#1aa",
+          "percentage": 20
+        },
+        "name": "王小虎",
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200335
+      },
+      {
+        "date": {
+          "value": "2016-05-06"
+        },
+        "progress": {
+          "color": "#1aa",
+          "percentage": 20
+        },
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -155,31 +214,13 @@
         "zip": 200333
       },
       {
-        "date": "2016-05-01",
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-08",
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-06",
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-07",
+        "date": {
+          "value": "2016-05-06"
+        },
+        "progress": {
+          "color": "#1aa",
+          "percentage": 50
+        },
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",

@@ -26,6 +26,7 @@ import Select from '@/admin/common/Form/Select/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import Progress from '@/admin/common/data/Progress/index.vue'
 import Avator from '@/admin/common/data/Avator/index.vue'
+import Tree from '@/admin/common/data/Tree/index.vue'
 
 import RadioGroup from '@/admin/common/Form/Radio/index.vue'
 import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
@@ -70,6 +71,7 @@ export default class extends Vue {
         Tag,
         Progress,
         Avator,
+        Tree,
         CascaderPanel,
         RadioGroup,
         CheckBoxGroup,
