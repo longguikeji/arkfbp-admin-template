@@ -29,57 +29,67 @@ export async function runAction(action: {flow: string, inputs: FlowInput}) {
 }
 
 export async function runFlow(state: any, flow: any, data: any) {
-  if (flow.type === 'base') {
-    await runAction({
-      flow: `@/flows/${flow.name}`,
-      inputs: {
-        client: state,
-        clientServer: flow.client_config
-      }
-    })
-  }
-
-  if (flow.type === 'function') {
-    let params = state
-    flow.request.split('.').forEach((v: string) => {
-      params = params[v]
-    })
-    await runAction({
-      flow: `@/flows/${flow.name}`,
-      inputs: params
-    })
-  }
-
-  if (flow.type === 'api') {
-    let params: any = {}
-    if (typeof flow.request === 'string') {
-      let temp = state
-      flow.request.split('.').forEach((v: string) => {
-        temp = temp[v]
-        params = temp
-      })
+  await runAction({
+    flow: `@/flows/${flow.name}`,
+    inputs: {
+      url: `api/admin/${getUrl(flow.url, data)}`,
+      method: flow.method,
+      nodes: flow.nodes,
+      client: state,
+      clientServer: flow.client_config
     }
+  })
+  // if (flow.type === 'base') {
+  //   await runAction({
+  //     flow: `@/flows/${flow.name}`,
+  //     inputs: {
+  //       client: state,
+  //       clientServer: flow.client_config
+  //     }
+  //   })
+  // }
 
-    if (typeof flow.request === 'object') {
-      Object.keys(flow.request).forEach(key => {
-        let temp = state
-        const vs = flow.request[key].split('.')
-        vs.forEach((v: string) => {
-          temp = temp[v]
-        })
-        params[key] = temp
-      })
-    }
+  // if (flow.type === 'function') {
+  //   let params = state
+  //   flow.request.split('.').forEach((v: string) => {
+  //     params = params[v]
+  //   })
+  //   await runAction({
+  //     flow: `@/flows/${flow.name}`,
+  //     inputs: params
+  //   })
+  // }
 
-    await runAction({
-      flow: `@/flows/${flow.name}`,
-      inputs: {
-        url: `api/admin/${getUrl(flow.url, data)}`,
-        method: flow.method,
-        params: params,
-        client: state,
-        clientServer: flow.client_config
-      }
-    })
-  }
+  // if (flow.type === 'api') {
+  //   let params: any = {}
+  //   if (typeof flow.request === 'string') {
+  //     let temp = state
+  //     flow.request.split('.').forEach((v: string) => {
+  //       temp = temp[v]
+  //       params = temp
+  //     })
+  //   }
+
+  //   if (typeof flow.request === 'object') {
+  //     Object.keys(flow.request).forEach(key => {
+  //       let temp = state
+  //       const vs = flow.request[key].split('.')
+  //       vs.forEach((v: string) => {
+  //         temp = temp[v]
+  //       })
+  //       params[key] = temp
+  //     })
+  //   }
+
+  //   await runAction({
+  //     flow: `@/flows/${flow.name}`,
+  //     inputs: {
+  //       url: `api/admin/${getUrl(flow.url, data)}`,
+  //       method: flow.method,
+  //       params: params,
+  //       client: state,
+  //       clientServer: flow.client_config
+  //     }
+  //   })
+  // }
 }
