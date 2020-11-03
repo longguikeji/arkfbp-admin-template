@@ -1,6 +1,6 @@
 import { FunctionNode } from 'arkfbp/lib/functionNode'
 
-export class Node2 extends FunctionNode {
+export class Client extends FunctionNode {
   async run() {
     const state = this.$state.fetch()
     if (state.client_server == null) {

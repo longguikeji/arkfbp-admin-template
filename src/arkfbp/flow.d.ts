@@ -10,7 +10,7 @@
 export interface FlowInput {
   url?: string
   method?: string
-  nodes?: Map<string, string>
+  params?: Map<string, string>
   client?: Map<string, string>
   clientServer?: Map<string, string>
 }
