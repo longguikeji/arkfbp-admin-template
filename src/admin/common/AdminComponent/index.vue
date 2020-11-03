@@ -20,6 +20,9 @@ import DatePicker from '@/admin/common/Form/DatePicker/index.vue'
 import Rate from '@/admin/common/Form/Rate/index.vue'
 import ColorPicker from '@/admin/common/Form/ColorPicker/index.vue'
 import Transfer from '@/admin/common/Form/Transfer/index.vue'
+import Tag from '@/admin/common/data/Tag/index.vue'
+import Progress from '@/admin/common/data/Progress/index.vue'
+
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -52,7 +55,9 @@ export default class extends Vue {
         DatePicker,
         Rate,
         ColorPicker,
-        Transfer
+        Transfer,
+        Tag,
+        Progress
       },
       render: (h: Function) => {
         return h(state.type, {

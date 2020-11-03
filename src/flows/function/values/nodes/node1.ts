@@ -5,7 +5,7 @@ export class Node1 extends FunctionNode {
     if (this.inputs === null) {
       return this.inputs;
     }
-    this.inputs.avatar_url.replace('https://cdn.yixi.tv/almond/', '');
+    this.inputs.avatarUrl.replace('https://cdn.yixi.tv/almond/', '');
 
     return this.inputs;
   }
