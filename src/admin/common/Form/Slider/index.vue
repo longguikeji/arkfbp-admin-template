@@ -18,6 +18,7 @@
       :debounce="state.debounce"
       :tooltip-class="state.tooltipClass"
       :marks="state.marks"
+      :format-tooltip="formatTooltip"
     />
   </div>
 </template>
@@ -32,6 +33,10 @@ import SliderState from './SliderState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: SliderState;
+
+  formatTooltip() {
+    // console.log(this.state.value);
+  }
 }
 </script>
 
