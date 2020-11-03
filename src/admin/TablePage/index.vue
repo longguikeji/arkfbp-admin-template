@@ -5,6 +5,7 @@
     </div>
     <Table :state="state.table" />
     <Pagination :state="state.pagination" />
+    <!-- <TagComponent :state="state.tag" /> -->
     <Tag :state="state.tag" />
     <Dialog
       v-for="(dialogName, dialogIndex) in state.dialogs"
@@ -12,6 +13,8 @@
       :state="state.dialogs[dialogIndex]"
       :content="state.form"
     />
+    <Tree :state="state.tree" />
+    <Alert :state="state.alert" />
   </Card>
 </template>
 
@@ -25,6 +28,8 @@ import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
+import Tree from '@/admin/common/data/Tree/index.vue'
+import Alert from '@/admin/common/Notice/Alert/index.vue'
 
 @Component({
   name: 'FromPage',
@@ -35,7 +40,9 @@ import Dialog from '@/admin/common/Others/Dialog/index.vue'
     Table,
     Pagination,
     Tag,
-    Dialog
+    Dialog,
+    Tree,
+    Alert
   }
 })
 export default class extends Vue {

@@ -5,6 +5,7 @@ export default interface SelectState {
     type: string; // // el-group-option && el-option
     default: 'only';
   };
+  readonly?: boolean; // 是否只读
   options?: Array<OptionType>;
   multiple?: boolean; // 是否多选
   disabled?: boolean; // 是否禁用

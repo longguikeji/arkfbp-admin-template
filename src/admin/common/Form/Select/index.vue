@@ -1,5 +1,10 @@
 <template>
+  <Tag
+    v-if="state.readonly"
+    :state="tagData"
+  />
   <el-select
+    v-else
     v-model="state.value"
     :placeholder="state.placeholder"
     :multiple="state.multiple"
@@ -37,14 +42,27 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
 
 @Component({
   name: 'OptionModule',
-  components: {}
+  components: {
+    Tag
+  }
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: SelectState;
+
+  get tagData() {
+    const tagArr = [
+      {
+        content: this.state.value,
+        type: 'info'
+      }
+    ]
+    return tagArr
+  }
 }
 </script>
 
