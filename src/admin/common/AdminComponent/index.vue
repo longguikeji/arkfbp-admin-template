@@ -1,5 +1,18 @@
 <template>
-  <component :is="item" />
+  <el-badge
+    v-if="badge"
+    :value="badge.value"
+    :max="badge.max"
+    :is-dot="badge.idDot"
+    :hidden="badge.hidden"
+    :type="badge.type"
+  >
+    <component :is="item" />
+  </el-badge>
+  <component
+    :is="item"
+    v-else
+  />
 </template>
 
 <script lang="ts">
@@ -11,8 +24,8 @@ import Cascader from '@/admin/common/Form/Cascader/index.vue'
 import CascaderPanel from '@/admin/common/Form/Cascader/CascaderPanel/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
-// import TagComponent from '@/admin/common/data/TagComponent/index.vue'
 import Progress from '@/admin/common/data/Progress/index.vue'
+import Avator from '@/admin/common/data/Avator/index.vue'
 
 import RadioGroup from '@/admin/common/Form/Radio/index.vue'
 import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
@@ -38,6 +51,14 @@ export default class extends Vue {
 
   // item?:object
 
+  get badge() {
+    if (this.state.state.badge) {
+      return this.state.state.badge
+    } else {
+      return false
+    }
+  }
+
   get item(): object {
     const state = this.state
     return {
@@ -47,8 +68,8 @@ export default class extends Vue {
         Cascader,
         Select,
         Tag,
-        // TagComponent,
         Progress,
+        Avator,
         CascaderPanel,
         RadioGroup,
         CheckBoxGroup,
@@ -72,3 +93,9 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep .el-badge__content.is-fixed {
+  z-index: 100 !important;
+}
+</style>

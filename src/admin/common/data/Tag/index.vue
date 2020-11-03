@@ -100,6 +100,7 @@ export default class extends Vue {
         JSON.stringify(this.dynamicTags[addIndex])
       )
       dynamicTagItem.content = inputContent
+      dynamicTagItem.type = this.dynamicTags[addIndex].newTagType
       delete this.dynamicTags[addIndex].newTagType
       this.dynamicTags.splice(addIndex + 1, 0, dynamicTagItem)
     }

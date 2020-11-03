@@ -50,13 +50,26 @@
           "state": {
             "label": "search",
             "type": "primary",
-            "action": "showCreateDialog"
+            "action": "showCreateDialog",
+            "badge": {
+              "value": 100,
+              "max": 200,
+              "isDot": false,
+              "hidden": false,
+              "type": "warning"
+            }
           }
         },
         {
           "type": "Button",
           "state": {
             "label": "check"
+          }
+        },
+        {
+          "type": "Avator",
+          "state": {
+            "icon": "el-icon-star-on"
           }
         }
       ]

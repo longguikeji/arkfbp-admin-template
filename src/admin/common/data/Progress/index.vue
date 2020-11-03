@@ -15,7 +15,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import ProgressState from './ProgressState'
 
 @Component({
-  name: 'Tag',
+  name: 'Progress',
   components: {}
 })
 export default class extends Vue {
