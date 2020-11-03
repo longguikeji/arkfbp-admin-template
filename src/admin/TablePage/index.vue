@@ -14,6 +14,7 @@
       :content="state.form"
     />
     <Tree :state="state.tree" />
+    <Alert :state="state.alert" />
   </Card>
 </template>
 
@@ -28,6 +29,7 @@ import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
 import Tree from '@/admin/common/data/Tree/index.vue'
+import Alert from '@/admin/common/Notice/Alert/index.vue'
 
 @Component({
   name: 'FromPage',
@@ -39,7 +41,8 @@ import Tree from '@/admin/common/data/Tree/index.vue'
     Pagination,
     Tag,
     Dialog,
-    Tree
+    Tree,
+    Alert
   }
 })
 export default class extends Vue {

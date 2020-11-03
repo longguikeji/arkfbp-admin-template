@@ -338,6 +338,12 @@
     },
     "showCheckbox": true
   },
+  "alert": {
+    "title": "This is one alert infomation",
+    "center": true,
+    "type": "success",
+    "slot": "消息内容展示区"
+  },
   "dialogs": {
     "create": {
       "title": "新建",
