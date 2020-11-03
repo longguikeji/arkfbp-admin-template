@@ -22,7 +22,7 @@ import ColorPicker from '@/admin/common/Form/ColorPicker/index.vue'
 import Transfer from '@/admin/common/Form/Transfer/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import Progress from '@/admin/common/data/Progress/index.vue'
-
+import Upload from '@/admin/common/Form/Upload/index.vue'
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -57,7 +57,8 @@ export default class extends Vue {
         ColorPicker,
         Transfer,
         Tag,
-        Progress
+        Progress,
+        Upload
       },
       render: (h: Function) => {
         return h(state.type, {
