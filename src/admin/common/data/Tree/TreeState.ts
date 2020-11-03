@@ -1,6 +1,6 @@
 import TreeProps from './TreeProps'
 export default interface TreeState {
-  data?: Array<any>; // 展示数据	
+  data?: Array<TreeProps>; // 展示数据	
   emptyText?: string; // 内容为空的时候展示的文本	
   nodeKey?: string; // 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的	
   props?: TreeProps; // 配置选项，具体看 TreeProps.ts 文件

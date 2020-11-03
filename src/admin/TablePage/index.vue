@@ -13,6 +13,7 @@
       :state="state.dialogs[dialogIndex]"
       :content="state.form"
     />
+    <Tree :state="state.tree" />
   </Card>
 </template>
 
@@ -25,8 +26,8 @@ import Button from '@/admin/common/Button/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
-// import TagComponent from '@/admin/common/data/TagComponent/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
+import Tree from '@/admin/common/data/Tree/index.vue'
 
 @Component({
   name: 'FromPage',
@@ -36,9 +37,9 @@ import Dialog from '@/admin/common/Others/Dialog/index.vue'
     Button,
     Table,
     Pagination,
-    // TagComponent,
     Tag,
-    Dialog
+    Dialog,
+    Tree
   }
 })
 export default class extends Vue {
