@@ -1,6 +1,16 @@
 <template>
-  <el-breadcrumb>
-    <el-breadcrumb-item />
+  <el-breadcrumb
+    :separator-class="state.separatorClass"
+    :separator="state.separator"
+  >
+    <el-breadcrumb-item
+      v-for="(item, index) in state.items"
+      :key="index"
+      :to="item.to"
+      :replace="item.replace"
+    >
+      {{ item.text }}
+    </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
