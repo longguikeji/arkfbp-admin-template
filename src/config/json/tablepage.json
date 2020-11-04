@@ -416,6 +416,72 @@
       }
     ]
   },
+  "tabs": {
+    "items": [
+      {
+        "label": "FIRST",
+        "content": "First Content",
+        "name": "1",
+        "closable": true
+      },
+      {
+        "label": "SECOND",
+        "content": "Second Content",
+        "name": "2"
+      },
+      {
+        "label": "THIRD",
+        "content": "Third Content",
+        "name": "3",
+        "closable": true,
+        "lazy": true
+      },
+      {
+        "label": "FOURTH",
+        "content": "Fourth Content",
+        "name": "4",
+        "closable": true,
+        "disabled": true
+      }
+    ],
+    "type": "border-card",
+    "value": "2",
+    "editable": true
+  },
+  "navs": {
+    "mode": "horizontal",
+    "children": [
+      {
+        "title": "功能中心区",
+        "icon": "el-icon-star-off",
+        "children": [
+          {
+            "title": "Form表单"
+          },
+          {
+            "title": "Table表格"
+          },
+          {
+            "title": "参考组件列表",
+            "children": [
+              {
+                "title": "Input输入框"
+              },
+              {
+                "title": "Button按钮"
+              },
+              {
+                "title": "Others其他"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "处理中心区"
+      }
+    ]
+  },
   "dialogs": {
     "create": {
       "title": "新建",
