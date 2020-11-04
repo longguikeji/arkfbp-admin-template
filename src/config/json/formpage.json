@@ -13,28 +13,6 @@
   "form": {
     "items": [
       {
-        "type": "Upload",
-        "state": {
-          "type": "video",
-          "action": ""
-        }
-      },
-      {
-        "type": "Upload",
-        "state": {
-          "type": "image",
-          "action": "",
-          "upload": []
-        }
-      },
-      {
-        "type": "Upload",
-        "state": {
-          "type": "xlsx",
-          "action": ""
-        }
-      },
-      {
         "type": "Input",
         "label": "title1",
         "state": {
@@ -396,7 +374,28 @@
           "showText": true
         }
       },
-
+      {
+        "type": "Upload",
+        "state": {
+          "type": "video",
+          "action": ""
+        }
+      },
+      {
+        "type": "Upload",
+        "state": {
+          "type": "image",
+          "action": "",
+          "upload": []
+        }
+      },
+      {
+        "type": "Upload",
+        "state": {
+          "type": "xlsx",
+          "action": ""
+        }
+      },
       {
         "type": "ColorPicker",
         "state": {
@@ -507,6 +506,14 @@
     "icon": "el-icon-info",
     "iconColor": "red",
     "title": "这是一段内容确定删除吗？",
-    "content":"删除"
+    "content": "删除"
+  },
+  "popover": {
+    "placement": "bottom",
+    "title": "标题",
+    "width": "200",
+    "trigger": "click",
+    "content": "这是一段内容,这是一段内容,这是一段内容,这是一段内容。",
+    "btn": "click激活"
   }
 }

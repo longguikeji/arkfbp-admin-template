@@ -11,6 +11,7 @@
     <Collapse :state="state.collapse" />
     <Carousel :state="state.carousel" />
     <Popconfirm :state="state.popconfirm" />
+    <Popover :state="state.popover" />
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import Timeline from '@/admin/common/Others/Timeline/index.vue'
 import Collapse from '@/admin/common/Others/Collapse/index.vue'
 import Carousel from '@/admin/common/Others/Carousel/index.vue'
 import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
+import Popover from '@/admin/common/Others/Popover/index.vue'
 @Component({
   name: 'FromPage',
   components: {
@@ -39,7 +41,8 @@ import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
     Timeline,
     Collapse,
     Carousel,
-    Popconfirm
+    Popconfirm,
+    Popover
   }
 })
 export default class extends Vue {
