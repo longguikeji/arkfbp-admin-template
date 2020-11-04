@@ -9,11 +9,13 @@
         :class="state.icon"
       />{{ state.title }}
     </template>
-    <Submenu
-      v-for="item in state.children"
-      :key="item.title + state.children.indexOf(item)"
-      :state="item"
-    />
+    <template>
+      <Submenu
+        v-for="item in state.children"
+        :key="item.title + state.children.indexOf(item)"
+        :state="item"
+      />
+    </template>
   </el-submenu>
   <el-menu-item
     v-else
@@ -39,7 +41,10 @@ export default class extends Vue {
   @Prop({ required: true }) state!: SubmenuState | MenuItemState;
 
   get childrenType() {
-    const submenuType = Object.prototype.hasOwnProperty.call(this.state, 'children')
+    const submenuType = Object.prototype.hasOwnProperty.call(
+      this.state,
+      'children'
+    )
     return submenuType
   }
 }
