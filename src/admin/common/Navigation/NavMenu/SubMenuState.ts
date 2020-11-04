@@ -1,0 +1,8 @@
+export default interface SubMenuState {
+  index?: string | null; // 唯一标志  null
+  popperClass?: string; // 弹出菜单的自定义类名	
+  showTimeout?: number; // 展开 sub-menu 的延时	 300
+  hideTimeout?: number; // 收起 sub-menu 的延时	 300
+  disabled?: boolean; // 是否禁用 false
+  popperAppendToBody?: boolean; // 是否将弹出菜单插入至 body 元素。在菜单的定位出现问题时，可尝试修改该属性	一级子菜单：true / 非一级子菜单：false	
+}
