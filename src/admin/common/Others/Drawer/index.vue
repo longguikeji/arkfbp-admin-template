@@ -2,17 +2,28 @@
   <div>
     <el-button
       type="primary"
+      style="margin-left: 16px;"
       @click="drawer = true"
     >
-      点我打开
+      点击打开
     </el-button>
     <el-drawer
+      :append-to-body="state.appendToBody"
+      :close-on-press-escape="state.closeOnPressEscape"
+      :custom-class="state.customClass"
+      :destroy-on-close="state.destroyOnClose"
+      :modal="state.modal"
+      :modal-append-to-body="state.modalAppendToBody"
+      :direction="state.direction"
+      :show-close="state.showClose"
+      :size="state.size"
       :title="state.title"
       :visible.sync="drawer"
-      :direction="state.direction"
-      :before-close="handleClose"
+      :wrapper-closable="state.wrapperClosable"
+      :with-header="state.withHeader"
+      :before-close="beforeClose"
     >
-      <Form :state="content" />
+      <slot>to be continued</slot>
     </el-drawer>
   </div>
 </template>
@@ -21,21 +32,16 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import DrawerState from './DrawerState'
 import Form from '@/admin/common/Form/index.vue'
-
 @Component({
   name: 'Drawer',
-  components: {
-    Form
-  }
+  components: {}
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: DrawerState;
-  @Prop({ required: false }) content!: any;
 
   drawer = false;
-
-  handleClose() {
-    console.log('handleClose()')
+  beforeClose() {
+    this.drawer = false
   }
 }
 </script>

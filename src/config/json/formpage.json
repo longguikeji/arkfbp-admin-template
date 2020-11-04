@@ -9,6 +9,7 @@
       "label": "button2"
     }
   ],
+
   "form": {
     "items": [
       {
@@ -23,7 +24,7 @@
         "state": {
           "type": "image",
           "action": "",
-          "upload":[]
+          "upload": []
         }
       },
       {
@@ -31,7 +32,6 @@
         "state": {
           "type": "xlsx",
           "action": ""
-         
         }
       },
       {
@@ -420,6 +420,69 @@
             { "key": "5", "label": "成都", "disabled": false }
           ]
         }
+      }
+    ]
+  },
+  "drawer": {
+    "title": "这是标题",
+    "direction": "ttb",
+    "withHeader": true
+  },
+  "image": {
+    "src": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
+    "fit": "fill"
+  },
+  "calendar": {
+    "range": ["2019-03-04", "2019-03-24"]
+  },
+  "divider": {
+    "value": "头上一片晴天，心中一个想念",
+    "direction": "horizontal",
+    "contentPosition": "left"
+  },
+  "timeline": {
+    "reverse": false,
+    "data": [
+      {
+        "content": "支持使用图标",
+        "timestamp": "2018-04-12 20:46",
+        "size": "large",
+        "type": "primary",
+        "icon": "el-icon-more"
+      },
+      {
+        "content": "支持自定义颜色",
+        "timestamp": "2018-04-03 20:46",
+        "color": "#0bbd87"
+      },
+      {
+        "content": "支持自定义尺寸",
+        "timestamp": "2018-04-03 20:46",
+        "size": "large"
+      },
+      {
+        "content": "默认样式的节点",
+        "timestamp": "2018-04-03 20:46"
+      }
+    ]
+  },
+  "collapse": {
+    "activeNames": ["1"],
+    "data": [
+      {
+        "title": "一致性 Consistency",
+        "name": "1",
+        "content": "与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；"
+      },
+      {
+        "title": "反馈 Feedback",
+        "name": "2",
+        "content": "控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作"
+      },
+      {
+        "title": "效率 Efficiency",
+        "name": "3",
+        "content": "简化流程：设计简洁直观的操作流程；"
       }
     ]
   }

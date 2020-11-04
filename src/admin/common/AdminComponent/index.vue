@@ -39,7 +39,7 @@ import Transfer from '@/admin/common/Form/Transfer/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import Progress from '@/admin/common/data/Progress/index.vue'
 import Upload from '@/admin/common/Form/Upload/index.vue'
-import Drawer from '@/admin/common/Others/Drawer/index.vue'
+
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -86,7 +86,6 @@ export default class extends Vue {
         Rate,
         ColorPicker,
         Transfer,
-        Drawer,
         Upload
       },
       render: (h: Function) => {
