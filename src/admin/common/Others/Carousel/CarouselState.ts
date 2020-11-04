@@ -10,6 +10,8 @@ export default interface CarouselState {
   loop: boolean; //	是否循环显示	boolean	-	true
   direction: string; //	走马灯展示的方向	string	horizontal/vertical	horizontal
 
+  data:object;
   name: string; //	幻灯片的名字，可用作 setActiveItem 的参数	string	—	—
   label: string; //	该幻灯片所对应指示器的文本	string	—	—
+  width:string;
 }

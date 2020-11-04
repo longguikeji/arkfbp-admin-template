@@ -1,19 +1,27 @@
 <template>
-  <el-collapse
-    v-model="state.activeNames"
-    accordion
-    @change="handleChange"
+  <el-carousel
+    :height="state.height"
+    :initial-index="state.initialIndex"
+    :trigger="state.trigger"
+    :autoplay="state.autoplay"
+    :interval="state.interval"
+    :indicator-position="state.indicatorPosition"
+    :arrow="state.arrow"
+    :type="state.type"
+    :loop="state.loop"
+    :direction="state.direction"
   >
-    <el-collapse-item
+    <el-carousel-item
       v-for="(item, index) in state.data"
       :key="index"
-      :title="item.title"
-      :name="item.name"
-      :disabled="item.disabled"
     >
-      {{ item.content }}
-    </el-collapse-item>
-  </el-collapse>
+      <el-image
+        :src="item.url"
+        :style="{height: state.height, width: state.width}"
+        fit="cover"
+      />
+    </el-carousel-item>
+  </el-carousel>
 </template>
 
 <script lang="ts">
@@ -21,7 +29,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import CarouselState from './CarouselState'
 
 @Component({
-  name: 'CarouselState'
+  name: 'Carousel'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: CarouselState;

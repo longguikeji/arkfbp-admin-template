@@ -9,6 +9,8 @@
     <Divider :state="state.divider" />
     <Timeline :state="state.timeline" />
     <Collapse :state="state.collapse" />
+    <Carousel :state="state.carousel" />
+    <Popconfirm :state="state.popconfirm" />
   </div>
 </template>
 
@@ -23,6 +25,8 @@ import Calendar from '@/admin/common/Others/Calendar/index.vue'
 import Divider from '@/admin/common/Others/Divider/index.vue'
 import Timeline from '@/admin/common/Others/Timeline/index.vue'
 import Collapse from '@/admin/common/Others/Collapse/index.vue'
+import Carousel from '@/admin/common/Others/Carousel/index.vue'
+import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
 @Component({
   name: 'FromPage',
   components: {
@@ -33,7 +37,9 @@ import Collapse from '@/admin/common/Others/Collapse/index.vue'
     Calendar,
     Divider,
     Timeline,
-    Collapse
+    Collapse,
+    Carousel,
+    Popconfirm
   }
 })
 export default class extends Vue {
