@@ -18,21 +18,25 @@
       >
         {{ tag.content }}
       </el-tag>
-      <el-input
-        v-if="isNewTag[index] === 1 && inputVisible"
-        :ref="'saveTagInput' + index"
-        v-model="inputValue"
-        :size="dynamicTags[index].size"
-        class="new-tag-input"
-        @keyup.enter.native="handleInputConfirm"
-        @blur="handleInputConfirm"
-      />
-      <el-button
-        v-if="isNewTag[index] === 1 && !inputVisible"
-        :size="dynamicTags[index].size"
-        class="new-tag-button"
-        @click="showInput(index)"
-      >+ New Tag</el-button>
+      <span v-if="tag.newTagType">
+        <el-input
+          v-if="visibleFlags[index]"
+          :id="'saveTagInput' + index"
+          :ref="'saveTagInput' + index"
+          v-model="inputValue"
+          :size="dynamicTags[index].size"
+          class="new-tag-input"
+          @keyup.enter.native="handleInputConfirm(tag, index)"
+        />
+        <el-button
+          v-else
+          :id="'saveTagButton' + index"
+          :ref="'saveTagButton' + index"
+          :size="dynamicTags[index].size"
+          class="new-tag-button"
+          @click="showInput(index)"
+        >+ New Tag</el-button>
+      </span>
     </span>
   </span>
 </template>
@@ -49,56 +53,48 @@ export default class extends Vue {
   @Prop({ required: true }) state!: Array<TagState>;
 
   private inputValue = '';
-  private inputVisible = false;
   private dynamicTags: Array<TagState> = this.state;
-  private visibleFlags: Array<Boolean> = []
-
-  get isNewTag() {
-    const dynamicTagsFlags: Array<Number> = []
-    this.visibleFlags = []
-    this.dynamicTags.forEach((tagItem) => {
-      if (tagItem.newTagType) {
-        dynamicTagsFlags.push(1)
-        this.visibleFlags.push(false)
-      } else {
-        dynamicTagsFlags.push(0)
-        this.visibleFlags.push(false)
-      }
-    })
-    return dynamicTagsFlags
-  }
+  private visibleFlags: any = {};
 
   handleClose(tag: any) {
-    this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1)
+    if (this.dynamicTags.length > 0) {
+      const deleteIndex = this.dynamicTags.indexOf(tag)
+      if (deleteIndex !== 0) {
+        if (this.dynamicTags[deleteIndex].newTagType) {
+          this.dynamicTags[deleteIndex - 1].newTagType = this.dynamicTags[
+            deleteIndex
+          ].newTagType
+        }
+      }
+      this.dynamicTags.splice(deleteIndex, 1)
+    }
   }
 
   showInput(index: number) {
-    console.log(index)
-    this.inputVisible = true
+    this.visibleFlags[index] = true
+    this.$forceUpdate()
     this.$nextTick((): void => {
       const refItem = 'saveTagInput' + index
       const inputNewTag: any = this.$refs[refItem]
-      inputNewTag.forEach((inputItem: any) => {
-        inputItem.focus()
-      })
+      inputNewTag[0].focus()
     })
   }
 
-  handleInputConfirm() {
-    const inputValue = this.inputValue
-    if (inputValue) {
-      this.isNewTag.forEach((flagItem, flagIndex) => {
-        if (flagItem === 1) {
-          const dynamicTagItem = JSON.parse(
-            JSON.stringify(this.dynamicTags[flagIndex])
-          )
-          dynamicTagItem.content = inputValue
-          delete this.dynamicTags[flagIndex].newTagType
-          this.dynamicTags.splice(flagIndex + 1, 0, dynamicTagItem)
-        }
-      })
+  handleInputConfirm(tag: any, inpIndex: number) {
+    const refItem = 'saveTagInput' + inpIndex
+    const inputElement: any = document.getElementById(refItem)
+    const inputContent = inputElement.value
+    if (inputContent.trim() !== '') {
+      const addIndex = this.dynamicTags.indexOf(tag)
+      const dynamicTagItem = JSON.parse(
+        JSON.stringify(this.dynamicTags[addIndex])
+      )
+      dynamicTagItem.content = inputContent
+      dynamicTagItem.type = this.dynamicTags[addIndex].newTagType
+      delete this.dynamicTags[addIndex].newTagType
+      this.dynamicTags.splice(addIndex + 1, 0, dynamicTagItem)
     }
-    this.inputVisible = false
+    this.visibleFlags[inpIndex] = false
     this.inputValue = ''
   }
 }

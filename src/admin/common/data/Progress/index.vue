@@ -1,12 +1,15 @@
 <template>
   <el-progress
     :percentage="state.percentage"
-    :format="state.format"
-    :text-inside="state.textInside"
-    :stroke-width="state.strokeWidth"
-    :status="state.status"
-    :color="state.color"
     :type="state.type"
+    :stroke-width="state.strokeWidth"
+    :text-inside="state.textInside"
+    :status="state.status"
+    :width="state.width"
+    :show-text="state.showText"
+    :stroke-linecap="state.strokeLinecap"
+    :color="state.color"
+    :format="state.format"
   />
 </template>
 
@@ -15,11 +18,11 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import ProgressState from './ProgressState'
 
 @Component({
-  name: 'Tag',
+  name: 'Progress',
   components: {}
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!: Array<ProgressState>;
+  @Prop({ required: true }) state!: ProgressState
 }
 </script>
 

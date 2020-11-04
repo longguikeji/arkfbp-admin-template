@@ -10,3 +10,7 @@ export default interface ProgressState {
   color?: string | Array<object>; // 自定义进度条不同时期的背景色
   format?: Function; // 可以指定进度条的文字内容
 }
+
+// export default interface ProgressState {
+//   value?: Progress;
+// }

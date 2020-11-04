@@ -1,5 +1,18 @@
 <template>
-  <component :is="item" />
+  <el-badge
+    v-if="badge"
+    :value="badge.value"
+    :max="badge.max"
+    :is-dot="badge.idDot"
+    :hidden="badge.hidden"
+    :type="badge.type"
+  >
+    <component :is="item" />
+  </el-badge>
+  <component
+    :is="item"
+    v-else
+  />
 </template>
 
 <script lang="ts">
@@ -8,10 +21,27 @@ import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
 import Cascader from '@/admin/common/Form/Cascader/index.vue'
+import CascaderPanel from '@/admin/common/Form/Cascader/CascaderPanel/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
+
+import Avator from '@/admin/common/data/Avator/index.vue'
+import Tree from '@/admin/common/data/Tree/index.vue'
+
+import Alert from '@/admin/common/Notice/Alert/index.vue'
+
+import RadioGroup from '@/admin/common/Form/Radio/index.vue'
+import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
+import InputNumber from '@/admin/common/Form/InputNumber/index.vue'
+import SwitchButton from '@/admin/common/Form/Switch/index.vue'
+import Slider from '@/admin/common/Form/Slider/index.vue'
+import Time from '@/admin/common/Form/TimePicker/index.vue'
+import DatePicker from '@/admin/common/Form/DatePicker/index.vue'
+import Rate from '@/admin/common/Form/Rate/index.vue'
+import ColorPicker from '@/admin/common/Form/ColorPicker/index.vue'
+import Transfer from '@/admin/common/Form/Transfer/index.vue'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import Progress from '@/admin/common/data/Progress/index.vue'
-
+import Upload from '@/admin/common/Form/Upload/index.vue'
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -26,6 +56,14 @@ export default class extends Vue {
 
   // item?:object
 
+  get badge() {
+    if (this.state.state.badge) {
+      return this.state.state.badge
+    } else {
+      return false
+    }
+  }
+
   get item(): object {
     const state = this.state
     return {
@@ -35,7 +73,23 @@ export default class extends Vue {
         Cascader,
         Select,
         Tag,
-        Progress
+        Progress,
+        Avator,
+        Tree,
+        Alert,
+        CascaderPanel,
+        RadioGroup,
+        CheckBoxGroup,
+        InputNumber,
+        SwitchButton,
+        Slider,
+        Time,
+        DatePicker,
+        Rate,
+        ColorPicker,
+        Transfer,
+
+        Upload
       },
       render: (h: Function) => {
         return h(state.type, {
@@ -48,3 +102,9 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep .el-badge__content.is-fixed {
+  z-index: 100 !important;
+}
+</style>
