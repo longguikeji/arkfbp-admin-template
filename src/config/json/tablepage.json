@@ -357,12 +357,12 @@
       "attributes": {}
     }
   },
-  "apis": {
+  "actions": {
     "showCreateDialog": {
       "flows": [
         {
-          "name": "common",
-          "type": "base",
+          "name": "assign",
+          "type": "assign",
           "client_config": {
             "dialogs.create.visible": true
           }

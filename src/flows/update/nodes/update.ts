@@ -1,6 +1,6 @@
 import { APITokenNode } from '@/nodes/APITokenNode'
 
-export class Node1 extends APITokenNode {
+export class Update extends APITokenNode {
   async run() {
     this.url = this.inputs.url
     this.method = this.inputs.method
