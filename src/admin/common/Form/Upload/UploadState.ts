@@ -1,3 +1,4 @@
+import VueCopperState from "./VueCopperState";
 export default interface UploadState {
   action?: string; //必选参数，上传的地址
   headers: object; //	设置上传的请求头部
@@ -23,4 +24,11 @@ export default interface UploadState {
   disabled: boolean; //	是否禁用	boolean	—	false
   limit: number; //	最大允许上传个数	number	—	—
   onExceed: Function; //	文件超出个数限制时的钩子	function(files, fileList)	—
+
+  value: string;
+  type: string; //区分uploadFile  uploadImage  uploadXslFile
+  title: string; //Dialog 的标题
+  crops: Array<any>; //图片参数
+  upload: VueCopperState[];
+  keyName: string;
 }

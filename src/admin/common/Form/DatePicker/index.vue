@@ -36,3 +36,8 @@ export default class extends Vue {
   @Prop({ required: true }) state!: DatePickerState;
 }
 </script>
+<style lang="scss" scoped>
+::v-deep.el-date-editor .el-range-separator {
+  padding: 0px;
+}
+</style>

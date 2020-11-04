@@ -26,17 +26,17 @@ class Admin extends VuexModule implements IAdminState {
     const { action, data } = payload
     const adminState = cloneDeep(this.adminState)
 
-    if (!adminState.apis || !adminState.apis[action]) {
+    if (!adminState.actions || !adminState.actions[action]) {
       return
     }
 
-    const flows = adminState.apis[action].flows
+    const flows = adminState.actions[action].flows
     for (let i = 0; i < flows.length; i++) {
       await runFlow(adminState, flows[i], data)
     }
 
-    if (adminState.apis[action].next) {
-      const next = adminState.apis[action].next
+    if (adminState.actions[action].next) {
+      const next = adminState.actions[action].next
 
       for (let i = 0; i < next.length; i++) {
         await this.adminAction({

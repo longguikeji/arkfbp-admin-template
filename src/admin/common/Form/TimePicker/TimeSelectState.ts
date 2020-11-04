@@ -19,4 +19,7 @@ export default interface TimeSelectState {
   name: string; //原生属性
   prefixIcon: string; //自定义头部图标的类名
   clearIcon: string; //自定义清空图标的类名
+  selectableRange: string | Array<string>; //可选时间段，例如'18:30:00 - 20:30:00'或者传入数组['09:30:00 - 12:00:00', '14:30:00 - 18:30:00']
+  format: string; //时间格式化(TimePicker)	string
+  type: string; //区别datepicker  和dateselect
 }

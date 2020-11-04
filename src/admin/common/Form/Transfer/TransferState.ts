@@ -1,4 +1,5 @@
 export default interface TransferState {
+  value: Array<any>;
   data: Array<any>; //Transfer 的数据源	array[{ key, label, disabled }]	—	[ ]
   filterable: boolean; //	是否可搜索	boolean	—	false
   filterPlaceholder: string; //	搜索框占位符	string	—	请输入搜索内容

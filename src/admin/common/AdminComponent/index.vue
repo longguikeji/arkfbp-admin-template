@@ -23,12 +23,13 @@ import Input from '@/admin/common/Form/Input/index.vue'
 import Cascader from '@/admin/common/Form/Cascader/index.vue'
 import CascaderPanel from '@/admin/common/Form/Cascader/CascaderPanel/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
-import Tag from '@/admin/common/data/Tag/index.vue'
-import Progress from '@/admin/common/data/Progress/index.vue'
+
 import Avator from '@/admin/common/data/Avator/index.vue'
 import Tree from '@/admin/common/data/Tree/index.vue'
 
 import Alert from '@/admin/common/Notice/Alert/index.vue'
+
+import Steps from '@/admin/common/Navigation/Steps/index.vue'
 
 import RadioGroup from '@/admin/common/Form/Radio/index.vue'
 import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
@@ -40,6 +41,9 @@ import DatePicker from '@/admin/common/Form/DatePicker/index.vue'
 import Rate from '@/admin/common/Form/Rate/index.vue'
 import ColorPicker from '@/admin/common/Form/ColorPicker/index.vue'
 import Transfer from '@/admin/common/Form/Transfer/index.vue'
+import Tag from '@/admin/common/data/Tag/index.vue'
+import Progress from '@/admin/common/data/Progress/index.vue'
+import Upload from '@/admin/common/Form/Upload/index.vue'
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -75,6 +79,7 @@ export default class extends Vue {
         Avator,
         Tree,
         Alert,
+        Steps,
         CascaderPanel,
         RadioGroup,
         CheckBoxGroup,
@@ -85,7 +90,9 @@ export default class extends Vue {
         DatePicker,
         Rate,
         ColorPicker,
-        Transfer
+        Transfer,
+
+        Upload
       },
       render: (h: Function) => {
         return h(state.type, {
