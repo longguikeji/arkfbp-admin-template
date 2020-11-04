@@ -16,6 +16,7 @@
     <Tree :state="state.tree" />
     <Alert :state="state.alert" />
     <Steps :state="state.steps" />
+    <Dropdown :state="state.dropdown" />
   </Card>
 </template>
 
@@ -32,6 +33,7 @@ import Dialog from '@/admin/common/Others/Dialog/index.vue'
 import Tree from '@/admin/common/data/Tree/index.vue'
 import Alert from '@/admin/common/Notice/Alert/index.vue'
 import Steps from '@/admin/common/Navigation/Steps/index.vue'
+import Dropdown from '@/admin/common/Navigation/Dropdown/index.vue'
 
 @Component({
   name: 'FromPage',
@@ -45,7 +47,8 @@ import Steps from '@/admin/common/Navigation/Steps/index.vue'
     Dialog,
     Tree,
     Alert,
-    Steps
+    Steps,
+    Dropdown
   }
 })
 export default class extends Vue {

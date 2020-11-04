@@ -363,6 +363,41 @@
       }
     ]
   },
+  "dropdown": {
+    "title": "Start Dropdown",
+    "splitButton": true,
+    "type": "primary",
+    "items": [
+      {
+        "content": "加法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "add"
+      },
+      {
+        "content": "减法",
+        "divided": true,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "substract"
+      },
+      {
+        "content": "乘法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "multiply"
+      },
+      {
+        "content": "除法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": true,
+        "command": "divided"
+      }
+    ]
+  },
   "dialogs": {
     "create": {
       "title": "新建",
