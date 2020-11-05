@@ -22,11 +22,10 @@ import ButtonState from './ButtonState'
 
 @Component({
   name: 'Button',
-  components: {
-  }
+  components: {}
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:ButtonState;
+  @Prop({ required: true }) state!: ButtonState;
   @Watch('state', { immediate: true, deep: true })
   fresh() {
     this.$forceUpdate()
