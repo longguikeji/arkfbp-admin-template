@@ -76,8 +76,8 @@
           >
             <VueCropper
               ref="cropper"
-              :src="imageUrl"
-              :output-type="state.upload.outputType || 'png'"
+              :src="fileUrl"
+              :output-type="'png'"
               :can-scale="false"
               :can-move="false"
               :auto-crop="true"
@@ -213,21 +213,21 @@ export default class extends Vue {
       const imageUrl = URL.createObjectURL(file.raw)
       const img = new Image()
       img.src = imageUrl
-    //   let vm = this;
-    //   img.onload = function() {
-    //     const maxL = 800;
-    //     let maxlength = img.height;
-    //     if (img.width > img.height) {
-    //       maxlength = img.width;
-    //     }
-    //     if (maxlength > maxL) {
-    //       vm.bili = maxL / maxlength;
-    //     }
-    //     vm.$set(vm.imgInfo, "width", Math.round(img.width * vm.bili));
-    //     vm.$set(vm.imgInfo, "height", Math.round(img.height * vm.bili));
-    //     vm.imageUrl = imageUrl;
-    //     vm.dialogVisible = true;
-    //   };
+      const vm = this
+      img.onload = function() {
+        const maxL = 800
+        let maxlength = img.height
+        if (img.width > img.height) {
+          maxlength = img.width
+        }
+        if (maxlength > maxL) {
+          vm.bili = maxL / maxlength
+        }
+        vm.$set(vm.imgInfo, 'width', Math.round(img.width * vm.bili))
+        vm.$set(vm.imgInfo, 'height', Math.round(img.height * vm.bili))
+        vm.imageUrl = imageUrl
+        vm.dialogVisible = true
+      }
     }
     if (this.state.type === 'xlsx') {
       this.fileName = file.name

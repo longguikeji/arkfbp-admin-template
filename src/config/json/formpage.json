@@ -515,5 +515,11 @@
     "trigger": "click",
     "content": "这是一段内容,这是一段内容,这是一段内容,这是一段内容。",
     "btn": "click激活"
+  },
+  "tooltip": {
+    "effect": "dark",
+    "content": "Top Left 提示文字",
+    "placement": "left-end",
+    "btn":"上左"
   }
 }
