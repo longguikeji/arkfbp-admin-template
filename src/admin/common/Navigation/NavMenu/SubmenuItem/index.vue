@@ -40,7 +40,10 @@ export default class extends Vue {
   @Prop({ required: true }) state!: SubmenuState | MenuItemState;
 
   get childrenType() {
-    const submenuType = Object.prototype.hasOwnProperty.call(this.state, 'children')
+    const submenuType = Object.prototype.hasOwnProperty.call(
+      this.state,
+      'children'
+    )
     return submenuType
   }
 }

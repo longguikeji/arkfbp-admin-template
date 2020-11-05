@@ -38,7 +38,6 @@ import Steps from '@/admin/common/Navigation/Steps/index.vue'
 import Dropdown from '@/admin/common/Navigation/Dropdown/index.vue'
 import Tabs from '@/admin/common/Navigation/Tabs/index.vue'
 import NavMenu from '@/admin/common/Navigation/NavMenu/index.vue'
-
 @Component({
   name: 'FromPage',
   components: {
@@ -58,10 +57,12 @@ import NavMenu from '@/admin/common/Navigation/NavMenu/index.vue'
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:TablePageState;
+  @Prop({ required: true }) state!: TablePageState;
 
   getFilterFormState() {
-    if (this.state.filter.form) { this.state.filter.form.inline = true }
+    if (this.state.filter.form) {
+      this.state.filter.form.inline = true
+    }
     return this.state.filter.form
   }
 }
