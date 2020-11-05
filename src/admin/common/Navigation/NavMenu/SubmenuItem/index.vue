@@ -1,7 +1,12 @@
 <template>
   <el-submenu
-    v-if="childrenType"
-    :index="state.title + 1"
+    v-if="state.children"
+    :index="state.title"
+    :popper-class="state.popperClass"
+    :show-timeout="state.showTimeout"
+    :hide-timeout="state.hideTimeout"
+    :disabled="state.disabled"
+    :popper-append-to-body="state.popperAppendToBody"
   >
     <template slot="title">
       <i
@@ -9,16 +14,18 @@
         :class="state.icon"
       />{{ state.title }}
     </template>
-    <template v-for="item in state.children">
+    <template v-for="(child, index) in state.children">
       <SubmenuItem
-        :key="item.title + state.children.indexOf(item)"
-        :state="item"
+        :key="child.title + index"
+        :state="child"
       />
     </template>
   </el-submenu>
   <el-menu-item
     v-else
-    :index="state.title + 0"
+    :index="state.title"
+    :route="state.route"
+    :disabled="state.disabled"
   >
     <i
       v-if="state.icon"
@@ -37,15 +44,7 @@ import MenuItemState from './MenuItemState'
   components: {}
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!: SubmenuState | MenuItemState;
-
-  get childrenType() {
-    const submenuType = Object.prototype.hasOwnProperty.call(
-      this.state,
-      'children'
-    )
-    return submenuType
-  }
+  @Prop({ required: true }) state!: any;
 }
 </script>
 

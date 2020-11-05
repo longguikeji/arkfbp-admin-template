@@ -29,6 +29,6 @@ export default interface UploadState {
   type: string; //区分uploadFile  uploadImage  uploadXslFile
   title: string; //Dialog 的标题
   crops: Array<any>; //图片参数
-  upload: VueCopperState[];
   keyName: string;
+  upload: VueCopperState;
 }

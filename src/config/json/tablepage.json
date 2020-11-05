@@ -479,6 +479,17 @@
       },
       {
         "title": "处理中心区"
+      },
+      {
+        "title": "个人中心区",
+        "children": [
+          {
+            "title": "UserName"
+          },
+          {
+            "title": "Settings"
+          }
+        ]
       }
     ]
   },
