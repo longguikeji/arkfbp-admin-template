@@ -1,5 +1,5 @@
-import SubmenuState from './Submenu/SubmenuState'
-import MenuItemState from './Submenu/MenuItemState'
+import SubmenuState from './SubmenuItem/SubmenuState'
+import MenuItemState from './SubmenuItem/MenuItemState'
 export default interface NavMenuState {
   children: Array<SubmenuState> | Array<MenuItemState>; // 导航栏每一项菜单对应的数据选项
   mode?: string; // 模式  horizontal / vertical	  vertical

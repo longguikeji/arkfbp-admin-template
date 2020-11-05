@@ -12,23 +12,24 @@
     :router="state.router"
     :collapse-transition="state.collapseTransition"
   >
-    <Submenu
-      v-for="item in state.children"
-      :key="item.title + state.children.indexOf(item)"
-      :state="item"
-    />
+    <template v-for="item in state.children">
+      <SubmenuItem
+        :key="item.title + state.children.indexOf(item)"
+        :state="item"
+      />
+    </template>
   </el-menu>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import Submenu from './Submenu/index.vue'
+import SubmenuItem from './SubmenuItem/index.vue'
 import NavMenuState from './NavMenuState'
 
 @Component({
   name: 'NavMenu',
   components: {
-    Submenu
+    SubmenuItem
   }
 })
 export default class extends Vue {
