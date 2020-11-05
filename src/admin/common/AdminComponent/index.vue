@@ -26,6 +26,9 @@ import Select from '@/admin/common/Form/Select/index.vue'
 import Avator from '@/admin/common/data/Avator/index.vue'
 import Tree from '@/admin/common/data/Tree/index.vue'
 import Alert from '@/admin/common/Notice/Alert/index.vue'
+
+import Steps from '@/admin/common/Navigation/Steps/index.vue'
+
 import RadioGroup from '@/admin/common/Form/Radio/index.vue'
 import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
 import InputNumber from '@/admin/common/Form/InputNumber/index.vue'
@@ -75,6 +78,7 @@ export default class extends Vue {
         Avator,
         Tree,
         Alert,
+        Steps,
         CascaderPanel,
         RadioGroup,
         CheckBoxGroup,

@@ -1,5 +1,9 @@
 <template>
-  <el-page-header />
+  <el-page-header
+    :title="state.title"
+    :content="state.content"
+    @back="goBack"
+  />
 </template>
 
 <script lang="ts">
@@ -12,6 +16,10 @@ import PageHeaderState from './PageHeaderState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: PageHeaderState;
+
+  goBack() {
+    console.log('go back')
+  }
 }
 </script>
 

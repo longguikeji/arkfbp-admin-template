@@ -277,12 +277,15 @@
   "tree": {
     "data": [
       {
+        "id": 1,
         "label": "一级 1",
         "children": [
           {
+            "id": 2,
             "label": "二级 1-1",
             "children": [
               {
+                "id": 3,
                 "label": "三级 1-1-1"
               }
             ]
@@ -290,20 +293,26 @@
         ]
       },
       {
+        "id": 4,
         "label": "一级 2",
         "children": [
           {
+            "id": 5,
             "label": "二级 2-1",
+            "disabled": true,
             "children": [
               {
+                "id": 6,
                 "label": "三级 2-1-1"
               }
             ]
           },
           {
+            "id": 7,
             "label": "二级 2-2",
             "children": [
               {
+                "id": 8,
                 "label": "三级 2-2-1"
               }
             ]
@@ -311,20 +320,25 @@
         ]
       },
       {
+        "id": 9,
         "label": "一级 3",
         "children": [
           {
+            "id": 10,
             "label": "二级 3-1",
             "children": [
               {
+                "id": 11,
                 "label": "三级 3-1-1"
               }
             ]
           },
           {
+            "id": 12,
             "label": "二级 3-2",
             "children": [
               {
+                "id": 13,
                 "label": "三级 3-2-1"
               }
             ]
@@ -336,13 +350,137 @@
       "children": "children",
       "label": "label"
     },
-    "showCheckbox": true
+    "showCheckbox": true,
+    "defaultExpandedKeys": [5, 9],
+    "defaultCheckedKeys": [5, 9],
+    "isFilter": true,
+    "draggable": true
   },
   "alert": {
     "title": "This is one alert infomation",
     "center": true,
     "type": "success",
     "slot": "消息内容展示区"
+  },
+  "steps": {
+    "simple": true,
+    "direction": "horizontal",
+    "active": 2,
+    "step": [
+      {
+        "title": "步骤 1",
+        "icon": "el-icon-edit"
+      },
+      {
+        "title": "步骤 2",
+        "icon": "el-icon-upload"
+      },
+      {
+        "title": "步骤 3",
+        "icon": "el-icon-picture"
+      }
+    ]
+  },
+  "dropdown": {
+    "title": "Start Dropdown",
+    "splitButton": true,
+    "type": "primary",
+    "items": [
+      {
+        "content": "加法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "add"
+      },
+      {
+        "content": "减法",
+        "divided": true,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "substract"
+      },
+      {
+        "content": "乘法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "multiply"
+      },
+      {
+        "content": "除法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": true,
+        "command": "divided"
+      }
+    ]
+  },
+  "tabs": {
+    "items": [
+      {
+        "label": "FIRST",
+        "content": "First Content",
+        "name": "1",
+        "closable": true
+      },
+      {
+        "label": "SECOND",
+        "content": "Second Content",
+        "name": "2"
+      },
+      {
+        "label": "THIRD",
+        "content": "Third Content",
+        "name": "3",
+        "closable": true,
+        "lazy": true
+      },
+      {
+        "label": "FOURTH",
+        "content": "Fourth Content",
+        "name": "4",
+        "closable": true,
+        "disabled": true
+      }
+    ],
+    "type": "border-card",
+    "value": "2",
+    "editable": true
+  },
+  "navs": {
+    "mode": "horizontal",
+    "children": [
+      {
+        "title": "功能中心区",
+        "icon": "el-icon-star-off",
+        "children": [
+          {
+            "title": "Form表单"
+          },
+          {
+            "title": "Table表格"
+          },
+          {
+            "title": "参考组件列表",
+            "children": [
+              {
+                "title": "Input输入框"
+              },
+              {
+                "title": "Button按钮"
+              },
+              {
+                "title": "Others其他"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "处理中心区"
+      }
+    ]
   },
   "dialogs": {
     "create": {

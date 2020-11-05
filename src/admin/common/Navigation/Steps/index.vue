@@ -1,5 +1,22 @@
 <template>
-  <el-steps />
+  <el-steps
+    :active="state.active"
+    :direction="state.direction"
+    :simple="state.simple"
+    :align-center="state.alignCenter"
+    :finish-status="state.finishStatus"
+    :process-status="state.processStatus"
+    :space="state.space"
+  >
+    <el-step
+      v-for="(stepItem, stepIndex) in state.step"
+      :key="stepIndex"
+      :title="stepItem.title"
+      :description="stepItem.description"
+      :status="stepItem.status"
+      :icon="stepItem.icon"
+    />
+  </el-steps>
 </template>
 
 <script lang="ts">
