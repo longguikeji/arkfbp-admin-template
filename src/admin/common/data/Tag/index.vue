@@ -50,7 +50,7 @@ import TagState from './TagState'
   components: {}
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!: Array<TagState>;
+  @Prop({ required: false }) state!: Array<TagState>;
 
   private inputValue = '';
   private dynamicTags: Array<TagState> = this.state;

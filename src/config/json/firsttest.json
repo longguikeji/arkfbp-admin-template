@@ -1,5 +1,113 @@
 {
-  "type": "table",
-  "title": "YiXi-Test-Page"
-
+  "type": "testpage",
+  "title": "Test-Page",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "form": {
+      "inline": true,
+      "size": "mini",
+      "items": [
+        {
+          "type": "Input",
+          "label": "名称",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "产品ID号",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "选择类型",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": "选项一",
+                "label": "黄金糕"
+              },
+              {
+                "value": "选项二",
+                "label": "双皮奶"
+              },
+              {
+                "value": "选项3",
+                "label": "蚵仔煎"
+              },
+              {
+                "value": "选项4",
+                "label": "龙须面"
+              },
+              {
+                "value": "选项5",
+                "label": "北京烤鸭"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Button",
+          "state": {
+            "label": "搜索",
+            "type": "primary",
+            "action": "filter"
+          }
+        }
+      ]
+    }
+  },
+  "table": {
+    "columns": [
+      {
+        "type": "index",
+        "label": "#",
+        "prop": "index"
+      },
+      {
+        "label": "名称",
+        "prop": "name"
+      },
+      {
+        "label": "产品ID",
+        "prop": "id"
+      },
+      {
+        "label": "价格",
+        "prop": "price"
+      },
+      {
+        "label": "类型",
+        "prop": "kinds"
+      },
+      {
+        "label": "创建时间",
+        "prop": "created"
+      },
+      {
+        "type": "action",
+        "label": "操作",
+        "actions": []
+      }
+      
+    ],
+    "data": [
+      
+    ]
+  },
+  "actions": {},
+  "pagination": {},
+  "dialogs": {},
+  "apis": {}
 }

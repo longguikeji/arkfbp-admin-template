@@ -14,7 +14,7 @@
     />
     <Yixitest v-if="state.type === 'yixitest'" />
     <FirstTest
-      v-if="state.type === 'table'"
+      v-if="state.type === 'testpage'"
       :state="state"
     />
   </div>

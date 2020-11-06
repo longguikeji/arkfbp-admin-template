@@ -8,7 +8,7 @@
     v-model="state.value"
     :placeholder="state.placeholder"
     :multiple="state.multiple"
-    :clearable="state.clearable"
+    :clearable="state.clearable || true"
     :disabled="state.disabled"
     :size="state.size"
   >
@@ -55,13 +55,12 @@ export default class extends Vue {
   @Prop({ required: true }) state!: SelectState;
 
   get tagData() {
-    const tagArr = [
+    return [
       {
-        content: this.state.value,
-        type: 'info'
+        value: this.state.value,
+        type: this.state.type || 'info'
       }
     ]
-    return tagArr
   }
 }
 </script>
