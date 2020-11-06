@@ -1,16 +1,17 @@
 <template>
   <el-switch
     v-model="state.value"
+    style="display: block"
     :disabled="state.disabled"
     :width="state.width"
     :active-icon-class="state.activeIconClass"
-    :in-active-icon-class="state.inActiveIconClass"
+    :inactive-icon-class="state.inactiveIconClass"
     :active-text="state.activeText"
-    :in-active-text="state.inActiveText"
+    :inactive-text="state.inactiveText"
     :active-value="state.activeValue"
-    :in-active-value="state.inActiveValue"
+    :inactive-value="state.inactiveValue"
     :active-color="state.activeColor"
-    :in-active-color="state.inActiveColor"
+    :inactive-color="state.inactiveColor"
     :name="state.name"
     :validate-event="state.validateEvent"
   />
