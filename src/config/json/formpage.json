@@ -192,7 +192,7 @@
             { "content": "标签三", "label": "radio3" }
           ]
         }
-      },
+      }, 
       {
         "type": "CheckBoxGroup",
         "state": {

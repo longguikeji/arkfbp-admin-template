@@ -8,7 +8,7 @@
       点击打开
     </el-button>
     <el-drawer
-      :append-to-body="state.appendToBody"
+      :append-to-body="state.appendToBody || true"
       :close-on-press-escape="state.closeOnPressEscape"
       :custom-class="state.customClass"
       :destroy-on-close="state.destroyOnClose"

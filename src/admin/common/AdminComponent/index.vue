@@ -19,7 +19,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
-import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 import Link from '@/admin/common/Link/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
 import Cascader from '@/admin/common/Form/Cascader/index.vue'
@@ -83,7 +82,6 @@ export default class extends Vue {
     return {
       components: {
         Button,
-        ButtonArray,
         Link,
         Input,
         Cascader,

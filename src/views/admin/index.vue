@@ -12,7 +12,11 @@
       v-if="state.type === 'table'"
       :state="state"
     />
-    <Yixitest v-if="state.type === 'yixitest'" />
+    <ExampleOne
+      v-if="state.type === 'exampleone'"
+      :state="state"
+    />
+
     <TestPage
       v-if="state.type === 'testpage'"
       :state="state"
@@ -27,7 +31,8 @@ import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
-import Yixitest from '@/admin/TestFiles/yixitest.vue'
+import ExampleOne from '@/admin/TestFiles/ExampleOne.vue'
+
 import TestPage from '@/admin/TestFiles/testpage.vue'
 
 @Component({
@@ -36,7 +41,7 @@ import TestPage from '@/admin/TestFiles/testpage.vue'
     DashboardPage,
     FormPage,
     TablePage,
-    Yixitest,
+    ExampleOne,
     TestPage
   }
 })

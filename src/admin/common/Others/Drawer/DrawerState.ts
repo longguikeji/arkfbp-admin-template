@@ -1,5 +1,5 @@
 export default interface DrawerState {
-  appendToBody: boolean; //	Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 true	boolean	—	false
+  appendToBody?: boolean; //	Drawer 自身是否插入至 body 元素上。嵌套的 Drawer 必须指定该属性并赋值为 true	boolean	—	false
   beforeClose: Function; //关闭前的回调，会暂停 Drawer 的关闭	function(done)，done 用于关闭 Drawer	—	—
   closeOnPressEscape: boolean; //	是否可以通过按下 ESC 关闭 Drawer	boolean	—	true
   customClass: string; //	Drawer 的自定义类名	string	—	—

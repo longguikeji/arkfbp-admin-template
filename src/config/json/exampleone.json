@@ -1,0 +1,207 @@
+{
+  "type": "exampleone",
+  "title": "ExampleOne",
+  "form": {
+    "inline": false,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "活动名称",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "活动区域",
+        "state": {
+          "value": "",
+          "placeholder": "请选择地点",
+          "options": [
+            {
+              "value": "1",
+              "label": "区域一"
+            },
+            {
+              "value": "2",
+              "label": "区域二"
+            }
+          ]
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "选择时间",
+        "state": {
+          "value": "",
+          "startPlaceholder": "开始日期",
+          "rangeSeparator": "至",
+          "endPlaceholder": "结束日期",
+          "type": "datetimerange"
+        }
+      },
+      {
+        "type": "SwitchButton",
+        "label": "即时配送",
+        "state": {
+          "value": "",
+          "activeColor": "#13ce66",
+          "inactiveColor": "#ff4949"
+        }
+      },
+      {
+        "type": "CheckBoxGroup",
+        "label": "活动性质",
+        "state": {
+          "value": [],
+          "checkBox": [
+            { "content": "美食/餐厅线上活动", "label": "check1" },
+            { "content": "地推活动", "label": "check2" },
+            { "content": "线下主题活动", "label": "check3" },
+            { "content": "单纯品牌曝光", "label": "check4" }
+          ]
+        }
+      },
+      {
+        "type": "RadioGroup",
+        "label": "特殊资源",
+        "state": {
+          "value": "",
+          "radio": [
+            { "content": "线上品牌商赞助", "label": "radio1" },
+            { "content": "线下场地免费", "label": "radio2" }
+          ]
+        }
+      },
+      {
+        "type": "InputNumber",
+        "label": "人数",
+        "state": { "value": 20, "min": 0 }
+      },
+      {
+        "type": "Cascader",
+        "label": "地理条件",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "size": "mini",
+          "collapseTags": true,
+          "options": [
+            {
+              "label": "花园",
+              "value": "huayuan",
+              "children": [
+                {
+                  "label": "欧式",
+                  "value": "1"
+                },
+                {
+                  "label": "美式",
+                  "value": "2"
+                },
+                {
+                  "label": "英式式",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "label": "沙滩",
+              "value": "3",
+              "children": [
+                {
+                  "label": "度假",
+                  "value": "5"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "Slider",
+        "label": "活动难度",
+        "state": {
+          "value": 1,
+          "min": 0,
+          "max": 10
+        }
+      },
+      {
+        "type": "Rate",
+        "label": "活动评价",
+        "state": {
+          "value": 0,
+          "showText": true,
+          "colors": ["#99A9BF", "#F7BA2A", "#FF9900"]
+        }
+      },
+      {
+        "type": "Upload",
+        "label": "活动花絮",
+        "state": {
+          "type": "video",
+          "action": ""
+        }
+      },
+      {
+        "type": "Upload",
+        "label": "活动封面",
+        "state": {
+          "type": "image",
+          "action": "",
+          "upload": []
+        }
+      },
+      {
+        "type": "Transfer",
+        "label": "活动地点",
+        "state": {
+          "filterable": true,
+          "filterPlaceholder": "请输入城市",
+          "titles": ["Source", "Target"],
+          "buttonTexts": ["到左边", "到右边"],
+          "value": [],
+          "data": [
+            { "key": "1", "label": "上海", "disabled": false },
+            { "key": "2", "label": "北京", "disabled": false },
+            { "key": "3", "label": "广州", "disabled": true },
+            { "key": "4", "label": "深圳", "disabled": false },
+            { "key": "5", "label": "成都", "disabled": false }
+          ]
+        }
+      }
+      
+    ]
+  },
+  
+    "timeline": {
+      "label": "活动时间线",
+      "reverse": false,
+      "data": [
+        {
+          "content": "进场",
+          "timestamp": "2020-04-12 20:46",
+          "size": "large",
+          "type": "primary",
+          "icon": "el-icon-more"
+        },
+        {
+          "content": "开始",
+          "timestamp": "2020-04-03 20:46",
+          "color": "#0bbd87"
+        },
+        {
+          "content": "祝词",
+          "timestamp": "2020-04-03 20:46",
+          "size": "large"
+        },
+        {
+          "content": "结束",
+          "timestamp": "2020-04-03 20:46"
+        }
+      ]
+    }
+  
+}

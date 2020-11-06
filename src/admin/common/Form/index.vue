@@ -1,6 +1,6 @@
 <template>
   <el-form
-    :inline="state.inline"
+    :inline="state.inline || false"
     :size="state.size"
     :disabled="state.disabled"
     :label-suffix="state.labelSuffix"
