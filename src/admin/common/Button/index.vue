@@ -1,6 +1,6 @@
 <template>
   <el-button
-    :size="state.size"
+    :size="state.size || 'small'"
     :type="state.type"
     :plain="state.plain"
     :round="state.round"

@@ -45,12 +45,18 @@ export default class extends Vue {
     if (!this.state.scope.state) {
       this.state.scope.state.value = {}
     }
-    const adminState = {
+    let adminState = {
       state: {
         ...this.state.scope.state,
         value: scope.row[this.state.prop]
       },
       type: this.state.scope.type
+    }
+    if (this.state.scope.type === 'ButtonArray') {
+      adminState = {
+        state: this.state.scope.state.buttons,
+        type: this.state.scope.type
+      }
     }
     return adminState
   }

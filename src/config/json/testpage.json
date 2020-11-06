@@ -71,9 +71,11 @@
   "table": {
     "columns": [
       {
+        "type": "selection"
+      },
+      {
         "type": "index",
-        "label": "#",
-        "prop": "index"
+        "label": "#"
       },
       {
         "label": "名称",
@@ -98,12 +100,45 @@
       {
         "type": "action",
         "label": "操作",
-        "actions": []
+        "scope": {
+          "type": "ButtonArray",
+          "state": {
+            "buttons": [
+              {
+                "label": "编辑",
+                "type": "primary"
+              },
+              {
+                "label": "删除",
+                "type": "danger"
+              }
+            ]
+          }
+        }
       }
-      
     ],
     "data": [
-      
+      {
+        "name": "文化",
+        "id": "001",
+        "price": "1",
+        "kinds": "人文",
+        "created": "2015-01-01"
+      },
+      {
+        "name": "科技",
+        "id": "002",
+        "price": "1",
+        "kinds": "科技",
+        "created": "2016-01-01"
+      },
+      {
+        "name": "艺术",
+        "id": "003",
+        "price": "1",
+        "kinds": "艺术",
+        "created": "2017-01-01"
+      }
     ]
   },
   "actions": {},
