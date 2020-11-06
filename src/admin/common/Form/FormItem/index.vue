@@ -1,5 +1,9 @@
 <template>
-  <el-form-item class="form-item">
+  <el-form-item
+    class="form-item"
+    :label-width="state.labelWidth"
+    :size="state.size"
+  >
     <span
       v-if="state.label"
       slot="label"

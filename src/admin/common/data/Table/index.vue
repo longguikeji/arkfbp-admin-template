@@ -2,6 +2,12 @@
   <el-table
     :data="tableData"
     :height="'70vh'"
+    :stripe="state.stripe"
+    :border="state.border"
+    :size="state.size"
+    :fit="state.fit"
+    :show-header="state.showHeader"
+    :highlight-current-row="state.highlightCurrentRow"
   >
     <TableColumn
       v-for="child in state.columns"

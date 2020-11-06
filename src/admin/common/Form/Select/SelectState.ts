@@ -1,10 +1,7 @@
 import OptionType from './OptionType'
 export default interface SelectState {
   value: any; // 绑定值
-  type?: {
-    type: string; // // el-group-option && el-option
-    default: 'only';
-  };
+  type?: string; // el-group-option && el-option
   readonly?: boolean; // 是否只读
   options?: Array<OptionType>;
   multiple?: boolean; // 是否多选
