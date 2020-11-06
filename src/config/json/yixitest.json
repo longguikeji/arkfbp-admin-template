@@ -1,6 +1,11 @@
 {
-  "type": "yixitest",
-  "title": "yixitest",
+  "type": "form",
+  "tilte": "yixitest",
   "filter": {},
-  "form": { "items": [] }
+  "actions": {},
+  "buttons": {},
+  "pagination": {},
+  "table": {},
+  "dialogs": {},
+  "form": {}
 }

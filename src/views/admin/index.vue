@@ -12,7 +12,10 @@
       v-if="state.type === 'table'"
       :state="state"
     />
-    <Yixitest v-if="state.type === 'yixitest'" />
+    <Yixitest
+      v-if="state.type === 'yixitest'"
+      :state="state"
+    />
     <FirstTest
       v-if="state.type === 'table'"
       :state="state"
