@@ -12,11 +12,31 @@
     :router="state.router"
     :collapse-transition="state.collapseTransition"
   >
-    <template v-for="item in state.children">
-      <SubmenuItem
-        :key="item.title + state.children.indexOf(item)"
-        :state="item"
-      />
+    <template v-for="(childItem, childIndex) in state.children">
+      <el-submenu
+        v-if="childItem.children"
+        :key="childIndex"
+        :index="childItem.title"
+      >
+        <template slot="title">
+          {{ childItem.title }}
+        </template>
+        <template v-for="(secChildItem, secChildIndex) in childItem.children">
+          <SubmenuItem
+            :key="secChildIndex"
+            :state="secChildItem"
+          />
+        </template>
+      </el-submenu>
+      <el-menu-item
+        v-else
+        :key="childIndex"
+        :index="childItem.title"
+        :route="childItem.route"
+        :disabled="childItem.disabled"
+      >
+        {{ childItem.title }}
+      </el-menu-item>
     </template>
   </el-menu>
 </template>

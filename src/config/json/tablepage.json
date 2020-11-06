@@ -316,8 +316,14 @@
       "label": "label"
     },
     "showCheckbox": true,
-    "defaultExpandedKeys": [5, 9],
-    "defaultCheckedKeys": [5, 9],
+    "defaultExpandedKeys": [
+      5,
+      9
+    ],
+    "defaultCheckedKeys": [
+      5,
+      9
+    ],
     "isFilter": true,
     "draggable": true
   },
@@ -418,25 +424,21 @@
     "children": [
       {
         "title": "功能中心区",
-        "icon": "el-icon-star-off",
         "children": [
+          {
+            "title": "Input输入框"
+          },
           {
             "title": "Form表单"
           },
           {
-            "title": "Table表格"
-          },
-          {
-            "title": "参考组件列表",
+            "title": "Other组件",
             "children": [
               {
-                "title": "Input输入框"
+                "title": "Tag标签"
               },
               {
-                "title": "Button按钮"
-              },
-              {
-                "title": "Others其他"
+                "title": "Dropdown下拉框"
               }
             ]
           }
@@ -449,10 +451,10 @@
         "title": "个人中心区",
         "children": [
           {
-            "title": "UserName"
+            "title": "用户名称"
           },
           {
-            "title": "Settings"
+            "title": "用户密码"
           }
         ]
       }
