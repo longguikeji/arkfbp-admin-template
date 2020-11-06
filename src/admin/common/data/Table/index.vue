@@ -10,26 +10,11 @@
     :highlight-current-row="state.highlightCurrentRow"
     @selection-change="handleSelectionChange"
   >
-    <template v-for="child in state.columns">
-      <el-table-column
-        v-if="state.type === 'selection'"
-        :key="state.columns.indexOf(child)"
-        type="selection"
-        width="30"
-      />
-      <el-table-column
-        v-else-if="child.type === 'index'"
-        :key="state.columns.indexOf(child)"
-        type="index"
-        width="30"
-        label="#"
-      />
-      <TableColumn
-        v-else
-        :key="state.columns.indexOf(child)"
-        :state="child"
-      />
-    </template>
+    <TableColumn
+      v-for="child in state.columns"
+      :key="state.columns.indexOf(child)"
+      :state="child"
+    />
   </el-table>
 </template>
 
