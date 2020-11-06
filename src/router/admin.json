@@ -20,5 +20,17 @@
           "icon": "dashboard" 
         }
       ]
+  },
+  "page": {
+    "title": "page", 
+    "path": "page", 
+    "icon": "dashboard", 
+    "children": [
+      {
+        "title": "user", 
+        "path": "user", 
+        "icon": "dashboard" 
+      }
+    ]
   }
 }

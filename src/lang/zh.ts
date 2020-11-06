@@ -27,6 +27,8 @@ export default {
     case: '实例',
     formpage: ' 表单',
     tablepage: '表格',
+    page: '页面',
+    user: '用户',
     barChart: '柱状图表',
     lineChart: '折线图',
     mixedChart: '混合图表',
