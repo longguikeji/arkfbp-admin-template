@@ -171,6 +171,58 @@
           }
         }
       ],
+
+      {
+        "type": "RadioGroup",
+        "state": {
+          "value": "",
+          "radio": [
+            { "content": "标签一", "label": "radio1" },
+            { "content": "标签二", "label": "radio2" }
+          ]
+        }
+      },
+      {
+        "type": "RadioGroup",
+        "state": {
+          "value": "",
+          "radioButton": [
+            { "content": "标签一", "label": "radio1", "disabled": true },
+            { "content": "标签二", "label": "radio2" },
+            { "content": "标签三", "label": "radio3" }
+          ]
+        }
+      },
+      {
+        "type": "CheckBoxGroup",
+        "state": {
+          "value": [],
+          "checkBox": [
+            { "content": "标签一", "label": "check1" },
+            { "content": "标签二", "label": "check2" }
+          ]
+        }
+      },
+      {
+        "type": "CheckBoxGroup",
+        "state": {
+          "value": [],
+          "checkButton": [
+            { "content": "标签一", "label": "check1", "disabled": true },
+            { "content": "标签二", "label": "check2" },
+            { "content": "标签三", "label": "check3" },
+            { "content": "标签四", "label": "check4" }
+          ]
+        }
+      },
+      {
+        "type": "InputNumber",
+        "state": { "value": "", "min": 0, "step": 2 }
+      },
+      {
+        "type": "InputNumber",
+        "state": { "value": "", "precision": 2, "step": 0.1, "max": 10 }
+      },
       {
         "type": "Cascader",
         "state": {
@@ -226,12 +278,14 @@
               "label": "组件",
               "value": "zujian"
             }
-          ]
+          ],
+          "props": { "multiple": true }
         }
       },
       {
-        "type": "CascaderPanel",
+        "type": "Cascader",
         "state": {
+          "type": "panel",
           "value": "",
           "placeholder": "请选择",
           "options": [
@@ -257,43 +311,21 @@
         }
       },
       {
-        "type": "RadioGroup",
+        "type": "SwitchButton",
         "state": {
-          "value": [],
-          "radio": ["radio1", "radio2"]
+          "value": "",
+          "activeColor": "#13ce66",
+          "inactiveColor": "#ff4949"
         }
-      },
-      {
-        "type": "RadioGroup",
-        "state": {
-          "value": [],
-          "radioButton": ["radio1", "radio2", "radio3"]
-        }
-      },
-      {
-        "type": "CheckBoxGroup",
-        "state": {
-          "value": [],
-          "checkBox": ["check1", "check2"]
-        }
-      },
-      {
-        "type": "CheckBoxGroup",
-        "state": {
-          "value": [],
-          "checkButton": ["check1", "check2", "check3"]
-        }
-      },
-      {
-        "type": "InputNumber",
-        "state": { "value": "", "min": 0, "step": 2 }
       },
       {
         "type": "SwitchButton",
         "state": {
           "value": "",
           "activeColor": "#13ce66",
-          "inActiveColor": "#13ce66"
+          "inactiveColor": "#ff4949",
+          "activeText": "按月付费",
+          "inactiveText": "按年付费"
         }
       },
       {
@@ -371,7 +403,8 @@
         "type": "Rate",
         "state": {
           "value": 0,
-          "showText": true
+          "showText": true,
+          "colors": ["#99A9BF", "#F7BA2A", "#FF9900"]
         }
       },
       {
@@ -401,6 +434,14 @@
         "state": {
           "value": "rgba(19, 206, 102, 0.8)",
           "showAlpha": true
+        }
+      },
+      {
+        "type": "ColorPicker",
+        "state": {
+          "value": null,
+          "showAlpha": true,
+          "size": "small"
         }
       },
       {
@@ -515,5 +556,11 @@
     "trigger": "click",
     "content": "这是一段内容,这是一段内容,这是一段内容,这是一段内容。",
     "btn": "click激活"
+  },
+  "tooltip": {
+    "effect": "dark",
+    "content": "Top Left 提示文字",
+    "placement": "left-end",
+    "btn": "上左"
   }
 }

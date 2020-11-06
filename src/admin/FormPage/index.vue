@@ -12,6 +12,7 @@
     <Carousel :state="state.carousel" />
     <Popconfirm :state="state.popconfirm" />
     <Popover :state="state.popover" />
+    <Tooltip :state="state.tooltip" />
   </div>
 </template>
 
@@ -29,6 +30,7 @@ import Collapse from '@/admin/common/Others/Collapse/index.vue'
 import Carousel from '@/admin/common/Others/Carousel/index.vue'
 import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
 import Popover from '@/admin/common/Others/Popover/index.vue'
+import Tooltip from '@/admin/common/Others/Tooltip/index.vue'
 @Component({
   name: 'FromPage',
   components: {
@@ -42,7 +44,8 @@ import Popover from '@/admin/common/Others/Popover/index.vue'
     Collapse,
     Carousel,
     Popconfirm,
-    Popover
+    Popover,
+    Tooltip
   }
 })
 export default class extends Vue {

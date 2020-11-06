@@ -3,7 +3,7 @@ import Vue, { DirectiveOptions } from "vue";
 import "normalize.css";
 import ElementUI from "element-ui";
 import SvgIcon from "vue-svgicon";
-
+import VueCropper from "vue-cropper";
 import "@/styles/element-variables.scss";
 import "@/styles/index.scss";
 
@@ -19,13 +19,12 @@ import "@/pwa/register-service-worker";
 import * as directives from "@/directives";
 import * as filters from "@/filters";
 
-import { VueCropper } from "vue-cropper";
-Vue.use(VueCropper);
+
 Vue.use(ElementUI, {
   size: AppModule.size, // Set element-ui default size
   i18n: (key: string, value: string) => i18n.t(key, value)
 });
-
+Vue.use(VueCropper);
 Vue.use(SvgIcon, {
   tagName: "svg-icon",
   defaultWidth: "1em",
