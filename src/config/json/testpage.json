@@ -100,21 +100,16 @@
       {
         "type": "action",
         "label": "操作",
-        "scope": {
-          "type": "ButtonArray",
-          "state": {
-            "buttons": [
-              {
-                "label": "编辑",
-                "type": "primary"
-              },
-              {
-                "label": "删除",
-                "type": "danger"
-              }
-            ]
+        "actions": [
+          {
+            "label": "编辑",
+            "type": "primary"
+          },
+          {
+            "label": "删除",
+            "type": "danger"
           }
-        }
+        ]
       }
     ],
     "data": [

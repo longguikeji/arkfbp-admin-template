@@ -11,6 +11,12 @@
     label="#"
   />
   <el-table-column
+    v-else-if="state.type === 'action'"
+    label="操作"
+  >
+    <ButtonArray :state="state.actions" />
+  </el-table-column>
+  <el-table-column
     v-else
     :index="state.index"
     :column-key="state.columnKey"
@@ -39,12 +45,14 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
+import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 import { type } from 'os'
 
 @Component({
   name: 'TableColumn',
   components: {
-    AdminComponent
+    AdminComponent,
+    ButtonArray
   }
 })
 export default class extends Vue {
@@ -54,18 +62,12 @@ export default class extends Vue {
     if (!this.state.scope.state) {
       this.state.scope.state.value = {}
     }
-    let adminState = {
+    const adminState = {
       state: {
         ...this.state.scope.state,
         value: scope.row[this.state.prop]
       },
       type: this.state.scope.type
-    }
-    if (this.state.scope.type === 'ButtonArray') {
-      adminState = {
-        state: this.state.scope.state.buttons,
-        type: this.state.scope.type
-      }
     }
     return adminState
   }
