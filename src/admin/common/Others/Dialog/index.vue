@@ -4,7 +4,7 @@
     :visible.sync="state.visible"
     width="30%"
   >
-    <Form :state="content" />
+    <Form :state="state" />
     <span
       slot="footer"
       class="dialog-footer"
@@ -31,7 +31,6 @@ import Form from '@/admin/common/Form/index.vue'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: DialogState;
-  @Prop({ required: false }) content!: any;
 }
 </script>
 

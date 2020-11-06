@@ -1,0 +1,353 @@
+{
+  "user": {
+    "name": "user",
+    "type": "table",
+    "model": "arkid_meta.models.user.User",
+    "meta": {
+      "id": {
+        "title": "ID",
+        "type": {
+          "integer": {
+            "read_only": true
+          }
+        }
+      },
+      "nickname": {
+        "title": "昵称",
+        "type": {
+          "string": {
+            "required": true
+          }
+        }
+      },
+      "username": {
+        "title": "账号名",
+        "type": {
+          "string": {
+            "required": true,
+            "min_length": 10,
+            "max_length": 50
+          }
+        }
+      },
+      "password": {
+        "title": "账号密码",
+        "type": {
+          "string": {
+            "required": true,
+            "min_length": 10,
+            "max_length": 50
+          }
+        }
+      },
+      "github_user": {
+        "title": "GitHub用户信息",
+        "type": {
+          "model_object": {
+            "config_path": "github_user",
+            "request": [],
+            "response": [
+              "id",
+              "user_id",
+              "github_user_id",
+              "wechat_user"
+            ],
+            "required": false,
+            "index_key": "user"
+          }
+        }
+      },
+      "create_github_user": {
+        "title": "GitHub用户信息",
+        "type": {
+          "model_object": {
+            "handler": "create",
+            "config_path": "github_user",
+            "request": [
+              "user_id",
+              "github_user_id",
+              "create_wechat_user"
+            ],
+            "response": [
+              "id",
+              "user_id",
+              "github_user_id",
+              "wechat_user"
+            ],
+            "required": false,
+            "index_key": "user"
+          }
+        }
+      }
+    },
+    "api": {
+      "user/": {
+        "create": {
+          "name": "create",
+          "http_method": "post",
+          "request": [
+            "username",
+            "nickname",
+            "password",
+            "create_github_user"
+          ],
+          "response": [
+            "id",
+            "username",
+            "nickname",
+            "github_user"
+          ]
+        },
+        "retrieve": {
+          "name": "retrieve",
+          "http_method": "get",
+          "response_index_key": "users",
+          "page_size": 20,
+          "page_query_param": "page",
+          "request": [
+          ],
+          "response": [
+            "id",
+            "username",
+            "nickname",
+            "github_user"
+          ]
+        }
+      },
+      "user/<id>/": {
+        "update": {
+          "index": "id",
+          "name": "update",
+          "http_method": "patch",
+          "request": [
+            "nickname"
+          ],
+          "response": [
+            "username",
+            "nickname"
+          ]
+        },
+        "delete": {
+          "index": "id",
+          "name": "delete",
+          "http_method": "delete",
+          "request": [],
+          "response": []
+        }
+      },
+      "custom/": {
+        "custom": {
+          "name": "custom1",
+          "flow": "siteapi.v1.ucenter.login.with_password",
+          "http_method": "post",
+          "request": [
+            "username",
+            "password"
+          ]
+        }
+      }
+    }
+  },
+  "github_user": {
+    "name": "github_user",
+    "type": "table",
+    "model": "arkid_meta.models.user.GitHubUser",
+    "meta": {
+      "id": {
+        "title": "ID",
+        "type": {
+          "integer": {
+            "read_only": true
+          }
+        }
+      },
+      "github_user_id": {
+        "title": "GitHub用户ID",
+        "type": {
+          "string": {
+            "required": true
+          }
+        }
+      },
+      "user_id": {
+        "title": "所属用户ID",
+        "type": {
+          "integer": {
+            "required": true,
+            "source": "user",
+            "model_attr": "id"
+          }
+        }
+      },
+      "wechat_user": {
+        "title": "Wechat用户信息",
+        "type": {
+          "model_object": {
+            "config_path": "wechat_user",
+            "request": [],
+            "response": [
+              "id",
+              "wechat_user_id"
+            ],
+            "required": false,
+            "index_key": "github_user"
+          }
+        }
+      },
+      "create_wechat_user": {
+        "title": "Wechat用户信息",
+        "type": {
+          "model_object": {
+            "handler": "create",
+            "config_path": "wechat_user",
+            "request": [
+              "github_user_id",
+              "wechat_user_id"
+            ],
+            "response": [
+              "id",
+              "wechat_user_id"
+            ],
+            "required": false,
+            "index_key": "github_user"
+          }
+        }
+      }
+    },
+    "api": {
+      "github_user/": {
+        "create": {
+          "name": "create",
+          "http_method": "post",
+          "request": [
+            "user_id",
+            "github_user_id"
+          ],
+          "response": [
+            "id",
+            "user_id",
+            "github_user_id"
+          ]
+        },
+        "retrieve": {
+          "name": "retrieve",
+          "http_method": "get",
+          "response_index_key": "github_users",
+          "page_size": 20,
+          "page_query_param": "page",
+          "request": [
+          ],
+          "response": [
+            "id",
+            "user_id",
+            "github_user_id"
+          ]
+        }
+      },
+      "github_user/<id>/": {
+        "update": {
+          "index": "id",
+          "name": "update",
+          "http_method": "patch",
+          "request": [
+            "github_user_id"
+          ],
+          "response": [
+            "id",
+            "user_id",
+            "github_user_id"
+          ]
+        },
+        "delete": {
+          "index": "id",
+          "name": "delete",
+          "http_method": "delete",
+          "request": [],
+          "response": []
+        }
+      }
+    }
+  },
+  "wechat_user": {
+    "name": "wechat_user",
+    "type": "table",
+    "model": "arkid_meta.models.user.WechatUser",
+    "meta": {
+      "id": {
+        "title": "ID",
+        "type": {
+          "integer": {
+            "read_only": true
+          }
+        }
+      },
+      "wechat_user_id": {
+        "title": "GitHub用户ID",
+        "type": {
+          "string": {
+            "required": true
+          }
+        }
+      },
+      "github_user_id": {
+        "title": "所属github ID",
+        "type": {
+          "integer": {
+            "required": true,
+            "source": "github_user",
+            "model_attr": "id"
+          }
+        }
+      }
+    },
+    "api": {
+      "wechat_user/": {
+        "create": {
+          "name": "create",
+          "http_method": "post",
+          "request": [
+            "wechat_user_id"
+          ],
+          "response": [
+            "id",
+            "wechat_user_id"
+          ]
+        },
+        "retrieve": {
+          "name": "retrieve",
+          "http_method": "get",
+          "response_index_key": "github_users",
+          "page_size": 20,
+          "page_query_param": "page",
+          "request": [
+          ],
+          "response": [
+            "id",
+            "wechat_user_id"
+          ]
+        }
+      },
+      "wechat_user/<id>/": {
+        "update": {
+          "index": "id",
+          "name": "update",
+          "http_method": "patch",
+          "request": [
+            "wechat_user_id"
+          ],
+          "response": [
+            "id",
+            "wechat_user_id"
+          ]
+        },
+        "delete": {
+          "index": "id",
+          "name": "delete",
+          "http_method": "delete",
+          "request": [],
+          "response": []
+        }
+      }
+    }
+  }
+}

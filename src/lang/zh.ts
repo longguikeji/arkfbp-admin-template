@@ -27,8 +27,13 @@ export default {
     case: '实例',
     formpage: ' 表单',
     tablepage: '表格',
+<<<<<<< HEAD
     exampleone: "事例一",
     testpage: '视图综合测试',
+=======
+    page: '页面',
+    user: '用户',
+>>>>>>> 2c9993529b17c04dee7234e340e415332b647382
     barChart: '柱状图表',
     lineChart: '折线图',
     mixedChart: '混合图表',

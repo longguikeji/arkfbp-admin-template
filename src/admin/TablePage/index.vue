@@ -8,10 +8,9 @@
     <!-- <TagComponent :state="state.tag" /> -->
     <Tag :state="state.tag" />
     <Dialog
-      v-for="(dialogName, dialogIndex) in state.dialogs"
-      :key="dialogIndex"
-      :state="state.dialogs[dialogIndex]"
-      :content="state.form"
+      v-for="dialogName in Object.keys(state.dialogs)"
+      :key="dialogName"
+      :state="state.dialogs[dialogName]"
     />
     <NavMenu :state="state.navs" />
     <Alert :state="state.alert" />
