@@ -17,6 +17,11 @@
         v-if="childItem.children"
         :key="childIndex"
         :index="childItem.title"
+        :popper-class="childItem.popperClass"
+        :show-timeout="childItem.showTimeout"
+        :hide-timeout="childItem.hideTimeout"
+        :disabled="childItem.disabled"
+        :popper-append-to-body="childItem.popperAppendToBody"
       >
         <template slot="title">
           {{ childItem.title }}
