@@ -1,5 +1,5 @@
 <template>
-  <div class="block">
+  <div style="width:500px;display:inline-block">
     <el-slider
       v-model="state.value"
       :min="state.min"
@@ -40,8 +40,4 @@ export default class extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-.block {
-  width: 700px;
-}
-</style>
+<style lang="scss" scoped></style>

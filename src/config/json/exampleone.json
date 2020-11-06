@@ -3,7 +3,6 @@
   "title": "ExampleOne",
   "form": {
     "inline": false,
-    "size": "mini",
     "items": [
       {
         "type": "Input",
@@ -55,7 +54,7 @@
         "label": "活动性质",
         "state": {
           "value": [],
-          "checkBox": [
+          "checkButton": [
             { "content": "美食/餐厅线上活动", "label": "check1" },
             { "content": "地推活动", "label": "check2" },
             { "content": "线下主题活动", "label": "check3" },
@@ -68,7 +67,7 @@
         "label": "特殊资源",
         "state": {
           "value": "",
-          "radio": [
+          "radioButton": [
             { "content": "线上品牌商赞助", "label": "radio1" },
             { "content": "线下场地免费", "label": "radio2" }
           ]
@@ -76,7 +75,7 @@
       },
       {
         "type": "InputNumber",
-        "label": "人数",
+        "label": "活动人数",
         "state": { "value": 20, "min": 0 }
       },
       {
@@ -101,7 +100,7 @@
                   "value": "2"
                 },
                 {
-                  "label": "英式式",
+                  "label": "英式",
                   "value": "4"
                 }
               ]
@@ -155,6 +154,14 @@
         }
       },
       {
+        "type": "Upload",
+        "label": "活动名单",
+        "state": {
+          "type": "xlsx",
+          "action": ""
+        }
+      },
+      {
         "type": "Transfer",
         "label": "活动地点",
         "state": {
@@ -172,36 +179,34 @@
           ]
         }
       }
-      
     ]
   },
-  
-    "timeline": {
-      "label": "活动时间线",
-      "reverse": false,
-      "data": [
-        {
-          "content": "进场",
-          "timestamp": "2020-04-12 20:46",
-          "size": "large",
-          "type": "primary",
-          "icon": "el-icon-more"
-        },
-        {
-          "content": "开始",
-          "timestamp": "2020-04-03 20:46",
-          "color": "#0bbd87"
-        },
-        {
-          "content": "祝词",
-          "timestamp": "2020-04-03 20:46",
-          "size": "large"
-        },
-        {
-          "content": "结束",
-          "timestamp": "2020-04-03 20:46"
-        }
-      ]
-    }
-  
+
+  "timeline": {
+    "label": "活动时间线",
+    "reverse": false,
+    "data": [
+      {
+        "content": "进场",
+        "timestamp": "2020-04-12 20:46",
+        "size": "large",
+        "type": "primary",
+        "icon": "el-icon-more"
+      },
+      {
+        "content": "开始",
+        "timestamp": "2020-04-03 20:46",
+        "color": "#0bbd87"
+      },
+      {
+        "content": "祝词",
+        "timestamp": "2020-04-03 20:46",
+        "size": "large"
+      },
+      {
+        "content": "结束",
+        "timestamp": "2020-04-03 20:46"
+      }
+    ]
+  }
 }

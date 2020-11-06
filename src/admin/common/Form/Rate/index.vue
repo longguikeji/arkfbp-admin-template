@@ -1,6 +1,7 @@
 <template>
   <el-rate
     v-model="state.value"
+    style="display:inline-block"
     :max="state.max"
     :disabled="state.disabled"
     :allow-half="state.allowHalf"
