@@ -39,7 +39,6 @@ export default class extends Vue {
   tabIndex: number = this.state.items.length;
 
   handleTabsEdit(targetName: any, action: string) {
-    console.log(targetName, action)
     if (action === 'add') {
       const newTabName = ++this.tabIndex + ''
       this.editableTabs.push({

@@ -198,7 +198,7 @@
     {
       "type": "success",
       "closable": true,
-      "content": "one tag",
+      "value": "one tag",
       "hit": true,
       "size": "small",
       "effect": "light"
@@ -206,7 +206,7 @@
     {
       "type": "success",
       "closable": true,
-      "content": "one tag",
+      "value": "one tag",
       "hit": true,
       "size": "small",
       "effect": "light",
@@ -215,7 +215,7 @@
     {
       "type": "info",
       "closable": true,
-      "content": "one tag",
+      "value": "one tag",
       "hit": true,
       "size": "small",
       "effect": "light",
@@ -224,7 +224,7 @@
     {
       "type": "info",
       "closable": true,
-      "content": "one tag",
+      "value": "one tag",
       "hit": true,
       "size": "small",
       "effect": "light"
@@ -232,7 +232,7 @@
     {
       "type": "info",
       "closable": true,
-      "content": "one tag",
+      "value": "one tag",
       "hit": true,
       "size": "small",
       "effect": "light",

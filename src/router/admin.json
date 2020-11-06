@@ -22,6 +22,11 @@
           "title": "yixitest", 
           "path": "yixitest", 
           "icon": "dashboard" 
+        },
+        {
+          "title": "firsttest",
+          "path": "firsttest", 
+          "icon": "dashboard"
         }
       ]
   }

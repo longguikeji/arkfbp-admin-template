@@ -1,5 +1,5 @@
 export default interface TagState {
-  content: string;
+  value: string;
   type?: string; // 类型 可选值：success/info/warning/danger
   closable?: boolean; // 是否可关闭	
   disableTransitions?: boolean; // 是否禁用渐变动画	
