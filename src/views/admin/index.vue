@@ -12,6 +12,10 @@
       v-if="state.type === 'table'"
       :state="state"
     />
+    <Yixitest
+      v-if="state.type === 'yixitest'"
+      :state="state"
+    />
   </div>
 </template>
 
@@ -22,13 +26,14 @@ import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
-
+import Yixitest from '@/admin/Yixitest/index.vue'
 @Component({
   name: 'Admin',
   components: {
     DashboardPage,
     FormPage,
-    TablePage
+    TablePage,
+    Yixitest
   }
 })
 export default class extends Vue {
@@ -43,7 +48,7 @@ export default class extends Vue {
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
       if (window.location.href.includes(file.split('.')[0])) {
-        const viewconfig: any = require(`@/config/json/${file}`) // eslint-disable-line
+        const viewconfig: any = require(`@/config/json/${file}`); // eslint-disable-line
         const serveconfig: any = {}
         const c: any = new Config(viewconfig, serveconfig)
         await AdminModule.setAdmin(c.config)

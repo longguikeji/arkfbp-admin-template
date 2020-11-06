@@ -27,6 +27,7 @@ export default {
     case: '实例',
     formpage: ' 表单',
     tablepage: '表格',
+    yixitest:'一席测试',
     barChart: '柱状图表',
     lineChart: '折线图',
     mixedChart: '混合图表',

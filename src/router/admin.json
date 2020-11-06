@@ -18,6 +18,10 @@
           "title": "tablepage", 
           "path": "tablepage", 
           "icon": "dashboard" 
+        },  {
+          "title": "yixitest", 
+          "path": "yixitest", 
+          "icon": "dashboard" 
         }
       ]
   }
