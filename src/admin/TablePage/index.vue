@@ -7,10 +7,9 @@
     <Pagination :state="state.pagination" />
     <Tag :state="state.tag" />
     <Dialog
-      v-for="(dialogName, dialogIndex) in state.dialogs"
-      :key="dialogIndex"
-      :state="state.dialogs[dialogIndex]"
-      :content="state.form"
+      v-for="dialogName in Object.keys(state.dialogs)"
+      :key="dialogName"
+      :state="state.dialogs[dialogName]"
     />
   </Card>
 </template>
