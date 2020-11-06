@@ -19,15 +19,20 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
+import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
+import Link from '@/admin/common/Link/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
 import Cascader from '@/admin/common/Form/Cascader/index.vue'
 import Select from '@/admin/common/Form/Select/index.vue'
 import Avator from '@/admin/common/data/Avator/index.vue'
 import Tree from '@/admin/common/data/Tree/index.vue'
 import Alert from '@/admin/common/Notice/Alert/index.vue'
-
+import Breadcrumb from '@/admin/common/Navigation/Breadcrumb/index.vue'
+import Dropdown from '@/admin/common/Navigation/Dropdown/index.vue'
+import NavMenu from '@/admin/common/Navigation/NavMenu/index.vue'
+import PageHeader from '@/admin/common/Navigation/PageHeader/index.vue'
 import Steps from '@/admin/common/Navigation/Steps/index.vue'
-
+import Tabs from '@/admin/common/Navigation/Tabs/index.vue'
 import RadioGroup from '@/admin/common/Form/Radio/index.vue'
 import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
 import InputNumber from '@/admin/common/Form/InputNumber/index.vue'
@@ -78,6 +83,8 @@ export default class extends Vue {
     return {
       components: {
         Button,
+        ButtonArray,
+        Link,
         Input,
         Cascader,
         Select,
@@ -86,7 +93,12 @@ export default class extends Vue {
         Avator,
         Tree,
         Alert,
+        Breadcrumb,
+        Dropdown,
+        NavMenu,
+        PageHeader,
         Steps,
+        Tabs,
         RadioGroup,
         CheckBoxGroup,
         InputNumber,

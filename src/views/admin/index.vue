@@ -16,7 +16,8 @@
       v-if="state.type === 'exampleone'"
       :state="state"
     />
-    <FirstTest
+
+    <TestPage
       v-if="state.type === 'testpage'"
       :state="state"
     />
@@ -31,7 +32,8 @@ import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
 import ExampleOne from '@/admin/TestFiles/ExampleOne.vue'
-import FirstTest from '@/admin/TestFiles/firsttest.vue'
+
+import TestPage from '@/admin/TestFiles/testpage.vue'
 
 @Component({
   name: 'Admin',
@@ -40,7 +42,7 @@ import FirstTest from '@/admin/TestFiles/firsttest.vue'
     FormPage,
     TablePage,
     ExampleOne,
-    FirstTest
+    TestPage
   }
 })
 export default class extends Vue {
