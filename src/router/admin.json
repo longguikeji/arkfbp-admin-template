@@ -18,6 +18,11 @@
           "title": "tablepage", 
           "path": "tablepage", 
           "icon": "dashboard" 
+        },
+        {
+          "title": "firsttest",
+          "path": "firsttest", 
+          "icon": "dashboard"
         }
       ]
   }
