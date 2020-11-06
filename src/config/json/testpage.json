@@ -86,6 +86,14 @@
         "prop": "id"
       },
       {
+        "label": "背景图片",
+        "prop": "bgc",
+        "scope": {
+          "type": "ImageBox",
+          "state": {}
+        }
+      },
+      {
         "label": "价格",
         "prop": "price"
       },
@@ -116,6 +124,7 @@
       {
         "name": "文化",
         "id": "001",
+        "bgc": "@/assets/404-images/404.png",
         "price": "1",
         "kinds": "人文",
         "created": "2015-01-01"
@@ -123,6 +132,7 @@
       {
         "name": "科技",
         "id": "002",
+        "bgc": "@/assets/404-images/404.png",
         "price": "1",
         "kinds": "科技",
         "created": "2016-01-01"
@@ -130,14 +140,21 @@
       {
         "name": "艺术",
         "id": "003",
+        "bgc": "@/assets/404-images/404.png",
         "price": "1",
         "kinds": "艺术",
         "created": "2017-01-01"
       }
     ]
   },
+  "pagination": {
+    "currentPage": 5,
+    "pageCount": 20,
+    "total": 100,
+    "background": "",
+    "action": "retrieve"
+  },
   "actions": {},
-  "pagination": {},
   "dialogs": {},
   "apis": {}
 }

@@ -4,7 +4,10 @@
       <Form :state="getFilterFormState()" />
     </div>
     <Table :state="state.table" />
-    <Pagination :state="state.pagination" />
+    <Pagination
+      :state="state.pagination"
+      class="table-page-pager"
+    />
   </Card>
 </template>
 
@@ -38,3 +41,9 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.table-page-pager {
+  margin-top: 20px !important;
+}
+</style>
