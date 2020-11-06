@@ -1,14 +1,23 @@
 <template>
   <el-table-column
-    :type="state.type"
+    v-if="state.type === 'selection'"
+    type="selection"
+    width="50"
+  />
+  <el-table-column
+    v-else-if="state.type === 'index'"
+    type="index"
+    width="30"
+    label="#"
+  />
+  <el-table-column
+    v-else
     :index="state.index"
     :column-key="state.columnKey"
     :label="state.label"
     :prop="state.prop"
   >
-    <template
-      v-if="state.children"
-    >
+    <template v-if="state.children">
       <TableColumn
         v-for="child in state.children"
         :key="state.children.indexOf(child)"
@@ -39,9 +48,9 @@ import { type } from 'os'
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:TableColumnState;
+  @Prop({ required: true }) state!: TableColumnState;
 
-  getComponentState(scope:any):object {
+  getComponentState(scope: any): object {
     if (!this.state.scope.state) {
       this.state.scope.state.value = {}
     }
