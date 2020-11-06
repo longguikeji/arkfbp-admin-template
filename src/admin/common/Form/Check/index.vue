@@ -1,5 +1,8 @@
 <template>
-  <el-checkbox-group v-model="state.value">
+  <el-checkbox-group
+    v-model="state.value"
+    class="check"
+  >
     <template v-if="state.checkBox">
       <el-checkbox
         v-for="(item, index) in state.checkBox"
@@ -47,3 +50,8 @@ export default class extends Vue {
   @Prop({ required: true }) state!: CheckBoxGroupState;
 }
 </script>
+<style lang="scss" scoped>
+.check {
+  display: inline-block;
+}
+</style>

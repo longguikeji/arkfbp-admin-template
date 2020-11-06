@@ -1,5 +1,6 @@
 <template>
   <Card :state="state">
+    <Carousel :state="state.carousel" />
     <div>
       <Form :state="getFilterFormState()" />
     </div>
@@ -16,7 +17,7 @@ import Table from '@/admin/common/data/Table/index.vue'
 import Button from '@/admin/common/Button/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
-
+import Carousel from '@/admin/common/Others/Carousel/index.vue'
 @Component({
   name: 'TestPage',
   components: {
@@ -24,7 +25,8 @@ import Pagination from '@/admin/common/data/Pagination/index.vue'
     Card,
     Button,
     Table,
-    Pagination
+    Pagination,
+    Carousel
   }
 })
 export default class extends Vue {
