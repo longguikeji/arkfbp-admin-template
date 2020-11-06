@@ -45,9 +45,11 @@ export default class extends Vue {
     if (!this.state.scope.state) {
       this.state.scope.state.value = {}
     }
-    // this.state.scope.state.value = scope.row[this.state.prop]
     const adminState = {
-      state: scope.row[this.state.prop],
+      state: {
+        ...this.state.scope.state,
+        value: scope.row[this.state.prop]
+      },
       type: this.state.scope.type
     }
     return adminState

@@ -130,41 +130,26 @@
     ],
     "data": [
       {
-        "date": {
-          "value": "2016-05-07"
-        },
+        "date": "2016-05-07",
         "name": "王小虎",
-        "progress": {
-          "color": "#1aa",
-          "percentage": 30
-        },
+        "progress": 30,
         "province": "上海",
         "city": "普陀区",
         "address": "上海市普陀区金沙江路 1518 弄",
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
+        "date": "2016-05-06",
         "name": "王小虎",
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "progress": 50,
         "province": "上海",
         "city": "普陀区",
         "address": "上海市普陀区金沙江路 1518 弄",
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "date": "2016-05-10",
+        "progress": 40,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -172,13 +157,8 @@
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 30
-        },
+        "date": "2016-05-11",
+        "progress": 60,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -186,13 +166,8 @@
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "date": "2016-05-12",
+        "progress": 10,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -200,13 +175,8 @@
         "zip": 200335
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "date": "2016-05-13",
+        "progress": 20,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -214,13 +184,8 @@
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 50
-        },
+        "date": "2016-05-14",
+        "progress": 50,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -351,8 +316,14 @@
       "label": "label"
     },
     "showCheckbox": true,
-    "defaultExpandedKeys": [5, 9],
-    "defaultCheckedKeys": [5, 9],
+    "defaultExpandedKeys": [
+      5,
+      9
+    ],
+    "defaultCheckedKeys": [
+      5,
+      9
+    ],
     "isFilter": true,
     "draggable": true
   },
@@ -453,25 +424,21 @@
     "children": [
       {
         "title": "功能中心区",
-        "icon": "el-icon-star-off",
         "children": [
+          {
+            "title": "Input输入框"
+          },
           {
             "title": "Form表单"
           },
           {
-            "title": "Table表格"
-          },
-          {
-            "title": "参考组件列表",
+            "title": "Other组件",
             "children": [
               {
-                "title": "Input输入框"
+                "title": "Tag标签"
               },
               {
-                "title": "Button按钮"
-              },
-              {
-                "title": "Others其他"
+                "title": "Dropdown下拉框"
               }
             ]
           }
@@ -479,6 +446,17 @@
       },
       {
         "title": "处理中心区"
+      },
+      {
+        "title": "个人中心区",
+        "children": [
+          {
+            "title": "用户名称"
+          },
+          {
+            "title": "用户密码"
+          }
+        ]
       }
     ]
   },

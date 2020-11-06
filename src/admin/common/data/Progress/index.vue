@@ -1,6 +1,6 @@
 <template>
   <el-progress
-    :percentage="state.percentage"
+    :percentage="state.value"
     :type="state.type"
     :stroke-width="state.strokeWidth"
     :text-inside="state.textInside"
