@@ -16,7 +16,7 @@
         class="tag-item"
         @close="handleClose(tag)"
       >
-        {{ tag.content }}
+        {{ tag.value }}
       </el-tag>
       <span v-if="tag.newTagType">
         <el-input
@@ -89,7 +89,7 @@ export default class extends Vue {
       const dynamicTagItem = JSON.parse(
         JSON.stringify(this.dynamicTags[addIndex])
       )
-      dynamicTagItem.content = inputContent
+      dynamicTagItem.value = inputContent
       dynamicTagItem.type = this.dynamicTags[addIndex].newTagType
       delete this.dynamicTags[addIndex].newTagType
       this.dynamicTags.splice(addIndex + 1, 0, dynamicTagItem)
