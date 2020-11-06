@@ -1,5 +1,5 @@
 export default interface ProgressState {
-  percentage: number; // 百分比（必填）1-100
+  value: number; // 百分比（必填）1-100
   type?: string; // 进度条类型 line/circle/dashboard
   strokeWidth?: number; // 进度条的宽度，单位 px	
   textInside?: boolean; // 进度条显示文字内置在进度条内（只在 type=line 时可用）		
