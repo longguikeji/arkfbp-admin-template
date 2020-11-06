@@ -1,6 +1,6 @@
 {
   "type": "testpage",
-  "title": "Test-Page",
+  "title": "testpage",
   "buttons": [
     {
       "label": "创建",

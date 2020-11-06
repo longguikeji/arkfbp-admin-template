@@ -18,7 +18,7 @@ import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 
 @Component({
-  name: 'FirstTest',
+  name: 'TestPage',
   components: {
     Form,
     Card,

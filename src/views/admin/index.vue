@@ -13,7 +13,7 @@
       :state="state"
     />
     <Yixitest v-if="state.type === 'yixitest'" />
-    <FirstTest
+    <TestPage
       v-if="state.type === 'testpage'"
       :state="state"
     />
@@ -28,7 +28,7 @@ import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
 import Yixitest from '@/admin/TestFiles/yixitest.vue'
-import FirstTest from '@/admin/TestFiles/firsttest.vue'
+import TestPage from '@/admin/TestFiles/testpage.vue'
 
 @Component({
   name: 'Admin',
@@ -37,7 +37,7 @@ import FirstTest from '@/admin/TestFiles/firsttest.vue'
     FormPage,
     TablePage,
     Yixitest,
-    FirstTest
+    TestPage
   }
 })
 export default class extends Vue {

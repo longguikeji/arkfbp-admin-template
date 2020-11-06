@@ -24,8 +24,8 @@
           "icon": "dashboard" 
         },
         {
-          "title": "firsttest",
-          "path": "firsttest", 
+          "title": "testpage",
+          "path": "testpage", 
           "icon": "dashboard"
         }
       ]
