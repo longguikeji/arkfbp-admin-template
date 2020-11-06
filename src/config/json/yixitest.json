@@ -1,11 +1,29 @@
 {
-  "type": "form",
+  "type": "table",
   "tilte": "yixitest",
+  "form": {
+    "inline": true,
+    "items": [
+      {
+        "type": "Input",
+        "label": "参数1",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "参数2",
+        "state": {
+          "value": ""
+        }
+      }
+    ]
+  },
+  "table": {}, 
   "filter": {},
   "actions": {},
   "buttons": {},
   "pagination": {},
-  "table": {},
-  "dialogs": {},
-  "form": {}
+  "dialogs": {}
 }

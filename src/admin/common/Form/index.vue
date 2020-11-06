@@ -1,6 +1,6 @@
 <template>
   <el-form
-    :inline="state.inline"
+    :inline="state.inline || false"
   >
     <template v-if="state.inline">
       <template v-for="item in state.items">
