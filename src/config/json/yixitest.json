@@ -1,1 +1,6 @@
-{ "type": "yixitest", "title": "yixitest", "form": {} }
+{
+  "type": "yixitest",
+  "title": "yixitest",
+  "filter": {},
+  "form": { "items": [] }
+}

@@ -1,22 +1,16 @@
 <template>
-  <div class="container">
-    1231234
-  </div>
+  <Form :state="state.form" />
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-
+import Form from '@/admin/common/Form/index.vue'
 @Component({
   name: 'Yixitest',
-  components: {}
+  components: { Form }
 })
 export default class extends Vue {}
 </script>
 <style lang="scss" scoped>
-.container {
-  height: 100px;
-  width: 100px;
-  background-color: aquamarine;
-}
+
 </style>
