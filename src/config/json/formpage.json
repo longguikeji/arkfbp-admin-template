@@ -1,0 +1,566 @@
+{
+  "type": "form",
+  "title": "formpage",
+  "buttons": [
+    {
+      "label": "button1"
+    },
+    {
+      "label": "button2"
+    }
+  ],
+
+  "form": {
+    "items": [
+      {
+        "type": "Input",
+        "label": "title1",
+        "state": {
+          "value": ""
+        }
+      },
+      [
+        {
+          "type": "Input",
+          "label": "title2",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "title3",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      {
+        "type": "Button",
+        "state": {
+          "label": "button1"
+        }
+      },
+      [
+        {
+          "type": "Button",
+          "state": {
+            "label": "button2"
+          }
+        },
+        {
+          "type": "Button",
+          "state": {
+            "label": "button2"
+          }
+        }
+      ],
+      {
+        "type": "Select",
+        "state": {
+          "type": "group",
+          "value": "",
+          "placeholder": "请选择相关内容",
+          "multiple": true,
+          "options": [
+            {
+              "label": "Part-One",
+              "options": [
+                {
+                  "value": "o1",
+                  "label": "option1"
+                },
+                {
+                  "value": "o2",
+                  "label": "option2"
+                }
+              ]
+            },
+            {
+              "label": "Part-Two",
+              "options": [
+                {
+                  "value": "t1",
+                  "label": "part-t-option1"
+                },
+                {
+                  "value": "t2",
+                  "label": "part-t-option1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "state": {
+          "value": "Read Only Select",
+          "readonly": true,
+          "placeholder": "请选择相关内容",
+          "multiple": true,
+          "disabled": true,
+          "options": [
+            {
+              "label": "select1",
+              "value": "select1"
+            }
+          ]
+        }
+      },
+      [
+        {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "label": "select1",
+                "value": "select1"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "clearable": true,
+            "options": [
+              {
+                "label": "Part-One",
+                "options": [
+                  {
+                    "label": "select1",
+                    "value": "select1"
+                  }
+                ]
+              },
+              {
+                "label": "Part-Two",
+                "options": [
+                  {
+                    "label": "select2",
+                    "value": "select2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "clearable": true,
+            "options": [
+              {
+                "label": "option-1",
+                "value": "option-1"
+              },
+              {
+                "label": "option-2",
+                "value": "option-2",
+                "disabled": true
+              },
+              {
+                "label": "option-3",
+                "value": "option-3"
+              }
+            ]
+          }
+        }
+      ],
+
+      {
+        "type": "RadioGroup",
+        "state": {
+          "value": "",
+          "radio": [
+            { "content": "标签一", "label": "radio1" },
+            { "content": "标签二", "label": "radio2" }
+          ]
+        }
+      },
+      {
+        "type": "RadioGroup",
+        "state": {
+          "value": "",
+          "radioButton": [
+            { "content": "标签一", "label": "radio1", "disabled": true },
+            { "content": "标签二", "label": "radio2" },
+            { "content": "标签三", "label": "radio3" }
+          ]
+        }
+      }, 
+      {
+        "type": "CheckBoxGroup",
+        "state": {
+          "value": [],
+          "checkBox": [
+            { "content": "标签一", "label": "check1" },
+            { "content": "标签二", "label": "check2" }
+          ]
+        }
+      },
+      {
+        "type": "CheckBoxGroup",
+        "state": {
+          "value": [],
+          "checkButton": [
+            { "content": "标签一", "label": "check1", "disabled": true },
+            { "content": "标签二", "label": "check2" },
+            { "content": "标签三", "label": "check3" },
+            { "content": "标签四", "label": "check4" }
+          ]
+        }
+      },
+      {
+        "type": "InputNumber",
+        "state": { "value": "", "min": 0, "step": 2 }
+      },
+      {
+        "type": "InputNumber",
+        "state": { "value": "", "precision": 2, "step": 0.1, "max": 10 }
+      },
+      {
+        "type": "Cascader",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "size": "mini",
+          "collapseTags": true,
+          "options": [
+            {
+              "label": "指南",
+              "value": "zhinan",
+              "children": [
+                {
+                  "label": "一致",
+                  "value": "yizhi"
+                },
+                {
+                  "label": "组件",
+                  "value": "zujian"
+                }
+              ]
+            },
+            {
+              "label": "组件",
+              "value": "zujian"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Cascader",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "showAllLevels": false,
+          "clearable": true,
+          "options": [
+            {
+              "label": "指南",
+              "value": "zhinan",
+              "children": [
+                {
+                  "label": "一致",
+                  "value": "yizhi"
+                },
+                {
+                  "label": "组件",
+                  "value": "zujian"
+                }
+              ]
+            },
+            {
+              "label": "组件",
+              "value": "zujian"
+            }
+          ],
+          "props": { "multiple": true }
+        }
+      },
+      {
+        "type": "Cascader",
+        "state": {
+          "type": "panel",
+          "value": "",
+          "placeholder": "请选择",
+          "options": [
+            {
+              "label": "指南",
+              "value": "zhinan",
+              "children": [
+                {
+                  "label": "一致",
+                  "value": "yizhi"
+                },
+                {
+                  "label": "组件",
+                  "value": "zujian"
+                }
+              ]
+            },
+            {
+              "label": "组件",
+              "value": "zujian"
+            }
+          ]
+        }
+      },
+      {
+        "type": "SwitchButton",
+        "state": {
+          "value": "",
+          "activeColor": "#13ce66",
+          "inactiveColor": "#ff4949"
+        }
+      },
+      {
+        "type": "SwitchButton",
+        "state": {
+          "value": "",
+          "activeColor": "#13ce66",
+          "inactiveColor": "#ff4949",
+          "activeText": "按月付费",
+          "inactiveText": "按年付费"
+        }
+      },
+      {
+        "type": "Slider",
+        "state": {
+          "value": 1,
+          "min": 0,
+          "max": 10
+        }
+      },
+      {
+        "type": "Slider",
+        "state": {
+          "value": 1,
+          "vertical": true,
+          "height": "200px"
+        }
+      },
+      {
+        "type": "Time",
+        "state": {
+          "value": "",
+          "placeholder": "请选择"
+        }
+      },
+      {
+        "type": "Time",
+        "state": {
+          "value": "",
+          "placeholder": "选择时间范围",
+          "isRange": true,
+          "rangeSeparator": "至",
+          "startPlaceholder": "开始日期",
+          "endPlaceholder": "结束日期"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "placeholder": "请选择",
+          "type": "date"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "placeholder": "请选择周",
+          "type": "week",
+          "format": "yyyy 第 WW 周"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "startPlaceholder": "开始日期",
+          "rangeSeparator": "至",
+          "endPlaceholder": "结束日期",
+          "type": "daterange"
+        }
+      },
+      {
+        "type": "DatePicker",
+        "state": {
+          "value": "",
+          "startPlaceholder": "开始日期",
+          "rangeSeparator": "至",
+          "endPlaceholder": "结束日期",
+          "type": "datetimerange"
+        }
+      },
+      {
+        "type": "Rate",
+        "state": {
+          "value": 0,
+          "showText": true,
+          "colors": ["#99A9BF", "#F7BA2A", "#FF9900"]
+        }
+      },
+      {
+        "type": "Upload",
+        "state": {
+          "type": "video",
+          "action": ""
+        }
+      },
+      {
+        "type": "Upload",
+        "state": {
+          "type": "image",
+          "action": "",
+          "upload": []
+        }
+      },
+      {
+        "type": "Upload",
+        "state": {
+          "type": "xlsx",
+          "action": ""
+        }
+      },
+      {
+        "type": "ColorPicker",
+        "state": {
+          "value": "rgba(19, 206, 102, 0.8)",
+          "showAlpha": true
+        }
+      },
+      {
+        "type": "ColorPicker",
+        "state": {
+          "value": null,
+          "showAlpha": true,
+          "size": "small"
+        }
+      },
+      {
+        "type": "Transfer",
+        "state": {
+          "filterable": true,
+          "filterPlaceholder": "请输入城市",
+          "titles": ["Source", "Target"],
+          "buttonTexts": ["到左边", "到右边"],
+          "value": [],
+          "data": [
+            { "key": "1", "label": "上海", "disabled": false },
+            { "key": "2", "label": "北京", "disabled": false },
+            { "key": "3", "label": "广州", "disabled": true },
+            { "key": "4", "label": "深圳", "disabled": false },
+            { "key": "5", "label": "成都", "disabled": false }
+          ]
+        }
+      }
+    ]
+  },
+  "drawer": {
+    "title": "这是标题",
+    "direction": "ttb",
+    "withHeader": true
+  },
+  "image": {
+    "src": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
+    "fit": "fill"
+  },
+  "calendar": {
+    "range": ["2019-03-04", "2019-03-24"]
+  },
+  "divider": {
+    "value": "头上一片晴天，心中一个想念",
+    "direction": "horizontal",
+    "contentPosition": "left"
+  },
+  "timeline": {
+    "reverse": false,
+    "data": [
+      {
+        "content": "支持使用图标",
+        "timestamp": "2018-04-12 20:46",
+        "size": "large",
+        "type": "primary",
+        "icon": "el-icon-more"
+      },
+      {
+        "content": "支持自定义颜色",
+        "timestamp": "2018-04-03 20:46",
+        "color": "#0bbd87"
+      },
+      {
+        "content": "支持自定义尺寸",
+        "timestamp": "2018-04-03 20:46",
+        "size": "large"
+      },
+      {
+        "content": "默认样式的节点",
+        "timestamp": "2018-04-03 20:46"
+      }
+    ]
+  },
+  "collapse": {
+    "activeNames": ["1"],
+    "data": [
+      {
+        "title": "一致性 Consistency",
+        "name": "1",
+        "content": "与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；"
+      },
+      {
+        "title": "反馈 Feedback",
+        "name": "2",
+        "content": "控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作"
+      },
+      {
+        "title": "效率 Efficiency",
+        "name": "3",
+        "content": "简化流程：设计简洁直观的操作流程；"
+      }
+    ]
+  },
+  "carousel": {
+    "height": "200px",
+    "width": "1000px",
+    "interval": 3000,
+    "indicatorPosition": "outside",
+    "arrow": "always",
+    "data": [
+      {
+        "url": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg"
+      },
+      {
+        "url": "https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+      }
+    ]
+  },
+  "popconfirm": {
+    "confirmButtonText": "好的",
+    "cancelButtonText": "不用了",
+    "icon": "el-icon-info",
+    "iconColor": "red",
+    "title": "这是一段内容确定删除吗？",
+    "content": "删除"
+  },
+  "popover": {
+    "placement": "bottom",
+    "title": "标题",
+    "width": "200",
+    "trigger": "click",
+    "content": "这是一段内容,这是一段内容,这是一段内容,这是一段内容。",
+    "btn": "click激活"
+  },
+  "tooltip": {
+    "effect": "dark",
+    "content": "Top Left 提示文字",
+    "placement": "left-end",
+    "btn": "上左"
+  }
+}

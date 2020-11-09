@@ -12,44 +12,55 @@
       v-if="state.type === 'table'"
       :state="state"
     />
+    <ExampleOne
+      v-if="state.type === 'exampleone'"
+      :state="state"
+    />
+
+    <TestPage
+      v-if="state.type === 'testpage'"
+      :state="state"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Config } from '@/config'
 import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
+import ExampleOne from '@/admin/TestFiles/ExampleOne.vue'
+
+import TestPage from '@/admin/TestFiles/testpage.vue'
 
 @Component({
   name: 'Admin',
   components: {
     DashboardPage,
     FormPage,
-    TablePage
+    TablePage,
+    ExampleOne,
+    TestPage
   }
 })
 export default class extends Vue {
-  private state = null
-
-  @Watch('AdminModule.adminState', { immediate: true, deep: true })
-  private change(oldValue: any, newValue: any) {
-    if (newValue) {
-      this.state = { ...newValue }
-    }
+  private get state() {
+    return AdminModule.adminState
   }
 
   async created() {
-    const requireModule = require.context('@/config', false, /\.json$/)
+    const requireModule = require.context('@/config/json', false, /\.json$/)
     const files = requireModule.keys().map(e => e.slice(2))
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
       if (window.location.href.includes(file.split('.')[0])) {
-        const storeconfig: any = require(`@/config/${file}`) // eslint-disable-line
-
-        await AdminModule.setAdmin(storeconfig)
+        const viewconfig: any = require(`@/config/json/${file}`); // eslint-disable-line
+        const serveconfig: any = {}
+        const c: any = new Config(viewconfig, serveconfig)
+        await AdminModule.setAdmin(c.config)
         await AdminModule.adminAction({ action: 'meta' })
       }
     }
@@ -60,8 +71,6 @@ export default class extends Vue {
         await AdminModule.adminAction({ action: actions[i] })
       }
     }
-
-    this.state = { ...AdminModule.adminState }
   }
 }
 </script>

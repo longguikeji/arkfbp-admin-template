@@ -1,6 +1,6 @@
 <template>
   <el-button
-    :size="state.size"
+    :size="state.size || 'small'"
     :type="state.type"
     :plain="state.plain"
     :round="state.round"
@@ -17,22 +17,23 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { AdminModule } from '@/store/modules/admin'
 import ButtonState from './ButtonState'
 
 @Component({
   name: 'Button',
-  components: {
-  }
+  components: {}
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:ButtonState;
+  @Prop({ required: true }) state!: ButtonState;
   @Watch('state', { immediate: true, deep: true })
   fresh() {
     this.$forceUpdate()
   }
 
-  private clickHandler() {
+  private async clickHandler() {
     console.log('action!!!')
+    await AdminModule.adminAction({ action: this.state.action })
   }
 }
 </script>

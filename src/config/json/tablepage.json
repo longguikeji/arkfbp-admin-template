@@ -1,0 +1,489 @@
+{
+  "type": "table",
+  "title": "TablePage",
+  "form": {
+    "items": [
+      {
+        "type": "Input",
+        "label": "用户名",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "密码",
+        "state": {
+          "value": ""
+        }
+      }
+    ]
+  },
+  "buttons": [
+    {
+      "label": "Button1"
+    },
+    {
+      "label": "button2"
+    }
+  ],
+  "filter": {
+    "form": {
+      "inline": true,
+      "items": [
+        {
+          "type": "Input",
+          "label": "参数1",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "参数2",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Button",
+          "state": {
+            "label": "search",
+            "type": "primary",
+            "action": "showCreateDialog",
+            "badge": {
+              "value": 100,
+              "max": 200,
+              "isDot": false,
+              "hidden": false,
+              "type": "warning"
+            }
+          }
+        },
+        {
+          "type": "Button",
+          "state": {
+            "label": "check"
+          }
+        },
+        {
+          "type": "Avator",
+          "state": {
+            "icon": "el-icon-star-on",
+            "content": "one tag",
+            "fontSize": 12
+          }
+        }
+      ]
+    }
+  },
+  "pagination": {
+    "currentPage": 5,
+    "pageCount": 20,
+    "total": 100,
+    "background": ""
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "Date",
+        "prop": "date",
+        "scope": {
+          "type": "Input",
+          "state": {}
+        }
+      },
+      {
+        "label": "Progress",
+        "prop": "progress",
+        "scope": {
+          "type": "Progress",
+          "state": {}
+        }
+      },
+      {
+        "label": "Send Information",
+        "children": [
+          {
+            "label": "Name",
+            "prop": "name"
+          },
+          {
+            "label": "Address",
+            "children": [
+              {
+                "label": "Province",
+                "prop": "province"
+              },
+              {
+                "label": "Address",
+                "prop": "address"
+              },
+              {
+                "label": "Zip",
+                "prop": "zip"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "data": [
+      {
+        "date": "2016-05-07",
+        "name": "王小虎",
+        "progress": 30,
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      },
+      {
+        "date": "2016-05-06",
+        "name": "王小虎",
+        "progress": 50,
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      },
+      {
+        "date": "2016-05-10",
+        "progress": 40,
+        "name": "王小虎",
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      },
+      {
+        "date": "2016-05-11",
+        "progress": 60,
+        "name": "王小虎",
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      },
+      {
+        "date": "2016-05-12",
+        "progress": 10,
+        "name": "王小虎",
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200335
+      },
+      {
+        "date": "2016-05-13",
+        "progress": 20,
+        "name": "王小虎",
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      },
+      {
+        "date": "2016-05-14",
+        "progress": 50,
+        "name": "王小虎",
+        "province": "上海",
+        "city": "普陀区",
+        "address": "上海市普陀区金沙江路 1518 弄",
+        "zip": 200333
+      }
+    ]
+  },
+  "tag": [
+    {
+      "type": "success",
+      "closable": true,
+      "value": "one tag",
+      "hit": true,
+      "size": "small",
+      "effect": "light"
+    },
+    {
+      "type": "success",
+      "closable": true,
+      "value": "one tag",
+      "hit": true,
+      "size": "small",
+      "effect": "light",
+      "newTagType": "success"
+    },
+    {
+      "type": "info",
+      "closable": true,
+      "value": "one tag",
+      "hit": true,
+      "size": "small",
+      "effect": "light",
+      "newTagType": "info"
+    },
+    {
+      "type": "info",
+      "closable": true,
+      "value": "one tag",
+      "hit": true,
+      "size": "small",
+      "effect": "light"
+    },
+    {
+      "type": "info",
+      "closable": true,
+      "value": "one tag",
+      "hit": true,
+      "size": "small",
+      "effect": "light",
+      "newTagType": "info"
+    }
+  ],
+  "tree": {
+    "data": [
+      {
+        "id": 1,
+        "label": "一级 1",
+        "children": [
+          {
+            "id": 2,
+            "label": "二级 1-1",
+            "children": [
+              {
+                "id": 3,
+                "label": "三级 1-1-1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "label": "一级 2",
+        "children": [
+          {
+            "id": 5,
+            "label": "二级 2-1",
+            "disabled": true,
+            "children": [
+              {
+                "id": 6,
+                "label": "三级 2-1-1"
+              }
+            ]
+          },
+          {
+            "id": 7,
+            "label": "二级 2-2",
+            "children": [
+              {
+                "id": 8,
+                "label": "三级 2-2-1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "label": "一级 3",
+        "children": [
+          {
+            "id": 10,
+            "label": "二级 3-1",
+            "children": [
+              {
+                "id": 11,
+                "label": "三级 3-1-1"
+              }
+            ]
+          },
+          {
+            "id": 12,
+            "label": "二级 3-2",
+            "children": [
+              {
+                "id": 13,
+                "label": "三级 3-2-1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "props": {
+      "children": "children",
+      "label": "label"
+    },
+    "showCheckbox": true,
+    "defaultExpandedKeys": [
+      5,
+      9
+    ],
+    "defaultCheckedKeys": [
+      5,
+      9
+    ],
+    "isFilter": true,
+    "draggable": true
+  },
+  "alert": {
+    "title": "This is one alert infomation",
+    "center": true,
+    "type": "success",
+    "slot": "消息内容展示区"
+  },
+  "steps": {
+    "simple": true,
+    "direction": "horizontal",
+    "active": 2,
+    "step": [
+      {
+        "title": "步骤 1",
+        "icon": "el-icon-edit"
+      },
+      {
+        "title": "步骤 2",
+        "icon": "el-icon-upload"
+      },
+      {
+        "title": "步骤 3",
+        "icon": "el-icon-picture"
+      }
+    ]
+  },
+  "dropdown": {
+    "title": "Start Dropdown",
+    "splitButton": true,
+    "type": "primary",
+    "items": [
+      {
+        "content": "加法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "add"
+      },
+      {
+        "content": "减法",
+        "divided": true,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "substract"
+      },
+      {
+        "content": "乘法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": false,
+        "command": "multiply"
+      },
+      {
+        "content": "除法",
+        "divided": false,
+        "icon": "el-icon-edit",
+        "disabled": true,
+        "command": "divided"
+      }
+    ]
+  },
+  "tabs": {
+    "items": [
+      {
+        "label": "FIRST",
+        "content": "First Content",
+        "name": "1",
+        "closable": true
+      },
+      {
+        "label": "SECOND",
+        "content": "Second Content",
+        "name": "2"
+      },
+      {
+        "label": "THIRD",
+        "content": "Third Content",
+        "name": "3",
+        "closable": true,
+        "lazy": true
+      },
+      {
+        "label": "FOURTH",
+        "content": "Fourth Content",
+        "name": "4",
+        "closable": true,
+        "disabled": true
+      }
+    ],
+    "type": "border-card",
+    "value": "2",
+    "editable": true
+  },
+  "navs": {
+    "mode": "horizontal",
+    "children": [
+      {
+        "title": "功能中心区",
+        "children": [
+          {
+            "title": "Input输入框"
+          },
+          {
+            "title": "Form表单"
+          },
+          {
+            "title": "Other组件",
+            "children": [
+              {
+                "title": "Tag标签"
+              },
+              {
+                "title": "Dropdown下拉框"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "处理中心区"
+      },
+      {
+        "title": "个人中心区",
+        "children": [
+          {
+            "title": "用户名称"
+          },
+          {
+            "title": "用户密码"
+          }
+        ]
+      }
+    ]
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        "username",
+        "password"
+      ],
+      "values": {},
+      "action": "create",
+      "visible": false,
+      "attributes": {}
+    }
+  },
+  "actions": {
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ]
+    }
+  }
+}

@@ -30,6 +30,7 @@ export async function runAction(action: {flow: string, inputs: FlowInput}) {
 
 export async function runFlow(state: any, flow: any, data: any) {
   if (flow.type === 'base') {
+  if (flow.type === 'assign') {
     await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
@@ -48,6 +49,8 @@ export async function runFlow(state: any, flow: any, data: any) {
       flow: `@/flows/${flow.name}`,
       inputs: params
     })
+
+    return
   }
 
   if (flow.type === 'api') {
@@ -82,4 +85,19 @@ export async function runFlow(state: any, flow: any, data: any) {
       }
     })
   }
+
+    return
+  }
+
+  let params = state
+
+  if (flow.request) {
+    flow.request.split('.').forEach((v: string) => {
+      params = params[v]
+    })
+  }
+  await runAction({
+    flow: `@/flows/${flow.name}`,
+    inputs: params
+  })
 }

@@ -1,3 +1,4 @@
+import BadgeState from '../data/Badge/BadgeState'
 export default interface ButtonState {
   label:string
   size:string // 尺寸  string  medium / small / mini —
@@ -12,4 +13,5 @@ export default interface ButtonState {
   nativeType:string // 原生 type 属性 string button / submit / reset button
   value:any // action时会传的参数
   action:string // flow name
+  badge?: BadgeState; // 如果需要badge,添加badge对象即可
 }
