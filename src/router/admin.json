@@ -1,33 +1,45 @@
 {
   "case": {
-    "title": "case",
-    "path": "case",
-    "icon": "dashboard",
+      "title": "case", 
+      "path": "case", 
+      "icon": "dashboard", 
+      "children": [
+        {
+          "title": "dashboard", 
+          "path": "dashboard", 
+          "icon": "dashboard" 
+        },
+        {
+          "title": "formpage", 
+          "path": "formpage", 
+          "icon": "dashboard" 
+        },
+        {
+          "title": "tablepage", 
+          "path": "tablepage", 
+          "icon": "dashboard" 
+        },
+        {
+          "title": "exampleone",
+          "path": "exampleone",
+          "icon": "dashboard"
+        },
+        {
+          "title": "testpage",
+          "path": "testpage",
+          "icon": "dashboard"
+        }
+      ]
+  },
+  "page": {
+    "title": "page", 
+    "path": "page", 
+    "icon": "dashboard", 
     "children": [
       {
-        "title": "dashboard",
-        "path": "dashboard",
-        "icon": "dashboard"
-      },
-      {
-        "title": "formpage",
-        "path": "formpage",
-        "icon": "dashboard"
-      },
-      {
-        "title": "tablepage",
-        "path": "tablepage",
-        "icon": "dashboard"
-      },
-      {
-        "title": "exampleone",
-        "path": "exampleone",
-        "icon": "dashboard"
-      },
-      {
-        "title": "testpage",
-        "path": "testpage",
-        "icon": "dashboard"
+        "title": "user", 
+        "path": "user", 
+        "icon": "dashboard" 
       }
     ]
   }
