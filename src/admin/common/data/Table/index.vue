@@ -10,6 +10,17 @@
     :highlight-current-row="state.highlightCurrentRow"
     @selection-change="handleSelectionChange"
   >
+    <el-table-column
+      v-if="state.type.indexOf('selection') !== -1"
+      type="selection"
+      width="50"
+    />
+    <el-table-column
+      v-if="state.type.indexOf('index') !== -1"
+      type="index"
+      width="30"
+      label="#"
+    />
     <TableColumn
       v-for="child in state.columns"
       :key="state.columns.indexOf(child)"
