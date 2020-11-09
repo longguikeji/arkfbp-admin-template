@@ -54,7 +54,7 @@ export default class extends Vue {
       const page = file.split('.')[0]
       if (window.location.href.includes(page)) {
         const viewconfig: any = require(`@/config/json/${file}`) // eslint-disable-line
-        const serveconfig: any = require('@/config/temp/user.json') // eslint-disable-line
+        const serveconfig: any = require('@/config/temp/demo.json') // eslint-disable-line
 
         const c: any = new Config(viewconfig, serveconfig, page)
         await AdminModule.setAdmin(c.config)
