@@ -1,6 +1,11 @@
 <template>
   <el-form
-    :inline="state.inline"
+    :inline="state.inline || false"
+    :size="state.size"
+    :disabled="state.disabled"
+    :label-suffix="state.labelSuffix"
+    :label-position="state.labelPosition"
+    :label-width="state.labelWidth"
   >
     <template v-if="state.inline">
       <template v-for="item in state.items">

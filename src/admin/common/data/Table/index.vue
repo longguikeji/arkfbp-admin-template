@@ -2,7 +2,25 @@
   <el-table
     :data="tableData"
     :height="'70vh'"
+    :stripe="state.stripe || true"
+    :border="state.border"
+    :size="state.size"
+    :fit="state.fit"
+    :show-header="state.showHeader"
+    :highlight-current-row="state.highlightCurrentRow"
+    @selection-change="handleSelectionChange"
   >
+    <el-table-column
+      v-if="state.type.indexOf('selection') !== -1"
+      type="selection"
+      width="50"
+    />
+    <el-table-column
+      v-if="state.type.indexOf('index') !== -1"
+      type="index"
+      width="30"
+      label="#"
+    />
     <TableColumn
       v-for="child in state.columns"
       :key="state.columns.indexOf(child)"
@@ -23,11 +41,14 @@ import TableColumn from './TableColumn/index.vue'
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:TableState;
+  @Prop({ required: true }) state!: TableState;
 
   get tableData() {
-    // console.log(this.state.data)
     return this.state.data
+  }
+
+  handleSelectionChange(val: Array<any>) {
+    // console.log(val)
   }
 }
 </script>

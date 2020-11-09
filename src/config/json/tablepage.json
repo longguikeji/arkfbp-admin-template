@@ -130,41 +130,26 @@
     ],
     "data": [
       {
-        "date": {
-          "value": "2016-05-07"
-        },
+        "date": "2016-05-07",
         "name": "王小虎",
-        "progress": {
-          "color": "#1aa",
-          "percentage": 30
-        },
+        "progress": 30,
         "province": "上海",
         "city": "普陀区",
         "address": "上海市普陀区金沙江路 1518 弄",
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
+        "date": "2016-05-06",
         "name": "王小虎",
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "progress": 50,
         "province": "上海",
         "city": "普陀区",
         "address": "上海市普陀区金沙江路 1518 弄",
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "date": "2016-05-10",
+        "progress": 40,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -172,13 +157,8 @@
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 30
-        },
+        "date": "2016-05-11",
+        "progress": 60,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -186,13 +166,8 @@
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "date": "2016-05-12",
+        "progress": 10,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -200,13 +175,8 @@
         "zip": 200335
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 20
-        },
+        "date": "2016-05-13",
+        "progress": 20,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -214,13 +184,8 @@
         "zip": 200333
       },
       {
-        "date": {
-          "value": "2016-05-06"
-        },
-        "progress": {
-          "color": "#1aa",
-          "percentage": 50
-        },
+        "date": "2016-05-14",
+        "progress": 50,
         "name": "王小虎",
         "province": "上海",
         "city": "普陀区",
@@ -228,121 +193,6 @@
         "zip": 200333
       }
     ]
-  },
-  "tag": [
-    {
-      "type": "success",
-      "closable": true,
-      "content": "one tag",
-      "hit": true,
-      "size": "small",
-      "effect": "light"
-    },
-    {
-      "type": "success",
-      "closable": true,
-      "content": "one tag",
-      "hit": true,
-      "size": "small",
-      "effect": "light",
-      "newTagType": "success"
-    },
-    {
-      "type": "info",
-      "closable": true,
-      "content": "one tag",
-      "hit": true,
-      "size": "small",
-      "effect": "light",
-      "newTagType": "info"
-    },
-    {
-      "type": "info",
-      "closable": true,
-      "content": "one tag",
-      "hit": true,
-      "size": "small",
-      "effect": "light"
-    },
-    {
-      "type": "info",
-      "closable": true,
-      "content": "one tag",
-      "hit": true,
-      "size": "small",
-      "effect": "light",
-      "newTagType": "info"
-    }
-  ],
-  "tree": {
-    "data": [
-      {
-        "label": "一级 1",
-        "children": [
-          {
-            "label": "二级 1-1",
-            "children": [
-              {
-                "label": "三级 1-1-1"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "一级 2",
-        "children": [
-          {
-            "label": "二级 2-1",
-            "children": [
-              {
-                "label": "三级 2-1-1"
-              }
-            ]
-          },
-          {
-            "label": "二级 2-2",
-            "children": [
-              {
-                "label": "三级 2-2-1"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "一级 3",
-        "children": [
-          {
-            "label": "二级 3-1",
-            "children": [
-              {
-                "label": "三级 3-1-1"
-              }
-            ]
-          },
-          {
-            "label": "二级 3-2",
-            "children": [
-              {
-                "label": "三级 3-2-1"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "props": {
-      "children": "children",
-      "label": "label"
-    },
-    "showCheckbox": true
-  },
-  "alert": {
-    "title": "This is one alert infomation",
-    "center": true,
-    "type": "success",
-    "slot": "消息内容展示区"
   },
   "dialogs": {
     "create": {

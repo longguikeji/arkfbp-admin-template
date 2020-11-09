@@ -1,14 +1,11 @@
 <template>
   <el-table-column
-    :type="state.type"
     :index="state.index"
     :column-key="state.columnKey"
     :label="state.label"
     :prop="state.prop"
   >
-    <template
-      v-if="state.children"
-    >
+    <template v-if="state.children">
       <TableColumn
         v-for="child in state.children"
         :key="state.children.indexOf(child)"
@@ -31,6 +28,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import { type } from 'os'
+import admin from '@/router/modules/admin'
 
 @Component({
   name: 'TableColumn',
@@ -39,16 +37,23 @@ import { type } from 'os'
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:TableColumnState;
+  @Prop({ required: true }) state!: TableColumnState;
 
-  getComponentState(scope:any):object {
-    if (!this.state.scope.state) {
-      this.state.scope.state.value = {}
-    }
-    // this.state.scope.state.value = scope.row[this.state.prop]
-    const adminState = {
-      state: scope.row[this.state.prop],
-      type: this.state.scope.type
+  getComponentState(scope: any): object {
+    let adminState: Object
+    if (this.state.scope instanceof Array) {
+      adminState = {
+        type: 'ButtonArray',
+        state: this.state.scope
+      }
+    } else {
+      adminState = {
+        state: {
+          ...this.state.scope.state,
+          value: scope.row[this.state.prop]
+        },
+        type: this.state.scope.type
+      }
     }
     return adminState
   }

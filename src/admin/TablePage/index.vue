@@ -5,15 +5,11 @@
     </div>
     <Table :state="state.table" />
     <Pagination :state="state.pagination" />
-    <!-- <TagComponent :state="state.tag" /> -->
-    <Tag :state="state.tag" />
     <Dialog
       v-for="dialogName in Object.keys(state.dialogs)"
       :key="dialogName"
       :state="state.dialogs[dialogName]"
     />
-    <Tree :state="state.tree" />
-    <Alert :state="state.alert" />
   </Card>
 </template>
 
@@ -25,11 +21,7 @@ import Table from '@/admin/common/data/Table/index.vue'
 import Button from '@/admin/common/Button/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
-import Tag from '@/admin/common/data/Tag/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
-import Tree from '@/admin/common/data/Tree/index.vue'
-import Alert from '@/admin/common/Notice/Alert/index.vue'
-
 @Component({
   name: 'FromPage',
   components: {
@@ -38,17 +30,16 @@ import Alert from '@/admin/common/Notice/Alert/index.vue'
     Button,
     Table,
     Pagination,
-    Tag,
-    Dialog,
-    Tree,
-    Alert
+    Dialog
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:TablePageState;
+  @Prop({ required: true }) state!: TablePageState;
 
   getFilterFormState() {
-    if (this.state.filter.form) { this.state.filter.form.inline = true }
+    if (this.state.filter.form) {
+      this.state.filter.form.inline = true
+    }
     return this.state.filter.form
   }
 }

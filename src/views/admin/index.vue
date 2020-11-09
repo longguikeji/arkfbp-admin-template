@@ -12,6 +12,15 @@
       v-if="state.type === 'table'"
       :state="state"
     />
+    <FormPage
+      v-if="state.type === 'exampleone'"
+      :state="state"
+    />
+
+    <TablePage
+      v-if="state.type === 'testpage'"
+      :state="state"
+    />
   </div>
 </template>
 

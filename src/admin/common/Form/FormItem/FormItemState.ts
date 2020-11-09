@@ -2,4 +2,6 @@ import AdminComponentState from '@/admin/common/AdminComponent/AdminComponentSta
 
 export default interface FormItemState extends AdminComponentState {
     label?:string
+    labelWidth?: string
+    size?: string
 }

@@ -4,18 +4,25 @@
       <el-radio
         v-for="(item, index) in state.radio"
         :key="index"
-        :label="item"
+        :label="item.label"
+        :value="item.value"
+        :disabled="item.disabled"
+        :border="item.border"
+        :size="item.size"
+        :name="item.name"
       >
-        {{ item }}
+        {{ item.content }}
       </el-radio>
     </template>
     <template v-else-if="state.radioButton">
       <el-radio-button
         v-for="(item, index) in state.radioButton"
         :key="index"
-        :label="item"
+        :label="item.label"
+        :value="item.value"
+        :disabled="item.disabled"
       >
-        {{ item }}
+        {{ item.content }}
       </el-radio-button>
     </template>
   </el-radio-group>

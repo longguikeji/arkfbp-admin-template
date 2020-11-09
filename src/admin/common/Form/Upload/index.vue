@@ -16,17 +16,11 @@
         <!-- image -->
         <div v-else-if="state.type === 'image'">
           <el-image
-            class="uploadImage"
+            style="height: 50px; width: 50px; margin-right: 10px"
             :src="valueBind"
             fit="scale-down"
             :preview-src-list="[valueBind]"
           />
-          <span
-            v-for="c in state.crops"
-            :key="c"
-          >
-            {{ meta[c].title + " : " + data[c] }}
-          </span>
         </div>
         <!-- XlsxFile -->
         <div v-else-if="state.type === 'xlsx'">
@@ -80,19 +74,19 @@
               flex: 'none'
             }"
           >
-            <vue-cropper
+            <VueCropper
               ref="cropper"
-              :img="imageUrl"
-              :output-type="state.upload.outputType || 'png'"
-              :can-scale="state.upload.canScale"
-              :can-move="state.upload.canMove"
-              :auto-crop="state.upload.autoCrop"
-              :auto-crop-width="state.upload.width || 200"
-              :auto-crop-height="state.upload.height || 200"
-              :fixed="state.upload.fixed "
+              :src="fileUrl"
+              :output-type="'png'"
+              :can-scale="false"
+              :can-move="false"
+              :auto-crop="true"
+              :auto-crop-width="200"
+              :auto-crop-height="200"
+              :fixed="false"
               :fixed-number="state.upload.fixedNumber"
               :fixed-box="state.upload.fixedBox"
-              :center-box="state.upload.centerBox"
+              :center-box="true"
               @realTime="realTime"
             />
           </div>
@@ -140,6 +134,7 @@
               </td>
             </tr>
           </table>
+
           <el-pagination
             class="excel-display-pager"
             :current-page="currentPage"
@@ -172,7 +167,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import UploadState from './UploadState'
 import { runAction } from '@/arkfbp'
-import { vueCropper } from 'vue-cropper'
+import { VueCropper } from 'vue-cropper'
 import XLSX from 'xlsx'
 import processTableData from '@/utils/readexcel'
 @Component({
@@ -214,33 +209,32 @@ export default class extends Vue {
     }
     this.fileUrl = URL.createObjectURL(file.raw)
     this.dialogVisible = true
-
     if (this.state.type === 'image') {
       const imageUrl = URL.createObjectURL(file.raw)
       const img = new Image()
       img.src = imageUrl
-
-    //   img.onload = function() {
-    //     const maxL = 800;
-    //     let maxl = img.height;
-    //     if (img.width > img.height) {
-    //       maxl = img.width;
-    //     }
-    //     if (maxl > maxL) {
-    //       vm.bili = maxL / maxl;
-    //     }
-    //     vm.$set(vm.imgInfo, "width", Math.round(img.width * vm.bili));
-    //     vm.$set(vm.imgInfo, "height", Math.round(img.height * vm.bili));
-    //     vm.imageUrl = imageUrl;
-    //     vm.dialogVisible = true;
-    //   };
-    } else if (this.state.type === 'xlsx') {
+      const vm = this
+      img.onload = function() {
+        const maxL = 800
+        let maxlength = img.height
+        if (img.width > img.height) {
+          maxlength = img.width
+        }
+        if (maxlength > maxL) {
+          vm.bili = maxL / maxlength
+        }
+        vm.$set(vm.imgInfo, 'width', Math.round(img.width * vm.bili))
+        vm.$set(vm.imgInfo, 'height', Math.round(img.height * vm.bili))
+        vm.imageUrl = imageUrl
+        vm.dialogVisible = true
+      }
+    }
+    if (this.state.type === 'xlsx') {
       this.fileName = file.name
       // 读取Excel文件内容并显示
       const f = file.raw
       const reader = new FileReader()
       let jsonobject
-      // const thisTable = this;
       reader.onload = (e: any) => {
         const data = e.target.result
         const workbook = XLSX.read(data, {
@@ -258,9 +252,10 @@ export default class extends Vue {
   }
 
   submitUpload() {
+    // 上传文件
     // const file: any = this.fileList[0].raw;
     // runAction({
-    //   flow: "@/flows/qiniu/upload",
+    //   flow: "@/flows/qiniu/upload",  //qiniu云存储方法
     //   inputs: {
     //     file: file,
     //     path: "",

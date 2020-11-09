@@ -1,3 +1,5 @@
+import CheckBoxState from "./CheckBoxState";
+import CheckButtonState from "./CheckButtonState";
 export default interface CheckBoxGroupState {
   value: string | number | boolean;
   disabled: boolean; //是否禁用
@@ -6,6 +8,6 @@ export default interface CheckBoxGroupState {
   max: number; //可被勾选的 checkbox 的最大数量
   textColor: string; //按钮形式的 Checkbox 激活时的文本颜色
   fill: string; //按钮形式的 Checkbox 激活时的文本颜色
-  checkBox: Array<any>;
-  checkButton: Array<any>;
+  checkBox: CheckBoxState;
+  checkButton: CheckButtonState;
 }
