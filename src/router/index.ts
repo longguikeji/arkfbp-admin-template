@@ -9,6 +9,7 @@ import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
 import tableRouter from './modules/table'
 import nestedRouter from './modules/nested'
+import adminRouter from './modules/admin'
 
 Vue.use(Router)
 
@@ -52,45 +53,6 @@ export const constantRoutes: RouteConfig[] = [
       }
     ]
   },
-
-  {
-    path: '/case',
-    component: Layout,
-    redirect: '/case/dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard-case.vue'),
-        name: 'Dashboard',
-        meta: {
-          title: 'dashboard',
-          icon: 'dashboard',
-          affix: true
-        }
-      },
-      {
-        path: 'formpage',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/formpage-case.vue'),
-        name: 'formpage',
-        meta: {
-          title: 'formpage',
-          icon: 'dashboard',
-          affix: true
-        }
-      },
-      {
-        path: 'tablepage',
-        component: () => import(/* webpackChunkName: "dashboard" */ '@/views/tablepage-case.vue'),
-        name: 'tablepage',
-        meta: {
-          title: 'tablepage',
-          icon: 'dashboard',
-          affix: true
-        }
-      }
-    ]
-  },
-
   {
     path: '/login',
     component: () => import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
@@ -244,6 +206,7 @@ export const asyncRoutes: RouteConfig[] = [
   chartsRouter,
   nestedRouter,
   tableRouter,
+  ...adminRouter,
   {
     path: '/example',
     component: Layout,
