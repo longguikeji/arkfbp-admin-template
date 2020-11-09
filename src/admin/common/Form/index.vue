@@ -69,6 +69,7 @@ export default class extends Vue {
 .row {
   display: flex;
   justify-content: flex-start;
+
 }
 .col {
   margin: 12px;

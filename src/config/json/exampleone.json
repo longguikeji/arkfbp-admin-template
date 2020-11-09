@@ -1,5 +1,5 @@
 {
-  "type": "exampleone",
+  "type": "form",
   "title": "ExampleOne",
   "form": {
     "inline": false,
@@ -181,32 +181,16 @@
       }
     ]
   },
-
-  "timeline": {
-    "label": "活动时间线",
-    "reverse": false,
-    "data": [
-      {
-        "content": "进场",
-        "timestamp": "2020-04-12 20:46",
-        "size": "large",
-        "type": "primary",
-        "icon": "el-icon-more"
-      },
-      {
-        "content": "开始",
-        "timestamp": "2020-04-03 20:46",
-        "color": "#0bbd87"
-      },
-      {
-        "content": "祝词",
-        "timestamp": "2020-04-03 20:46",
-        "size": "large"
-      },
-      {
-        "content": "结束",
-        "timestamp": "2020-04-03 20:46"
-      }
-    ]
-  }
+  "buttons": [
+    {
+      "label": "取消",
+      "action": "cancle"
+    },
+    {
+      "label": "保存",
+      "action": "save",
+      "type": "primary"
+    }
+  
+  ]
 }

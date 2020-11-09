@@ -12,15 +12,6 @@
       v-if="state.type === 'table'"
       :state="state"
     />
-    <ExampleOne
-      v-if="state.type === 'exampleone'"
-      :state="state"
-    />
-
-    <TestPage
-      v-if="state.type === 'testpage'"
-      :state="state"
-    />
   </div>
 </template>
 
@@ -31,18 +22,13 @@ import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
-import ExampleOne from '@/admin/TestFiles/ExampleOne.vue'
-
-import TestPage from '@/admin/TestFiles/testpage.vue'
 
 @Component({
   name: 'Admin',
   components: {
     DashboardPage,
     FormPage,
-    TablePage,
-    ExampleOne,
-    TestPage
+    TablePage
   }
 })
 export default class extends Vue {
