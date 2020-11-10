@@ -17,24 +17,24 @@ export class Node2 extends FunctionNode {
 
     const key =
       state.path + new Date().getTime() + "." + state.file.name.split(".")[1];
-    // const observable = qiniu.upload(
-    //   // data.dist,
-    //   state.file,
-    //   key,
-    //   uptoken,
-    //   {
-    //     useCdnDomain: true,
-    //     uphost: uphost
-    //   },
-    //   {
-    //     fname: key
-    //   }
-    // );
+    const observable = qiniu.upload(
+      // data.dist,
+      state.file,
+      key,
+      uptoken,
+      {
+        fname: key
+      },
+      {
+        useCdnDomain: true,
+        uphost: uphost
+      }
+    );
 
-    // const subscription = observable.subscribe({
-    //   complete(res) {
-    //     state.complete(uphost + key);
-    //   }
-    // });
+    const subscription = observable.subscribe({
+      complete(res) {
+        state.complete(uphost + key);
+      }
+    });
   }
 }
