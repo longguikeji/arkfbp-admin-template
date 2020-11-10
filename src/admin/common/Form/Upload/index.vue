@@ -170,6 +170,8 @@ import { runAction } from '@/arkfbp'
 import { VueCropper } from 'vue-cropper'
 import XLSX from 'xlsx'
 import processTableData from '@/utils/readexcel'
+import { log } from 'console'
+
 @Component({
   name: 'Upload',
   components: {}
@@ -177,7 +179,7 @@ import processTableData from '@/utils/readexcel'
 export default class extends Vue {
   btnText = '上传文件';
   dialogVisible = false;
-  fileList = [];
+  fileList = [] as any[];
   fileUrl = '';
   file = '';
   valueBind = '';
@@ -253,13 +255,16 @@ export default class extends Vue {
 
   submitUpload() {
     // 上传文件
-    // const file: any = this.fileList[0].raw;
+    const file = this.fileList[0].raw
+    console.log('上传文件', file)
     // runAction({
-    //   flow: "@/flows/qiniu/upload",  //qiniu云存储方法
+    //   flow: "@/flows/qiniu/upload", //qiniu云存储方法
     //   inputs: {
-    //     file: file,
-    //     path: "",
-    //     complete: this.uploadComplete
+    //
+    //       file: file,
+    //       path: "",
+    //       complete: this.uploadComplete
+    //
     //   }
     // });
   }
