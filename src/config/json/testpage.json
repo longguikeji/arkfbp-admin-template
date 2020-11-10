@@ -1,4 +1,9 @@
 {
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
   "type": "testpage",
   "title": "testpage",
   "buttons": [
@@ -62,21 +67,18 @@
           "state": {
             "label": "搜索",
             "type": "primary",
-            "action": "filter"
+            "action": "toFilter"
           }
         }
       ]
     }
   },
   "table": {
+    "type": [
+      "selection",
+      "index"
+    ],
     "columns": [
-      {
-        "type": "selection"
-      },
-      {
-        "type": "index",
-        "label": "#"
-      },
       {
         "label": "名称",
         "prop": "name"
@@ -106,9 +108,9 @@
         "prop": "created"
       },
       {
-        "type": "action",
         "label": "操作",
-        "actions": [
+        "prop": "action",
+        "scope": [
           {
             "label": "编辑",
             "type": "primary"
@@ -124,7 +126,7 @@
       {
         "name": "文化",
         "id": "001",
-        "bgc": "@/assets/404-images/404.png",
+        "bgc": "",
         "price": "1",
         "kinds": "人文",
         "created": "2015-01-01"
@@ -132,7 +134,7 @@
       {
         "name": "科技",
         "id": "002",
-        "bgc": "@/assets/404-images/404.png",
+        "bgc": "",
         "price": "1",
         "kinds": "科技",
         "created": "2016-01-01"
@@ -140,7 +142,7 @@
       {
         "name": "艺术",
         "id": "003",
-        "bgc": "@/assets/404-images/404.png",
+        "bgc": "",
         "price": "1",
         "kinds": "艺术",
         "created": "2017-01-01"
@@ -154,7 +156,58 @@
     "background": "",
     "action": "retrieve"
   },
-  "actions": {},
-  "dialogs": {},
-  "apis": {}
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        "username",
+        "password"
+      ],
+      "values": {},
+      "action": "create",
+      "visible": false,
+      "attributes": {}
+    }
+  },
+  "actions": {
+    "meta": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "/priceinfo/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ]
+    },
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ]
+    },
+    "toFilter": {
+      "flows": [
+        {
+          "name": "api",
+          "type": "api",
+          "method": "GET",
+          "request": {
+            "": ""
+          },
+          "client_config": {
+
+          }
+        }
+      ]
+    }
+  }
 }

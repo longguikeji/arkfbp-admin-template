@@ -14,4 +14,5 @@ export default interface ButtonState {
   value:any // action时会传的参数
   action:string // flow name
   badge?: BadgeState; // 如果需要badge,添加badge对象即可
+  data: any //
 }

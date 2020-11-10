@@ -23,11 +23,6 @@
         "title": "exampleone",
         "path": "exampleone",
         "icon": "dashboard"
-      },
-      {
-        "title": "testpage",
-        "path": "testpage",
-        "icon": "dashboard"
       }
     ]
   },
@@ -39,6 +34,18 @@
       {
         "title": "user", 
         "path": "user", 
+        "icon": "dashboard" 
+      }
+    ]
+  },
+  "testpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "testpage", 
+        "path": "testpage", 
         "icon": "dashboard" 
       }
     ]
