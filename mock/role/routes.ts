@@ -33,7 +33,7 @@ export const constantRoutes = [
     meta: { hidden: true }
   },
   {
-    path: '',
+    path: '/',
     component: 'Layout',
     redirect: 'dashboard',
     children: [
