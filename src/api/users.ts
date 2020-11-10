@@ -2,14 +2,14 @@ import request from '@/utils/request'
 
 export const getUsers = (params: any) =>
   request({
-    url: '/users',
+    url: '/api/users',
     method: 'get',
     params
   })
 
 export const getUserInfo = (data: any) =>
   request({
-    url: '/users/info',
+    url: '/api/users/info',
     method: 'post',
     data
   })
@@ -35,7 +35,7 @@ export const deleteUser = (username: string) =>
 
 export const login = (data: any) =>
   request({
-    url: '/users/login',
+    url: '/api/users/login',
     method: 'post',
     data
   })
