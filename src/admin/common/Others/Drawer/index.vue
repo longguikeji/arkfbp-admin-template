@@ -23,7 +23,7 @@
       :with-header="state.withHeader"
       :before-close="beforeClose"
     >
-      <slot>to be continued</slot>
+      <slot />
     </el-drawer>
   </div>
 </template>

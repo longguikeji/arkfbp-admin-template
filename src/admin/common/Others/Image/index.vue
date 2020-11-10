@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-image
-      style="width: 100px; height: 100px"
-      :src="state.src"
+      style="width: 50px; height: 50px"
+      :src="state.value"
       :fit="state.fit"
       :alt="state.alt"
       :referrer-policy="state.referrerPolicy"

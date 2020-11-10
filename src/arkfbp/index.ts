@@ -9,8 +9,8 @@ function getUrl(url: string, data: any) {
     return url
   }
 
-  const property = url.slice(url.indexOf('{') + 1, url.lastIndexOf('}'))
-  return url.slice(0, url.indexOf('{')) + data[property] + url.slice(url.indexOf('}') + 1)
+  const property = url.slice(url.indexOf('<') + 1, url.lastIndexOf('>'))
+  return url.slice(0, url.indexOf('<')) + data[property] + url.slice(url.indexOf('>') + 1)
 }
 
 export function runFlowByFile(filename: string, inputs: FlowInput) {

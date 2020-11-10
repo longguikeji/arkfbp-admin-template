@@ -1,5 +1,5 @@
 export default interface ImageState {
-  src?: string; //	图片源，同原生	string	—	-
+  value?: string; //	图片源，同原生	string	—	-
   fit: string; //	确定图片如何适应容器框，同原生 object-fit	string	fill / contain / cover / none / scale-down	-
   alt: string; //	原生 alt	string	-	-
   referrerPolicy: string; //	原生 referrerPolicy	string	-	-

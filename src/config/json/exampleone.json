@@ -181,7 +181,7 @@
       }
     ]
   },
-  "buttons": [
+  "button": [
     {
       "label": "取消",
       "action": "cancle"
