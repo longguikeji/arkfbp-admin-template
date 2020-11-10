@@ -11,12 +11,12 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column
-      v-if="state.type.indexOf('selection') !== -1"
+      v-if="state.type && state.type.indexOf('selection') !== -1"
       type="selection"
       width="50"
     />
     <el-table-column
-      v-if="state.type.indexOf('index') !== -1"
+      v-if="state.type && state.type.indexOf('index') !== -1"
       type="index"
       width="30"
       label="#"
