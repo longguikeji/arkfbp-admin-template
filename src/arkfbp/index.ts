@@ -1,5 +1,6 @@
 import { runWorkflowByClass } from 'arkfbp/lib/flow'
 import { Loading } from 'element-ui'
+import { url } from 'inspector'
 import { FlowInput } from './flow'
 
 const flows = require.context('@/flows', true, /\.ts$/)
@@ -24,6 +25,7 @@ export async function runAction(action: {flow: string, inputs: FlowInput}) {
     const loading = Loading.service({ fullscreen: true })
     const outputs = await runFlowByFile(action.flow, action.inputs)
     loading.close()
+
     return outputs
   }
 }
@@ -61,13 +63,25 @@ export async function runFlow(state: any, flow: any, data: any) {
         params[key] = temp
       })
     }
-
-    await runAction({
+    console.log('flow url:', flow.url)
+    console.log('url:', getUrl(flow.url, data))
+    const res = await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
         url: `api/admin/${getUrl(flow.url, data)}`,
         method: flow.method,
         params: params,
+        client: state,
+        clientServer: flow.client_config
+      }
+    })
+    return
+  }
+
+  if (flow.type === 'filter') {
+    await runAction({
+      flow: `@/flows/${flow.name}`,
+      inputs: {
         client: state,
         clientServer: flow.client_config
       }

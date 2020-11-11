@@ -33,7 +33,11 @@ export default class extends Vue {
 
   private async clickHandler() {
     console.log('action!!!')
-    await AdminModule.adminAction({ action: this.state.action, data: this.state })
+    console.log('data ', this.state)
+    await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
+    if (this.state.close && this.state.close === true) {
+      this.$emit('closeDialog', false)
+    }
   }
 }
 </script>

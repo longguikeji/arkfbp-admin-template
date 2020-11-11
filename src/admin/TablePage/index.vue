@@ -37,10 +37,10 @@ export default class extends Vue {
   @Prop({ required: true }) state!: TablePageState;
 
   getFilterFormState() {
-    if (this.state.filter.form) {
-      this.state.filter.form.inline = true
+    if (this.state.filter) {
+      this.state.filter.inline = true
     }
-    return this.state.filter.form
+    return this.state.filter
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <el-form-item
     class="form-item"
     :label-width="state.labelWidth"
-    :size="state.size"
+    :size="state.size || 'small'"
   >
     <span
       v-if="state.label"
@@ -31,4 +31,7 @@ export default class extends Vue {
 .form-item{
   text-align: center;
 }
+// ::v-deep .el-form-item__content {
+//   display: inline-block !important;
+// }
 </style>

@@ -57,5 +57,22 @@ export default class extends Vue {
     }
     return adminState
   }
+
+  // getButtonArrayState(btnArrState: Array<any>, cloumnData: any) {
+  //   let btnState: Array<any> = []
+  //   const rowData = JSON.parse(JSON.stringify(cloumnData))
+  //   console.log('rowData', rowData)
+  //   btnArrState.forEach((itemState: any) => {
+  //     if (itemState.data) {
+  //       Object.keys(itemState.data).forEach((item: any) => {
+  //         itemState.data[item] = rowData[item]
+  //         console.log(itemState)
+  //       })
+  //     } else {
+  //       btnState.push(itemState)
+  //     }
+  //   })
+  //   return btnState
+  // }
 }
 </script>
