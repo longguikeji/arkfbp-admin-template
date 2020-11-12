@@ -152,24 +152,21 @@
       {
         "label": "操作",
         "prop": "action",
-        "scope": [
-          {
-            "label": "编辑",
-            "type": "primary",
-            "action": "showUpdateDialog",
-            "data": {
-              "id": 25
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
             }
-          },
-          {
-            "label": "删除",
-            "type": "danger",
-            "action": "delete",
-            "data": {
-              "id": 25
-            }
-          }
-        ]
+          ]
+        }
       }
     ],
     "data": []
@@ -426,7 +423,8 @@
           "url": "/priceinfo/",
           "method": "GET",
           "client_config": {
-            "table.data": "data.items"
+            "table.data": "data.items",
+            "pagination.total": "data.total"
           }
         }
       ]
@@ -445,44 +443,20 @@
     "toFilter": {
       "flows": [
         {
-          "name": "filter",
-          "type": "filter",
-          "method": "GET",
-          "url": "/priceinfo/",
-          "request": {
-            "page": "pagination.currentPage",
-            "page_size": "pagination.pageCount",
-            "param_name": "filter.items",
-            "param_product_id": "",
-            "param_type": ""
-          },
-          "client_config": {
-            "table.data": "data.items"
-          }
-        }
-      ],
-      "next": [
-        {
-          "action": "doFilter"
-        }
-      ]
-    },
-    "doFilter": {
-      "flows": [
-        {
           "name": "retrieve",
           "type": "api",
           "method": "GET",
-          "url": "/priceinfo/",
+          "url": "priceinfo/",
           "request": {
             "page": "pagination.currentPage",
             "page_size": "pagination.pageCount",
-            "param_name": "filter.items",
-            "param_product_id": "",
-            "param_type": ""
+            "param_name": "filter.items[prop=name].state.value",
+            "param_product_id": "filter.items[prop=product_id].state.value",
+            "param_type": "filter.items[prop=type_choice].state.value"
           },
           "client_config": {
-            "table.data": "data.items"
+            "table.data": "data.items",
+            "pagination.total": "data.total"
           }
         }
       ]
@@ -501,9 +475,10 @@
           "type": "api",
           "method": "GET",
           "url": "/priceinfo/<id>/edit/",
-          "client_config": {
-            
-          }
+          "index": {
+            "id": ""
+          },
+          "client_config": {}
         }
       ]
     },
@@ -513,7 +488,7 @@
           "name": "update",
           "type": "api",
           "method": "POST",
-          "url": "/priceinfo/{+id}/edit/",
+          "url": "/priceinfo/<id>/edit/",
           "request": {
             "type_choice": "",
             "price": "",

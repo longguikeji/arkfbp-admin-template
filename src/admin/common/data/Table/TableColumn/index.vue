@@ -41,11 +41,18 @@ export default class extends Vue {
 
   getComponentState(scope: any): object {
     let adminState: Object
-    if (this.state.scope instanceof Array) {
-      adminState = {
-        type: 'ButtonArray',
-        state: this.state.scope
-      }
+
+    if (this.state.scope.state instanceof Array) {
+      this.state.scope.state.forEach((item: any) => {
+        let tmpData = {}
+        tmpData = {
+          data: scope.row,
+          cloumn: this.state,
+          value: scope.row[this.state.prop]
+        }
+        Object.assign(item, tmpData)
+      })
+      adminState = this.state.scope
     } else {
       adminState = {
         state: {
@@ -57,22 +64,5 @@ export default class extends Vue {
     }
     return adminState
   }
-
-  // getButtonArrayState(btnArrState: Array<any>, cloumnData: any) {
-  //   let btnState: Array<any> = []
-  //   const rowData = JSON.parse(JSON.stringify(cloumnData))
-  //   console.log('rowData', rowData)
-  //   btnArrState.forEach((itemState: any) => {
-  //     if (itemState.data) {
-  //       Object.keys(itemState.data).forEach((item: any) => {
-  //         itemState.data[item] = rowData[item]
-  //         console.log(itemState)
-  //       })
-  //     } else {
-  //       btnState.push(itemState)
-  //     }
-  //   })
-  //   return btnState
-  // }
 }
 </script>

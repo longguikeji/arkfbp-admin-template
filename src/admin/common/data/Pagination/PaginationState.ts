@@ -20,4 +20,6 @@ export default interface PaginationState {
   actionCurrentChange:string
   actionPrevClick:string
   actionNextClick:string
+  action: string
+  data?: any
 }

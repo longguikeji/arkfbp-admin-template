@@ -151,20 +151,21 @@
       {
         "label": "操作",
         "prop": "action",
-        "scope": [
-          {
-            "label": "编辑",
-            "type": "primary",
-            "action": "showUpdateDialog",
-            "data": {
-              "id": 538
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
             }
-          },
-          {
-            "label": "删除",
-            "type": "danger"
-          }
-        ]
+          ]
+        }
       }
     ],
     "data": []
@@ -187,18 +188,8 @@
           "state": {
             "value": ""
           }
-        },
-        {
-          "type": "input",
-          "label": "题语(60字以内)",
-          "prop": "title",
-          "state": {
-            "type":"textarea",
-            "value": ""
-          }
         }
       ],
-      "values": {},
       "actions": [
         {
           "label": "确定",
@@ -212,17 +203,7 @@
     },
     "update": {
       "titles": "编辑",
-      "items": [
-        {
-          "type": "input",
-          "label": "标题",
-          "prop": "title",
-          "state": {
-            "value": ""
-          }
-        }
-      ],
-      "values": {},
+      "items": [{}],
       "actions": [
         {
           "label": "确定",
@@ -244,7 +225,8 @@
           "url": "speech/",
           "method": "GET",
           "client_config": {
-            "table.data": "data.items"
+            "table.data": "data.items",
+            "pagination.total": "data.total"
           }
         }
       ]
@@ -254,7 +236,6 @@
         {
           "name": "assign",
           "type": "assign",
-          "method": "GET",
           "client_config": {
             "dialogs.create.visible": true
           }
@@ -280,7 +261,8 @@
             "param_speechcategory": "filter.speechcategory"
           },
           "client_config": {
-            "table.data": "data.items"
+            "table.data": "data.items",
+            "pagination.total": "data.total"
           }
         }
       ]
@@ -299,6 +281,9 @@
           "type": "api",
           "method": "GET",
           "url": "speech/<id>/edit/",
+          "index": {
+            "id": ""
+          },
           "client_config": {}
         }
       ]
@@ -311,7 +296,11 @@
           "method": "POST",
           "url": "speech/<id>/edit/",
           "request": {
-            "title": ""
+            "type_choice": "",
+            "price": "",
+            "product_id": "",
+            "id": "",
+            "name": ""
           }
         }
       ]

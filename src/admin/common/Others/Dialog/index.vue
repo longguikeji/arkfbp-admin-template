@@ -4,33 +4,7 @@
     :visible.sync="state.visible"
     width="800px"
   >
-    <!-- <Form :state="state"/> -->
-
-    <el-form
-      label-width="130px"
-      :inline="false"
-    >
-      <template v-for="item in state.items">
-        <template v-if="(item instanceof Array)">
-          <template v-for="it in item">
-            <FormItem
-              :key="state.items.indexOf(item) +','+ item.indexOf(it)"
-              style="width:50%"
-              :state="item"
-              :data="state.values"
-            />
-          </template>
-        </template>
-        <template v-else>
-          <FormItem
-            :key="state.items.indexOf(item)"
-            style="width:50%"
-            :state="item"
-            :data="state.values"
-          />
-        </template>
-      </template>
-    </el-form>
+    <Form :state="state" />
     <span
       slot="footer"
       class="dialog-footer"
@@ -75,5 +49,4 @@ export default class extends Vue {
 .dialog__actions__button {
   display: inline-block !important;
 }
-
 </style>
