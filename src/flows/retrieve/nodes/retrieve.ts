@@ -9,9 +9,7 @@ export class Retrieve extends APITokenNode {
       state.client = this.inputs.client
       state.clientServer = this.inputs.clientServer
     })
-    
     const outputs = await super.run()
-   
     return outputs
   }
 }

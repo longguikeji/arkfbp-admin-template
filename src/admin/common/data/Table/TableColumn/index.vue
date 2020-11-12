@@ -43,16 +43,14 @@ export default class extends Vue {
     let adminState: Object
 
     if (this.state.scope.state instanceof Array) {
-      this.state.scope.state.forEach((item: any) => {
-        let tmpData = {}
-        tmpData = {
-          data: scope.row,
-          cloumn: this.state,
-          value: scope.row[this.state.prop]
-        }
-        Object.assign(item, tmpData)
+      let sstate: any = {}
+      sstate = JSON.parse(JSON.stringify(this.state.scope))
+      sstate.state.forEach((item: any) => {
+        item.data = scope.row
+        item.cloumn = this.state
+        item.value = scope.row[this.state.prop]
       })
-      adminState = this.state.scope
+      adminState = sstate
     } else {
       adminState = {
         state: {
@@ -62,6 +60,7 @@ export default class extends Vue {
         type: this.state.scope.type
       }
     }
+
     return adminState
   }
 }

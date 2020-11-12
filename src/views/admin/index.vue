@@ -21,6 +21,11 @@
       v-if="state.type === 'testpage'"
       :state="state"
     />
+
+    <TablePage
+      v-if="state.type === 'secondpage'"
+      :state="state"
+    />
   </div>
 </template>
 

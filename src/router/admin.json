@@ -49,5 +49,17 @@
         "icon": "dashboard" 
       }
     ]
+  },
+  "secondpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "secondpage", 
+        "path": "secondpage", 
+        "icon": "dashboard" 
+      }
+    ]
   }
 }

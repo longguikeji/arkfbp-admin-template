@@ -39,14 +39,13 @@ export default class extends Vue {
     }
   }
 
-  private currentSize = 20
-  private currentPage: number = this.state.currentPage
-
   private async handleSizeChange(currentSize: number) {
+    this.state.pageCount = currentSize
     await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
   }
 
   private async actionHandler(currentPage: number) {
+    this.state.currentPage = currentPage
     await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
   }
 }
