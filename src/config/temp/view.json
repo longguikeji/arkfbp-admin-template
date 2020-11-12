@@ -1,183 +1,202 @@
 {
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
   "type": "table",
   "title": "TablePage",
-  "buttons": "api.create",
+  "buttons": [
+    {
+      "label": "新建讲者",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
   "filter": {
     "inline": true,
+    "size": "mini",
     "items": [
       {
         "type": "Input",
-        "prop": "id"
+        "prop": "name"
       },
       {
         "type": "Input",
-        "label": "参数2",
-        "state": {
-          "value": ""
-        }
+        "prop": "is_valid"
       },
       {
         "type": "Button",
         "state": {
-          "label": "search",
+          "label": "搜索",
           "type": "primary",
-          "action": "showCreateDialog",
-          "badge": {
-            "value": 100,
-            "max": 200,
-            "isDot": false,
-            "hidden": false,
-            "type": "warning"
-          }
-        }
-      },
-      {
-        "type": "Button",
-        "state": {
-          "label": "check"
-        }
-      },
-      {
-        "type": "Avator",
-        "state": {
-          "icon": "el-icon-star-on",
-          "content": "one tag",
-          "fontSize": 12
+          "action": "toFilter"
         }
       }
     ]
-  },
-  "pagination": {
-    "currentPage": 5,
-    "pageCount": 20,
-    "total": 100,
-    "background": ""
   },
   "table": {
     "columns": [
       {
-        "label": "Date",
-        "prop": "date",
-        "scope": {
-          "type": "Input",
-          "state": {}
-        }
-      },
+        "prop": "ranking", 
+        "type": "link", 
+        "action": "showUpdateDialog"
+      }, 
       {
-        "label": "Progress",
-        "prop": "progress",
-        "scope": {
-          "type": "Progress",
-          "state": {}
-        }
-      },
+        "prop": "name", 
+        "type": "link", 
+        "action": "showUpdateDialog"
+      }, 
       {
-        "label": "Send Information",
-        "children": [
+        "prop": "avatar_url"
+      }, 
+      {
+        "prop": "periods"
+      }, 
+      {
+        "prop": "scene_type"
+      }, 
+      {
+        "prop": "speechcategory"
+      }, 
+      {
+        "prop": "intro", 
+        "width": 500
+      }, 
+      {
+        "type": "action", 
+        "title": "排序", 
+        "width": 100, 
+        "actions": [
           {
-            "label": "Name",
-            "prop": "name"
-          },
+            "icon": "el-icon-top", 
+            "type": "primary", 
+            "circle": true, 
+            "action": "upHandler"
+          }, 
           {
-            "label": "Address",
-            "children": [
-              {
-                "label": "Province",
-                "prop": "province"
-              },
-              {
-                "label": "Address",
-                "prop": "address"
-              },
-              {
-                "label": "Zip",
-                "prop": "zip"
-              }
-            ]
+            "icon": "el-icon-bottom", 
+            "type": "primary", 
+            "circle": true, 
+            "action": "downHandler"
+          }
+        ]
+      }, 
+      {
+        "key": "is_valid"
+      }, 
+      {
+        "type": "action", 
+        "width": 250, 
+        "title": "操作", 
+        "actions": [
+          {
+            "label": "编辑", 
+            "type": "primary", 
+            "action": "showUpdateDialog"
+          }, 
+          {
+            "label": "删除", 
+            "type": "danger", 
+            "action": "deleteItem"
+          }, 
+          {
+            "type": "switch", 
+            "prop": "is_valid", 
+            "labels": {
+              "0": "上线", 
+              "1": "下线"
+            }, 
+            "actions": {
+              "default": "switchStatus"
+            }
           }
         ]
       }
     ],
-    "data": [
-      {
-        "date": "2016-05-07",
-        "name": "王小虎",
-        "progress": 30,
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-06",
-        "name": "王小虎",
-        "progress": 50,
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-10",
-        "progress": 40,
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-11",
-        "progress": 60,
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-12",
-        "progress": 10,
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200335
-      },
-      {
-        "date": "2016-05-13",
-        "progress": 20,
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      },
-      {
-        "date": "2016-05-14",
-        "progress": 50,
-        "name": "王小虎",
-        "province": "上海",
-        "city": "普陀区",
-        "address": "上海市普陀区金沙江路 1518 弄",
-        "zip": 200333
-      }
-    ]
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 20,
+    "total": 0,
+    "background": "",
+    "action": "toFilter"
   },
   "dialogs": {
     "create": {
       "title": "新建",
       "items": [
-        "username",
-        "password"
+        "name", 
+        "avatar_url", 
+        "cover", 
+        "ranking", 
+        {
+          "type": "Select",
+          "prop": "speechcategory",
+          "option": []
+        },
+        "scene_type", 
+        "periods", 
+        "intro", 
+        "quotations", 
+        "describe"
       ],
-      "values": {},
-      "action": "create",
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
+    },
+    "update": {
+      "titles": "编辑",
+      "items": [
+        "name", 
+        "avatar_url", 
+        "cover", 
+        "ranking",  
+        {
+          "prop": "speechcategory",
+          "option": []
+        },
+        "scene_type", 
+        "periods", 
+        "intro", 
+        "quotations", 
+        "describe"
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "edit",
+          "close": true,
+          "type": "primary"
+        }
+      ],
       "visible": false,
       "attributes": {}
     }
   },
   "actions": {
+    "meta": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "category/drop/", 
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.speechcategory.options": "data.items"
+          }
+        }
+      ]
+    },
     "showCreateDialog": {
       "flows": [
         {
@@ -186,6 +205,112 @@
           "client_config": {
             "dialogs.create.visible": true
           }
+        }
+      ]
+    },
+    "toFilter": {
+      "flows": [
+        {
+          "name": "filter",
+          "type": "filter",
+          "method": "GET",
+          "url": "/priceinfo/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items",
+            "param_product_id": "",
+            "param_type": ""
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "doFilter"
+        }
+      ]
+    },
+    "doFilter": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items",
+            "param_product_id": "",
+            "param_type": ""
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/<id>/edit/",
+          "client_config": {
+            
+          }
+        }
+      ]
+    },
+    "edit": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "POST",
+          "url": "/priceinfo/<id>/edit/",
+          "request": {
+            "type_choice": "",
+            "price": "",
+            "product_id": "",
+            "id": "",
+            "name": ""
+          }
+        }
+      ]
+    },
+    "delete": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/<id>/delete/"
+        }
+      ]
+    },
+    "getPrice": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/drop/",
+          "request": {
+            "type_choice": ""
+          },
+          "client_config": {}
         }
       ]
     }

@@ -27,14 +27,14 @@
     ]
   },
   "page": {
-    "title": "page",
-    "path": "page",
-    "icon": "dashboard",
+    "title": "speaker", 
+    "path": "speaker", 
+    "icon": "dashboard", 
     "children": [
       {
-        "title": "user",
-        "path": "user",
-        "icon": "dashboard"
+        "title": "speaker", 
+        "path": "speaker", 
+        "icon": "dashboard" 
       }
     ]
   },

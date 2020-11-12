@@ -1,353 +1,552 @@
 {
-  "user": {
-    "name": "user",
-    "type": "table",
-    "model": "arkid_meta.models.user.User",
-    "meta": {
-      "id": {
-        "title": "ID",
-        "type": {
-          "integer": {
-            "read_only": true
-          }
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
+  "type": "testpage",
+  "title": "testpage",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small",
+      "data": {}
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "名称",
+        "prop": "name",
+        "state": {
+          "value": ""
         }
       },
-      "nickname": {
-        "title": "昵称",
-        "type": {
-          "string": {
-            "required": true
-          }
+      {
+        "type": "Input",
+        "label": "产品ID号",
+        "prop": "product_id",
+        "state": {
+          "value": ""
         }
       },
-      "username": {
-        "title": "账号名",
-        "type": {
-          "string": {
-            "required": true,
-            "min_length": 10,
-            "max_length": 50
-          }
+      {
+        "type": "Select",
+        "label": "选择类型",
+        "prop": "type_choice",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "单课当前价格"
+            },
+            {
+              "value": 1,
+              "label": "年费当前价格"
+            },
+            {
+              "value": 2,
+              "label": "单课原始价格"
+            },
+            {
+              "value": 3,
+              "label": "单课邀请码价格"
+            },
+            {
+              "value": 4,
+              "label": "单课优惠码价格"
+            },
+            {
+              "value": 5,
+              "label": "单课邀请码和优惠码价格"
+            },
+            {
+              "value": 6,
+              "label": "实物原始价格"
+            },
+            {
+              "value": 7,
+              "label": "实物当前价格"
+            },
+            {
+              "value": 8,
+              "label": "实物邀请码价格"
+            },
+            {
+              "value": 9,
+              "label": "实物优惠码价格"
+            },
+            {
+              "value": 10,
+              "label": "实物邀请码和优惠码价格"
+            },
+            {
+              "value": 11,
+              "label": "实物课程原始价格"
+            },
+            {
+              "value": 12,
+              "label": "实物课程当前价格"
+            },
+            {
+              "value": 13,
+              "label": "实物课程邀请码价格"
+            },
+            {
+              "value": 14,
+              "label": "实物课程优惠码价格"
+            },
+            {
+              "value": 15,
+              "label": "实物课程邀请码和优惠码价格"
+            },
+            {
+              "value": 16,
+              "label": "会员优惠码价格"
+            }
+          ]
         }
       },
-      "password": {
-        "title": "账号密码",
-        "type": {
-          "string": {
-            "required": true,
-            "min_length": 10,
-            "max_length": 50
-          }
-        }
-      },
-      "github_user": {
-        "title": "GitHub用户信息",
-        "type": {
-          "model_object": {
-            "config_path": "github_user",
-            "request": [],
-            "response": [
-              "id",
-              "user_id",
-              "github_user_id",
-              "wechat_user"
-            ],
-            "required": false,
-            "index_key": "user"
-          }
-        }
-      },
-      "create_github_user": {
-        "title": "GitHub用户信息",
-        "type": {
-          "model_object": {
-            "handler": "create",
-            "config_path": "github_user",
-            "request": [
-              "user_id",
-              "github_user_id",
-              "create_wechat_user"
-            ],
-            "response": [
-              "id",
-              "user_id",
-              "github_user_id",
-              "wechat_user"
-            ],
-            "required": false,
-            "index_key": "user"
-          }
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "toFilter"
         }
       }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "名称",
+        "prop": "name"
+      },
+      {
+        "label": "产品ID",
+        "prop": "product_id"
+      },
+      {
+        "label": "价格",
+        "prop": "price"
+      },
+      {
+        "label": "类型",
+        "prop": "type_choice"
+      },
+      {
+        "label": "创建时间",
+        "prop": "created"
+      },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": [
+          {
+            "label": "编辑",
+            "type": "primary",
+            "action": "showUpdateDialog",
+            "data": {
+              "id": 25
+            }
+          },
+          {
+            "label": "删除",
+            "type": "danger",
+            "action": "delete",
+            "data": {
+              "id": 25
+            }
+          }
+        ]
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 20,
+    "total": 100,
+    "background": "",
+    "action": "toFilter"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "type_choice",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "单课当前价格"
+              },
+              {
+                "value": 1,
+                "label": "年费当前价格"
+              },
+              {
+                "value": 2,
+                "label": "单课原始价格"
+              },
+              {
+                "value": 3,
+                "label": "单课邀请码价格"
+              },
+              {
+                "value": 4,
+                "label": "单课优惠码价格"
+              },
+              {
+                "value": 5,
+                "label": "单课邀请码和优惠码价格"
+              },
+              {
+                "value": 6,
+                "label": "实物原始价格"
+              },
+              {
+                "value": 7,
+                "label": "实物当前价格"
+              },
+              {
+                "value": 8,
+                "label": "实物邀请码价格"
+              },
+              {
+                "value": 9,
+                "label": "实物优惠码价格"
+              },
+              {
+                "value": 10,
+                "label": "实物邀请码和优惠码价格"
+              },
+              {
+                "value": 11,
+                "label": "实物课程原始价格"
+              },
+              {
+                "value": 12,
+                "label": "实物课程当前价格"
+              },
+              {
+                "value": 13,
+                "label": "实物课程邀请码价格"
+              },
+              {
+                "value": 14,
+                "label": "实物课程优惠码价格"
+              },
+              {
+                "value": 15,
+                "label": "实物课程邀请码和优惠码价格"
+              },
+              {
+                "value": 16,
+                "label": "会员优惠码价格"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Input",
+          "label": "价格",
+          "prop": "price",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "产品ID",
+          "prop": "product_id",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
     },
-    "api": {
-      "user/": {
-        "create": {
-          "name": "create",
-          "http_method": "post",
-          "request": [
-            "username",
-            "nickname",
-            "password",
-            "create_github_user"
-          ],
-          "response": [
-            "id",
-            "username",
-            "nickname",
-            "github_user"
-          ]
+    "update": {
+      "titles": "编辑",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "type_choice",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "单课当前价格"
+              },
+              {
+                "value": 1,
+                "label": "年费当前价格"
+              },
+              {
+                "value": 2,
+                "label": "单课原始价格"
+              },
+              {
+                "value": 3,
+                "label": "单课邀请码价格"
+              },
+              {
+                "value": 4,
+                "label": "单课优惠码价格"
+              },
+              {
+                "value": 5,
+                "label": "单课邀请码和优惠码价格"
+              },
+              {
+                "value": 6,
+                "label": "实物原始价格"
+              },
+              {
+                "value": 7,
+                "label": "实物当前价格"
+              },
+              {
+                "value": 8,
+                "label": "实物邀请码价格"
+              },
+              {
+                "value": 9,
+                "label": "实物优惠码价格"
+              },
+              {
+                "value": 10,
+                "label": "实物邀请码和优惠码价格"
+              },
+              {
+                "value": 11,
+                "label": "实物课程原始价格"
+              },
+              {
+                "value": 12,
+                "label": "实物课程当前价格"
+              },
+              {
+                "value": 13,
+                "label": "实物课程邀请码价格"
+              },
+              {
+                "value": 14,
+                "label": "实物课程优惠码价格"
+              },
+              {
+                "value": 15,
+                "label": "实物课程邀请码和优惠码价格"
+              },
+              {
+                "value": 16,
+                "label": "会员优惠码价格"
+              }
+            ]
+          }
         },
-        "retrieve": {
-          "name": "retrieve",
-          "http_method": "get",
-          "response_index_key": "users",
-          "page_size": 20,
-          "page_query_param": "page",
-          "request": [
-          ],
-          "response": [
-            "id",
-            "username",
-            "nickname",
-            "github_user"
-          ]
-        }
-      },
-      "user/<id>/": {
-        "update": {
-          "index": "id",
-          "name": "update",
-          "http_method": "patch",
-          "request": [
-            "nickname"
-          ],
-          "response": [
-            "username",
-            "nickname"
-          ]
+        {
+          "type": "Input",
+          "label": "价格",
+          "prop": "price",
+          "state": {
+            "value": ""
+          }
         },
-        "delete": {
-          "index": "id",
-          "name": "delete",
-          "http_method": "delete",
-          "request": [],
-          "response": []
+        {
+          "type": "Input",
+          "label": "产品ID",
+          "prop": "product_id",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
         }
-      },
-      "custom/": {
-        "custom": {
-          "name": "custom1",
-          "flow": "siteapi.v1.ucenter.login.with_password",
-          "http_method": "post",
-          "request": [
-            "username",
-            "password"
-          ]
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "edit",
+          "close": true,
+          "type": "primary"
         }
-      }
+      ],
+      "visible": false,
+      "attributes": {}
     }
   },
-  "github_user": {
-    "name": "github_user",
-    "type": "table",
-    "model": "arkid_meta.models.user.GitHubUser",
+  "actions": {
     "meta": {
-      "id": {
-        "title": "ID",
-        "type": {
-          "integer": {
-            "read_only": true
-          }
-        }
-      },
-      "github_user_id": {
-        "title": "GitHub用户ID",
-        "type": {
-          "string": {
-            "required": true
-          }
-        }
-      },
-      "user_id": {
-        "title": "所属用户ID",
-        "type": {
-          "integer": {
-            "required": true,
-            "source": "user",
-            "model_attr": "id"
-          }
-        }
-      },
-      "wechat_user": {
-        "title": "Wechat用户信息",
-        "type": {
-          "model_object": {
-            "config_path": "wechat_user",
-            "request": [],
-            "response": [
-              "id",
-              "wechat_user_id"
-            ],
-            "required": false,
-            "index_key": "github_user"
-          }
-        }
-      },
-      "create_wechat_user": {
-        "title": "Wechat用户信息",
-        "type": {
-          "model_object": {
-            "handler": "create",
-            "config_path": "wechat_user",
-            "request": [
-              "github_user_id",
-              "wechat_user_id"
-            ],
-            "response": [
-              "id",
-              "wechat_user_id"
-            ],
-            "required": false,
-            "index_key": "github_user"
-          }
-        }
-      }
-    },
-    "api": {
-      "github_user/": {
-        "create": {
-          "name": "create",
-          "http_method": "post",
-          "request": [
-            "user_id",
-            "github_user_id"
-          ],
-          "response": [
-            "id",
-            "user_id",
-            "github_user_id"
-          ]
-        },
-        "retrieve": {
+      "flows": [
+        {
           "name": "retrieve",
-          "http_method": "get",
-          "response_index_key": "github_users",
-          "page_size": 20,
-          "page_query_param": "page",
-          "request": [
-          ],
-          "response": [
-            "id",
-            "user_id",
-            "github_user_id"
-          ]
-        }
-      },
-      "github_user/<id>/": {
-        "update": {
-          "index": "id",
-          "name": "update",
-          "http_method": "patch",
-          "request": [
-            "github_user_id"
-          ],
-          "response": [
-            "id",
-            "user_id",
-            "github_user_id"
-          ]
-        },
-        "delete": {
-          "index": "id",
-          "name": "delete",
-          "http_method": "delete",
-          "request": [],
-          "response": []
-        }
-      }
-    }
-  },
-  "wechat_user": {
-    "name": "wechat_user",
-    "type": "table",
-    "model": "arkid_meta.models.user.WechatUser",
-    "meta": {
-      "id": {
-        "title": "ID",
-        "type": {
-          "integer": {
-            "read_only": true
+          "type": "api",
+          "url": "/priceinfo/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items"
           }
         }
-      },
-      "wechat_user_id": {
-        "title": "GitHub用户ID",
-        "type": {
-          "string": {
-            "required": true
-          }
-        }
-      },
-      "github_user_id": {
-        "title": "所属github ID",
-        "type": {
-          "integer": {
-            "required": true,
-            "source": "github_user",
-            "model_attr": "id"
-          }
-        }
-      }
+      ]
     },
-    "api": {
-      "wechat_user/": {
-        "create": {
-          "name": "create",
-          "http_method": "post",
-          "request": [
-            "wechat_user_id"
-          ],
-          "response": [
-            "id",
-            "wechat_user_id"
-          ]
-        },
-        "retrieve": {
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ]
+    },
+    "toFilter": {
+      "flows": [
+        {
+          "name": "filter",
+          "type": "filter",
+          "method": "GET",
+          "url": "/priceinfo/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items",
+            "param_product_id": "",
+            "param_type": ""
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "doFilter"
+        }
+      ]
+    },
+    "doFilter": {
+      "flows": [
+        {
           "name": "retrieve",
-          "http_method": "get",
-          "response_index_key": "github_users",
-          "page_size": 20,
-          "page_query_param": "page",
-          "request": [
-          ],
-          "response": [
-            "id",
-            "wechat_user_id"
-          ]
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items",
+            "param_product_id": "",
+            "param_type": ""
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
         }
-      },
-      "wechat_user/<id>/": {
-        "update": {
-          "index": "id",
-          "name": "update",
-          "http_method": "patch",
-          "request": [
-            "wechat_user_id"
-          ],
-          "response": [
-            "id",
-            "wechat_user_id"
-          ]
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
         },
-        "delete": {
-          "index": "id",
-          "name": "delete",
-          "http_method": "delete",
-          "request": [],
-          "response": []
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/<id>/edit/",
+          "client_config": {
+            
+          }
         }
-      }
+      ]
+    },
+    "edit": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "POST",
+          "url": "/priceinfo/{+id}/edit/",
+          "request": {
+            "type_choice": "",
+            "price": "",
+            "product_id": "",
+            "id": "",
+            "name": ""
+          }
+        }
+      ]
+    },
+    "delete": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/<id>/delete/"
+        }
+      ]
+    },
+    "getPrice": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/drop/",
+          "request": {
+            "type_choice": ""
+          },
+          "client_config": {}
+        }
+      ]
     }
   }
 }
