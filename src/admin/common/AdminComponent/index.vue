@@ -56,6 +56,7 @@ import Carousel from '@/admin/common/Others/Carousel/index.vue'
 import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
 import Popover from '@/admin/common/Others/Popover/index.vue'
 import Tooltip from '@/admin/common/Others/Tooltip/index.vue'
+import Backtop from '@/admin/common/Others/Backtop/index.vue'
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -119,7 +120,8 @@ export default class extends Vue {
         Carousel,
         Popconfirm,
         Popover,
-        Tooltip
+        Tooltip,
+        Backtop
       },
       render: (h: Function) => {
         return h(state.type, {

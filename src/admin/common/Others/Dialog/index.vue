@@ -2,7 +2,7 @@
   <el-dialog
     :title="state.title"
     :visible.sync="state.visible"
-    width="30%"
+    width="800px"
   >
     <Form :state="state" />
     <span
@@ -34,5 +34,4 @@ export default class extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -6,6 +6,7 @@
     "items": [
       {
         "type": "Input",
+        "prop": "activityname",
         "label": "活动名称",
         "state": {
           "value": ""
@@ -13,6 +14,7 @@
       },
       {
         "type": "Select",
+        "prop": "activityarea",
         "label": "活动区域",
         "state": {
           "value": "",
@@ -31,6 +33,7 @@
       },
       {
         "type": "DatePicker",
+        "prop": "date",
         "label": "选择时间",
         "state": {
           "value": "",
@@ -42,6 +45,7 @@
       },
       {
         "type": "SwitchButton",
+        "prop": "send",
         "label": "即时配送",
         "state": {
           "value": "",
@@ -51,6 +55,7 @@
       },
       {
         "type": "CheckBoxGroup",
+        "prop": "activityBox",
         "label": "活动性质",
         "state": {
           "value": [],
@@ -64,6 +69,7 @@
       },
       {
         "type": "RadioGroup",
+        "prop": "activityRes",
         "label": "特殊资源",
         "state": {
           "value": "",
@@ -75,11 +81,13 @@
       },
       {
         "type": "InputNumber",
+        "prop": "activitynumber",
         "label": "活动人数",
         "state": { "value": 20, "min": 0 }
       },
       {
         "type": "Cascader",
+        "prop": "activitycon",
         "label": "地理条件",
         "state": {
           "value": "",
@@ -120,6 +128,7 @@
       },
       {
         "type": "Slider",
+        "prop": "activityslider",
         "label": "活动难度",
         "state": {
           "value": 1,
@@ -129,6 +138,7 @@
       },
       {
         "type": "Rate",
+        "prop": "activityrate",
         "label": "活动评价",
         "state": {
           "value": 0,
@@ -180,17 +190,5 @@
         }
       }
     ]
-  },
-  "button": [
-    {
-      "label": "取消",
-      "action": "cancle"
-    },
-    {
-      "label": "保存",
-      "action": "save",
-      "type": "primary"
-    }
-  
-  ]
+  }
 }

@@ -1,0 +1,189 @@
+{
+  "created": {
+    "actions": ["retrieve"]
+  },
+  "type": "table",
+  "title": "speech",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small",
+      "data": {}
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "演讲标题",
+        "prop": "title",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "讲者",
+        "prop": "speaker_name",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "发布时间",
+        "prop": "speechdate",
+        "state": {
+          "value": "",
+          "startPlaceholder": "开始日期",
+          "rangeSeparator": "至",
+          "endPlaceholder": "结束日期",
+          "type": "daterange"
+        }
+      },
+      {
+        "type": "Select",
+        "label": "状态",
+        "prop": "status",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未发布"
+            },
+            {
+              "value": 1,
+              "label": "已发布"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "label": "推荐",
+        "prop": "recommended",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未推荐"
+            },
+            {
+              "value": 1,
+              "label": "已推荐"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "toFilter"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "演讲标题",
+        "prop": "title"
+      },
+      { "label": "讲者", "prop": "speaker_name" },
+      { "label": "演讲类别", "prop": "speechcategory" },
+      { "label": "演讲日期", "prop": "speechdate" },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": [
+          {
+            "label": "编辑",
+            "type": "primary"
+          },
+          {
+            "label": "删除",
+            "type": "danger"
+          }
+        ]
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 20,
+    "total": 100,
+    "background": "",
+    "action": "toFilter"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": ["username", "password"],
+      "values": {},
+      "action": "create",
+      "visible": false,
+      "attributes": {}
+    }
+  },
+  "actions": {
+    "meta": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "speech/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ]
+    },
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "url": "speech/create/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ]
+    },
+    "toFilter": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items",
+            "param_product_id": "",
+            "param_type": ""
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ]
+    }
+  }
+}

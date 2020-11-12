@@ -75,5 +75,5 @@ function getConfig(viewconfig: any, serveconfig: any, page: string): any {
   // }
 
   // return config
-  return { ...viewconfig, ...serveconfig }
+ return { ...viewconfig, ...serveconfig }
 }

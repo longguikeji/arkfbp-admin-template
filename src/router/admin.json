@@ -49,5 +49,18 @@
         "icon": "dashboard" 
       }
     ]
+  },
+  "exampletwo": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "exampletwo", 
+        "path": "exampletwo", 
+        "icon": "dashboard" 
+      }
+    ]
   }
+
 }
