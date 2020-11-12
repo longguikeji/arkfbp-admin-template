@@ -1,4 +1,5 @@
 import { runWorkflowByClass } from 'arkfbp/lib/flow'
+import { debug } from 'console'
 import { Loading } from 'element-ui'
 import { url } from 'inspector'
 import { FlowInput } from './flow'
@@ -12,6 +13,19 @@ function getUrl(url: string, data: any) {
 
   const property = url.slice(url.indexOf('<') + 1, url.lastIndexOf('>'))
   return url.slice(0, url.indexOf('<')) + data[property] + url.slice(url.indexOf('>') + 1)
+}
+
+function toProcessData(v: any, vd: any): number {
+  const m = /=(\S*)]/
+  const fv = v.match(m)[1]
+  const fvd = vd
+  let outcome = 0
+  fvd.items.forEach((vditem: any, vdindex: number) => {
+    if (vditem.prop === fv) {
+      outcome = vdindex
+    }
+  })
+  return outcome
 }
 
 export function runFlowByFile(filename: string, inputs: FlowInput) {
@@ -58,14 +72,18 @@ export async function runFlow(state: any, flow: any, data: any) {
         let temp = state
         const vs = flow.request[key].split('.')
         vs.forEach((v: string) => {
-          temp = temp[v]
+          if (v.slice(0, 11) === 'items[prop=') {
+            const res = toProcessData(v, temp)
+            temp = temp['items'][res]
+          } else {
+            temp = temp[v]
+          }
         })
         params[key] = temp
       })
     }
-    console.log('flow url:', flow.url)
-    console.log('url:', getUrl(flow.url, data))
-    const res = await runAction({
+    
+    await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
         url: `api/admin/${getUrl(flow.url, data)}`,
@@ -75,18 +93,6 @@ export async function runFlow(state: any, flow: any, data: any) {
         clientServer: flow.client_config
       }
     })
-    return
-  }
-
-  if (flow.type === 'filter') {
-    await runAction({
-      flow: `@/flows/${flow.name}`,
-      inputs: {
-        client: state,
-        clientServer: flow.client_config
-      }
-    })
-
     return
   }
 

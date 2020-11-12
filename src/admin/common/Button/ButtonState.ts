@@ -14,6 +14,7 @@ export default interface ButtonState {
   value:any // action时会传的参数
   action:string // flow name
   badge?: BadgeState; // 如果需要badge,添加badge对象即可
-  data: any; //
+  data?: any; // 绑定的一些其他所需数据
+  cloumn?: any; // 
   close?: boolean; // 可选，在弹出框的情形下，用于是否可以点击该按钮后关闭弹出对话框
 }
