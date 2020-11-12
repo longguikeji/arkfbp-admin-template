@@ -1,6 +1,7 @@
-import { runWorkflowByClass } from "arkfbp/lib/flow";
-import { Loading } from "element-ui";
-import { FlowInput } from "./flow";
+import { runWorkflowByClass } from 'arkfbp/lib/flow'
+import { Loading } from 'element-ui'
+import { url } from 'inspector'
+import { FlowInput } from './flow'
 
 const flows = require.context("@/flows", true, /\.ts$/);
 
@@ -25,10 +26,11 @@ export function runFlowByFile(filename: string, inputs: FlowInput) {
 
 export async function runAction(action: { flow: string; inputs: FlowInput }) {
   if (action.flow) {
-    const loading = Loading.service({ fullscreen: true });
-    const outputs = await runFlowByFile(action.flow, action.inputs);
-    loading.close();
-    return outputs;
+    const loading = Loading.service({ fullscreen: true })
+    const outputs = await runFlowByFile(action.flow, action.inputs)
+    loading.close()
+
+    return outputs
   }
 }
 
@@ -65,8 +67,9 @@ export async function runFlow(state: any, flow: any, data: any) {
         params[key] = temp;
       });
     }
-
-    await runAction({
+    console.log('flow url:', flow.url)
+    console.log('url:', getUrl(flow.url, data))
+    const res = await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
         url: `api/admin/${getUrl(flow.url, data)}`,
@@ -75,7 +78,18 @@ export async function runFlow(state: any, flow: any, data: any) {
         client: state,
         clientServer: flow.client_config
       }
-    });
+    })
+    return
+  }
+
+  if (flow.type === 'filter') {
+    await runAction({
+      flow: `@/flows/${flow.name}`,
+      inputs: {
+        client: state,
+        clientServer: flow.client_config
+      }
+    })
 
     return;
   }

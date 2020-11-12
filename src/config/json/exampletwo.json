@@ -3,7 +3,7 @@
     "actions": ["retrieve"]
   },
   "type": "table",
-  "title": "speech",
+  "title": "演讲管理",
   "buttons": [
     {
       "label": "创建",
@@ -35,14 +35,18 @@
       },
       {
         "type": "DatePicker",
-        "label": "发布时间",
-        "prop": "speechdate",
+        "label": "开始时间",
+        "prop": "begin_time",
         "state": {
-          "value": "",
-          "startPlaceholder": "开始日期",
-          "rangeSeparator": "至",
-          "endPlaceholder": "结束日期",
-          "type": "daterange"
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "结束时间",
+        "prop": "end_time",
+        "state": {
+          "value": ""
         }
       },
       {
@@ -82,6 +86,24 @@
         }
       },
       {
+        "type": "Select",
+        "label": "演讲类型",
+        "prop": "speechcategory",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未推荐"
+            },
+            {
+              "value": 1,
+              "label": "已推荐"
+            }
+          ]
+        }
+      },
+      {
         "type": "Button",
         "state": {
           "label": "搜索",
@@ -102,15 +124,41 @@
         "prop": "title"
       },
       { "label": "讲者", "prop": "speaker_name" },
-      { "label": "演讲类别", "prop": "speechcategory" },
+      {
+        "label": "演讲类别",
+        "prop": "speechcategory"
+      },
       { "label": "演讲日期", "prop": "speechdate" },
+      { "label": "播放量", "prop": "total_play_count" },
+      {
+        "label": "视频封面",
+        "prop": "video_cover",
+        "scope": {
+          "type": "ImageBox",
+          "state": {}
+        }
+      },
+      {
+        "label": "视频",
+        "prop": "video"
+      },
+      {
+        "label": "音频",
+        "prop": "audio"
+      },
+      { "label": "状态", "prop": "status" },
+      { "label": "推荐", "prop": "recommended" },
       {
         "label": "操作",
         "prop": "action",
         "scope": [
           {
             "label": "编辑",
-            "type": "primary"
+            "type": "primary",
+            "action": "showUpdateDialog",
+            "data": {
+              "id": 538
+            }
           },
           {
             "label": "删除",
@@ -131,9 +179,58 @@
   "dialogs": {
     "create": {
       "title": "新建",
-      "items": ["username", "password"],
+      "items": [
+        {
+          "type": "input",
+          "label": "标题",
+          "prop": "title",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "input",
+          "label": "题语(60字以内)",
+          "prop": "title",
+          "state": {
+            "type":"textarea",
+            "value": ""
+          }
+        }
+      ],
       "values": {},
-      "action": "create",
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
+    },
+    "update": {
+      "titles": "编辑",
+      "items": [
+        {
+          "type": "input",
+          "label": "标题",
+          "prop": "title",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "values": {},
+      "actions": [
+        {
+          "label": "确定",
+          "action": "edit",
+          "close": true,
+          "type": "primary"
+        }
+      ],
       "visible": false,
       "attributes": {}
     }
@@ -157,7 +254,6 @@
         {
           "name": "assign",
           "type": "assign",
-          "url": "speech/create/",
           "method": "GET",
           "client_config": {
             "dialogs.create.visible": true
@@ -171,17 +267,62 @@
           "name": "retrieve",
           "type": "api",
           "method": "GET",
-          "url": "/priceinfo/",
+          "url": "speech/",
           "request": {
             "page": "pagination.currentPage",
             "page_size": "pagination.pageCount",
-            "param_name": "filter.items",
-            "param_product_id": "",
-            "param_type": ""
+            "param_title": "filter.title",
+            "speaker_name": "filter.speaker_name",
+            "param_begin_time": "filter.begin_time",
+            "param_end_time": "filter.end_time",
+            "param_status": "filter.status",
+            "param_recommended": "filter.recommended",
+            "param_speechcategory": "filter.speechcategory"
           },
           "client_config": {
             "table.data": "data.items"
           }
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "speech/<id>/edit/",
+          "client_config": {}
+        }
+      ]
+    },
+    "edit": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "POST",
+          "url": "speech/<id>/edit/",
+          "request": {
+            "title": ""
+          }
+        }
+      ]
+    },
+    "delete": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "GET",
+          "url": "speech/<id>/delete/"
         }
       ]
     }

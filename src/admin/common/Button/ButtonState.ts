@@ -2,7 +2,7 @@ import BadgeState from '../data/Badge/BadgeState'
 export default interface ButtonState {
   label:string
   size:string // 尺寸  string  medium / small / mini —
-  elType:string // 类型 string primary / success / warning / danger / info / text  —
+  type:string // 类型 string primary / success / warning / danger / info / text  —
   plain:boolean // 是否朴素按钮 boolean — false
   round:boolean // 是否圆角按钮 boolean — false
   circle:boolean // 是否圆形按钮 boolean — false
@@ -14,5 +14,6 @@ export default interface ButtonState {
   value:any // action时会传的参数
   action:string // flow name
   badge?: BadgeState; // 如果需要badge,添加badge对象即可
-  data: any //
+  data: any; //
+  close?: boolean; // 可选，在弹出框的情形下，用于是否可以点击该按钮后关闭弹出对话框
 }
