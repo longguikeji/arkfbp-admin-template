@@ -17,7 +17,7 @@
           "object": {
             "total": "page.count",
             "page": "page.num",
-            "page_size": "page.size",
+            "page_size": "page.page_size",
             "items": "items"
           }
         }
@@ -57,11 +57,11 @@
           "type": "retrieve",
           "request": {
             "page_size": {
-              "src": "page.size",
-              "default": 20,
-              "required": false
+              "src": "page.page_size"
             },
-            "page": "page"
+            "page": {
+              "src": "page.page"
+            }
           },
           "response": {
             "data": "data"
@@ -111,7 +111,10 @@
       "page_size": {
         "title": "页面大小",
         "type": {
-          "integer": {}
+          "integer": {
+            "default": 20,
+            "required": false
+          }
         }
       },
       "count": {
