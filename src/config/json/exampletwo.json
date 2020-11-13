@@ -6,11 +6,10 @@
   "title": "演讲管理",
   "buttons": [
     {
-      "label": "创建",
+      "label": "新建",
       "action": "showCreateDialog",
       "type": "primary",
-      "size": "small",
-      "data": {}
+      "size": "small"
     }
   ],
   "filter": {
@@ -86,24 +85,6 @@
         }
       },
       {
-        "type": "Select",
-        "label": "演讲类型",
-        "prop": "speechcategory",
-        "state": {
-          "value": "",
-          "options": [
-            {
-              "value": 0,
-              "label": "未推荐"
-            },
-            {
-              "value": 1,
-              "label": "已推荐"
-            }
-          ]
-        }
-      },
-      {
         "type": "Button",
         "state": {
           "label": "搜索",
@@ -140,12 +121,25 @@
       },
       {
         "label": "视频",
-        "prop": "video"
+        "prop": "video",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
       },
       {
         "label": "音频",
-        "prop": "audio"
+        "prop": "audio",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
       },
+
       { "label": "状态", "prop": "status" },
       { "label": "推荐", "prop": "recommended" },
       {
@@ -172,18 +166,29 @@
   },
   "pagination": {
     "currentPage": 1,
-    "pageCount": 20,
-    "total": 100,
+    "pageCount": 10,
+    "total": 0,
     "background": "",
     "action": "toFilter"
   },
+
   "dialogs": {
     "create": {
       "title": "新建",
       "items": [
         {
-          "type": "input",
-          "label": "标题",
+          "type": "Select",
+          "label": "第一类别",
+          "prop": "first_speechcategory",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+
+        {
+          "type": "Input",
+          "label": "类型",
           "prop": "title",
           "state": {
             "value": ""
@@ -202,11 +207,21 @@
       "attributes": {}
     },
     "update": {
-      "titles": "编辑",
+      "title": "编辑",
       "items": [
         {
-          "type": "input",
-          "label": "标题",
+          "type": "Select",
+          "label": "第一类别",
+          "prop": "first_speechcategory",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+
+        {
+          "type": "Input",
+          "label": "类型",
           "prop": "title",
           "state": {
             "value": ""
@@ -216,7 +231,7 @@
       "actions": [
         {
           "label": "确定",
-          "action": "edit",
+          "action": "update",
           "close": true,
           "type": "primary"
         }
@@ -240,17 +255,6 @@
         }
       ]
     },
-    "showCreateDialog": {
-      "flows": [
-        {
-          "name": "assign",
-          "type": "assign",
-          "client_config": {
-            "dialogs.create.visible": true
-          }
-        }
-      ]
-    },
     "toFilter": {
       "flows": [
         {
@@ -261,17 +265,34 @@
           "request": {
             "page": "pagination.currentPage",
             "page_size": "pagination.pageCount",
-            "param_title": "filter.title",
-            "speaker_name": "filter.speaker_name",
-            "param_begin_time": "filter.begin_time",
-            "param_end_time": "filter.end_time",
-            "param_status": "filter.status",
-            "param_recommended": "filter.recommended",
-            "param_speechcategory": "filter.speechcategory"
+            "param_name": "filter.items[prop=name].state.value",
+            "param_is_valid": "filter.items[prop=is_valid].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value"
           },
           "client_config": {
             "table.data": "data.items",
             "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "speech/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=first_speechcategory].state.options": "data.items"
           }
         }
       ]
@@ -294,31 +315,8 @@
             "id": ""
           },
           "client_config": {
-            "dialogs":"data"
+            "dialogs.update.items[prop=first_speechcategory].state.options": "data.items"
           }
-        }
-      ]
-    },
-    "edit": {
-      "flows": [
-        {
-          "name": "update",
-          "type": "api",
-          "method": "POST",
-          "url": "speech/<id>/edit/",
-          "request": {
-            
-          }
-        }
-      ]
-    },
-    "delete": {
-      "flows": [
-        {
-          "name": "update",
-          "type": "api",
-          "method": "GET",
-          "url": "speech/<id>/delete/"
         }
       ]
     }

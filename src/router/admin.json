@@ -27,14 +27,14 @@
     ]
   },
   "page": {
-    "title": "page", 
-    "path": "page", 
-    "icon": "dashboard", 
+    "title": "page",
+    "path": "page",
+    "icon": "dashboard",
     "children": [
       {
-        "title": "user", 
-        "path": "user", 
-        "icon": "dashboard" 
+        "title": "user",
+        "path": "user",
+        "icon": "dashboard"
       }
     ]
   },
@@ -44,9 +44,21 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "testpage", 
-        "path": "testpage", 
-        "icon": "dashboard" 
+        "title": "testpage",
+        "path": "testpage",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  "exampletwo": {
+    "title": "exampletwo",
+    "path": "exampletwo",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "exampletwo",
+        "path": "exampletwo",
+        "icon": "dashboard"
       }
     ]
   },
@@ -56,12 +68,10 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "exampletwo", 
-        "path": "exampletwo", 
-    
-        "icon": "dashboard" 
+        "title": "secondpage",
+        "path": "secondpage",
+        "icon": "dashboard"
       }
     ]
   }
-
 }
