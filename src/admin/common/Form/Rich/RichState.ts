@@ -1,3 +1,3 @@
 export default interface RichState {
-  content: string; //内容
+  value: string; //内容
 }

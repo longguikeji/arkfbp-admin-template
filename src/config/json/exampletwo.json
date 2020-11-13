@@ -203,7 +203,16 @@
     },
     "update": {
       "titles": "编辑",
-      "items": [{}],
+      "items": [
+        {
+          "type": "input",
+          "label": "标题",
+          "prop": "title",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
       "actions": [
         {
           "label": "确定",
@@ -284,7 +293,9 @@
           "index": {
             "id": ""
           },
-          "client_config": {}
+          "client_config": {
+            "dialogs":"data"
+          }
         }
       ]
     },
@@ -296,11 +307,7 @@
           "method": "POST",
           "url": "speech/<id>/edit/",
           "request": {
-            "type_choice": "",
-            "price": "",
-            "product_id": "",
-            "id": "",
-            "name": ""
+            
           }
         }
       ]

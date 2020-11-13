@@ -7,7 +7,6 @@ export interface FormItemStateArray {
 export default interface FormState {
   items: [FormItemState | FormItemStateArray];
 
-  values: object;
   inline?: boolean;
   size?: string;
   disabled?: boolean;

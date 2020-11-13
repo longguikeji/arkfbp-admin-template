@@ -76,7 +76,7 @@
           >
             <VueCropper
               ref="cropper"
-              :src="fileUrl"
+              :src="imageUrl"
               :output-type="state.upload.outputType || 'png'"
               :can-scale="
                 state.upload.canScale !== null ? state.upload.canScale : false

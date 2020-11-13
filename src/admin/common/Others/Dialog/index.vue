@@ -5,6 +5,7 @@
     width="800px"
   >
     <Form :state="state" />
+
     <span
       slot="footer"
       class="dialog-footer"

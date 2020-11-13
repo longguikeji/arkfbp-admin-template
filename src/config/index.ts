@@ -1,25 +1,25 @@
 export class Config {
-  private _viewconfig = null;
-  private _serveconfig = null;
-  private _config = null;
+  private _viewconfig = null
+  private _serveconfig = null
+  private _config = null
 
   constructor(viewconfig: any, serveconfig: any, page: string) {
-    this._viewconfig = viewconfig;
-    this._serveconfig = serveconfig;
+    this._viewconfig = viewconfig
+    this._serveconfig = serveconfig
 
-    this._config = getConfig(viewconfig, serveconfig, page);
+    this._config = getConfig(viewconfig, serveconfig, page)
   }
 
   get config(): any {
-    return this._config;
+    return this._config
   }
 
   get viewconfig(): any {
-    return this._viewconfig;
+    return this._viewconfig
   }
 
   get serveconfig(): any {
-    return this._serveconfig;
+    return this._serveconfig
   }
 }
 
