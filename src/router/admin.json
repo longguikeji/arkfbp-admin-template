@@ -50,7 +50,7 @@
       }
     ]
   },
-  "exampletwo": {
+  "secondpage": {
     "title": "case",
     "path": "case",
     "icon": "dashboard",
@@ -58,6 +58,7 @@
       {
         "title": "exampletwo", 
         "path": "exampletwo", 
+    
         "icon": "dashboard" 
       }
     ]
