@@ -29,7 +29,7 @@ export class Config {
   private getConfig(): any {
     const api = this._serveconfig[this._current].api
     const tempApi: any = {}
-    debugger
+
     const walkApi = (data: any, map: any) => {
       Object.keys(data).forEach((e: any) => {
         let index: any = {}
@@ -91,9 +91,20 @@ export class Config {
 
     const config = cloneDeep(this._viewconfig)
 
+    if (this._viewconfig.filter) {
+      if (this._viewconfig.filter.items) {
+        config.filter.items = this._viewconfig.filter.items.map((e: any) => {
+          if(typeof e === 'string') {
+            return { type: "Input", ...tempApi.create[0].request[e]}
+          } else {
+            return { ...e, ...tempApi.create[0].request[e.prop]} 
+          }
+        })
+      }
+    }
+
     if (this._viewconfig.dialogs) {
       if (this._viewconfig.dialogs.create) {
-        debugger
         config.dialogs.create.items = this._viewconfig.dialogs.create.items.map((e: any) => {
           if(typeof e === 'string') {
             return { type: "Input", ...tempApi.create[0].request[e]}
@@ -116,14 +127,16 @@ export class Config {
 
     if (this._viewconfig.table) {
       if (this._viewconfig.table.columns) {
-        debugger
         config.table.columns = this._viewconfig.table.columns.map((e: any) => {
-          return { ...e, ...tempApi.create[0].request[e.prop]}
+          if(typeof e === 'string') {
+            return { type: "Input", ...tempApi.create[0].request[e]}
+          } else {
+            return { ...e, ...tempApi.create[0].request[e.prop]} 
+          }
         })
       }
     }
     
-    debugger
     return config
   }
 
