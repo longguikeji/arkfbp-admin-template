@@ -34,9 +34,29 @@ export default class extends Vue {
   private async clickHandler() {
     console.log('action!!!', this.state.action)
     console.log('data ', this.state.data)
-    await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
-    if (this.state.close && this.state.close === true) {
-      this.$emit('closeDialog', false)
+    if (this.state.type === 'warning' || this.state.type === 'danger') {
+      let headMessage = ''
+      let confirmType: any
+      switch (this.state.type) {
+        case 'danger':
+          headMessage = '警告'
+          confirmType = 'error'
+          break
+        case 'warning':
+          headMessage = '提示'
+          confirmType = 'warning'
+          break
+      }
+
+      this.$confirm('确定执行 ' + this.state.label + ' 操作吗？', headMessage, {
+        confirmButtonText: this.state.label,
+        cancelButtonText: '取消',
+        type: confirmType
+      }).then(async() => {
+        await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
+      }).catch((err) => { console.log(err) })
+    } else {
+      await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
     }
   }
 }

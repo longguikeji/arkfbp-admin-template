@@ -17,7 +17,6 @@
       <ButtonArray
         class="dialog__actions__button"
         :state="state.actions"
-        @isCloseDialog="state.visible = false"
       />
     </span>
   </el-dialog>

@@ -16,5 +16,4 @@ export default interface ButtonState {
   badge?: BadgeState; // 如果需要badge,添加badge对象即可
   data?: any; // 绑定的一些其他所需数据
   cloumn?: any; // 
-  close?: boolean; // 可选，在弹出框的情形下，用于是否可以点击该按钮后关闭弹出对话框
 }

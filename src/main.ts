@@ -43,6 +43,15 @@ Object.keys(filters).forEach(key => {
 
 Vue.config.productionTip = false;
 
+import VueAMap from 'vue-amap';
+Vue.use(VueAMap);
+VueAMap.initAMapApiLoader({
+  key: 'fcc7e39778f5c5f773428cf03113c38b',
+  plugin: ['Autocomplete', 'PlaceSearch', 'Scale', 'OverView', 'ToolBar', 'MapType', 'PolyEditor', 'AMap.CircleEditor'],
+  // 默认高德 sdk 版本为 1.4.4
+  v: '1.4.4',
+});
+
 new Vue({
   router,
   store,

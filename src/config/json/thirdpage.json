@@ -4,8 +4,8 @@
       "retrieve"
     ]
   },
-  "type": "secondpage",
-  "title": "secondpage",
+  "type": "thirdpage",
+  "title": "thirdpage",
   "buttons": [
     {
       "label": "新建",
@@ -20,7 +20,7 @@
     "items": [
       {
         "type": "Input",
-        "label": "现场名称",
+        "label": "名称",
         "prop": "name",
         "state": {
           "value": ""
@@ -35,29 +35,29 @@
           "options": [
             {
               "value": 0,
-              "label": "已发布"
+              "label": "未发布"
             },
             {
               "value": 1,
-              "label": "未发布"
+              "label": "已发布"
             }
           ]
         }
       },
       {
         "type": "Select",
-        "label": "选择类型",
+        "label": "是否推荐",
         "prop": "recommended",
         "state": {
           "value": "",
           "options": [
             {
               "value": 0,
-              "label": "推荐"
+              "label": "不推荐"
             },
             {
               "value": 1,
-              "label": "不推荐"
+              "label": "已推荐"
             }
           ]
         }
@@ -79,7 +79,7 @@
         "prop": "id"
       },
       {
-        "label": "万象名称",
+        "label": "名称",
         "prop": "name"
       },
       {
@@ -87,78 +87,16 @@
         "prop": "speaker_name"
       },
       {
-        "label": "热度",
-        "prop": "fever_count"
-      },
-      {
-        "label": "上传集数",
+        "label": "总集数",
         "prop": "episodes"
       },
       {
-        "label": "介绍视频封面",
-        "prop": "video_cover",
-        "scope": {
-          "type": "ImageBox",
-          "state": {
-            "value": ""
-          }
-        }
-      },
-      {
-        "label": "介绍视频",
-        "prop": "video",
-        "scope": {
-          "type": "Link",
-          "state": {
-            "value": ""
-          }
-        }
+        "label": "上传集数",
+        "prop": "video_count"
       },
       {
         "prop": "release_time",
         "label": "发布时间"
-      },
-      {
-        "label": "付费类型",
-        "prop": "pay_type",
-        "scope": {
-          "type": "Select",
-          "state": {
-            "value": "",
-            "readonly": true,
-            "options": [
-              {
-                "value": 0,
-                "label": "免费"
-              },
-              {
-                "value": 1,
-                "label": "收费"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "label": "单独购买",
-        "prop": "is_single_buy",
-        "scope": {
-          "type": "Select",
-          "state": {
-            "value": "",
-            "readonly": true,
-            "options": [
-              {
-                "value": 0,
-                "label": "不可以"
-              },
-              {
-                "value": 1,
-                "label": "可以"
-              }
-            ]
-          }
-        }
       },
       {
         "label": "状态",
@@ -171,32 +109,11 @@
             "options": [
               {
                 "value": 0,
-                "label": "已发布"
-              },
-              {
-                "value": 1,
                 "label": "未发布"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "label": "上架状态",
-        "prop": "is_putaway",
-        "scope": {
-          "type": "Select",
-          "state": {
-            "value": "",
-            "readonly": true,
-            "options": [
-              {
-                "value": 0,
-                "label": "即将上线"
               },
               {
                 "value": 1,
-                "label": "已上线"
+                "label": "已发布"
               }
             ]
           }
@@ -213,11 +130,11 @@
             "options": [
               {
                 "value": 0,
-                "label": "推荐"
+                "label": "未推荐"
               },
               {
                 "value": 1,
-                "label": "不推荐"
+                "label": "已推荐"
               }
             ]
           }
@@ -238,6 +155,14 @@
               "label": "删除",
               "type": "danger",
               "action": "delete"
+            },
+            {
+              "label": "上线",
+              "action": "upordown"
+            },
+            {
+              "label": "视频管理",
+              "action": "videoManage"
             }
           ]
         }
@@ -257,14 +182,70 @@
       "title": "新建",
       "items": [
         {
+          "type": "Input",
+          "label": "枝桠名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "关键字",
+          "prop": "keywords",
+          "state": {
+            "value": ""
+          }
+        },
+        {
           "type": "Select",
-          "label": "类型",
-          "prop": "wanxiang",
+          "label": "讲者",
+          "prop": "speaker",
           "state": {
             "value": "",
-            "options": [
-              
-            ]
+            "options": []
+          }
+        },
+        {
+          "type": "DatePicker",
+          "label": "发布时间",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "请选择相关枝桠",
+          "prop": "zhiya_recommended",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "总集数",
+          "prop": "episodes",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "简介",
+          "prop": "intro",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        },
+        {
+          "type": "AMap",
+          "label": "地图",
+          "prop": "map",
+          "state": {
+            "value": ["116.46", "39.92"]
           }
         }
       ],
@@ -286,7 +267,7 @@
         {
           "name": "retrieve",
           "type": "api",
-          "url": "wanxiang/",
+          "url": "zhiya/",
           "method": "GET",
           "client_config": {
             "table.data": "data.items",
@@ -301,7 +282,7 @@
           "name": "retrieve",
           "type": "api",
           "method": "GET",
-          "url": "wanxiang/",
+          "url": "zhiya/",
           "request": {
             "page": "pagination.currentPage",
             "page_size": "pagination.pageCount",
@@ -328,11 +309,11 @@
         {
           "name": "retrieve",
           "type": "api",
-          "url": "wanxiang/drop/",
+          "url": "zhiya/drop/",
           "method": "GET",
           "client_config": {
-            "dialogs.create.items[prop=wanxiang].state.options": "data.items",
-            "dialogs.create.items[prop=wanxiang].state.value": 0
+            "dialogs.create.items[prop=zhiya_recommended].state.options": "data.items",
+            "dialogs.create.items[prop=zhiya_recommended].state.value": 0
           }
         }
       ]

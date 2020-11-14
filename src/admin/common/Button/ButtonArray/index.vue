@@ -4,7 +4,6 @@
       v-for="button in state"
       :key="state.indexOf(button)"
       :state="button"
-      @closeDialog="closeDialog"
     />
   </div>
 </template>
@@ -21,9 +20,5 @@ import Button from '@/admin/common/Button/index.vue'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!:ButtonArrayState;
-
-  closeDialog(data: boolean) {
-    this.$emit('isCloseDialog', data)
-  }
 }
 </script>
