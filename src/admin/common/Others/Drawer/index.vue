@@ -23,7 +23,7 @@
       :with-header="state.withHeader"
       :before-close="beforeClose"
     >
-      <slot>to be continued</slot>
+      <slot />
     </el-drawer>
   </div>
 </template>
@@ -38,7 +38,6 @@ import Form from '@/admin/common/Form/index.vue'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: DrawerState;
-
   drawer = false;
   beforeClose() {
     this.drawer = false

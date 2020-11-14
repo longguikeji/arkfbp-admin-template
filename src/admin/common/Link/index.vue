@@ -1,13 +1,13 @@
 <template>
   <el-link
-    :href="state.href"
+    :href="state.value"
     :disabled="state.disabled"
     :type="state.type"
     :underline="state.underline"
     :icon="state.icon"
     target="_blank"
   >
-    <span v-if="value">{{ state.value }}</span>
+    <span v-if="state.displayContent === 'link'">{{ state.value }}</span>
     <i
       v-else
       class="el-icon-document"

@@ -22,6 +22,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import PaginationState from './PaginationState'
+import { AdminModule } from '@/store/modules/admin'
 
 @Component({
   name: 'Pagination',
@@ -38,24 +39,14 @@ export default class extends Vue {
     }
   }
 
-  private currentSize = 20
-  private currentPage: number = this.state.currentPage
-
-  handleSizeChange(currentSize: number) {
-    console.log(currentSize)
-    // runaction(name, data)
+  private async handleSizeChange(currentSize: number) {
+    this.state.pageCount = currentSize
+    await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
   }
 
-  actionHandler(currentPage: number) {
-    // actionName = this.state.action
-    // currentPage = currentPage
-    //
-    console.log(currentPage)
-    // @size-change="actionHandler(state.actionSizeChange)"
-    // @current-change="actionHandler(state.actionCurrentChange)"
-    // @prev-click="actionHandler(state.actionPrevClick)"
-    // @next-click="actionHandler(state.actionNextClick)"
-    // runAction(actionName, actionData)
+  private async actionHandler(currentPage: number) {
+    this.state.currentPage = currentPage
+    await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
   }
 }
 </script>

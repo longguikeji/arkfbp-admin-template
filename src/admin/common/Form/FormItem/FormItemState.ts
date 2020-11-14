@@ -4,4 +4,6 @@ export default interface FormItemState extends AdminComponentState {
     label?:string
     labelWidth?: string
     size?: string
+    prop?: any
+  
 }

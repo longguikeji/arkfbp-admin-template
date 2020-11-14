@@ -12,20 +12,11 @@
       v-if="state.type === 'table'"
       :state="state"
     />
-    <FormPage
-      v-if="state.type === 'exampleone'"
-      :state="state"
-    />
-
-    <TablePage
-      v-if="state.type === 'testpage'"
-      :state="state"
-    />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Config } from '@/config'
 import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
@@ -53,9 +44,8 @@ export default class extends Vue {
       const file = files[i]
       const page = file.split('.')[0]
       if (window.location.href.includes(page)) {
-        const viewconfig: any = require(`@/config/json/${file}`) // eslint-disable-line
-        const serveconfig: any = require('@/config/temp/user.json') // eslint-disable-line
-
+        const viewconfig: any = require(`@/config/json/${file}`); // eslint-disable-line
+        const serveconfig: any = require("@/config/temp/user.json"); // eslint-disable-line
         const c: any = new Config(viewconfig, serveconfig, page)
         await AdminModule.setAdmin(c.config)
         await AdminModule.adminAction({ action: 'meta' })

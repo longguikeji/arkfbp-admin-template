@@ -8,7 +8,7 @@
     :minlength="state.minlength"
     :show-word-limit="state.showWordLimit"
     :placeholder="state.placeholder"
-    :clearable="state.clearable"
+    :clearable="state.clearable || true"
     :show-password="state.showPassword"
     :disabled="state.disabled"
     :size="state.size"

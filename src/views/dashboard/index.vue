@@ -24,10 +24,10 @@ export default class extends Vue {
     return UserModule.roles
   }
 
-  created() {
-    if (!this.roles.includes('admin')) {
-      this.currentRole = 'editor-dashboard'
-    }
-  }
+  // created() {
+  //   if (!this.roles.includes('admin')) {
+  //     this.currentRole = 'editor-dashboard'
+  //   }
+  // }
 }
 </script>

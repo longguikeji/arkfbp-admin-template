@@ -1,0 +1,274 @@
+{
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
+  "type": "table",
+  "title": "secondpage",
+  "buttons": [
+    {
+      "label": "新建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small",
+      "data": {}
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "现场名称",
+        "prop": "name",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "选择状态",
+        "prop": "is_valid",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "已发布"
+            },
+            {
+              "value": 1,
+              "label": "未发布"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "label": "选择类型",
+        "prop": "recommended",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "推荐"
+            },
+            {
+              "value": 1,
+              "label": "不推荐"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "toFilter"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "万象名称",
+        "prop": "name"
+      },
+      {
+        "label": "讲者",
+        "prop": "speaker_name"
+      },
+      {
+        "label": "热度",
+        "prop": "fever_count"
+      },
+      {
+        "label": "上传集数",
+        "prop": "episodes"
+      },
+      {
+        "label": "介绍视频封面",
+        "prop": "video_cover",
+        "scope": {
+          "type": "ImageBox",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "介绍视频",
+        "prop": "video",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "prop": "release_time",
+        "label": "发布时间"
+      },
+      {
+        "label": "付费类型",
+        "prop": "pay_type"
+      },
+      {
+        "label": "单独购买",
+        "prop": "is_single_buy"
+      },
+      {
+        "label": "状态",
+        "prop": "is_valid",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "已发布"
+              },
+              {
+                "value": 1,
+                "label": "未发布"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "上架状态",
+        "prop": "product_status"
+      },
+      {
+        "label": "推荐",
+        "prop": "recommended"
+      },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
+            }
+          ]
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "toFilter"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "wanxiang",
+          "state": {
+            "value": "",
+            "options": [
+              
+            ]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
+    }
+  },
+  "actions": {
+    "meta": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "wanxiang/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "toFilter": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "wanxiang/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items[prop=name].state.value",
+            "param_is_valid": "filter.items[prop=is_valid].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "wanxiang/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=wanxiang].state.options": "data.items",
+            "dialogs.create.items[prop=wanxiang].state.value": 0
+          }
+        }
+      ]
+    }
+  }
+}

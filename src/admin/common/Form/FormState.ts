@@ -1,16 +1,16 @@
-import FormItemState from './FormItem/FormItemState'
+import FormItemState from "./FormItem/FormItemState";
 
 export interface FormItemStateArray {
-    [index:number]:FormItemState
+  [index: number]: FormItemState;
 }
 
 export default interface FormState {
-    items: [FormItemState | FormItemStateArray]
+  items: [FormItemState | FormItemStateArray];
 
-    inline?: boolean
-    size?: string
-    disabled?: boolean
-    labelPosition?: string
-    labelWidth?: string
-    labelSuffix?: string
+  inline?: boolean;
+  size?: string;
+  disabled?: boolean;
+  labelPosition?: string;
+  labelWidth?: string;
+  labelSuffix?: string;
 }

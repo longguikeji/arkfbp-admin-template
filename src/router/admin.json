@@ -23,7 +23,26 @@
         "title": "exampleone",
         "path": "exampleone",
         "icon": "dashboard"
-      },
+      }
+    ]
+  },
+  "page": {
+    "title": "page",
+    "path": "page",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "user",
+        "path": "user",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  "testpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
       {
         "title": "testpage",
         "path": "testpage",
@@ -31,15 +50,27 @@
       }
     ]
   },
-  "page": {
-    "title": "page", 
-    "path": "page", 
-    "icon": "dashboard", 
+  "exampletwo": {
+    "title": "exampletwo",
+    "path": "exampletwo",
+    "icon": "dashboard",
     "children": [
       {
-        "title": "user", 
-        "path": "user", 
-        "icon": "dashboard" 
+        "title": "exampletwo",
+        "path": "exampletwo",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  "secondpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "secondpage",
+        "path": "secondpage",
+        "icon": "dashboard"
       }
     ]
   }

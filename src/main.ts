@@ -13,7 +13,7 @@ import { AppModule } from "@/store/modules/app";
 import router from "@/router";
 import i18n from "@/lang";
 import "@/icons/components";
-import "@/permission";
+// import "@/permission";
 import "@/utils/error-log";
 import "@/pwa/register-service-worker";
 import * as directives from "@/directives";

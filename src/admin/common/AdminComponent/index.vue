@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
 import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
@@ -56,6 +56,8 @@ import Carousel from '@/admin/common/Others/Carousel/index.vue'
 import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
 import Popover from '@/admin/common/Others/Popover/index.vue'
 import Tooltip from '@/admin/common/Others/Tooltip/index.vue'
+import Backtop from '@/admin/common/Others/Backtop/index.vue'
+import Rich from '@/admin/common/Form/Rich/index.vue'
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -119,7 +121,9 @@ export default class extends Vue {
         Carousel,
         Popconfirm,
         Popover,
-        Tooltip
+        Tooltip,
+        Backtop,
+        Rich
       },
       render: (h: Function) => {
         return h(state.type, {
