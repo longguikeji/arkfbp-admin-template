@@ -46,7 +46,6 @@ class Admin extends VuexModule implements IAdminState {
         })
       }
     }
-    
     this.CHANGE_ADMIN(adminState)
   }
 }

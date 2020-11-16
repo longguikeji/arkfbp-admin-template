@@ -158,10 +158,14 @@
       "titles": "编辑",
       "items": [
         "name", 
-        "avatar_url", 
+        {
+          "type": "Image",
+          "prop": "avatar_url"
+        },
         "cover", 
         "ranking",  
         {
+          "type": "Select",
           "prop": "speechcategory",
           "option": []
         },
@@ -205,8 +209,8 @@
           "request": {
             "page": "pagination.currentPage", 
             "page_size": "pagination.pageSize", 
-            "param_name": "filter.items[name]", 
-            "param_status": "filter.items[is_valid]"
+            "param_name": "filter.items[prop=name].state.value", 
+            "param_status": "filter.items[prop=is_valid].state.value"
           }, 
           "url": "speaker/", 
           "method": "GET",
