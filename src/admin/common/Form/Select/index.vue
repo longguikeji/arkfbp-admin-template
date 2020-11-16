@@ -55,9 +55,17 @@ export default class extends Vue {
   @Prop({ required: true }) state!: SelectState;
 
   get tagData() {
+    let tagValue
+    if (this.state.options instanceof Array) {
+      this.state.options.forEach((o) => {
+        if (o.value === this.state.value) {
+          tagValue = o.label
+        }
+      })
+    }
     return [
       {
-        value: this.state.value,
+        value: tagValue,
         type: this.state.type || 'info'
       }
     ]

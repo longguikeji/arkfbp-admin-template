@@ -41,6 +41,7 @@
     "tinymce": "^5.4.2",
     "tui-editor": "^1.4.10",
     "vue": "^2.6.12",
+    "vue-amap": "^0.5.10",
     "vue-class-component": "^7.2.5",
     "vue-count-to": "^1.0.13",
     "vue-grid-layout": "^2.3.11",

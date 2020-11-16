@@ -11,8 +11,7 @@
       "label": "创建",
       "action": "showCreateDialog",
       "type": "primary",
-      "size": "small",
-      "data": {}
+      "size": "small"
     }
   ],
   "filter": {

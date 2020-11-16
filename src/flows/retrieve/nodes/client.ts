@@ -1,12 +1,14 @@
 import { FunctionNode } from 'arkfbp/lib/functionNode'
 import Filter from '@/utils/filter'
+import ChangeOptions from '@/utils/options'
+import { pick } from 'lodash'
 export class Client extends FunctionNode {
   async run() {
     const state = this.$state.fetch()
     if (state.clientServer == null) {
       return this.inputs
     }
-
+    const _this = this
     Object.keys(state.clientServer).forEach((key) => {
       const ks = key.split('.')
       let tempC = state.client
@@ -16,6 +18,9 @@ export class Client extends FunctionNode {
           tempC = tempC['items'][res]
         } else {
           tempC = tempC[ks[i]]
+        }
+        if (tempC.type && tempC.type === 'Select') {
+          ChangeOptions(_this.inputs.data.items)
         }
       }
       const vs = state.clientServer[key].split('.')

@@ -73,5 +73,17 @@
         "icon": "dashboard"
       }
     ]
+  },
+  "thirdpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "thirdpage", 
+        "path": "thirdpage", 
+        "icon": "dashboard" 
+      }
+    ]
   }
 }
