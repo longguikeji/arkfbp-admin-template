@@ -20,14 +20,6 @@
     "items": [
       {
         "type": "Input",
-        "label": "名称",
-        "prop": "name",
-        "state": {
-          "value": ""
-        }
-      },
-      {
-        "type": "Input",
         "label": "产品ID号",
         "prop": "product_id",
         "state": {
@@ -35,89 +27,11 @@
         }
       },
       {
-        "type": "Select",
-        "label": "选择类型",
-        "prop": "type_choice",
-        "state": {
-          "value": "",
-          "options": [
-            {
-              "value": 0,
-              "label": "单课当前价格"
-            },
-            {
-              "value": 1,
-              "label": "年费当前价格"
-            },
-            {
-              "value": 2,
-              "label": "单课原始价格"
-            },
-            {
-              "value": 3,
-              "label": "单课邀请码价格"
-            },
-            {
-              "value": 4,
-              "label": "单课优惠码价格"
-            },
-            {
-              "value": 5,
-              "label": "单课邀请码和优惠码价格"
-            },
-            {
-              "value": 6,
-              "label": "实物原始价格"
-            },
-            {
-              "value": 7,
-              "label": "实物当前价格"
-            },
-            {
-              "value": 8,
-              "label": "实物邀请码价格"
-            },
-            {
-              "value": 9,
-              "label": "实物优惠码价格"
-            },
-            {
-              "value": 10,
-              "label": "实物邀请码和优惠码价格"
-            },
-            {
-              "value": 11,
-              "label": "实物课程原始价格"
-            },
-            {
-              "value": 12,
-              "label": "实物课程当前价格"
-            },
-            {
-              "value": 13,
-              "label": "实物课程邀请码价格"
-            },
-            {
-              "value": 14,
-              "label": "实物课程优惠码价格"
-            },
-            {
-              "value": 15,
-              "label": "实物课程邀请码和优惠码价格"
-            },
-            {
-              "value": 16,
-              "label": "会员优惠码价格"
-            }
-          ]
-        }
-      },
-      {
         "type": "Button",
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "toFilter"
+          "action": "retrieve"
         }
       }
     ]
@@ -129,20 +43,12 @@
         "prop": "id"
       },
       {
-        "label": "名称",
-        "prop": "name"
-      },
-      {
         "label": "产品ID",
         "prop": "product_id"
       },
       {
         "label": "价格",
         "prop": "price"
-      },
-      {
-        "label": "类型",
-        "prop": "type_choice"
       },
       {
         "label": "创建时间",
@@ -175,7 +81,7 @@
     "pageCount": 10,
     "total": 0,
     "background": "",
-    "action": "toFilter"
+    "action": "retrieve"
   },
   "dialogs": {
     "create": {
@@ -414,20 +320,6 @@
     }
   },
   "actions": {
-    "meta": {
-      "flows": [
-        {
-          "name": "retrieve",
-          "type": "api",
-          "url": "/priceinfo/",
-          "method": "GET",
-          "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
-          }
-        }
-      ]
-    },
     "showCreateDialog": {
       "flows": [
         {
@@ -439,7 +331,7 @@
         }
       ]
     },
-    "toFilter": {
+    "retrieve": {
       "flows": [
         {
           "name": "retrieve",
@@ -457,6 +349,10 @@
             "table.data": "data.items",
             "pagination.total": "data.total"
           }
+        },
+        {
+          "name": "buttonStatus",
+          "request": "table.data"
         }
       ]
     },
@@ -477,7 +373,9 @@
           "index": {
             "id": ""
           },
-          "client_config": {}
+          "client_config": {
+
+          }
         }
       ]
     },

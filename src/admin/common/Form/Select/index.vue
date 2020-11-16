@@ -46,7 +46,7 @@ import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
 
 @Component({
-  name: 'OptionModule',
+  name: 'Select',
   components: {
     Tag
   }

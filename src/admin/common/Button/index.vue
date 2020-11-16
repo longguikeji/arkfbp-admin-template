@@ -6,7 +6,7 @@
     :round="state.round"
     :circle="state.circle"
     :loading="state.loading"
-    :disabled="state.disabled"
+    :disabled="isDisabled"
     :icon="state.icon"
     :autofocus="state.autofocus"
     :native-type="state.nativeType"
@@ -26,14 +26,24 @@ import ButtonState from './ButtonState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: ButtonState;
+  @Prop({ required: false }) index!: number;
   @Watch('state', { immediate: true, deep: true })
   fresh() {
     this.$forceUpdate()
   }
 
+  get isDisabled() {
+    if (this.state.data && this.state.data.button && this.state.data.button[this.index]) {
+      return this.state.data.button[this.index].disabled
+    } else {
+      return this.state.disabled
+    }
+  }
+
   private async clickHandler() {
     console.log('action!!!', this.state.action)
     console.log('data ', this.state.data)
+    console.log('cloumn ', this.state.cloumn)
     if (this.state.type === 'warning' || this.state.type === 'danger') {
       let headMessage = ''
       let confirmType: any

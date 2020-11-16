@@ -32,7 +32,7 @@ import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
 import Popover from '@/admin/common/Others/Popover/index.vue'
 import Tooltip from '@/admin/common/Others/Tooltip/index.vue'
 @Component({
-  name: 'FromPage',
+  name: 'FormPage',
   components: {
     Form,
     Card,

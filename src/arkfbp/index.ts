@@ -67,7 +67,7 @@ export async function runFlow(state: any, flow: any, data: any) {
         params[key] = temp
       })
     }
-    
+
     await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
@@ -82,7 +82,6 @@ export async function runFlow(state: any, flow: any, data: any) {
   }
 
   let params = state
-
   if (flow.request) {
     flow.request.split('.').forEach((v: string) => {
       params = params[v]

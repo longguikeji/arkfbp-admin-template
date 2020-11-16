@@ -17,7 +17,7 @@ import CardState from './CardState'
 import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 
 @Component({
-  name: 'FromPage',
+  name: 'Card',
   components: {
     ButtonArray
   }

@@ -31,6 +31,15 @@
       v-if="state.type === 'thirdpage'"
       :state="state"
     />
+
+    <TablePage
+      v-if="state.type === 'fourthpage'"
+      :state="state"
+    />
+    <TablePage
+      v-if="state.type === 'fifthpage'"
+      :state="state"
+    />
   </div>
 </template>
 

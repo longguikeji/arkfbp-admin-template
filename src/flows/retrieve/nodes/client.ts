@@ -1,7 +1,6 @@
 import { FunctionNode } from 'arkfbp/lib/functionNode'
 import Filter from '@/utils/filter'
 import ChangeOptions from '@/utils/options'
-import { pick } from 'lodash'
 export class Client extends FunctionNode {
   async run() {
     const state = this.$state.fetch()

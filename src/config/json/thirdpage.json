@@ -67,7 +67,7 @@
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "toFilter"
+          "action": "retrieve"
         }
       }
     ]
@@ -175,7 +175,7 @@
     "pageCount": 10,
     "total": 0,
     "background": "",
-    "action": "toFilter"
+    "action": "retrieve"
   },
   "dialogs": {
     "create": {
@@ -258,25 +258,195 @@
         }
       ],
       "visible": false,
-      "attributes": {}
+      "attributes": {},
+      "inline": true
+    },
+    "vedio": {
+      "type": "table",
+      "title": "视频管理",
+      "visible": false,
+      "buttons": [
+        {
+          "label": "新建",
+          "type": "primary",
+          "action": "createVedio"
+        }
+      ],
+      "filter": {
+        "inline": true,
+        "size": "mini",
+        "items": [
+          {
+            "type": "Input",
+            "label": "视频名称",
+            "prop": "title",
+            "state": {
+              "value": ""
+            }
+          },
+          {
+            "type": "DatePicker",
+            "label": "开始时间",
+            "prop": "begin_time",
+            "state": {
+              "value": ""
+            }
+          },
+          {
+            "type": "DatePicker",
+            "label": "结束时间",
+            "prop": "end_time",
+            "state": {
+              "value": ""
+            }
+          },
+          {
+            "type": "Select",
+            "label": "选择状态",
+            "prop": "is_valid",
+            "state": {
+              "value": "",
+              "options": [
+                {
+                  "value": 0,
+                  "label": "未发布"
+                },
+                {
+                  "value": 1,
+                  "label": "已发布"
+                }
+              ]
+            }
+          },
+          {
+            "type": "Button",
+            "state": {
+              "label": "搜索",
+              "type": "primary",
+              "action": "retrieveVedio"
+            }
+          }
+        ]
+      },
+      "table": {
+        "columns": [
+          {
+            "label": "#",
+            "prop": "id"
+          },
+          {
+            "label": "视频名称",
+            "prop": "title"
+          },
+          {
+            "label": "讲者",
+            "prop": "speaker_name"
+          },
+          {
+            "label": "集数",
+            "prop": "episode"
+          },
+          {
+            "label": "发布时间",
+            "prop": "created"
+          },
+          {
+            "label": "app",
+            "prop": "total_app_count"
+          },
+          {
+            "label": "h5",
+            "prop": "total_h5_count"
+          },
+          {
+            "label": "网站",
+            "prop": "total_web_count"
+          },
+          {
+            "label": "ipad",
+            "prop": "total_ipad_count"
+          },
+          {
+            "label": "视频",
+            "prop": "video",
+            "scope": {
+              "type": "Link",
+              "state": {
+                "value": ""
+              }
+            }
+          },
+          {
+            "label": "音频",
+            "prop": "audio",
+            "scope": {
+              "type": "Link",
+              "state": {
+                "value": ""
+              }
+            }
+          },
+          {
+            "label": "状态",
+            "prop": "is_valid",
+            "scope": {
+              "type": "Select",
+              "state": {
+                "value": "",
+                "readonly": true,
+                "options": [
+                  {
+                    "value": 0,
+                    "label": "未发布"
+                  },
+                  {
+                    "value": 1,
+                    "label": "已发布"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "label": "操作",
+            "scope": {
+              "type": "ButtonArray",
+              "state": [
+                {
+                  "label": "编辑",
+                  "type": "primary",
+                  "action": "showVedioUpdateDialog"
+                },
+                {
+                  "label": "热门评论",
+                  "action": "wacthHotComments"
+                },
+                {
+                  "label": "删除",
+                  "action": "deleteOneVedio",
+                  "type": "danger"
+                },
+                {
+                  "label": "上线",
+                  "action": "upordownVedio"
+                }
+              ]
+            }
+          }
+        ],
+        "data": []
+      },
+      "pagination": {
+        "currentPage": 1,
+        "pageCount": 10,
+        "total": 0,
+        "background": "",
+        "action": "retrieveVedio"
+      }
     }
   },
   "actions": {
-    "meta": {
-      "flows": [
-        {
-          "name": "retrieve",
-          "type": "api",
-          "url": "zhiya/",
-          "method": "GET",
-          "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
-          }
-        }
-      ]
-    },
-    "toFilter": {
+    "retrieve": {
       "flows": [
         {
           "name": "retrieve",
@@ -309,11 +479,61 @@
         {
           "name": "retrieve",
           "type": "api",
+          "url": "speaker/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=speaker].state.options": "data.items",
+            "dialogs.create.items[prop=speaker].state.value": 0
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
           "url": "zhiya/drop/",
           "method": "GET",
           "client_config": {
             "dialogs.create.items[prop=zhiya_recommended].state.options": "data.items",
             "dialogs.create.items[prop=zhiya_recommended].state.value": 0
+          }
+        }
+      ]
+    },
+    "createVedio": {
+      "flows": [
+
+      ]
+    },
+    "videoManage": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.vedio.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/<id>/",
+          "client_config": {
+            "dialogs.vedio.table.data": "data.items",
+            "dialogs.vedio.pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "retrieveVedio": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/<id>/",
+          "client_config": {
+            "dialogs.vedio.table.data": "data.items",
+            "dialogs.vedio.pagination.total": "data.total"
           }
         }
       ]
