@@ -44,7 +44,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
-
 @Component({
   name: 'Select',
   components: {
@@ -53,25 +52,30 @@ import SelectState from './SelectState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: SelectState;
-
   get tagData() {
     let tagValue
     const tagValues = []
     if (this.state.options instanceof Array) {
       if (this.state.value instanceof Array) {
-        this.state.options.forEach((o) => {
-          this.state.value.forEach((v) => {
+        this.state.options.forEach(o => {
+          this.state.value.forEach(v => {
             if (o.value === v) {
               tagValue = o.label
-              tagValues.push({ value: tagValue, type: this.state.type || 'info' })
+              tagValues.push({
+                value: tagValue,
+                type: this.state.type || 'info'
+              })
             }
           })
         })
       } else {
-        this.state.options.forEach((o) => {
+        this.state.options.forEach(o => {
           if (o.value === this.state.value) {
             tagValue = o.label
-            tagValues.push({ value: tagValue, type: this.state.type || 'info' })
+            tagValues.push({
+              value: tagValue,
+              type: this.state.type || 'info'
+            })
           }
         })
       }
@@ -81,5 +85,4 @@ export default class extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

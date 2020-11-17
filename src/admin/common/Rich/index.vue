@@ -1,11 +1,9 @@
 <template>
-  <div class="components-container">
-    <div>
-      <tinymce
-        v-model="state.value"
-        height="500"
-      />
-    </div>
+  <div>
+    <tinymce
+      v-model="state.value"
+      height="500"
+    />
   </div>
 </template>
 
@@ -24,8 +22,5 @@ export default class extends Vue {
   @Prop({ required: true }) state!: RichState;
 }
 </script>
-<style lang="scss" scoped>
-.editor-content {
-  margin-top: 20px;
-}
+<style lang="scss">
 </style>

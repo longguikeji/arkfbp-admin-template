@@ -25,19 +25,6 @@ import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: FormItemState;
-
-  @Watch('state', { deep: true })
-  private valueChange(value: FormItemState) {
-    console.log('state', this.state.state.value)
-  }
-
-  // get value() {
-  //   this.state.state[this.state.prop].value
-  //   return this.state;
-  // }
-  // set value(newValue: any) {
-  //   this.state.state[this.state.prop].value = newValue;
-  // }
 }
 </script>
 <style lang="scss" scoped>
