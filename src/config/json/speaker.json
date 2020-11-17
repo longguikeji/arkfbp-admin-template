@@ -4,6 +4,7 @@
       "retrieve"
     ]
   },
+  "name": "speaker",
   "type": "table",
   "title": "讲者管理",
   "buttons": [
@@ -49,7 +50,13 @@
         "action": "showUpdateDialog"
       }, 
       {
-        "prop": "avatar_url"
+        "prop": "avatar_url",
+        "scope": {
+          "type": "ImageBox",
+          "state": {
+            "value": ""
+          }
+        }
       }, 
       {
         "prop": "periods"
@@ -84,35 +91,36 @@
         ]
       }, 
       {
-        "key": "is_valid"
+        "prop": "is_valid"
       }, 
       {
-        "type": "action", 
+        "prop": "action", 
         "width": 250, 
         "title": "操作", 
-        "actions": [
-          {
-            "label": "编辑", 
-            "type": "primary", 
-            "action": "showUpdateDialog"
-          }, 
-          {
-            "label": "删除", 
-            "type": "danger", 
-            "action": "deleteItem"
-          }, 
-          {
-            "type": "switch", 
-            "prop": "is_valid", 
-            "labels": {
-              "0": "上线", 
-              "1": "下线"
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑", 
+              "type": "primary", 
+              "action": "showUpdateDialog"
             }, 
-            "actions": {
-              "default": "switchStatus"
+            {
+              "label": "删除", 
+              "type": "danger", 
+              "action": "delete"
+            }, 
+            {
+              "type": "switch", 
+              "prop": "is_valid", 
+              "labels": {
+                "0": "上线", 
+                "1": "下线"
+              }, 
+              "action": "switchStatus"
             }
-          }
-        ]
+          ]
+        }
       }
     ],
     "data": []
@@ -196,7 +204,7 @@
           "url": "category/drop/", 
           "method": "GET",
           "client_config": {
-            "dialogs.create.speechcategory.options": "data.items"
+            "dialogs.create.items[prop=speechcategory].state.options": "data.items"
           }
         }
       ]
@@ -217,8 +225,8 @@
           "client_config": {
             "table.data": "data.items", 
             "pagination.total": "data.total", 
-            "page.currentPage": "data.page", 
-            "page.pageSize": "data.page_size"
+            "pagination.currentPage": "data.page", 
+            "pagination.pageSize": "data.page_size"
           }
          }
       ]
@@ -244,8 +252,8 @@
           "request": {
             "page": "pagination.currentPage", 
             "page_size": "pagination.pageSize", 
-            "param_name": "filter.items[name]", 
-            "param_status": "filter.items[is_valid]"
+            "param_name": "filter.items[prop=name].state.value", 
+            "param_status": "filter.items[prop=is_valid].state.value"
           }, 
           "client_config": {
             "table.data": "data.items"
@@ -268,7 +276,7 @@
           "request": {
             "page": "pagination.currentPage",
             "page_size": "pagination.pageCount",
-            "param_name": "filter.items",
+            "param_name": "filter.items[prop=name].state.value",
             "param_product_id": "",
             "param_type": ""
           },
@@ -325,19 +333,16 @@
         }
       ]
     },
-    "getPrice": {
-      "flows": [
-        {
-          "name": "retrieve",
-          "type": "api",
-          "method": "GET",
-          "url": "speaker/drop/",
-          "request": {
-            "type_choice": ""
-          },
-          "client_config": {}
-        }
-      ]
+    "switchStatus": {
+      "flows": [{
+        "name": "update", 
+        "type": "api",
+        "url": "speaker/{id}/check_status/", 
+        "method": "GET" 
+      }],
+      "next": [{
+        "action": "retrieve"
+      }]
     }
   }
 }

@@ -28,8 +28,44 @@ export class Config {
   }
 
   private getConfig(): any {
-    const api = this._serveconfig[this._current].api
-    const tempApi: any = {}
+    if (!this._serveconfig[this._current]) {
+      return this._viewconfig
+    }
+
+    const serverMeta = this._serveconfig[this._current].meta
+    const serverApi = this._serveconfig[this._current].api
+    const api: any = {}
+    const meta: any = {}
+    
+    const walkMeta = (data: any, map: any) => {
+      const name = this._serveconfig[this._current].name
+      const type = data[name].type
+  
+      if (type.object) {
+        Object.keys(type.object).forEach((e: any) => {
+          if (type.object[e].includes('.')) {
+            const arr = type.object[e].split('.')
+            const value = this._serveconfig[arr[0]].meta[arr[1]]
+            map[e] = {
+              label: value.title || e,
+              state: {
+                value: '',
+                ...(Object.values(value.type)[0] as Object)
+              }
+            }
+          } else {
+            const value = data[type.object[e]]
+            map[e] = {
+              label: value.title || e,
+              state: {
+                value: '',
+                ...(Object.values(value.type)[0] as Object)
+              }
+            }
+          }
+        })
+      }
+    }
 
     const walkApi = (data: any, map: any) => {
       Object.keys(data).forEach((e: any) => {
@@ -88,18 +124,31 @@ export class Config {
       return map
     }
 
-    walkApi(api, tempApi)
+    walkMeta(serverMeta, meta)
+    walkApi(serverApi, api)
 
     const config: any = {}
+
+    if (this._viewconfig.type) {
+      config.type = this._viewconfig.type
+    } else {
+      config.type = 'table'
+    }
+
+    if (this._viewconfig.title) {
+      config.title = this._viewconfig.title
+    } else {
+      config.type = 'tablePage'
+    }
 
     if (this._viewconfig.filter) {
       config.filter = this._viewconfig.filter
       if (this._viewconfig.filter.items) {
         config.filter.items = this._viewconfig.filter.items.map((e: any) => {
           if (typeof e === 'string') {
-            return { prop: e, type: 'Input', ...tempApi.create[0].request[e] }
+            return { prop: e, type: 'Input', ...meta[e] }
           } else {
-            return { ...e, ...tempApi.create[0].request[e.prop] } 
+            return { ...e, ...meta[e.prop] } 
           }
         })
       }
@@ -107,8 +156,8 @@ export class Config {
       config.filter = {
         inline: true,
         size: 'mini',
-        items: Object.keys(tempApi.create[0].request).map((e: any) => {
-          return { prop: e, type: 'Input', ...tempApi.create[0].request[e] }
+        items: Object.keys(meta).map((e: any) => {
+          return { prop: e, type: 'Input', ...api.retrieve[0].request[e] }
         })
       }
     }
@@ -118,9 +167,9 @@ export class Config {
       if (this._viewconfig.dialogs.create) {
         config.dialogs.create.items = this._viewconfig.dialogs.create.items.map((e: any) => {
           if (typeof e === 'string') {
-            return { prop: e, type: 'Input', ...tempApi.create[0].request[e] }
+            return { prop: e, type: 'Input', ...api.create[0].request[e] }
           } else {
-            return { ...e, ...tempApi.create[0].request[e.prop] } 
+            return { ...e, ...api.create[0].request[e.prop] } 
           }
         })
       }
@@ -128,9 +177,9 @@ export class Config {
       if (this._viewconfig.dialogs.update) {
         config.dialogs.update.items = this._viewconfig.dialogs.update.items.map((e: any) => {
           if (typeof e === 'string') {
-            return { prop: e, type: 'Input', ...tempApi.create[0].request[e] }
+            return { prop: e, type: 'Input', ...api.update[0].request[e] }
           } else {
-            return tempApi.update[0].request[e.prop]
+            return { ...e, ...api.update[0].request[e.prop] }
           }
         })
       }
@@ -138,8 +187,8 @@ export class Config {
       config.dialogs = {
         create: {
           titles: '新建',
-          items: Object.keys(tempApi.create[0].request).map((e: any) => {
-            return { prop: e, type: 'Input', ...tempApi.create[0].request[e] }
+          items: Object.keys(api.create[0].request).map((e: any) => {
+            return { prop: e, type: 'Input', ...api.create[0].request[e] }
           }),
           actions: [
             {
@@ -154,8 +203,8 @@ export class Config {
         },
         update: {
           titles: '编辑',
-          items: Object.keys(tempApi.create[0].request).map((e: any) => {
-            return { prop: e, type: 'Input', ...tempApi.create[0].request[e] }
+          items: Object.keys(api.update[0].request).map((e: any) => {
+            return { prop: e, type: 'Input', ...api.update[0].request[e] }
           }),
           actions: [
             {
@@ -176,16 +225,16 @@ export class Config {
       if (this._viewconfig.table.columns) {
         config.table.columns = this._viewconfig.table.columns.map((e: any) => {
           if (typeof e === 'string') {
-            return {prop: e,  type: 'Input', ...tempApi.create[0].request[e]}
+            return {prop: e,  type: 'Input', ...meta[e]}
           } else {
-            return { ...e, ...tempApi.create[0].request[e.prop]} 
+            return { ...e, ...meta[e.prop]} 
           }
         })
       }
     } else {
       config.table = {
         columns: [
-          ...Object.keys(tempApi.create[0].request).map((e: any) => {
+          ...Object.keys(meta).map((e: any) => {
             return { props: e }
           }),
           {
@@ -221,17 +270,6 @@ export class Config {
                 'label': '删除', 
                 'type': 'danger', 
                 'action': 'deleteItem'
-              }, 
-              {
-                type: 'switch', 
-                prop: 'is_valid', 
-                labels: {
-                  0: '上线', 
-                  1: '下线'
-                }, 
-                actions: {
-                  default: 'switchStatus'
-                }
               }
             ]
           }
@@ -386,18 +424,6 @@ export class Config {
               type: 'api',
               method: 'GET',
               url: 'speaker/<id>/delete/'
-            }
-          ]
-        },
-        'getPrice': {
-          flows: [
-            {
-              name: 'retrieve',
-              type: 'api',
-              method: 'GET',
-              url: 'speaker/drop/',
-              request: {},
-              client_config: {}
             }
           ]
         }

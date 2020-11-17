@@ -78,7 +78,7 @@ export default class extends Vue {
         const viewconfig: any = require(`@/config/json/${page}.json`) // eslint-disable-line
         const serveconfig: any = require('@/config/temp/demo.json') // eslint-disable-line
 
-        const c: any = new Config({}, serveconfig, page)
+        const c: any = new Config(viewconfig, serveconfig, page)
         await AdminModule.setAdmin(c.config)
         await AdminModule.adminAction({ action: 'meta' })
       }
