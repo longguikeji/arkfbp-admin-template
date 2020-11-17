@@ -28,7 +28,7 @@
     />
 
     <TablePage
-      v-if="state.type === 'thirdpage'"
+      v-if="state.type === 'zhiya'"
       :state="state"
     />
 

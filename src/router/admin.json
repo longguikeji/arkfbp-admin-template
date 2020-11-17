@@ -74,14 +74,14 @@
       }
     ]
   },
-  "thirdpage": {
+  "zhiya": {
     "title": "case",
     "path": "case",
     "icon": "dashboard",
     "children": [
       {
-        "title": "thirdpage", 
-        "path": "thirdpage", 
+        "title": "zhiya", 
+        "path": "zhiya", 
         "icon": "dashboard" 
       }
     ]
