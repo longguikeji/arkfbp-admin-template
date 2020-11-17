@@ -11,12 +11,12 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column
-      v-if="state.type && state.type.indexOf('selection') !== -1"
+      v-if="state.selection && state.selection.exist === true"
       type="selection"
       width="50"
     />
     <el-table-column
-      v-if="state.type && state.type.indexOf('index') !== -1"
+      v-if="state.index && state.index.exist === true"
       type="index"
       width="30"
       label="#"
@@ -46,7 +46,9 @@ export default class extends Vue {
   }
 
   handleSelectionChange(val: Array<any>) {
-    // console.log(val)
+    if (this.state.selection && this.state.selection.values) {
+      this.state.selection.values = val
+    }
   }
 }
 </script>

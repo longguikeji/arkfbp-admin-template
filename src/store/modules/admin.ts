@@ -41,7 +41,8 @@ class Admin extends VuexModule implements IAdminState {
 
       for (let i = 0; i < next.length; i++) {
         await this.adminAction({
-          action: next[i].action
+          action: next[i].action,
+          data: data
         })
       }
     }

@@ -85,6 +85,15 @@
         }
       },
       {
+        "type": "Select",
+        "label": "演讲类别",
+        "prop": "speechcategory",
+        "state": {
+          "value": "",
+          "options": []
+        }
+      },
+      {
         "type": "Button",
         "state": {
           "label": "搜索",
@@ -139,9 +148,48 @@
           }
         }
       },
-
-      { "label": "状态", "prop": "status" },
-      { "label": "推荐", "prop": "recommended" },
+      {
+        "label": "状态",
+        "prop": "status",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "已发布"
+              },
+              {
+                "value": 1,
+                "label": "未发布"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "推荐",
+        "prop": "recommended",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "未推荐"
+              },
+              {
+                "value": 1,
+                "label": "推荐"
+              }
+            ]
+          }
+        }
+      },
       {
         "label": "操作",
         "prop": "action",
@@ -171,7 +219,6 @@
     "background": "",
     "action": "toFilter"
   },
-
   "dialogs": {
     "create": {
       "title": "新建",
@@ -185,12 +232,154 @@
             "options": []
           }
         },
-
+        {
+          "type": "Select",
+          "label": "演讲类别",
+          "prop": "speechcategory",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
         {
           "type": "Input",
-          "label": "类型",
+          "label": "演讲标题",
           "prop": "title",
           "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "题语",
+          "prop": "title",
+          "state": {
+            "type": "textarea",
+            "value": ""
+          }
+        },
+        {
+          "type": "InputNumber",
+          "label": "期数",
+          "prop": "periods",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "DatePicker",
+          "label": "演讲日期",
+          "prop": "speechdate",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "DatePicker",
+          "label": "发布时间",
+          "prop": "release_time",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "演讲城市",
+          "prop": "speechcity",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "关键字（空格分隔）",
+          "prop": "keywords",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "讲者ID",
+          "prop": "speaker",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "爬取演讲稿地址",
+          "prop": "link",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Rich",
+          "label": "演讲稿",
+          "prop": "draft",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "InputNumber",
+          "label": "额外的播放量",
+          "prop": "additional_play_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "InputNumber",
+          "label": "额外的收藏量",
+          "prop": "additional_collection_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "InputNumber",
+          "label": "额外的分享量",
+          "prop": "additional_share_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "选择推荐演讲",
+          "prop": "video_recommended",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Upload",
+          "label": "视频",
+          "prop": "video",
+          "state": {
+            "type": "video",
+            "value": ""
+          }
+        },
+        {
+          "type": "Upload",
+          "label": "视频封面",
+          "prop": "video_cover",
+          "state": {
+            "type": "image",
+            "value": ""
+          }
+        },
+        {
+          "type": "Upload",
+          "label": "音频",
+          "prop": "audio",
+          "state": {
+            "type": "video",
             "value": ""
           }
         }
@@ -252,6 +441,15 @@
             "table.data": "data.items",
             "pagination.total": "data.total"
           }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "category/drop/",
+          "method": "GET",
+          "client_config": {
+            "filter.items[prop=speechcategory].state.options": "data.items"
+          }
         }
       ]
     },
@@ -265,9 +463,13 @@
           "request": {
             "page": "pagination.currentPage",
             "page_size": "pagination.pageCount",
-            "param_name": "filter.items[prop=name].state.value",
-            "param_is_valid": "filter.items[prop=is_valid].state.value",
-            "param_recommended": "filter.items[prop=recommended].state.value"
+            "param_title": "filter.items[prop=title].state.value",
+            "speaker_name": "filter.items[prop=speaker_name].state.value",
+            "param_begin_time": "filter.items[prop=begin_time].state.value",
+            "param_end_time": "filter.items[prop=end_time].state.value",
+            "param_status": "filter.items[prop=status].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value",
+            "param_speechcategory": "filter.items[prop=speechcategory].state.value"
           },
           "client_config": {
             "table.data": "data.items",
@@ -289,10 +491,29 @@
         {
           "name": "retrieve",
           "type": "api",
+          "url": "category/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=first_speechcategory].state.options": "data.items",
+            "dialogs.create.items[prop=speechcategory].state.options": "data.items"
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
           "url": "speech/drop/",
           "method": "GET",
           "client_config": {
-            "dialogs.create.items[prop=first_speechcategory].state.options": "data.items"
+            "dialogs.create.items[prop=video_recommended].state.options": "data.items"
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "speaker/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=speaker].state.options": "data.items"
           }
         }
       ]
@@ -315,7 +536,7 @@
             "id": ""
           },
           "client_config": {
-            "dialogs.update.items[prop=first_speechcategory].state.options": "data.items"
+            "dialogs.update.data": "data.items"
           }
         }
       ]

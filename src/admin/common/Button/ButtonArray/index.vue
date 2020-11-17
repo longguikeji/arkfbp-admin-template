@@ -1,9 +1,10 @@
 <template>
   <div>
     <Button
-      v-for="button in state"
+      v-for="(button, index) in state"
       :key="state.indexOf(button)"
       :state="button"
+      :index="index"
     />
   </div>
 </template>

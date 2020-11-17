@@ -57,7 +57,7 @@ import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
 import Popover from '@/admin/common/Others/Popover/index.vue'
 import Tooltip from '@/admin/common/Others/Tooltip/index.vue'
 import Backtop from '@/admin/common/Others/Backtop/index.vue'
-import Rich from '@/admin/common/Form/Rich/index.vue'
+import Rich from '@/admin/common/Rich/index.vue'
 import AMap from '@/admin/common/AMap/index.vue'
 @Component({
   name: 'AdminComponent',

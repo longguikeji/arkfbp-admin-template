@@ -5,11 +5,13 @@
     </div>
     <Table :state="state.table" />
     <Pagination :state="state.pagination" />
-    <Dialog
-      v-for="dialogName in Object.keys(state.dialogs)"
-      :key="dialogName"
-      :state="state.dialogs[dialogName]"
-    />
+    <template v-if="state.dialogs">
+      <Dialog
+        v-for="dialogName in Object.keys(state.dialogs)"
+        :key="dialogName"
+        :state="state.dialogs[dialogName]"
+      />
+    </template>
   </Card>
 </template>
 
@@ -23,7 +25,7 @@ import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
 @Component({
-  name: 'FromPage',
+  name: 'TablePage',
   components: {
     Form,
     Card,

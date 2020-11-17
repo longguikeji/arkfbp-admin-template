@@ -67,7 +67,7 @@
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "toFilter"
+          "action": "retrieve"
         }
       }
     ]
@@ -250,7 +250,7 @@
     "pageCount": 10,
     "total": 0,
     "background": "",
-    "action": "toFilter"
+    "action": "retrieve"
   },
   "dialogs": {
     "create": {
@@ -281,21 +281,7 @@
     }
   },
   "actions": {
-    "meta": {
-      "flows": [
-        {
-          "name": "retrieve",
-          "type": "api",
-          "url": "wanxiang/",
-          "method": "GET",
-          "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
-          }
-        }
-      ]
-    },
-    "toFilter": {
+    "retrieve": {
       "flows": [
         {
           "name": "retrieve",

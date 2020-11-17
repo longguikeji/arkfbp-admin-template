@@ -7,6 +7,6 @@ export default function ChangeOptions(data: any) {
   data.forEach((option: any, index: number) => {
     option.value = option.id;
     option.label = option.title;
-    data[index] = omit(option, 'id', 'title');
+    // data[index] = omit(option, 'id', 'title');
   });
 }

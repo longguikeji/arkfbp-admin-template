@@ -16,19 +16,28 @@
       v-if="state.type === 'exampleone'"
       :state="state"
     />
-
+    <FormPage
+      v-if="state.type === 'examplethree'"
+      :state="state"
+    />
     <TablePage
       v-if="state.type === 'testpage'"
       :state="state"
     />
-
     <TablePage
       v-if="state.type === 'secondpage'"
       :state="state"
     />
-
     <TablePage
       v-if="state.type === 'thirdpage'"
+      :state="state"
+    />
+    <TablePage
+      v-if="state.type === 'fourthpage'"
+      :state="state"
+    />
+    <TablePage
+      v-if="state.type === 'fifthpage'"
       :state="state"
     />
   </div>
@@ -41,7 +50,6 @@ import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
-
 @Component({
   name: 'Admin',
   components: {

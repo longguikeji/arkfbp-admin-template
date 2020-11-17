@@ -1,5 +1,14 @@
 <template>
   <el-dialog
+    v-if="state.type === 'table'"
+    :title="state.title"
+    :visible.sync="state.visible"
+    width="97%"
+  >
+    <TablePage :state="state" />
+  </el-dialog>
+  <el-dialog
+    v-else
     :title="state.title"
     :visible.sync="state.visible"
     width="800px"
