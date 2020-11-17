@@ -12,7 +12,7 @@ import FormPageState from './FormPageState'
 import Card from '@/admin/common/Card/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 @Component({
-  name: 'FromPage',
+  name: 'FormPage',
   components: {
     Form,
     Card

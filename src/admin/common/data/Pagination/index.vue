@@ -1,6 +1,6 @@
 <template>
   <el-pagination
-    :small="state.small"
+    :small="state.small || false"
     :background="state.background"
     :page-size="state.pageSize"
     :total="state.total"

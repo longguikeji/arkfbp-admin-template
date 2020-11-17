@@ -64,6 +64,9 @@ export async function runFlow(state: any, flow: any, data: any) {
           if (v.slice(0, 11) === 'items[prop=') {
             const res = Filter(v, temp)
             temp = temp['items'][res]
+          } else if (v.slice(0, 13) === 'columns[prop=') {
+            const res = Filter(v, temp)
+            temp = temp['cloumns'][res]
           } else {
             temp = temp[v]
           }
@@ -71,7 +74,7 @@ export async function runFlow(state: any, flow: any, data: any) {
         params[key] = temp
       })
     }
-    
+
     await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
@@ -86,7 +89,6 @@ export async function runFlow(state: any, flow: any, data: any) {
   }
 
   let params = state
-
   if (flow.request) {
     flow.request.split(".").forEach((v: string) => {
       params = params[v];

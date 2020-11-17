@@ -1,0 +1,374 @@
+{
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
+  "type": "sixthpage",
+  "title": "sixthpage",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "演讲名称",
+        "prop": "title",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "讲者姓名",
+        "prop": "speaker_name",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "开始时间",
+        "prop": "begin_time",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "结束时间",
+        "prop": "end_time",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "选择状态",
+        "prop": "status",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "已发布"
+            },
+            {
+              "value": 1,
+              "label": "未发布"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "label": "是否推荐",
+        "prop": "recommended",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "选择类别",
+        "prop": "speechcategory",
+        "state": {
+          "value": "",
+          "options": []
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "retrieve"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "演讲名称",
+        "prop": "title"
+      },
+      {
+        "label": "讲者",
+        "prop": "speaker_name"
+      },
+      {
+        "label": "类别",
+        "prop": "speechcategory",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "multiple": true,
+            "readonly": true,
+            "options": []
+          }
+        }
+      },
+      {
+        "label": "场次",
+        "prop": "speechcity"
+      },
+      {
+        "label": "发布时间",
+        "prop": "release_time"
+      },
+      {
+        "label": "播放量",
+        "prop": "total_play_count"
+      },
+      {
+        "label": "视频封面",
+        "prop": "video_cover",
+        "scope": {
+          "type": "ImageBox",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "视频",
+        "prop": "video",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "音频",
+        "prop": "audio",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "状态",
+        "prop": "status",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "未发布"
+              },
+              {
+                "value": 1,
+                "label": "已发布"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "推荐",
+        "prop": "recommended",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "不推荐"
+              },
+              {
+                "value": 1,
+                "label": "推荐"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
+            }
+          ]
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "retrieve"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "type_choice",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "价格",
+          "prop": "price",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "产品ID",
+          "prop": "product_id",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false
+    },
+    "update": {
+      "titles": "编辑",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "type_choice",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "价格",
+          "prop": "price",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "产品ID",
+          "prop": "product_id",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "edit",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false
+    }
+  },
+  "actions": {
+    "meta": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "category/drop/",
+          "client_config": {
+            "filter.items[prop=speechcategory].state.options": "data.items",
+            "table.columns[prop=speechcategory].scope.state.options": "data.items"
+          }
+        }
+      ]
+    },
+    "retrieve": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "speech/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_title": "filter.items[prop=title].state.value",
+            "speaker_name": "filter.items[prop=speaker_name].state.value",
+            "param_begin_time": "filter.items[prop=begin_time].state.value",
+            "param_end_time": "filter.items[prop=end_time].state.value",
+            "param_status": "filter.items[prop=status].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value",
+            "param_speechcategory": "filter.items[prop=speechcategory].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ]
+    }
+  }
+}

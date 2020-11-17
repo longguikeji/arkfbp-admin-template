@@ -56,6 +56,7 @@ import Carousel from '@/admin/common/Others/Carousel/index.vue'
 import Popconfirm from '@/admin/common/Others/Popconfirm/index.vue'
 import Popover from '@/admin/common/Others/Popover/index.vue'
 import Tooltip from '@/admin/common/Others/Tooltip/index.vue'
+import AMap from '@/admin/common/AMap/index.vue'
 import Backtop from '@/admin/common/Others/Backtop/index.vue'
 import Rich from '@/admin/common/Form/Rich/index.vue'
 @Component({
@@ -122,6 +123,7 @@ export default class extends Vue {
         Popconfirm,
         Popover,
         Tooltip,
+        AMap,
         Backtop,
         Rich
       },

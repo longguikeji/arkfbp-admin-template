@@ -18,7 +18,8 @@ import "@/utils/error-log";
 import "@/pwa/register-service-worker";
 import * as directives from "@/directives";
 import * as filters from "@/filters";
-
+import VueAMap from 'vue-amap';
+import TablePage from '@/admin/TablePage/index.vue'
 
 Vue.use(ElementUI, {
   size: AppModule.size, // Set element-ui default size
@@ -42,6 +43,16 @@ Object.keys(filters).forEach(key => {
 });
 
 Vue.config.productionTip = false;
+
+Vue.use(VueAMap);
+VueAMap.initAMapApiLoader({
+  key: 'fcc7e39778f5c5f773428cf03113c38b',
+  plugin: ['Autocomplete', 'PlaceSearch', 'Scale', 'OverView', 'ToolBar', 'MapType', 'PolyEditor', 'AMap.CircleEditor'],
+  // 默认高德 sdk 版本为 1.4.4
+  v: '1.4.4',
+});
+
+Vue.component('TablePage', TablePage)
 
 new Vue({
   router,

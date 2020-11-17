@@ -12,6 +12,38 @@
       v-if="state.type === 'table'"
       :state="state"
     />
+    <FormPage
+      v-if="state.type === 'exampleone'"
+      :state="state"
+    />
+
+    <TablePage
+      v-if="state.type === 'testpage'"
+      :state="state"
+    />
+
+    <TablePage
+      v-if="state.type === 'secondpage'"
+      :state="state"
+    />
+
+    <TablePage
+      v-if="state.type === 'thirdpage'"
+      :state="state"
+    />
+
+    <TablePage
+      v-if="state.type === 'fourthpage'"
+      :state="state"
+    />
+    <TablePage
+      v-if="state.type === 'fifthpage'"
+      :state="state"
+    />
+    <TablePage
+      v-if="state.type === 'sixthpage'"
+      :state="state"
+    />
   </div>
 </template>
 

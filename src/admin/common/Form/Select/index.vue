@@ -46,7 +46,7 @@ import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
 
 @Component({
-  name: 'OptionModule',
+  name: 'Select',
   components: {
     Tag
   }
@@ -55,12 +55,28 @@ export default class extends Vue {
   @Prop({ required: true }) state!: SelectState;
 
   get tagData() {
-    return [
-      {
-        value: this.state.value,
-        type: this.state.type || 'info'
+    let tagValue
+    const tagValues = []
+    if (this.state.options instanceof Array) {
+      if (this.state.value instanceof Array) {
+        this.state.options.forEach((o) => {
+          this.state.value.forEach((v) => {
+            if (o.value === v) {
+              tagValue = o.label
+              tagValues.push({ value: tagValue, type: this.state.type || 'info' })
+            }
+          })
+        })
+      } else {
+        this.state.options.forEach((o) => {
+          if (o.value === this.state.value) {
+            tagValue = o.label
+            tagValues.push({ value: tagValue, type: this.state.type || 'info' })
+          }
+        })
       }
-    ]
+    }
+    return tagValues
   }
 }
 </script>

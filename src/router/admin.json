@@ -73,5 +73,53 @@
         "icon": "dashboard"
       }
     ]
+  },
+  "thirdpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "thirdpage", 
+        "path": "thirdpage", 
+        "icon": "dashboard" 
+      }
+    ]
+  },
+  "fourthpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "fourthpage", 
+        "path": "fourthpage", 
+        "icon": "dashboard" 
+      }
+    ]
+  },
+  "fifthpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "fifthpage", 
+        "path": "fifthpage", 
+        "icon": "dashboard" 
+      }
+    ]
+  },
+  "sixthpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "sixthpage", 
+        "path": "sixthpage", 
+        "icon": "dashboard" 
+      }
+    ]
   }
 }

@@ -11,8 +11,7 @@
       "label": "新建",
       "action": "showCreateDialog",
       "type": "primary",
-      "size": "small",
-      "data": {}
+      "size": "small"
     }
   ],
   "filter": {
@@ -68,7 +67,7 @@
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "toFilter"
+          "action": "retrieve"
         }
       }
     ]
@@ -121,11 +120,45 @@
       },
       {
         "label": "付费类型",
-        "prop": "pay_type"
+        "prop": "pay_type",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "免费"
+              },
+              {
+                "value": 1,
+                "label": "收费"
+              }
+            ]
+          }
+        }
       },
       {
         "label": "单独购买",
-        "prop": "is_single_buy"
+        "prop": "is_single_buy",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "不可以"
+              },
+              {
+                "value": 1,
+                "label": "可以"
+              }
+            ]
+          }
+        }
       },
       {
         "label": "状态",
@@ -150,11 +183,45 @@
       },
       {
         "label": "上架状态",
-        "prop": "product_status"
+        "prop": "is_putaway",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "即将上线"
+              },
+              {
+                "value": 1,
+                "label": "已上线"
+              }
+            ]
+          }
+        }
       },
       {
         "label": "推荐",
-        "prop": "recommended"
+        "prop": "recommended",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "推荐"
+              },
+              {
+                "value": 1,
+                "label": "不推荐"
+              }
+            ]
+          }
+        }
       },
       {
         "label": "操作",
@@ -183,7 +250,7 @@
     "pageCount": 10,
     "total": 0,
     "background": "",
-    "action": "toFilter"
+    "action": "retrieve"
   },
   "dialogs": {
     "create": {
@@ -209,26 +276,11 @@
           "type": "primary"
         }
       ],
-      "visible": false,
-      "attributes": {}
+      "visible": false
     }
   },
   "actions": {
-    "meta": {
-      "flows": [
-        {
-          "name": "retrieve",
-          "type": "api",
-          "url": "wanxiang/",
-          "method": "GET",
-          "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
-          }
-        }
-      ]
-    },
-    "toFilter": {
+    "retrieve": {
       "flows": [
         {
           "name": "retrieve",
