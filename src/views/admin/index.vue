@@ -16,6 +16,10 @@
       v-if="state.type === 'exampleone'"
       :state="state"
     />
+    <TablePage
+      v-if="state.type === 'exampletwo'"
+      :state="state"
+    />
     <FormPage
       v-if="state.type === 'examplethree'"
       :state="state"

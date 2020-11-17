@@ -64,6 +64,9 @@ export async function runFlow(state: any, flow: any, data: any) {
           if (v.slice(0, 11) === 'items[prop=') {
             const res = Filter(v, temp)
             temp = temp['items'][res]
+          } else if (v.slice(0, 13) === 'columns[prop=') {
+            const res = Filter(v, temp)
+            temp = temp['cloumns'][res]
           } else {
             temp = temp[v]
           }

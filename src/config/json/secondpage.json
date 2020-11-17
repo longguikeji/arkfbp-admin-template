@@ -276,8 +276,7 @@
           "type": "primary"
         }
       ],
-      "visible": false,
-      "attributes": {}
+      "visible": false
     }
   },
   "actions": {

@@ -198,8 +198,7 @@
           "type": "primary"
         }
       ],
-      "visible": false,
-      "attributes": {}
+      "visible": false
     },
     "update": {
       "titles": "编辑",
@@ -315,8 +314,7 @@
           "type": "primary"
         }
       ],
-      "visible": false,
-      "attributes": {}
+      "visible": false
     }
   },
   "actions": {

@@ -4,7 +4,7 @@ import FormState from "../common/Form/FormState";
 import PaginationState from "../common/data/Pagination/PaginationState";
 
 export default interface TablePageState extends CardState {
-  filter: FormState;
-  table: TableState;
-  pagination: PaginationState;
+  filter?: FormState;
+  table?: TableState;
+  pagination?: PaginationState;
 }

@@ -258,7 +258,6 @@
         }
       ],
       "visible": false,
-      "attributes": {},
       "inline": true
     },
     "vedio": {
@@ -269,7 +268,7 @@
         {
           "label": "新建",
           "type": "primary",
-          "action": "createVedio"
+          "action": "showCreateVedioDialog"
         }
       ],
       "filter": {
@@ -442,6 +441,191 @@
         "total": 0,
         "background": "",
         "action": "retrieveVedio"
+      },
+      "dialogs": {
+        "create": {
+          "title": "新建视频",
+          "visible": false,
+          "inline": true,
+          "items": [
+            {
+              "type": "Input",
+              "label": "标题",
+              "prop": "title",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "题语",
+              "prop": "titlelanguage",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Select",
+              "label": "讲者",
+              "prop": "speaker_id",
+              "state": {
+                "value": "",
+                "options": []
+              }
+            },
+            {
+              "type": "Input",
+              "label": "集数",
+              "prop": "episode",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "额外播放次数",
+              "prop": "additional_play_count",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "额外收藏次数",
+              "prop": "additional_collection_count",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "额外分享次数",
+              "prop": "additional_share_count",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Select",
+              "label": "选择状态",
+              "prop": "status",
+              "state": {
+                "value": "",
+                "options": [
+                  {
+                    "value": 0,
+                    "label": "及时发布"
+                  },
+                  {
+                    "value": 1,
+                    "label": "草稿"
+                  }
+                ]
+              }
+            }
+          ],
+          "actions": [
+            {
+              "label": "确定",
+              "action": "createVedio",
+              "close": true,
+              "type": "primary"
+            }
+          ]
+        },
+        "update": {
+          "title": "新建视频",
+          "visible": false,
+          "inline": true,
+          "items": [
+            {
+              "type": "Input",
+              "label": "标题",
+              "prop": "title",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "题语",
+              "prop": "titlelanguage",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Select",
+              "label": "讲者",
+              "prop": "speaker_id",
+              "state": {
+                "value": "",
+                "options": []
+              }
+            },
+            {
+              "type": "Input",
+              "label": "集数",
+              "prop": "episode",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "额外播放次数",
+              "prop": "additional_play_count",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "额外收藏次数",
+              "prop": "additional_collection_count",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Input",
+              "label": "额外分享次数",
+              "prop": "additional_share_count",
+              "state": {
+                "value": ""
+              }
+            },
+            {
+              "type": "Select",
+              "label": "选择状态",
+              "prop": "status",
+              "state": {
+                "value": "",
+                "options": [
+                  {
+                    "value": 0,
+                    "label": "及时发布"
+                  },
+                  {
+                    "value": 1,
+                    "label": "草稿"
+                  }
+                ]
+              }
+            }
+          ],
+          "actions": [
+            {
+              "label": "确定",
+              "action": "updateVedio",
+              "close": true,
+              "type": "primary"
+            }
+          ]
+        }
+      },
+      "reliant_values": {
+        "id": ""
       }
     }
   },
@@ -498,11 +682,6 @@
         }
       ]
     },
-    "createVedio": {
-      "flows": [
-
-      ]
-    },
     "videoManage": {
       "flows": [
         {
@@ -531,9 +710,44 @@
           "type": "api",
           "method": "GET",
           "url": "zhiya/video/<id>/",
+          "request": {
+            "page": "dialogs.vedio.pagination.currentPage",
+            "page_size": "dialogs.vedio.pagination.pageCount",
+            "param_title": "dialogs.vedio.filter.items[prop=title].state.value",
+            "param_begin_time": "dialogs.vedio.filter.items[prop=begin_time].state.value",
+            "param_end_time": "dialogs.vedio.filter.items[prop=end_time].state.value",
+            "param_is_valid": "dialogs.vedio.filter.items[prop=is_valid].state.value"
+          },
           "client_config": {
             "dialogs.vedio.table.data": "data.items",
             "dialogs.vedio.pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "showCreateVedioDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.vedio.dialogs.create.visible": true
+          }
+        }
+      ]
+    },
+    "createVedio": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "POST",
+          "url": "zhiya/video/<id>/create/",
+          "request": {
+
+          },
+          "client_config": {
+
           }
         }
       ]

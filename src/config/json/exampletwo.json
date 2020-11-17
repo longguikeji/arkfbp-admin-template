@@ -2,7 +2,7 @@
   "created": {
     "actions": ["retrieve"]
   },
-  "type": "table",
+  "type": "exampletwo",
   "title": "演讲管理",
   "buttons": [
     {
@@ -116,7 +116,16 @@
       { "label": "讲者", "prop": "speaker_name" },
       {
         "label": "演讲类别",
-        "prop": "speechcategory"
+        "prop": "speechcategory",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "multiple": true,
+            "readonly": true,
+            "options": []
+          }
+        }
       },
       { "label": "演讲日期", "prop": "speechdate" },
       { "label": "播放量", "prop": "total_play_count" },
@@ -355,33 +364,6 @@
             "value": "",
             "options": []
           }
-        },
-        {
-          "type": "Upload",
-          "label": "视频",
-          "prop": "video",
-          "state": {
-            "type": "video",
-            "value": ""
-          }
-        },
-        {
-          "type": "Upload",
-          "label": "视频封面",
-          "prop": "video_cover",
-          "state": {
-            "type": "image",
-            "value": ""
-          }
-        },
-        {
-          "type": "Upload",
-          "label": "音频",
-          "prop": "audio",
-          "state": {
-            "type": "video",
-            "value": ""
-          }
         }
       ],
       "actions": [
@@ -448,7 +430,8 @@
           "url": "category/drop/",
           "method": "GET",
           "client_config": {
-            "filter.items[prop=speechcategory].state.options": "data.items"
+            "filter.items[prop=speechcategory].state.options": "data.items",
+            "table.columns[prop=speechcategory].scope.state.options": "data.items"
           }
         }
       ]
@@ -537,6 +520,15 @@
           },
           "client_config": {
             "dialogs.update.data": "data.items"
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "category/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=first_speechcategory].state.options": "data.items"
           }
         }
       ]
