@@ -40,6 +40,10 @@
       v-if="state.type === 'fifthpage'"
       :state="state"
     />
+    <TablePage
+      v-if="state.type === 'sixthpage'"
+      :state="state"
+    />
   </div>
 </template>
 

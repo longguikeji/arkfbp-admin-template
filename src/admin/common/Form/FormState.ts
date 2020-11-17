@@ -5,7 +5,7 @@ export interface FormItemStateArray {
 }
 
 export default interface FormState {
-    items: [FormItemState | FormItemStateArray]
+    items?: [FormItemState | FormItemStateArray]
 
     inline?: boolean
     size?: string

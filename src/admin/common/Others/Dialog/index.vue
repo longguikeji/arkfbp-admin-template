@@ -1,9 +1,21 @@
 <template>
   <el-dialog
-    v-if="state.type === 'table'"
+    v-if="state.type && state.type === 'table'"
     :title="state.title"
     :visible.sync="state.visible"
-    width="97%"
+    :width="state.width || '97%'"
+    :fullscreen="state.fullscreen"
+    :top="state.top"
+    :modal="state.modal"
+    :modal-append-to-body="state.modalAppendToBody"
+    :append-to-body="state.appendToBody"
+    :lock-scroll="state.lockScroll"
+    :custom-class="state.customClass"
+    :close-on-click-modal="state.closeOnClickModal"
+    :close-on-press-escape="state.closeOnPressEscape"
+    :show-close="state.showClose"
+    :center="state.center"
+    :destory-on-close="state.destoryOnClose"
   >
     <TablePage :state="state" />
   </el-dialog>
@@ -11,7 +23,19 @@
     v-else
     :title="state.title"
     :visible.sync="state.visible"
-    width="30%"
+    :width="state.width || '30%'"
+    :fullscreen="state.fullscreen"
+    :top="state.top"
+    :modal="state.modal"
+    :modal-append-to-body="state.modalAppendToBody"
+    :append-to-body="state.appendToBody"
+    :lock-scroll="state.lockScroll"
+    :custom-class="state.customClass"
+    :close-on-click-modal="state.closeOnClickModal"
+    :close-on-press-escape="state.closeOnPressEscape"
+    :show-close="state.showClose"
+    :center="state.center"
+    :destory-on-close="state.destoryOnClose"
   >
     <Form :state="state" />
     <span

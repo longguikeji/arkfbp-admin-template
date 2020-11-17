@@ -97,5 +97,17 @@
         "icon": "dashboard" 
       }
     ]
+  },
+  "sixthpage": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "sixthpage", 
+        "path": "sixthpage", 
+        "icon": "dashboard" 
+      }
+    ]
   }
 }

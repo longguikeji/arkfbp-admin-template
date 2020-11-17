@@ -71,8 +71,7 @@
   "table": {
     "selection": {
       "exist": true,
-      "values": [],
-      "needed": []
+      "values": []
     },
     "columns": [
       {
@@ -230,7 +229,6 @@
         }
       ],
       "visible": false,
-      "attributes": {},
       "inline": true
     }
   },

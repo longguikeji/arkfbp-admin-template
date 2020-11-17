@@ -56,19 +56,27 @@ export default class extends Vue {
 
   get tagData() {
     let tagValue
+    const tagValues = []
     if (this.state.options instanceof Array) {
-      this.state.options.forEach((o) => {
-        if (o.value === this.state.value) {
-          tagValue = o.label
-        }
-      })
-    }
-    return [
-      {
-        value: tagValue,
-        type: this.state.type || 'info'
+      if (this.state.value instanceof Array) {
+        this.state.options.forEach((o) => {
+          this.state.value.forEach((v) => {
+            if (o.value === v) {
+              tagValue = o.label
+              tagValues.push({ value: tagValue, type: this.state.type || 'info' })
+            }
+          })
+        })
+      } else {
+        this.state.options.forEach((o) => {
+          if (o.value === this.state.value) {
+            tagValue = o.label
+            tagValues.push({ value: tagValue, type: this.state.type || 'info' })
+          }
+        })
       }
-    ]
+    }
+    return tagValues
   }
 }
 </script>

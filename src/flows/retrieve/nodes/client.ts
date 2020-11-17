@@ -15,6 +15,9 @@ export class Client extends FunctionNode {
         if (ks[i].slice(0, 11) === 'items[prop=') {
           const res = Filter(ks[i], tempC)
           tempC = tempC['items'][res]
+        } else if (ks[i].slice(0, 13) === 'columns[prop=') {
+          const col = Filter(ks[i], tempC)
+          tempC = tempC['columns'][col]
         } else {
           tempC = tempC[ks[i]]
         }

@@ -4,16 +4,32 @@
       "retrieve"
     ]
   },
-  "type": "fifthpage",
-  "title": "fifthpage",
+  "type": "sixthpage",
+  "title": "sixthpage",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
   "filter": {
     "inline": true,
     "size": "mini",
     "items": [
       {
         "type": "Input",
-        "label": "记录名称",
+        "label": "演讲名称",
         "prop": "title",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "讲者姓名",
+        "prop": "speaker_name",
         "state": {
           "value": ""
         }
@@ -37,17 +53,17 @@
       {
         "type": "Select",
         "label": "选择状态",
-        "prop": "is_valid",
+        "prop": "status",
         "state": {
           "value": "",
           "options": [
             {
-              "label": "未发布",
-              "value": 0
+              "value": 0,
+              "label": "已发布"
             },
             {
-              "label": "已发布",
-              "value": 1
+              "value": 1,
+              "label": "未发布"
             }
           ]
         }
@@ -57,17 +73,16 @@
         "label": "是否推荐",
         "prop": "recommended",
         "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "选择类别",
+        "prop": "speechcategory",
+        "state": {
           "value": "",
-          "options": [
-            {
-              "label": "未推荐",
-              "value": 0
-            },
-            {
-              "label": "已推荐",
-              "value": 1
-            }
-          ]
+          "options": []
         }
       },
       {
@@ -87,7 +102,7 @@
         "prop": "id"
       },
       {
-        "label": "记录名称",
+        "label": "演讲名称",
         "prop": "title"
       },
       {
@@ -95,32 +110,63 @@
         "prop": "speaker_name"
       },
       {
+        "label": "类别",
+        "prop": "speechcategory",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "multiple": true,
+            "readonly": true,
+            "options": []
+          }
+        }
+      },
+      {
         "label": "场次",
-        "prop": "speechdate"
+        "prop": "speechcity"
       },
       {
         "label": "发布时间",
         "prop": "release_time"
       },
       {
-        "label": "app",
-        "prop": "total_app_count"
+        "label": "播放量",
+        "prop": "total_play_count"
       },
       {
-        "label": "h5",
-        "prop": "total_h5_count"
+        "label": "视频封面",
+        "prop": "video_cover",
+        "scope": {
+          "type": "ImageBox",
+          "state": {
+            "value": ""
+          }
+        }
       },
       {
-        "label": "网站",
-        "prop": "total_web_count"
+        "label": "视频",
+        "prop": "video",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
       },
       {
-        "label": "ipad",
-        "prop": "total_ipad_count"
+        "label": "音频",
+        "prop": "audio",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
       },
       {
         "label": "状态",
-        "prop": "is_valid",
+        "prop": "status",
         "scope": {
           "type": "Select",
           "state": {
@@ -128,12 +174,12 @@
             "readonly": true,
             "options": [
               {
-                "label": "未发布",
-                "value": 0
+                "value": 0,
+                "label": "未发布"
               },
               {
-                "label": "已发布",
-                "value": 1
+                "value": 1,
+                "label": "已发布"
               }
             ]
           }
@@ -149,24 +195,14 @@
             "readonly": true,
             "options": [
               {
-                "label": "未推荐",
-                "value": 0
+                "value": 0,
+                "label": "不推荐"
               },
               {
-                "label": "已推荐",
-                "value": 1
+                "value": 1,
+                "label": "推荐"
               }
             ]
-          }
-        }
-      },
-      {
-        "label": "视频",
-        "prop": "vedio",
-        "scope": {
-          "type": "Link",
-          "state": {
-            "value": ""
           }
         }
       },
@@ -179,28 +215,18 @@
             {
               "label": "编辑",
               "type": "primary",
-              "action": "edit"
-            },
-            {
-              "label": "热门评论",
-              "type": "primary",
-              "action": "hotcomments"
+              "action": "showUpdateDialog"
             },
             {
               "label": "删除",
               "type": "danger",
               "action": "delete"
-            },
-            {
-              "label": "上线",
-              "action": "upordown"
             }
           ]
         }
       }
     ],
-    "data": [],
-    "multipleSelection": []
+    "data": []
   },
   "pagination": {
     "currentPage": 1,
@@ -214,42 +240,9 @@
       "title": "新建",
       "items": [
         {
-          "type": "Input",
-          "label": "枝桠名称",
-          "prop": "name",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "关键字",
-          "prop": "keywords",
-          "state": {
-            "value": ""
-          }
-        },
-        {
           "type": "Select",
-          "label": "讲者",
-          "prop": "speaker",
-          "state": {
-            "value": "",
-            "options": []
-          }
-        },
-        {
-          "type": "DatePicker",
-          "label": "发布时间",
-          "prop": "name",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Select",
-          "label": "请选择相关枝桠",
-          "prop": "zhiya_recommended",
+          "label": "类型",
+          "prop": "type_choice",
           "state": {
             "value": "",
             "options": []
@@ -257,27 +250,26 @@
         },
         {
           "type": "Input",
-          "label": "总集数",
-          "prop": "episodes",
+          "label": "价格",
+          "prop": "price",
           "state": {
             "value": ""
           }
         },
         {
           "type": "Input",
-          "label": "简介",
-          "prop": "intro",
+          "label": "产品ID",
+          "prop": "product_id",
           "state": {
-            "value": "",
-            "type": "textarea"
+            "value": ""
           }
         },
         {
-          "type": "AMap",
-          "label": "地图",
-          "prop": "map",
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
           "state": {
-            "value": ["116.46", "39.92"]
+            "value": ""
           }
         }
       ],
@@ -289,30 +281,91 @@
           "type": "primary"
         }
       ],
-      "visible": false,
-      "inline": true
+      "visible": false
+    },
+    "update": {
+      "titles": "编辑",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "type_choice",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "价格",
+          "prop": "price",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "产品ID",
+          "prop": "product_id",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "edit",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false
     }
   },
   "actions": {
+    "meta": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "category/drop/",
+          "client_config": {
+            "filter.items[prop=speechcategory].state.options": "data.items",
+            "table.columns[prop=speechcategory].scope.state.options": "data.items"
+          }
+        }
+      ]
+    },
     "retrieve": {
       "flows": [
         {
           "name": "retrieve",
           "type": "api",
           "method": "GET",
-          "url": "record/",
+          "url": "speech/",
           "request": {
             "page": "pagination.currentPage",
             "page_size": "pagination.pageCount",
             "param_title": "filter.items[prop=title].state.value",
+            "speaker_name": "filter.items[prop=speaker_name].state.value",
             "param_begin_time": "filter.items[prop=begin_time].state.value",
             "param_end_time": "filter.items[prop=end_time].state.value",
+            "param_status": "filter.items[prop=status].state.value",
             "param_recommended": "filter.items[prop=recommended].state.value",
-            "param_is_valid": "filter.items[prop=is_valid].state.value"
+            "param_speechcategory": "filter.items[prop=speechcategory].state.value"
           },
           "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
+            "table.data": "data.items"
           }
         }
       ]
