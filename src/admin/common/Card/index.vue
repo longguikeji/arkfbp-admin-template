@@ -23,7 +23,7 @@ import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
   }
 })
 export default class extends Vue {
-  @Prop({ required: true }) state!:CardState;
+  @Prop({ required: true }) state!: CardState;
   @Watch('state', { immediate: true, deep: true })
   fresh() {
     this.$forceUpdate()

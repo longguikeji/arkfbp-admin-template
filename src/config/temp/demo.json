@@ -1,0 +1,190 @@
+{
+  "user": {
+    "name": "user",
+    "type": "table",
+    "meta": {
+      "items": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "user"
+          }
+        }
+      },
+      "data": {
+        "required": false,
+        "type": {
+          "object": {
+            "total": "page.count",
+            "page": "page.num",
+            "page_size": "page.page_size",
+            "items": "items"
+          }
+        }
+      },
+      "user": {
+        "title": "用于返回的用户信息",
+        "required": true,
+        "type": {
+          "object": {
+            "id": "model_user.id",
+            "username": "model_user.username",
+            "password": "model_user.password",
+            "nickname": "model_user.nickname"
+          }
+        }
+      }
+    },
+    "api": {
+      "user/": {
+        "post": {
+          "name": "新建用户",
+          "type": "create",
+          "request": {
+            "username": {
+              "src": "model_user.username"
+            },
+            "password": "password"
+          },
+          "response": {
+            "user": "user"
+          },
+          "debug": false
+        },
+        "get": {
+          "pagination": true,
+          "name": "查询用户列表",
+          "type": "retrieve",
+          "request": {
+            "page_size": {
+              "src": "page.page_size"
+            },
+            "page": {
+              "src": "page.page"
+            }
+          },
+          "response": {
+            "data": "data"
+          },
+          "debug": false
+        }
+      },
+      "user/<id>/": {
+        "index": {
+          "id": {
+            "src": "model_user.id"
+          }
+        },
+        "patch": {
+          "name": "更新用户",
+          "type": "update",
+          "request": {
+            "nickname": {
+              "src": "model_user.username"
+            },
+            "password": {
+              "src": "model_user.password"
+            }
+          },
+          "response": {
+            "data": "data"
+          }
+        },
+        "delete": {
+          "name": "删除用户",
+          "type": "delete",
+          "request": {}
+        }
+      }
+    }
+  },
+  "page": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+      "page": {
+        "title": "页码",
+        "type": {
+          "integer": {}
+        }
+      },
+      "page_size": {
+        "title": "页面大小",
+        "type": {
+          "integer": {
+            "default": 20,
+            "required": false
+          }
+        }
+      },
+      "count": {
+        "title": "记录总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "next": {
+        "title": "下一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "previous": {
+        "title": "前一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "item": {
+        "title": "列表元素",
+        "type": {
+          "any": {}
+        }
+      },
+      "results": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "item"
+          }
+        }
+      }
+    },
+    "api": {}
+  },
+  "model_user": {
+    "name": "model_user",
+    "type": "",
+    "meta": {
+      "id": {
+        "title": "用户ID",
+        "type": {
+          "integer": {}
+        }
+      },
+      "username": {
+        "title": "账号名",
+        "type": {
+          "string": {}
+        }
+      },
+      "password": {
+        "title": "密码",
+        "type": {
+          "string": {}
+        }
+      },
+      "nickname": {
+        "title": "昵称",
+        "type": {
+          "string": {}
+        }
+      }
+    },
+    "api": {}
+  }
+}

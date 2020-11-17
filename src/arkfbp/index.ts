@@ -3,24 +3,28 @@ import { Loading } from 'element-ui'
 import { FlowInput } from './flow'
 import Filter from '@/utils/filter'
 
-const flows = require.context('@/flows', true, /\.ts$/)
+const flows = require.context("@/flows", true, /\.ts$/);
 
 function getUrl(url: string, data: any) {
   if (!data) {
-    return url
+    return url;
   }
 
-  const property = url.slice(url.indexOf('<') + 1, url.lastIndexOf('>'))
-  return url.slice(0, url.indexOf('<')) + data[property] + url.slice(url.indexOf('>') + 1)
+  const property = url.slice(url.indexOf("<") + 1, url.lastIndexOf(">"));
+  return (
+    url.slice(0, url.indexOf("<")) +
+    data[property] +
+    url.slice(url.indexOf(">") + 1)
+  );
 }
 
 export function runFlowByFile(filename: string, inputs: FlowInput) {
-  filename = filename.replace('@/flows', '.') + '/index.ts'
-  const flow = flows(filename)
-  return runWorkflowByClass(flow.Main, inputs)
+  filename = filename.replace("@/flows", ".") + "/index.ts";
+  const flow = flows(filename);
+  return runWorkflowByClass(flow.Main, inputs);
 }
 
-export async function runAction(action: {flow: string, inputs: FlowInput}) {
+export async function runAction(action: { flow: string; inputs: FlowInput }) {
   if (action.flow) {
     const loading = Loading.service({ fullscreen: true })
     const outputs = await runFlowByFile(action.flow, action.inputs)
@@ -30,32 +34,32 @@ export async function runAction(action: {flow: string, inputs: FlowInput}) {
 }
 
 export async function runFlow(state: any, flow: any, data: any) {
-  if (flow.type === 'assign') {
+  if (flow.type === "assign") {
     await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
         client: state,
         clientServer: flow.client_config
       }
-    })
+    });
 
-    return
+    return;
   }
 
-  if (flow.type === 'api') {
-    let params: any = {}
-    if (typeof flow.request === 'string') {
-      let temp = state
-      flow.request.split('.').forEach((v: string) => {
-        temp = temp[v]
-        params = temp
-      })
+  if (flow.type === "api") {
+    let params: any = {};
+    if (typeof flow.request === "string") {
+      let temp = state;
+      flow.request.split(".").forEach((v: string) => {
+        temp = temp[v];
+        params = temp;
+      });
     }
 
-    if (typeof flow.request === 'object') {
+    if (typeof flow.request === "object") {
       Object.keys(flow.request).forEach(key => {
-        let temp = state
-        const vs = flow.request[key].split('.')
+        let temp = state;
+        const vs = flow.request[key].split(".");
         vs.forEach((v: string) => {
           if (v.slice(0, 11) === 'items[prop=') {
             const res = Filter(v, temp)
@@ -86,12 +90,12 @@ export async function runFlow(state: any, flow: any, data: any) {
 
   let params = state
   if (flow.request) {
-    flow.request.split('.').forEach((v: string) => {
-      params = params[v]
-    })
+    flow.request.split(".").forEach((v: string) => {
+      params = params[v];
+    });
   }
   await runAction({
     flow: `@/flows/${flow.name}`,
     inputs: params
-  })
+  });
 }

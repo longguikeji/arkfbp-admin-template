@@ -28,6 +28,7 @@ export default {
     formpage: ' 表单',
     tablepage: '表格',
     exampleone: "事例一",
+    exampletwo: "事例二",
     testpage: '视图综合测试',
     page: '页面',
     user: '用户',

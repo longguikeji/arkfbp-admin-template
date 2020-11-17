@@ -192,7 +192,7 @@
             { "content": "标签三", "label": "radio3" }
           ]
         }
-      }, 
+      },
       {
         "type": "CheckBoxGroup",
         "state": {
@@ -469,7 +469,7 @@
     "withHeader": true
   },
   "image": {
-    "src": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
+    "value": "https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg",
     "fit": "fill"
   },
   "calendar": {
@@ -562,5 +562,8 @@
     "content": "Top Left 提示文字",
     "placement": "left-end",
     "btn": "上左"
+  },
+  "rich": {
+    "value": "与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；"
   }
 }

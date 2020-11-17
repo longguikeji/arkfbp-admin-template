@@ -76,17 +76,25 @@
           >
             <VueCropper
               ref="cropper"
-              :src="fileUrl"
-              :output-type="'png'"
-              :can-scale="false"
-              :can-move="false"
-              :auto-crop="true"
-              :auto-crop-width="200"
-              :auto-crop-height="200"
-              :fixed="false"
+              :src="imageUrl"
+              :output-type="state.upload.outputType || 'png'"
+              :can-scale="
+                state.upload.canScale !== null ? state.upload.canScale : false
+              "
+              :can-move="
+                state.upload.canMove !== null ? state.upload.canMove : false
+              "
+              :auto-crop="
+                state.upload.autoCrop !== null ? state.upload.autoCrop : true
+              "
+              :auto-crop-width="state.upload.width || 200"
+              :auto-crop-height="state.upload.height || 200"
+              :fixed="state.upload.fixed !== null ? state.upload.fixed : false"
               :fixed-number="state.upload.fixedNumber"
               :fixed-box="state.upload.fixedBox"
-              :center-box="true"
+              :center-box="
+                state.upload.centerBox !== null ? state.upload.centerBox : true
+              "
               @realTime="realTime"
             />
           </div>
@@ -170,6 +178,7 @@ import { runAction } from '@/arkfbp'
 import { VueCropper } from 'vue-cropper'
 import XLSX from 'xlsx'
 import processTableData from '@/utils/readexcel'
+
 @Component({
   name: 'Upload',
   components: {}
@@ -177,7 +186,7 @@ import processTableData from '@/utils/readexcel'
 export default class extends Vue {
   btnText = '上传文件';
   dialogVisible = false;
-  fileList = [];
+  fileList = [] as any[];
   fileUrl = '';
   file = '';
   valueBind = '';
@@ -253,15 +262,16 @@ export default class extends Vue {
 
   submitUpload() {
     // 上传文件
-    // const file: any = this.fileList[0].raw;
-    // runAction({
-    //   flow: "@/flows/qiniu/upload",  //qiniu云存储方法
-    //   inputs: {
-    //     file: file,
-    //     path: "",
-    //     complete: this.uploadComplete
-    //   }
-    // });
+    const file = this.fileList[0].raw
+    console.log('上传文件', file)
+    runAction({
+      flow: '@/flows/qiniu/upload',
+      inputs: {
+        // file: file,
+        // path: "",
+        // complete: this.uploadComplete
+      }
+    })
   }
 
   uploadComplete(fileUrl: any) {

@@ -33,7 +33,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableState from './TableState'
 import TableColumn from './TableColumn/index.vue'
-
 @Component({
   name: 'Table',
   components: {
@@ -42,7 +41,6 @@ import TableColumn from './TableColumn/index.vue'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: TableState;
-
   get tableData() {
     return this.state.data
   }

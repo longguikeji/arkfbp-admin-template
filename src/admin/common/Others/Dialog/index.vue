@@ -23,7 +23,7 @@
     v-else
     :title="state.title"
     :visible.sync="state.visible"
-    :width="state.width || '30%'"
+    :width="state.width || '800px'"
     :fullscreen="state.fullscreen"
     :top="state.top"
     :modal="state.modal"
@@ -38,6 +38,7 @@
     :destory-on-close="state.destoryOnClose"
   >
     <Form :state="state" />
+
     <span
       slot="footer"
       class="dialog-footer"
@@ -59,11 +60,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import DialogState from './DialogState'
 import Form from '@/admin/common/Form/index.vue'
+import FormItem from '@/admin/common/Form/FormItem/index.vue'
 import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 @Component({
   name: 'Dialog',
   components: {
     Form,
+    FormItem,
     ButtonArray
   }
 })

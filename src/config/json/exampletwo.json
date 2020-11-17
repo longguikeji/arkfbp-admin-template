@@ -1,0 +1,324 @@
+{
+  "created": {
+    "actions": ["retrieve"]
+  },
+  "type": "table",
+  "title": "演讲管理",
+  "buttons": [
+    {
+      "label": "新建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "演讲标题",
+        "prop": "title",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "讲者",
+        "prop": "speaker_name",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "开始时间",
+        "prop": "begin_time",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "结束时间",
+        "prop": "end_time",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "状态",
+        "prop": "status",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未发布"
+            },
+            {
+              "value": 1,
+              "label": "已发布"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "label": "推荐",
+        "prop": "recommended",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未推荐"
+            },
+            {
+              "value": 1,
+              "label": "已推荐"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "toFilter"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "演讲标题",
+        "prop": "title"
+      },
+      { "label": "讲者", "prop": "speaker_name" },
+      {
+        "label": "演讲类别",
+        "prop": "speechcategory"
+      },
+      { "label": "演讲日期", "prop": "speechdate" },
+      { "label": "播放量", "prop": "total_play_count" },
+      {
+        "label": "视频封面",
+        "prop": "video_cover",
+        "scope": {
+          "type": "ImageBox",
+          "state": {}
+        }
+      },
+      {
+        "label": "视频",
+        "prop": "video",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "音频",
+        "prop": "audio",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+
+      { "label": "状态", "prop": "status" },
+      { "label": "推荐", "prop": "recommended" },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
+            }
+          ]
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "toFilter"
+  },
+
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Select",
+          "label": "第一类别",
+          "prop": "first_speechcategory",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+
+        {
+          "type": "Input",
+          "label": "类型",
+          "prop": "title",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
+    },
+    "update": {
+      "title": "编辑",
+      "items": [
+        {
+          "type": "Select",
+          "label": "第一类别",
+          "prop": "first_speechcategory",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+
+        {
+          "type": "Input",
+          "label": "类型",
+          "prop": "title",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "update",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
+    }
+  },
+  "actions": {
+    "meta": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "speech/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "toFilter": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "speech/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items[prop=name].state.value",
+            "param_is_valid": "filter.items[prop=is_valid].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "speech/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=first_speechcategory].state.options": "data.items"
+          }
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "speech/<id>/edit/",
+          "index": {
+            "id": ""
+          },
+          "client_config": {
+            "dialogs.update.items[prop=first_speechcategory].state.options": "data.items"
+          }
+        }
+      ]
+    }
+  }
+}
