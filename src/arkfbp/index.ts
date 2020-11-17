@@ -91,7 +91,15 @@ export async function runFlow(state: any, flow: any, data: any) {
   let params = state
   if (flow.request) {
     flow.request.split(".").forEach((v: string) => {
-      params = params[v];
+      if (v.slice(0, 11) === 'items[prop=') {
+        const res = Filter(v, params)
+        params = params['items'][res]
+      } else if (v.slice(0, 13) === 'columns[prop=') {
+        const res = Filter(v, params)
+        params = params['cloumns'][res]
+      } else {
+        params = params[v]
+      }
     });
   }
   await runAction({

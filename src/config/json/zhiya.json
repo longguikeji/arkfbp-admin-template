@@ -4,8 +4,8 @@
       "retrieve"
     ]
   },
-  "type": "thirdpage",
-  "title": "thirdpage",
+  "type": "zhiya",
+  "title": "zhiya",
   "buttons": [
     {
       "label": "新建",
@@ -154,7 +154,7 @@
             {
               "label": "删除",
               "type": "danger",
-              "action": "delete"
+              "action": "deleteZhiya"
             },
             {
               "label": "上线",
@@ -209,9 +209,10 @@
         {
           "type": "DatePicker",
           "label": "发布时间",
-          "prop": "name",
+          "prop": "release_time",
           "state": {
-            "value": ""
+            "value": "",
+            "format": "yyyy-MM-dd HH:mm"
           }
         },
         {
@@ -228,7 +229,8 @@
           "label": "总集数",
           "prop": "episodes",
           "state": {
-            "value": ""
+            "value": 0,
+            "type": "number"
           }
         },
         {
@@ -239,20 +241,12 @@
             "value": "",
             "type": "textarea"
           }
-        },
-        {
-          "type": "AMap",
-          "label": "地图",
-          "prop": "map",
-          "state": {
-            "value": ["116.46", "39.92"]
-          }
         }
       ],
       "actions": [
         {
           "label": "确定",
-          "action": "create",
+          "action": "createZhiya",
           "close": true,
           "type": "primary"
         }
@@ -666,9 +660,12 @@
           "url": "speaker/drop/",
           "method": "GET",
           "client_config": {
-            "dialogs.create.items[prop=speaker].state.options": "data.items",
-            "dialogs.create.items[prop=speaker].state.value": 0
+            "dialogs.create.items[prop=speaker].state.options": "data.items"
           }
+        },
+        {
+          "name": "changeSpeakerOptions",
+          "request": "dialogs.create.items[prop=speaker].state.options"
         },
         {
           "name": "retrieve",
@@ -676,9 +673,58 @@
           "url": "zhiya/drop/",
           "method": "GET",
           "client_config": {
-            "dialogs.create.items[prop=zhiya_recommended].state.options": "data.items",
-            "dialogs.create.items[prop=zhiya_recommended].state.value": 0
+            "dialogs.create.items[prop=zhiya_recommended].state.options": "data.items"
           }
+        },
+        {
+          "name": "changeOptions",
+          "request": "dialogs.create.items[prop=zhiya_recommended].state.options"
+        }
+      ]
+    },
+    "createZhiya": {
+      "flows": [
+        {
+          "name": "formatDate",
+          "request": "dialogs.create.items[prop=release_time].state"
+        },
+        {
+          "name": "update",
+          "type": "api",
+          "method": "POST",
+          "url": "zhiya/create/",
+          "request": {
+            "name": "dialogs.create.items[prop=name].state.value",
+            "keywords": "dialogs.create.items[prop=keywords].state.value",
+            "speaker": "dialogs.create.items[prop=speaker].state.value",
+            "release_time": "dialogs.create.items[prop=release_time].state.value",
+            "episodes": "dialogs.create.items[prop=episodes].state.value",
+            "intro": "dialogs.create.items[prop=intro].state.value",
+            "zhiya_recommended": "dialogs.create.items[prop=zhiya_recommended].state.value"
+          },
+          "client_config": {
+            "dialogs.create.visible": false
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieve"
+        }
+      ]
+    },
+    "deleteZhiya": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/<id>/delete/"
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieve"
         }
       ]
     },
@@ -743,12 +789,8 @@
           "type": "api",
           "method": "POST",
           "url": "zhiya/video/<id>/create/",
-          "request": {
-
-          },
-          "client_config": {
-
-          }
+          "request": {},
+          "client_config": {}
         }
       ]
     }
