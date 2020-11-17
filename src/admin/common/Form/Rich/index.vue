@@ -26,6 +26,6 @@ export default class extends Vue {
 </script>
 <style lang="scss" scoped>
 .editor-content {
-  margin-top: 20px;
+  margin:0 20px;
 }
 </style>
