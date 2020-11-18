@@ -1001,6 +1001,11 @@
             "dialogs.video.dialogs.create.visible": false
           }
         }
+      ],
+      "next": [
+        {
+          "action": "retrieveVideo"
+        }
       ]
     },
     "showUpdateVideoDialog": {
@@ -1067,6 +1072,26 @@
           "client_config": {
             "dialogs.video.dialogs.update.visible": false
           }
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieveVideo"
+        }
+      ]
+    },
+    "deleteOneVideo": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/<id>/delete/"
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieveVideo"
         }
       ]
     }
