@@ -254,7 +254,83 @@
       "visible": false,
       "inline": true
     },
-    "vedio": {
+    "update": {
+      "title": "编辑",
+      "items": [
+        {
+          "type": "Input",
+          "label": "枝桠名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "关键字",
+          "prop": "keywords",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "讲者",
+          "prop": "speaker",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "DatePicker",
+          "label": "发布时间",
+          "prop": "release_time",
+          "state": {
+            "value": "",
+            "format": "yyyy-MM-dd HH:mm"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "请选择相关枝桠",
+          "prop": "zhiya_recommended",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "总集数",
+          "prop": "episodes",
+          "state": {
+            "value": 0,
+            "type": "number"
+          }
+        },
+        {
+          "type": "Input",
+          "label": "简介",
+          "prop": "intro",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "updateZhiya",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "inline": true
+    },
+    "video": {
       "type": "table",
       "title": "视频管理",
       "visible": false,
@@ -262,7 +338,7 @@
         {
           "label": "新建",
           "type": "primary",
-          "action": "showCreateVedioDialog"
+          "action": "showCreateVideoDialog"
         }
       ],
       "filter": {
@@ -316,7 +392,7 @@
             "state": {
               "label": "搜索",
               "type": "primary",
-              "action": "retrieveVedio"
+              "action": "retrieveVideo"
             }
           }
         ]
@@ -408,7 +484,7 @@
                 {
                   "label": "编辑",
                   "type": "primary",
-                  "action": "showVedioUpdateDialog"
+                  "action": "showUpdateVideoDialog"
                 },
                 {
                   "label": "热门评论",
@@ -416,12 +492,12 @@
                 },
                 {
                   "label": "删除",
-                  "action": "deleteOneVedio",
+                  "action": "deleteOneVideo",
                   "type": "danger"
                 },
                 {
                   "label": "上线",
-                  "action": "upordownVedio"
+                  "action": "upordownVideo"
                 }
               ]
             }
@@ -441,6 +517,7 @@
           "title": "新建视频",
           "visible": false,
           "inline": true,
+          "modal": false,
           "items": [
             {
               "type": "Input",
@@ -521,7 +598,7 @@
           "actions": [
             {
               "label": "确定",
-              "action": "createVedio",
+              "action": "createVideo",
               "close": true,
               "type": "primary"
             }
@@ -531,6 +608,7 @@
           "title": "新建视频",
           "visible": false,
           "inline": true,
+          "modal": false,
           "items": [
             {
               "type": "Input",
@@ -545,7 +623,8 @@
               "label": "题语",
               "prop": "titlelanguage",
               "state": {
-                "value": ""
+                "value": "",
+                "type": "textarea"
               }
             },
             {
@@ -611,7 +690,7 @@
           "actions": [
             {
               "label": "确定",
-              "action": "updateVedio",
+              "action": "updateVideo",
               "close": true,
               "type": "primary"
             }
@@ -701,9 +780,103 @@
             "episodes": "dialogs.create.items[prop=episodes].state.value",
             "intro": "dialogs.create.items[prop=intro].state.value",
             "zhiya_recommended": "dialogs.create.items[prop=zhiya_recommended].state.value"
-          },
+          }
+        },
+        {
+          "name": "assign",
+          "type": "assign",
           "client_config": {
-            "dialogs.create.visible": false
+            "dialogs.create.visible": false,
+            "dialogs.create.items[prop=name].state.value": "",
+            "dialogs.create.items[prop=keywords].state.value": "",
+            "dialogs.create.items[prop=speaker].state.value": "",
+            "dialogs.create.items[prop=release_time].state.value": "",
+            "dialogs.create.items[prop=episodes].state.value": "",
+            "dialogs.create.items[prop=intro].state.value": "",
+            "dialogs.create.items[prop=zhiya_recommended].state.value": ""
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieve"
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "speaker/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=speaker].state.options": "data.items"
+          }
+        },
+        {
+          "name": "changeSpeakerOptions",
+          "request": "dialogs.update.items[prop=speaker].state.options"
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "zhiya/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=zhiya_recommended].state.options": "data.items"
+          }
+        },
+        {
+          "name": "changeOptions",
+          "request": "dialogs.update.items[prop=zhiya_recommended].state.options"
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "zhiya/<id>/edit/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=name].state.value": "data.name",
+            "dialogs.update.items[prop=keywords].state.value": "data.keywords",
+            "dialogs.update.items[prop=speaker].state.value": "data.speaker",
+            "dialogs.update.items[prop=release_time].state.value": "data.release_time",
+            "dialogs.update.items[prop=zhiya_recommended].state.value": "data.zhiya_recommended",
+            "dialogs.update.items[prop=episodes].state.value": "data.episodes",
+            "dialogs.update.items[prop=intro].state.value": "data.intro"
+          }
+        }
+      ]
+    },
+    "updateZhiya": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "zhiya/<id>/edit/",
+          "method": "GET",
+          "request": {
+            "name": "dialogs.update.items[prop=name].state.value",
+            "keywords": "dialogs.update.items[prop=keywords].state.value",
+            "speaker": "dialogs.update.items[prop=speaker].state.value",
+            "release_time": "dialogs.update.items[prop=release_time].state.value",
+            "episodes": "dialogs.update.items[prop=episodes].state.value",
+            "intro": "dialogs.update.items[prop=intro].state.value",
+            "zhiya_recommended": "dialogs.update.items[prop=zhiya_recommended].state.value"
+          }
+        },
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": false
           }
         }
       ],
@@ -734,7 +907,7 @@
           "name": "assign",
           "type": "assign",
           "client_config": {
-            "dialogs.vedio.visible": true
+            "dialogs.video.visible": true
           }
         },
         {
@@ -743,54 +916,153 @@
           "method": "GET",
           "url": "zhiya/video/<id>/",
           "client_config": {
-            "dialogs.vedio.table.data": "data.items",
-            "dialogs.vedio.pagination.total": "data.total"
+            "dialogs.video.table.data": "data.items",
+            "dialogs.video.pagination.total": "data.total"
           }
+        },
+        {
+          "name": "saveDialogReliantValues",
+          "request": "dialogs.video.reliant_values"
         }
       ]
     },
-    "retrieveVedio": {
+    "retrieveVideo": {
       "flows": [
         {
           "name": "retrieve",
           "type": "api",
           "method": "GET",
-          "url": "zhiya/video/<id>/",
+          "url": "zhiya/video/[dialogs.video.reliant_values.id]/",
           "request": {
-            "page": "dialogs.vedio.pagination.currentPage",
-            "page_size": "dialogs.vedio.pagination.pageCount",
-            "param_title": "dialogs.vedio.filter.items[prop=title].state.value",
-            "param_begin_time": "dialogs.vedio.filter.items[prop=begin_time].state.value",
-            "param_end_time": "dialogs.vedio.filter.items[prop=end_time].state.value",
-            "param_is_valid": "dialogs.vedio.filter.items[prop=is_valid].state.value"
+            "page": "dialogs.video.pagination.currentPage",
+            "page_size": "dialogs.video.pagination.pageCount",
+            "param_title": "dialogs.video.filter.items[prop=title].state.value",
+            "param_begin_time": "dialogs.video.filter.items[prop=begin_time].state.value",
+            "param_end_time": "dialogs.video.filter.items[prop=end_time].state.value",
+            "param_is_valid": "dialogs.video.filter.items[prop=is_valid].state.value"
           },
           "client_config": {
-            "dialogs.vedio.table.data": "data.items",
-            "dialogs.vedio.pagination.total": "data.total"
+            "dialogs.video.table.data": "data.items",
+            "dialogs.video.pagination.total": "data.total"
           }
         }
       ]
     },
-    "showCreateVedioDialog": {
+    "showCreateVideoDialog": {
       "flows": [
         {
           "name": "assign",
           "type": "assign",
           "client_config": {
-            "dialogs.vedio.dialogs.create.visible": true
+            "dialogs.video.dialogs.create.visible": true
           }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "speaker/drop/",
+          "client_config": {
+            "dialogs.video.dialogs.create.items[prop=speaker_id].state.options": "data.items"
+          }
+        },
+        {
+          "name": "changeSpeakerOptions",
+          "request": "dialogs.video.dialogs.create.items[prop=speaker_id].state.options"
         }
       ]
     },
-    "createVedio": {
+    "createVideo": {
       "flows": [
         {
           "name": "retrieve",
           "type": "api",
           "method": "POST",
-          "url": "zhiya/video/<id>/create/",
-          "request": {},
-          "client_config": {}
+          "url": "zhiya/video/[dialogs.video.reliant_values.id]/create/",
+          "request": {
+            "titlelanguage": "dialogs.video.dialogs.create.items[prop=titlelanguage].state.value",
+            "additional_share_count": "dialogs.video.dialogs.create.items[prop=additional_share_count].state.value",
+            "episode": "dialogs.video.dialogs.create.items[prop=episode].state.value",
+            "title": "dialogs.video.dialogs.create.items[prop=title].state.value",
+            "additional_play_count": "dialogs.video.dialogs.create.items[prop=additional_play_count].state.value",
+            "additional_collection_count": "dialogs.video.dialogs.create.items[prop=additional_collection_count].state.value",
+            "status": "dialogs.video.dialogs.create.items[prop=status].state.value",
+            "speaker_id": "dialogs.video.dialogs.create.items[prop=speaker_id].state.value"
+          }
+        },
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.video.dialogs.create.visible": false
+          }
+        }
+      ]
+    },
+    "showUpdateVideoDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.video.dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "speaker/drop/",
+          "client_config": {
+            "dialogs.video.dialogs.update.items[prop=speaker_id].state.options": "data.items"
+          }
+        },
+        {
+          "name": "changeSpeakerOptions",
+          "request": "dialogs.video.dialogs.update.items[prop=speaker_id].state.options"
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/[dialogs.video.reliant_values.id]/edit/",
+          "client_config": {
+            "dialogs.video.dialogs.update.items[prop=title].state.value": "data.title",
+            "dialogs.video.dialogs.update.items[prop=titlelanguage].state.value": "data.titlelanguage",
+            "dialogs.video.dialogs.update.items[prop=additional_share_count].state.value": "data.additional_share_count",
+            "dialogs.video.dialogs.update.items[prop=episode].state.value": "data.episode",
+            "dialogs.video.dialogs.update.items[prop=additional_play_count].state.value": "data.additional_play_count",
+            "dialogs.video.dialogs.update.items[prop=additional_collection_count].state.value": "data.additional_collection_count",
+            "dialogs.video.dialogs.update.items[prop=status].state.value": "data.status",
+            "dialogs.video.dialogs.update.items[prop=speaker_id].state.value": "data.speaker_id"
+          }
+        }
+      ]
+    },
+    "updateVideo": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "POST",
+          "url": "zhiya/video/[dialogs.video.reliant_values.id]/edit/",
+          "request": {
+            "title": "dialogs.video.dialogs.update.items[prop=title].state.value",
+            "titlelanguage": "dialogs.video.dialogs.update.items[prop=titlelanguage].state.value",
+            "additional_share_count": "dialogs.video.dialogs.update.items[prop=additional_share_count].state.value",
+            "episode": "dialogs.video.dialogs.update.items[prop=episode].state.value",
+            "additional_play_count": "dialogs.video.dialogs.update.items[prop=additional_play_count].state.value",
+            "additional_collection_count": "dialogs.video.dialogs.update.items[prop=additional_collection_count].state.value",
+            "status": "dialogs.video.dialogs.update.items[prop=status].state.value",
+            "speaker_id": "dialogs.video.dialogs.update.items[prop=speaker_id].state.value"
+          }
+        },
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.video.dialogs.update.visible": false
+          }
         }
       ]
     }

@@ -6,7 +6,7 @@ export class Client extends FunctionNode {
     if (state.clientServer == null) {
       return this.inputs
     }
-    const _this = this
+    
     Object.keys(state.clientServer).forEach((key) => {
       const ks = key.split('.')
       let tempC = state.client
@@ -23,7 +23,7 @@ export class Client extends FunctionNode {
       }
       const vs = state.clientServer[key].split('.')
       let tempS = this.inputs
-      for (let i = 0; i < vs.length - 1; i++) {
+      for (let i = 0; i  < vs.length - 1; i++) {
         tempS = tempS[vs[i]]
       }
       tempC[ks[ks.length - 1]] = tempS[vs[vs.length - 1]]

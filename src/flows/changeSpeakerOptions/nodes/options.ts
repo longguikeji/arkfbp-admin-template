@@ -5,7 +5,7 @@ export class Options extends FunctionNode {
     if (this.inputs === null) {
       return this.inputs
     }
-    this.inputs.forEach((i: any) => {
+    this.inputs.params.forEach((i: any) => {
       i.value = i.id
       i.label = i.name
       delete i.name

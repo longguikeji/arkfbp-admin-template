@@ -5,7 +5,7 @@ export class Render extends FunctionNode {
     if (this.inputs === null) {
       return this.inputs
     }
-    this.inputs.forEach((i: any) => {
+    this.inputs.params.forEach((i: any) => {
       if (i.is_remove === 0) {
         i.button = new Array(2)
         i.button[1] = {

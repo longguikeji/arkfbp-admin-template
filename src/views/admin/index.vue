@@ -65,7 +65,13 @@ import TablePage from '@/admin/TablePage/index.vue'
 })
 export default class extends Vue {
   private get state() {
+    console.log('最新的数据', AdminModule.adminState)
     return AdminModule.adminState
+  }
+
+  @Watch('AdminModule.adminState', { deep: true, immediate: true })
+  getState(newState) {
+    console.log('变化了', newState)
   }
 
   async created() {
