@@ -19,6 +19,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
+import SwitchButton from '@/admin/common/Button/SwitchButton/index.vue'
 import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 import Link from '@/admin/common/Link/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
@@ -36,7 +37,7 @@ import Tabs from '@/admin/common/Navigation/Tabs/index.vue'
 import RadioGroup from '@/admin/common/Form/Radio/index.vue'
 import CheckBoxGroup from '@/admin/common/Form/Check/index.vue'
 import InputNumber from '@/admin/common/Form/InputNumber/index.vue'
-import SwitchButton from '@/admin/common/Form/Switch/index.vue'
+import SwitchForm from '@/admin/common/Form/Switch/index.vue'
 import Slider from '@/admin/common/Form/Slider/index.vue'
 import Time from '@/admin/common/Form/TimePicker/index.vue'
 import DatePicker from '@/admin/common/Form/DatePicker/index.vue'
@@ -86,6 +87,7 @@ export default class extends Vue {
     return {
       components: {
         Button,
+        SwitchButton,
         ButtonArray,
         Link,
         Input,
@@ -105,7 +107,7 @@ export default class extends Vue {
         RadioGroup,
         CheckBoxGroup,
         InputNumber,
-        SwitchButton,
+        SwitchForm,
         Slider,
         Time,
         DatePicker,
