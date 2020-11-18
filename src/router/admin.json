@@ -104,8 +104,8 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "fourthpage", 
-        "path": "fourthpage", 
+        "title": "comment", 
+        "path": "comment", 
         "icon": "dashboard" 
       }
     ]

@@ -247,7 +247,6 @@
         {
           "label": "确定",
           "action": "createZhiya",
-          "close": true,
           "type": "primary"
         }
       ],
@@ -323,7 +322,6 @@
         {
           "label": "确定",
           "action": "updateZhiya",
-          "close": true,
           "type": "primary"
         }
       ],
@@ -599,7 +597,6 @@
             {
               "label": "确定",
               "action": "createVideo",
-              "close": true,
               "type": "primary"
             }
           ]
@@ -691,7 +688,6 @@
             {
               "label": "确定",
               "action": "updateVideo",
-              "close": true,
               "type": "primary"
             }
           ]

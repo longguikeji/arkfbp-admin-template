@@ -194,7 +194,6 @@
         {
           "label": "确定",
           "action": "create",
-          "close": true,
           "type": "primary"
         }
       ],
@@ -310,7 +309,6 @@
         {
           "label": "确定",
           "action": "edit",
-          "close": true,
           "type": "primary"
         }
       ],

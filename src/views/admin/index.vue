@@ -37,7 +37,7 @@
       :state="state"
     />
     <TablePage
-      v-if="state.type === 'fourthpage'"
+      v-if="state.type === 'comment'"
       :state="state"
     />
     <TablePage
