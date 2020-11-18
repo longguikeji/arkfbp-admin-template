@@ -46,6 +46,7 @@ class Admin extends VuexModule implements IAdminState {
           data: data
         })
       }
+      adminState.actions[action].next = []
     }
 
   }
