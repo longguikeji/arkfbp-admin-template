@@ -5,17 +5,26 @@ import Filter from '@/utils/filter'
 
 const flows = require.context("@/flows", true, /\.ts$/);
 
-function getUrl(url: string, data: any) {
-  if (!data) {
-    return url;
+function getUrl(url: string, data: any, state: any) {
+  if (url.indexOf("<") !== -1) {
+    const property = url.slice(url.indexOf("<") + 1, url.lastIndexOf(">"));
+    return (
+      url.slice(0, url.indexOf("<")) + data[property] + url.slice(url.indexOf(">") + 1)
+    );
   }
-
-  const property = url.slice(url.indexOf("<") + 1, url.lastIndexOf(">"));
-  return (
-    url.slice(0, url.indexOf("<")) +
-    data[property] +
-    url.slice(url.indexOf(">") + 1)
-  );
+  if (url.indexOf("[") !== -1) {
+    const urlParams = url.slice(url.indexOf("[") + 1, url.lastIndexOf("]"));
+    let tempState = state
+    let tempParams: any
+    urlParams.split(".").forEach((v: string) => {
+      tempState = tempState[v];
+      tempParams = tempState;
+    });
+    return (
+      url.slice(0, url.indexOf("[")) + tempParams + url.slice(url.indexOf("]") + 1)
+    );
+  }
+  return url;
 }
 
 export function runFlowByFile(filename: string, inputs: FlowInput) {
@@ -78,7 +87,7 @@ export async function runFlow(state: any, flow: any, data: any) {
     await runAction({
       flow: `@/flows/${flow.name}`,
       inputs: {
-        url: `api/admin/${getUrl(flow.url, data)}`,
+        url: `api/admin/${getUrl(flow.url, data, state)}`,
         method: flow.method,
         params: params,
         client: state,
@@ -104,6 +113,9 @@ export async function runFlow(state: any, flow: any, data: any) {
   }
   await runAction({
     flow: `@/flows/${flow.name}`,
-    inputs: params
+    inputs: {
+      params: params,
+      client: data
+    }
   });
 }

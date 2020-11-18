@@ -57,7 +57,6 @@ export default class extends Vue {
           confirmType = 'warning'
           break
       }
-
       this.$confirm('确定执行 ' + this.state.label + ' 操作吗？', headMessage, {
         confirmButtonText: this.state.label,
         cancelButtonText: '取消',

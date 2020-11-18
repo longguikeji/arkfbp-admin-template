@@ -7,4 +7,5 @@ export default interface TablePageState extends CardState {
   filter?: FormState;
   table?: TableState;
   pagination?: PaginationState;
+  reliant_values?: any;
 }

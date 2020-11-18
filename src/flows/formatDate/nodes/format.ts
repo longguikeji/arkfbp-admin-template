@@ -5,8 +5,8 @@ export class Format extends FunctionNode {
     if (this.inputs === null) {
       return this.inputs
     }
-   
-    const date = new Date(this.inputs.value)
-    this.inputs.value = moment(date).format("yyyy-MM-DD HH:mm")
+    const fmt = this.inputs.params.format.replace(/dd/, "DD")
+    const date = new Date(this.inputs.params.value)
+    this.inputs.params.value = moment(date).format(fmt)
   }
 }
