@@ -532,7 +532,8 @@
               "label": "题语",
               "prop": "titlelanguage",
               "state": {
-                "value": ""
+                "value": "",
+                "type": "textarea"
               }
             },
             {
