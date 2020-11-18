@@ -7,7 +7,14 @@
   "name": "speaker",
   "type": "table",
   "title": "讲者管理",
-
+  "buttons": [
+    {
+      "label": "新建讲者",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
   "filter": {
     "inline": true,
     "size": "mini",

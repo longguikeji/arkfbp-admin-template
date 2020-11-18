@@ -129,6 +129,16 @@ export class Config {
 
     const config: any = {}
 
+    if (!this._viewconfig) {
+      return config
+    }
+
+    Object.keys(this._viewconfig).forEach((e:any) => {
+      if(e === 'type') {
+
+      }
+    })
+
     if (this._viewconfig.type) {
       config.type = this._viewconfig.type
     } else {
@@ -138,7 +148,7 @@ export class Config {
     if (this._viewconfig.title) {
       config.title = this._viewconfig.title
     } else {
-      config.type = 'tablePage'
+      config.title = 'tablePage'
     }
 
 
