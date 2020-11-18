@@ -33,7 +33,7 @@
       :state="state"
     />
     <TablePage
-      v-if="state.type === 'thirdpage'"
+      v-if="state.type === 'zhiya'"
       :state="state"
     />
     <TablePage
@@ -67,7 +67,7 @@ export default class extends Vue {
     return AdminModule.adminState
   }
 
-  async created() {
+  async mounted() {
     const requireModule = require.context('@/config/json', false, /\.json$/)
     const files = requireModule.keys().map(e => e.slice(2))
 

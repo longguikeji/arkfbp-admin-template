@@ -36,17 +36,18 @@ class Admin extends VuexModule implements IAdminState {
       await runFlow(adminState, flows[i], data)
     }
 
+    this.CHANGE_ADMIN(adminState)
+
     if (adminState.actions[action].next) {
       const next = adminState.actions[action].next
-
-      for (let i = 0; i < next.length; i++) {
+      for (let j = 0; j < next.length; j++) {
         await this.adminAction({
-          action: next[i].action,
+          action: next[j].action,
           data: data
         })
       }
     }
-    this.CHANGE_ADMIN(adminState)
+
   }
 }
 

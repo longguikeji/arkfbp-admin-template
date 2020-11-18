@@ -4,7 +4,10 @@
       <Form :state="getFilterFormState()" />
     </div>
     <Table :state="state.table" />
-    <Pagination :state="state.pagination" />
+    <Pagination
+      :state="state.pagination"
+      class="__tablepage__pagination__"
+    />
     <template v-if="state.dialogs">
       <Dialog
         v-for="dialogName in Object.keys(state.dialogs)"
@@ -46,3 +49,9 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.__tablepage__pagination__ {
+  margin-top: 20px;
+}
+</style>
