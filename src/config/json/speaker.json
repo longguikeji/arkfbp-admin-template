@@ -7,14 +7,7 @@
   "name": "speaker",
   "type": "table",
   "title": "讲者管理",
-  "buttons": [
-    {
-      "label": "新建讲者",
-      "action": "showCreateDialog",
-      "type": "primary",
-      "size": "small"
-    }
-  ],
+
   "filter": {
     "inline": true,
     "size": "mini",
@@ -24,8 +17,21 @@
         "prop": "name"
       },
       {
-        "type": "Input",
-        "prop": "is_valid"
+        "type": "Select",
+        "prop": "is_valid",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "label": "未发布",
+              "value": 0
+            },
+            {
+              "label": "已发布",
+              "value": 1
+            }
+          ]
+        }
       },
       {
         "type": "Button",
@@ -65,15 +71,23 @@
         "prop": "scene_type"
       }, 
       {
-        "prop": "speechcategory"
-      }, 
+        "prop": "speechcategory",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": []
+          }
+        }
+      },
       {
         "prop": "intro", 
         "width": 500
       }, 
       {
+        "label": "排序",
         "type": "action", 
-        "title": "排序", 
         "width": 100, 
         "actions": [
           {
@@ -91,8 +105,25 @@
         ]
       }, 
       {
-        "prop": "is_valid"
-      }, 
+        "prop": "is_valid",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "label": "未发布",
+                "value": 0
+              },
+              {
+                "label": "已发布",
+                "value": 1
+              }
+            ]
+          }
+        }
+      },
       {
         "prop": "action", 
         "width": 250, 
@@ -143,7 +174,10 @@
         {
           "type": "Select",
           "prop": "speechcategory",
-          "option": []
+          "state": {
+            "value": "",
+            "options": []
+          }
         },
         "scene_type", 
         "periods", 
@@ -204,7 +238,9 @@
           "url": "category/drop/", 
           "method": "GET",
           "client_config": {
-            "dialogs.create.items[prop=speechcategory].state.options": "data.items"
+            "dialogs.create.items[prop=speechcategory].state.options": "data.items",
+            "dialogs.update.items[prop=speechcategory].state.options": "data.items",
+            "table.columns[prop=speechcategory].scope.state.options": "data.items"
           }
         }
       ]

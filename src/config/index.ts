@@ -141,6 +141,20 @@ export class Config {
       config.type = 'tablePage'
     }
 
+
+    if (this._viewconfig.buttons) {
+      config.buttons = this._viewconfig.buttons
+    } else {
+      config.buttons = api.create.map((e:any) => {
+        return {
+          label: e.label,
+          action: 'showCreateDialog',
+          type: 'primary',
+          size: 'small'
+        }
+      })
+    }
+
     if (this._viewconfig.filter) {
       config.filter = this._viewconfig.filter
       if (this._viewconfig.filter.items) {
@@ -148,7 +162,7 @@ export class Config {
           if (typeof e === 'string') {
             return { prop: e, type: 'Input', ...meta[e] }
           } else {
-            return { ...e, ...meta[e.prop] } 
+            return { ...meta[e.prop], ...e } 
           }
         })
       }
@@ -169,7 +183,7 @@ export class Config {
           if (typeof e === 'string') {
             return { prop: e, type: 'Input', ...api.create[0].request[e] }
           } else {
-            return { ...e, ...api.create[0].request[e.prop] } 
+            return { ...api.create[0].request[e.prop],  ...e } 
           }
         })
       }
@@ -179,7 +193,7 @@ export class Config {
           if (typeof e === 'string') {
             return { prop: e, type: 'Input', ...api.update[0].request[e] }
           } else {
-            return { ...e, ...api.update[0].request[e.prop] }
+            return { ...api.update[0].request[e.prop],  ...e }
           }
         })
       }
@@ -227,7 +241,7 @@ export class Config {
           if (typeof e === 'string') {
             return {prop: e,  type: 'Input', ...meta[e]}
           } else {
-            return { ...e, ...meta[e.prop]} 
+            return { ...meta[e.prop], ...e } 
           }
         })
       }
@@ -431,14 +445,5 @@ export class Config {
     }
 
     return config
-  }
-
-  private getData(v) {
-    if (v.includes('.')) {
-
-    } else {
-      map[e] = {}
-      walkServeConfig(this._serveconfig[type.model_object.config_path].meta, map[e])
-    }
   }
 }
