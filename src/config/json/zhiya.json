@@ -247,7 +247,6 @@
         {
           "label": "确定",
           "action": "createZhiya",
-          "close": true,
           "type": "primary"
         }
       ],
@@ -323,7 +322,6 @@
         {
           "label": "确定",
           "action": "updateZhiya",
-          "close": true,
           "type": "primary"
         }
       ],
@@ -532,7 +530,8 @@
               "label": "题语",
               "prop": "titlelanguage",
               "state": {
-                "value": ""
+                "value": "",
+                "type": "textarea"
               }
             },
             {
@@ -599,7 +598,6 @@
             {
               "label": "确定",
               "action": "createVideo",
-              "close": true,
               "type": "primary"
             }
           ]
@@ -691,7 +689,6 @@
             {
               "label": "确定",
               "action": "updateVideo",
-              "close": true,
               "type": "primary"
             }
           ]
@@ -795,6 +792,10 @@
             "dialogs.create.items[prop=intro].state.value": "",
             "dialogs.create.items[prop=zhiya_recommended].state.value": ""
           }
+        },
+        {
+          "name": "changeOptions",
+          "request": "dialogs.create.items[prop=zhiya_recommended].state.options"
         }
       ],
       "next": [
@@ -997,6 +998,11 @@
             "dialogs.video.dialogs.create.visible": false
           }
         }
+      ],
+      "next": [
+        {
+          "action": "retrieveVideo"
+        }
       ]
     },
     "showUpdateVideoDialog": {
@@ -1063,6 +1069,26 @@
           "client_config": {
             "dialogs.video.dialogs.update.visible": false
           }
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieveVideo"
+        }
+      ]
+    },
+    "deleteOneVideo": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/<id>/delete/"
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieveVideo"
         }
       ]
     }

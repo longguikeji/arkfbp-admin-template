@@ -44,7 +44,6 @@ module.exports = {
       //     ['^' + process.env.VUE_APP_BASE_API]: ''
       //   }
       // }
-
       'api/': {
         target: 'http://almond.dev.attackt.com/',
         changeOrigin: true,

@@ -365,6 +365,32 @@
             "value": "",
             "options": []
           }
+        },  {
+          "type": "Upload",
+          "label": "视频",
+          "prop": "video",
+          "state": {
+            "type": "video",
+            "value": ""
+          }
+        },
+        {
+          "type": "Upload",
+          "label": "视频封面",
+          "prop": "video_cover",
+          "state": {
+            "type": "image",
+            "value": ""
+          }
+        },
+        {
+          "type": "Upload",
+          "label": "音频",
+          "prop": "audio",
+          "state": {
+            "type": "video",
+            "value": ""
+          }
         }
       ],
       "actions": [
@@ -514,6 +540,33 @@
             "value": "",
             "options": []
           }
+        },
+        {
+          "type": "Upload",
+          "label": "视频",
+          "prop": "video",
+          "state": {
+            "type": "video",
+            "value": ""
+          }
+        },
+        {
+          "type": "Upload",
+          "label": "视频封面",
+          "prop": "video_cover",
+          "state": {
+            "type": "image",
+            "value": ""
+          }
+        },
+        {
+          "type": "Upload",
+          "label": "音频",
+          "prop": "audio",
+          "state": {
+            "type": "video",
+            "value": ""
+          }
         }
       ],
       "actions": [
@@ -637,7 +690,6 @@
             "dialogs.update.visible": true
           }
         },
-
         {
           "name": "retrieve",
           "type": "api",
@@ -658,7 +710,10 @@
             "dialogs.update.items[prop=draft].state.value": "data.draft",
             "dialogs.update.items[prop=additional_play_count].state.value": "data.additional_play_count",
             "dialogs.update.items[prop=additional_collection_count].state.value": "data.additional_collection_count",
-            "dialogs.update.items[prop=additional_share_count].state.value": "data.additional_share_count"
+            "dialogs.update.items[prop=additional_share_count].state.value": "data.additional_share_count",
+            "dialogs.update.items[prop=video_cover].state.value": "data.video_cover",
+            "dialogs.update.items[prop=video].state.value": "data.video",
+            "dialogs.update.items[prop=audio].state.value": "data.audio"
           }
         }
       ]

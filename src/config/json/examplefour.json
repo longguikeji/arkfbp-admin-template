@@ -371,7 +371,9 @@
           "type": "api",
           "method": "GET",
           "url": "category/<id>/up/"
-        },
+        }
+      ],
+      "next": [
         {
           "name": "retrieve",
           "type": "api",
@@ -391,6 +393,18 @@
           "type": "api",
           "method": "GET",
           "url": "category/<id>/down/"
+        }
+      ],
+      "next": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "category/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
         }
       ]
     }

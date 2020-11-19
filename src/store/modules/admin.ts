@@ -36,9 +36,10 @@ class Admin extends VuexModule implements IAdminState {
       await runFlow(adminState, flows[i], data)
     }
 
+    this.CHANGE_ADMIN(adminState)
+
     if (adminState.actions[action].next) {
       const next = adminState.actions[action].next
-
       for (let j = 0; j < next.length; j++) {
         await this.adminAction({
           action: next[j].action,
@@ -46,8 +47,7 @@ class Admin extends VuexModule implements IAdminState {
         })
       }
     }
-    
-    this.CHANGE_ADMIN(adminState)
+
   }
 }
 

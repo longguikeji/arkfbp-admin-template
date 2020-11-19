@@ -1,22 +1,30 @@
 <template>
   <div>
-    <Button
-      v-for="(button, index) in state"
-      :key="state.indexOf(button)"
-      :state="button"
-      :index="index"
-    />
+    <template v-for="(button, index) in state">
+      <SwitchButton
+        v-if="button.type === 'switch'"
+        :key="'switch' + index"
+        :state="button"
+      />
+      <Button
+        v-else
+        :key="index"
+        :state="button"
+      />
+    </template>
   </div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import ButtonArrayState from './ButtonArrayState'
 import Button from '@/admin/common/Button/index.vue'
+import SwitchButton from '@/admin/common/Button/SwitchButton/index.vue'
 
 @Component({
   name: 'ButtonArray',
   components: {
-    Button
+    Button,
+    SwitchButton
   }
 })
 export default class extends Vue {

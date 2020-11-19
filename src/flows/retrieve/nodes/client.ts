@@ -11,10 +11,10 @@ export class Client extends FunctionNode {
       const ks = key.split('.')
       let tempC = state.client
       for (let i = 0; i < ks.length - 1; i++) {
-        if (ks[i].slice(0, 11) === 'items[prop=') {
+        if (ks[i].includes('items[prop=')) {
           const res = Filter(ks[i], tempC)
           tempC = tempC['items'][res]
-        } else if (ks[i].slice(0, 13) === 'columns[prop=') {
+        } else if (ks[i].includes('columns[prop=')) {
           const col = Filter(ks[i], tempC)
           tempC = tempC['columns'][col]
         } else {

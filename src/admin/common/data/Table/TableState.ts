@@ -37,5 +37,4 @@ export default interface TableState {
   lazy:boolean //  是否懒加载子节点数据  Boolean  —  —
   load:Function //  加载子节点数据的函数，lazy 为 true 时生效，函数第二个参数包含了节点的层级信息  Function(row, treeNode, resolve)  —  —
   treeProps:object //  渲染嵌套数据的配置选项  Object  —  { hasChildren: 'hasChildren', children: 'children' }
-  multipleSelection?: Array<any>
 }

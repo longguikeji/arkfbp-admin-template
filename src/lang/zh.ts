@@ -31,7 +31,7 @@ export default {
     exampletwo: "事例二",
     testpage: '视图综合测试',
     page: '页面',
-    user: '用户',
+    speaker: '讲者管理',
     barChart: '柱状图表',
     lineChart: '折线图',
     mixedChart: '混合图表',

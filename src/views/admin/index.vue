@@ -37,7 +37,7 @@
       :state="state"
     />
     <TablePage
-      v-if="state.type === 'fourthpage'"
+      v-if="state.type === 'comment'"
       :state="state"
     />
     <TablePage
@@ -48,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { Config } from '@/config'
 import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
@@ -64,16 +64,10 @@ import TablePage from '@/admin/TablePage/index.vue'
 })
 export default class extends Vue {
   private get state() {
-    console.log('最新的数据', AdminModule.adminState)
     return AdminModule.adminState
   }
 
-  @Watch('AdminModule.adminState', { deep: true, immediate: true })
-  getState(newState) {
-    console.log('变化了', newState)
-  }
-
-  async created() {
+  async mounted() {
     const requireModule = require.context('@/config/json', false, /\.json$/)
     const files = requireModule.keys().map(e => e.slice(2))
 
@@ -81,8 +75,9 @@ export default class extends Vue {
       const file = files[i]
       const page = file.split('.')[0]
       if (window.location.href.includes(page)) {
-        const viewconfig: any = require(`@/config/json/${file}`); // eslint-disable-line
-        const serveconfig: any = require("@/config/temp/user.json"); // eslint-disable-line
+        const viewconfig: any = require(`@/config/json/${page}.json`) // eslint-disable-line
+        const serveconfig: any = require('@/config/temp/demo.json') // eslint-disable-line
+
         const c: any = new Config(viewconfig, serveconfig, page)
         await AdminModule.setAdmin(c.config)
         await AdminModule.adminAction({ action: 'meta' })

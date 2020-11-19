@@ -6,9 +6,6 @@ import Filter from '@/utils/filter'
 const flows = require.context("@/flows", true, /\.ts$/);
 
 function getUrl(url: string, data: any, state: any) {
-  if (!data && url.indexOf("<") === -1 && url.indexOf("[") === -1) {
-    return url;
-  }
   if (url.indexOf("<") !== -1) {
     const property = url.slice(url.indexOf("<") + 1, url.lastIndexOf(">"));
     return (
@@ -27,6 +24,7 @@ function getUrl(url: string, data: any, state: any) {
       url.slice(0, url.indexOf("[")) + tempParams + url.slice(url.indexOf("]") + 1)
     );
   }
+  return url;
 }
 
 export function runFlowByFile(filename: string, inputs: FlowInput) {
@@ -72,7 +70,7 @@ export async function runFlow(state: any, flow: any, data: any) {
         let temp = state;
         const vs = flow.request[key].split(".");
         vs.forEach((v: string) => {
-          if (v.slice(0, 11) === 'items[prop=') {
+          if (v.includes('items[prop=')) {
             const res = Filter(v, temp)
             temp = temp['items'][res]
           } else if (v.slice(0, 13) === 'columns[prop=') {

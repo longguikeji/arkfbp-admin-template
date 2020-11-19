@@ -6,36 +6,32 @@
         <!-- video -->
         <div v-if="state.type === 'video'">
           <el-link
-            :href="valueBind"
+            :href="state.value"
             target="_blank"
             style="padding: 5px"
           >
-            <i class="el-icon-document">{{ valueBind }}</i>
+            <i class="el-icon-document">{{ state.value }}</i>
           </el-link>
         </div>
         <!-- image -->
         <div v-else-if="state.type === 'image'">
           <el-image
             style="height: 50px; width: 50px; margin-right: 10px"
-            :src="valueBind"
+            :src="state.value"
             fit="scale-down"
-            :preview-src-list="[valueBind]"
           />
         </div>
         <!-- XlsxFile -->
         <div v-else-if="state.type === 'xlsx'">
           <el-link
-            :href="valueBind"
+            :href="state.value"
             target="_blank"
           />
         </div>
-        <!-- 其他上传 -->
-        <div v-else />
         <!-- 上传按钮 -->
         <el-upload
           ref="upload"
-          :file-list="fileList"
-          :action="state.action"
+          :action="''"
           :show-file-list="false"
           :auto-upload="false"
           :on-change="onSuccess"
@@ -76,25 +72,17 @@
           >
             <VueCropper
               ref="cropper"
-              :src="imageUrl"
-              :output-type="state.upload.outputType || 'png'"
-              :can-scale="
-                state.upload.canScale !== null ? state.upload.canScale : false
-              "
-              :can-move="
-                state.upload.canMove !== null ? state.upload.canMove : false
-              "
-              :auto-crop="
-                state.upload.autoCrop !== null ? state.upload.autoCrop : true
-              "
-              :auto-crop-width="state.upload.width || 200"
-              :auto-crop-height="state.upload.height || 200"
-              :fixed="state.upload.fixed !== null ? state.upload.fixed : false"
-              :fixed-number="state.upload.fixedNumber"
-              :fixed-box="state.upload.fixedBox"
-              :center-box="
-                state.upload.centerBox !== null ? state.upload.centerBox : true
-              "
+              :src="fileUrl"
+              :can-scale="state.canScale"
+              :can-move="state.canMove"
+              :auto-crop="state.autoCrop"
+              :auto-crop-width="state.width"
+              :auto-crop-height="state.height"
+              :fixed="state.fixed"
+              :fixed-number="state.fixedNumber"
+              :fixed-box="state.fixedBox"
+              :center-box="state.centerBox"
+              :output-type="state.outputType"
               @realTime="realTime"
             />
           </div>
@@ -181,7 +169,7 @@ import processTableData from '@/utils/readexcel'
 
 @Component({
   name: 'Upload',
-  components: {}
+  components: { VueCropper }
 })
 export default class extends Vue {
   btnText = '上传文件';
@@ -218,26 +206,6 @@ export default class extends Vue {
     }
     this.fileUrl = URL.createObjectURL(file.raw)
     this.dialogVisible = true
-    if (this.state.type === 'image') {
-      const imageUrl = URL.createObjectURL(file.raw)
-      const img = new Image()
-      img.src = imageUrl
-      const vm = this
-      img.onload = function() {
-        const maxL = 800
-        let maxlength = img.height
-        if (img.width > img.height) {
-          maxlength = img.width
-        }
-        if (maxlength > maxL) {
-          vm.bili = maxL / maxlength
-        }
-        vm.$set(vm.imgInfo, 'width', Math.round(img.width * vm.bili))
-        vm.$set(vm.imgInfo, 'height', Math.round(img.height * vm.bili))
-        vm.imageUrl = imageUrl
-        vm.dialogVisible = true
-      }
-    }
     if (this.state.type === 'xlsx') {
       this.fileName = file.name
       // 读取Excel文件内容并显示
@@ -258,6 +226,25 @@ export default class extends Vue {
       }
       reader.readAsBinaryString(f)
     }
+    if (this.state.type === 'image') {
+      const imageUrl = URL.createObjectURL(file.raw)
+      const img = new Image()
+      img.src = imageUrl
+      const vm = this
+      img.onload = function() {
+        const maxL = 800
+        let maxlength = img.height
+        if (img.width > img.height) {
+          maxlength = img.width
+        }
+        if (maxlength > maxL) {
+          vm.bili = maxL / maxlength
+        }
+        vm.$set(vm.imgInfo, 'width', Math.round(img.width * vm.bili))
+        vm.$set(vm.imgInfo, 'height', Math.round(img.height * vm.bili))
+        vm.imageUrl = imageUrl
+      }
+    }
   }
 
   submitUpload() {
@@ -267,16 +254,16 @@ export default class extends Vue {
     runAction({
       flow: '@/flows/qiniu/upload',
       inputs: {
-        // file: file,
-        // path: "",
-        // complete: this.uploadComplete
+        file: file,
+        path: '',
+        complete: this.uploadComplete
       }
     })
   }
 
   uploadComplete(fileUrl: any) {
     this.$emit('input', fileUrl)
-    this.valueBind = fileUrl
+    this.state.value = fileUrl
     this.dialogVisible = false
   }
 

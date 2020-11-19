@@ -22,7 +22,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import SwitchState from './SwitchState'
 
 @Component({
-  name: 'SwitchButton',
+  name: 'SwitchForm',
   components: {}
 })
 export default class extends Vue {
