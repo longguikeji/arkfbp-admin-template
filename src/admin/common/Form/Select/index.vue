@@ -11,6 +11,7 @@
     :clearable="state.clearable || true"
     :disabled="state.disabled"
     :size="state.size"
+    @change="changeSelectValue"
   >
     <template v-if="state.type === 'group'">
       <el-option-group
@@ -44,6 +45,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
+import { AdminModule } from '@/store/modules/admin'
 @Component({
   name: 'Select',
   components: {
@@ -52,6 +54,7 @@ import SelectState from './SelectState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: SelectState;
+
   get tagData() {
     const tagValues: Array<any> = []
     if (this.state.options instanceof Array) {
@@ -78,6 +81,12 @@ export default class extends Vue {
       }
     }
     return tagValues
+  }
+
+  async changeSelectValue(val) {
+    if (this.state.action) {
+      await AdminModule.adminAction({ action: this.state.action, data: val })
+    }
   }
 }
 </script>
