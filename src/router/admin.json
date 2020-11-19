@@ -44,8 +44,18 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "testpage",
-        "path": "testpage",
+        "title": "price",
+        "path": "price",
+        "icon": "dashboard"
+      },
+      {
+        "title": "invitecode",
+        "path": "invitecode",
+        "icon": "dashboard"
+      },
+      {
+        "title": "exchange",
+        "path": "exchange",
         "icon": "dashboard"
       }
     ]
@@ -70,6 +80,18 @@
       {
         "title": "examplethree", 
         "path": "examplethree", 
+        "icon": "dashboard" 
+      }
+    ]
+  },
+  "examplefour": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "examplefour", 
+        "path": "exampletfour", 
         "icon": "dashboard" 
       }
     ]

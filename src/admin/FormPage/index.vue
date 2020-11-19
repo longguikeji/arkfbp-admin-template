@@ -22,4 +22,9 @@ export default class extends Vue {
   @Prop({ required: false }) state!: FormPageState;
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+::v-deep .tox .tox-menubar {
+  width: 1000px;
+}
+::v-deep .tui-editor-defaultUI { width: 1000px;}
+</style>

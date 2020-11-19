@@ -60,6 +60,7 @@ import Tooltip from '@/admin/common/Others/Tooltip/index.vue'
 import Backtop from '@/admin/common/Others/Backtop/index.vue'
 import Rich from '@/admin/common/Rich/index.vue'
 import AMap from '@/admin/common/AMap/index.vue'
+import Markdown from '@/admin/common/Markdown/index.vue'
 @Component({
   name: 'AdminComponent',
   components: {}
@@ -127,7 +128,8 @@ export default class extends Vue {
         Tooltip,
         Backtop,
         Rich,
-        AMap
+        AMap,
+        Markdown
       },
       render: (h: Function) => {
         return h(state.type, {

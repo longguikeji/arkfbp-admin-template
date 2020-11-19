@@ -12,6 +12,8 @@
     :show-password="state.showPassword"
     :disabled="state.disabled"
     :size="state.size"
+    :rows="state.rows"
+    :autosize="state.autosize"
   />
 </template>
 

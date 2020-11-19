@@ -16,6 +16,7 @@ export default interface TableColumnState {
   sortOrders:Array<string | null> //  数据在排序时所使用排序策略的轮转顺序，仅当 sortable 为 true 时有效。需传入一个数组，随着用户点击表头，该列依次按照数组中元素的顺序进行排序  array  数组中的元素需为以下三者之一：ascending 表示升序，descending 表示降序，null 表示还原为原始顺序  ['ascending', 'descending', null]
   resizable:boolean //  对应列是否可以通过拖动改变宽度（需要在 el-table 上设置 border 属性为真）  boolean  —  true
   formatter:Function //  用来格式化内容  Function(row, column, cellValue, index)  —  —
+  formatterName: string
   showOverflowTooltip:boolean //  当内容过长被隐藏时显示 tooltip  Boolean  —  false
   align:string //  对齐方式  String  left/center/right  left
   headerAlign:string //  表头对齐方式，若不设置该项，则使用表格的对齐方式  String  left/center/right  —

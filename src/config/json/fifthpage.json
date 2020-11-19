@@ -23,7 +23,10 @@
         "label": "开始时间",
         "prop": "begin_time",
         "state": {
-          "value": ""
+          "value": "",
+          "valueFormat": "yyyy-MM-dd HH:mm",
+          "format": "yyyy-MM-dd HH:mm",
+          "type": "datetime"
         }
       },
       {
@@ -31,7 +34,10 @@
         "label": "结束时间",
         "prop": "end_time",
         "state": {
-          "value": ""
+          "value": "",
+          "valueFormat": "yyyy-MM-dd HH:mm",
+          "format": "yyyy-MM-dd HH:mm",
+          "type": "datetime"
         }
       },
       {
@@ -242,7 +248,10 @@
           "label": "发布时间",
           "prop": "name",
           "state": {
-            "value": ""
+            "value": "",
+            "valueFormat": "yyyy-MM-dd HH:mm",
+            "format": "yyyy-MM-dd HH:mm",
+            "type": "datetime"
           }
         },
         {

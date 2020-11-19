@@ -16,5 +16,4 @@ export default interface ButtonState {
   badge?: BadgeState; // 如果需要badge,添加badge对象即可
   data?: any; // 绑定的一些其他所需数据
   cloumn?: any; // 
-  button?: any; // 
 }
