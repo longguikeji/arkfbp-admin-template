@@ -45,10 +45,11 @@
     >
       <el-button
         class="dialog__cancel__button"
-        :size="state.actions[0].size || 'small'"
+        :size="cancelButtonSize"
         @click="state.visible = false"
       >取 消</el-button>
       <ButtonArray
+        v-if="state.actions && state.actions.length > 0"
         class="dialog__actions__button"
         :state="state.actions"
       />
@@ -72,6 +73,14 @@ import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: DialogState;
+
+  get cancelButtonSize() {
+    if (this.state.actions && this.state.actions.length > 0) {
+      return this.state.actions[0].size
+    } else {
+      return 'small'
+    }
+  }
 }
 </script>
 

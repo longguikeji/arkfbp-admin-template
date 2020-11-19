@@ -12,6 +12,12 @@
       "action": "showCodeConfig",
       "type": "primary",
       "size": "small"
+    },
+    {
+      "label": "测试Select事件",
+      "action": "showSelectDialog",
+      "type": "primary",
+      "size": "small"
     }
   ],
   "filter": {
@@ -115,6 +121,40 @@
         }
       ],
       "visible": false
+    },
+    "create": {
+      "title": "测试Select的相关事件",
+      "visible": false,
+      "items": [
+        {
+          "type": "Select",
+          "label": "Select下拉框",
+          "prop": "select_content",
+          "state": {
+            "value": 0,
+            "options": [
+              {
+                "value": 0,
+                "label": "关闭"
+              },
+              {
+                "value": 1,
+                "label": "打开"
+              }
+            ],
+            "action": "openOrCloseBySelect"
+          }
+        },
+        {
+          "type": "Input",
+          "label": "Input测试框",
+          "prop": "input_content",
+          "state": {
+            "value": "",
+            "disabled": false
+          }
+        }
+      ]
     }
   },
   "actions": {
@@ -164,6 +204,30 @@
       "next": [
         {
           "action": "getCodeConfig"
+        }
+      ]
+    },
+    "showSelectDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "openOrCloseBySelect"
+        }
+      ]
+    },
+    "openOrCloseBySelect": {
+      "flows": [
+        {
+          "name": "openOrCloseBySelect",
+          "request": "dialogs.create.items"
         }
       ]
     }

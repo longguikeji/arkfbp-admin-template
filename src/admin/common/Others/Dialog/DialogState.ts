@@ -2,7 +2,7 @@ import FormState from '@/admin/common/Form/FormState'
 import TablePageState from '@/admin/TablePage/TablePageState'
 export default interface DialogState extends FormState, TablePageState {
   values?: Object; // 对话框每一项的值
-  actions?: string | Array<any>; // 底部按钮对应的事件
+  actions?: Array<any>; // 底部按钮对应的事件
   visible?: boolean; // 弹出框的显示与隐藏
   type?: string; // 判断Dialog的类型 是 TablePage 还是 FormPage
   width?: string; // Dialog 的宽度
