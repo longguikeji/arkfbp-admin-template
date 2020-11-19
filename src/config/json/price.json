@@ -1,0 +1,420 @@
+{
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
+  "type": "price",
+  "title": "price",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "产品ID号",
+        "prop": "product_id",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "retrieve"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "产品ID",
+        "prop": "product_id"
+      },
+      {
+        "label": "价格",
+        "prop": "price"
+      },
+      {
+        "label": "创建时间",
+        "prop": "created"
+      },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
+            }
+          ]
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "retrieve"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "type_choice",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "单课当前价格"
+              },
+              {
+                "value": 1,
+                "label": "年费当前价格"
+              },
+              {
+                "value": 2,
+                "label": "单课原始价格"
+              },
+              {
+                "value": 3,
+                "label": "单课邀请码价格"
+              },
+              {
+                "value": 4,
+                "label": "单课优惠码价格"
+              },
+              {
+                "value": 5,
+                "label": "单课邀请码和优惠码价格"
+              },
+              {
+                "value": 6,
+                "label": "实物原始价格"
+              },
+              {
+                "value": 7,
+                "label": "实物当前价格"
+              },
+              {
+                "value": 8,
+                "label": "实物邀请码价格"
+              },
+              {
+                "value": 9,
+                "label": "实物优惠码价格"
+              },
+              {
+                "value": 10,
+                "label": "实物邀请码和优惠码价格"
+              },
+              {
+                "value": 11,
+                "label": "实物课程原始价格"
+              },
+              {
+                "value": 12,
+                "label": "实物课程当前价格"
+              },
+              {
+                "value": 13,
+                "label": "实物课程邀请码价格"
+              },
+              {
+                "value": 14,
+                "label": "实物课程优惠码价格"
+              },
+              {
+                "value": 15,
+                "label": "实物课程邀请码和优惠码价格"
+              },
+              {
+                "value": 16,
+                "label": "会员优惠码价格"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Input",
+          "label": "价格",
+          "prop": "price",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "产品ID",
+          "prop": "product_id",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "type": "primary"
+        }
+      ],
+      "visible": false
+    },
+    "update": {
+      "titles": "编辑",
+      "items": [
+        {
+          "type": "Select",
+          "label": "类型",
+          "prop": "type_choice",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "单课当前价格"
+              },
+              {
+                "value": 1,
+                "label": "年费当前价格"
+              },
+              {
+                "value": 2,
+                "label": "单课原始价格"
+              },
+              {
+                "value": 3,
+                "label": "单课邀请码价格"
+              },
+              {
+                "value": 4,
+                "label": "单课优惠码价格"
+              },
+              {
+                "value": 5,
+                "label": "单课邀请码和优惠码价格"
+              },
+              {
+                "value": 6,
+                "label": "实物原始价格"
+              },
+              {
+                "value": 7,
+                "label": "实物当前价格"
+              },
+              {
+                "value": 8,
+                "label": "实物邀请码价格"
+              },
+              {
+                "value": 9,
+                "label": "实物优惠码价格"
+              },
+              {
+                "value": 10,
+                "label": "实物邀请码和优惠码价格"
+              },
+              {
+                "value": 11,
+                "label": "实物课程原始价格"
+              },
+              {
+                "value": 12,
+                "label": "实物课程当前价格"
+              },
+              {
+                "value": 13,
+                "label": "实物课程邀请码价格"
+              },
+              {
+                "value": 14,
+                "label": "实物课程优惠码价格"
+              },
+              {
+                "value": 15,
+                "label": "实物课程邀请码和优惠码价格"
+              },
+              {
+                "value": 16,
+                "label": "会员优惠码价格"
+              }
+            ]
+          }
+        },
+        {
+          "type": "Input",
+          "label": "价格",
+          "prop": "price",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "产品ID",
+          "prop": "product_id",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "edit",
+          "type": "primary"
+        }
+      ],
+      "visible": false
+    }
+  },
+  "actions": {
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ]
+    },
+    "retrieve": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "priceinfo/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items[prop=name].state.value",
+            "param_product_id": "filter.items[prop=product_id].state.value",
+            "param_type": "filter.items[prop=type_choice].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        },
+        {
+          "name": "buttonStatus",
+          "request": "table.data"
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/<id>/edit/",
+          "index": {
+            "id": ""
+          },
+          "client_config": {
+
+          }
+        }
+      ]
+    },
+    "edit": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "POST",
+          "url": "/priceinfo/<id>/edit/",
+          "request": {
+            "type_choice": "",
+            "price": "",
+            "product_id": "",
+            "id": "",
+            "name": ""
+          }
+        }
+      ]
+    },
+    "delete": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/<id>/delete/"
+        }
+      ]
+    },
+    "getPrice": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "/priceinfo/drop/",
+          "request": {
+            "type_choice": ""
+          },
+          "client_config": {}
+        }
+      ]
+    }
+  }
+}

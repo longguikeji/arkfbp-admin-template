@@ -24,6 +24,7 @@
         "prop": "begin_time",
         "state": {
           "value": "",
+          "valueFormat": "yyyy-MM-dd HH:mm",
           "format": "yyyy-MM-dd HH:mm",
           "type": "datetime"
         }
@@ -35,6 +36,7 @@
         "state": {
           "value": "",
           "format": "yyyy-MM-dd HH:mm",
+          "valueFormat": "yyyy-MM-dd HH:mm",
           "type": "datetime"
         }
       },
@@ -61,22 +63,13 @@
           "type": "danger",
           "action": "toMultipleDelete"
         }
-      },
-      {
-        "type": "Button",
-        "state": {
-          "label": "改变多选址(用于测试)",
-          "type": "primary",
-          "action": "changeSelect"
-        }
       }
     ]
   },
   "table": {
     "selection": {
       "exist": true,
-      "values": [],
-      "action_reliant_values": []
+      "values": []
     },
     "columns": [
       {
@@ -290,14 +283,6 @@
     "retrieve": {
       "flows": [
         {
-          "name": "formatDate",
-          "request": "filter.items[prop=begin_time].state"
-        },
-        {
-          "name": "formatDate",
-          "request": "filter.items[prop=end_time].state"
-        },
-        {
           "name": "retrieve",
           "type": "api",
           "method": "GET",
@@ -367,30 +352,18 @@
     "toMultipleDelete": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "selection",
           "type": "api",
           "method": "POST",
           "url": "comment/delete/",
           "request": {
-            "ids": "table.selection.action_reliant_values"
-          },
-          "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
+            "ids": "table.selection.values"
           }
         }
       ],
       "next": [
         {
           "action": "retrieve"
-        }
-      ]
-    },
-    "changeSelect": {
-      "flows": [
-        {
-          "name": "changeMultipleSelection",
-          "request": "table.selection"
         }
       ]
     }

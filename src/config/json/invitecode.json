@@ -4,8 +4,8 @@
       "retrieve"
     ]
   },
-  "type": "table",
-  "title": "testpage",
+  "type": "invitecode",
+  "title": "invitecode",
   "buttons": [
     {
       "label": "创建",

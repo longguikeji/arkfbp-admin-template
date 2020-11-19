@@ -25,7 +25,11 @@
       :state="state"
     />
     <TablePage
-      v-if="state.type === 'testpage'"
+      v-if="state.type === 'price'"
+      :state="state"
+    />
+    <TablePage
+      v-if="state.type === 'invitecode'"
       :state="state"
     />
     <TablePage

@@ -212,7 +212,9 @@
           "prop": "release_time",
           "state": {
             "value": "",
-            "format": "yyyy-MM-dd HH:mm"
+            "format": "yyyy-MM-dd HH:mm",
+            "valueFormat": "yyyy-MM-dd HH:mm",
+            "type": "datetime"
           }
         },
         {
@@ -759,10 +761,6 @@
     },
     "createZhiya": {
       "flows": [
-        {
-          "name": "formatDate",
-          "request": "dialogs.create.items[prop=release_time].state"
-        },
         {
           "name": "update",
           "type": "api",
