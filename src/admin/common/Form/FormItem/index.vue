@@ -33,5 +33,7 @@ export default class extends Vue {
 }
 ::v-deep .el-form-item__content {
   display: inline-block !important;
+
 }
+
 </style>

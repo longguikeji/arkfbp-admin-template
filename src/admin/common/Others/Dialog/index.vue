@@ -91,4 +91,8 @@ export default class extends Vue {
 .dialog__actions__button {
   display: inline-block !important;
 }
+::v-deep .el-form-item__label {
+  width: 100px;
+}
+
 </style>

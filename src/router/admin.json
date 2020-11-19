@@ -84,6 +84,18 @@
       }
     ]
   },
+  "examplefour": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "examplefour", 
+        "path": "exampletfour", 
+        "icon": "dashboard" 
+      }
+    ]
+  },
   "secondpage": {
     "title": "case",
     "path": "case",

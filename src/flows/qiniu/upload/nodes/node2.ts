@@ -3,11 +3,12 @@ import * as qiniu from "qiniu-js";
 
 export class Node2 extends FunctionNode {
   async run() {
-    const uphost = "https://cdn.yixi.tv/";
+    const uphost = "upload.qiniup.com";
 
     const state = this.$state.fetch();
 
     const uptoken = this.inputs.data.uptoken;
+    const uplink = "https://cdn.yixi.tv/";
     // const options = {
     //   quality: 0.92,
     // maxWidth: 800,
@@ -30,10 +31,9 @@ export class Node2 extends FunctionNode {
         uphost: uphost
       }
     );
-
     const subscription = observable.subscribe({
       complete(res) {
-        state.complete(uphost + key);
+        state.complete(uplink + key);
       }
     });
   }
