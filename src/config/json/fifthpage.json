@@ -199,8 +199,7 @@
         }
       }
     ],
-    "data": [],
-    "multipleSelection": []
+    "data": []
   },
   "pagination": {
     "currentPage": 1,
@@ -285,7 +284,6 @@
         {
           "label": "确定",
           "action": "create",
-          "close": true,
           "type": "primary"
         }
       ],

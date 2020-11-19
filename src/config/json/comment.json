@@ -4,8 +4,8 @@
       "retrieve"
     ]
   },
-  "type": "fourthpage",
-  "title": "fourthpage",
+  "type": "comment",
+  "title": "comment",
   "filter": {
     "inline": true,
     "size": "mini",
@@ -20,18 +20,22 @@
       },
       {
         "type": "DatePicker",
-        "label": "开始时间",
+        "label": "选择时间",
         "prop": "begin_time",
         "state": {
-          "value": ""
+          "value": "",
+          "format": "yyyy-MM-dd HH:mm",
+          "type": "datetime"
         }
       },
       {
         "type": "DatePicker",
-        "label": "结束时间",
+        "label": "选择时间",
         "prop": "end_time",
         "state": {
-          "value": ""
+          "value": "",
+          "format": "yyyy-MM-dd HH:mm",
+          "type": "datetime"
         }
       },
       {
@@ -63,7 +67,7 @@
         "state": {
           "label": "改变多选址(用于测试)",
           "type": "primary",
-          "action": "changeSelection"
+          "action": "changeSelect"
         }
       }
     ]
@@ -71,7 +75,8 @@
   "table": {
     "selection": {
       "exist": true,
-      "values": []
+      "values": [],
+      "action_reliant_values": []
     },
     "columns": [
       {
@@ -132,14 +137,13 @@
             },
             {
               "label": "回复",
-              "action": "toReview"
+              "action": "showReviewDialog"
             }
           ]
         }
       }
     ],
-    "data": [],
-    "multipleSelection": []
+    "data": []
   },
   "pagination": {
     "currentPage": 1,
@@ -224,17 +228,75 @@
         {
           "label": "确定",
           "action": "create",
-          "close": true,
           "type": "primary"
         }
       ],
       "visible": false,
       "inline": true
+    },
+    "review": {
+      "title": "回复",
+      "visible": false,
+      "inline": false,
+      "items": [
+        {
+          "type": "Input",
+          "label": "演讲",
+          "prop": "title",
+          "state": {
+            "value": "",
+            "disabled": true
+          }
+        },
+        {
+          "type": "Input",
+          "label": "内容",
+          "prop": "content",
+          "state": {
+            "value": "",
+            "disabled": true,
+            "type": "textarea"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "发布身份",
+          "prop": "profile_id",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "回复内容",
+          "prop": "review_content",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "发布",
+          "action": "toReview",
+          "type": "primary"
+        }
+      ]
     }
   },
   "actions": {
     "retrieve": {
       "flows": [
+        {
+          "name": "formatDate",
+          "request": "filter.items[prop=begin_time].state"
+        },
+        {
+          "name": "formatDate",
+          "request": "filter.items[prop=end_time].state"
+        },
         {
           "name": "retrieve",
           "type": "api",
@@ -255,34 +317,80 @@
         }
       ]
     },
+    "showReviewDialog": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.review.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "comment/<id>/reply/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.review.items[prop=title].state.value": "data.result.title",
+            "dialogs.review.items[prop=content].state.value": "data.result.content",
+            "dialogs.review.items[prop=profile_id].state.options": "data.result.profiles",
+            "dialogs.review.items[prop=title].label": "data.result.type"
+          }
+        },
+        {
+          "name": "changeProfilesOptions",
+          "request": "dialogs.review.items[prop=profile_id].state"
+        }
+      ]
+    },
     "toReview": {
       "flows": [
-
+        {
+          "name": "retrieve",
+          "type": "api"
+        },
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.review.visible": false
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieve"
+        }
       ]
     },
     "toMultipleDelete": {
       "flows": [
-        
-      ]
-    },
-    "changeSelection": {
-      "flows": [
-        {
-          "name": "changeSelection",
-          "request": "table.selection"
-        },
         {
           "name": "retrieve",
           "type": "api",
           "method": "POST",
           "url": "comment/delete/",
           "request": {
-            "ids": "table.selection.needed"
+            "ids": "table.selection.action_reliant_values"
           },
           "client_config": {
             "table.data": "data.items",
             "pagination.total": "data.total"
           }
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieve"
+        }
+      ]
+    },
+    "changeSelect": {
+      "flows": [
+        {
+          "name": "changeMultipleSelection",
+          "request": "table.selection"
         }
       ]
     }

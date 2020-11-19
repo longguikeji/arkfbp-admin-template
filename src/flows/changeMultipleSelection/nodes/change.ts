@@ -9,6 +9,6 @@ export class Change extends FunctionNode {
     this.inputs.params.values.forEach((i: any) => {
       deleteArr.push(i.id)
     })
-    this.inputs.params.needed = deleteArr
+    this.inputs.params.action_reliant_values = deleteArr
   }
 }
