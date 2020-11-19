@@ -24,7 +24,6 @@
           "value": ""
         }
       },
-
       {
         "type": "Select",
         "label": "是否有效",
@@ -129,6 +128,25 @@
               }
             ]
           }
+        }
+      },
+      {
+        "label": "排序",
+        "prop": "sort",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "icon": "el-icon-top",
+              "type": "primary",
+              "action": "upHandler"
+            },
+            {
+              "icon": "el-icon-bottom",
+              "type": "primary",
+              "action": "downHandler"
+            }
+          ]
         }
       },
       {
@@ -338,14 +356,41 @@
           "type": "api",
           "method": "GET",
           "url": "category/<id>/edit/",
-          "index": {
-            "id": ""
-          },
           "client_config": {
             "dialogs.update.items[prop=title].state.value": "data.title",
             "dialogs.update.items[prop=is_home].state.options.value": "data.is_home",
             "dialogs.update.items[prop=img].state.value": "data.img"
           }
+        }
+      ]
+    },
+    "upHandler": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "category/<id>/up/"
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "url": "category/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "downHandler": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "category/<id>/down/"
         }
       ]
     }

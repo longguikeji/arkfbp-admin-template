@@ -1,6 +1,6 @@
 export default interface InputState {
   type:string //  类型  string  text，textarea 和其他 原生 input 的 type 值  text
-  value:string // / v-model  绑定值  string / number  —  —
+  value:string | number // / v-model  绑定值  string / number  —  —
   maxlength:number //  原生属性，最大输入长度  number  —  —
   minlength:number //  原生属性，最小输入长度  number  —  —
   showWordLimit:boolean //  是否显示输入字数统计，只在 type = "text" 或 type = "textarea" 时有效  boolean  —  false

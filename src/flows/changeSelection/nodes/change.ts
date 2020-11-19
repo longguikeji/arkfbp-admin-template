@@ -6,9 +6,9 @@ export class Change extends FunctionNode {
       return this.inputs
     }
     const deleteArr = new Array()
-    this.inputs.values.forEach((i: any) => {
+    this.inputs.params.values.forEach((i: any) => {
       deleteArr.push(i.id)
     })
-    this.inputs.needed = deleteArr
+    this.inputs.params.needed = deleteArr
   }
 }

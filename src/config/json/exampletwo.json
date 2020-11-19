@@ -413,7 +413,6 @@
           "prop": "titlelanguage",
           "state": {
             "type": "textarea",
-            "autosize":true,
             "value": ""
           }
         },
