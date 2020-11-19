@@ -21,14 +21,6 @@
         "state": {
           "value": ""
         }
-      },
-      {
-        "type": "Markdown",
-        "label": "选择推荐演讲",
-        "prop": "video-mark",
-        "state": {
-          "value": ""
-        }
       }
     ]
   },

@@ -1,0 +1,171 @@
+{
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
+  "type": "invitecode",
+  "title": "invitecode",
+  "buttons": [
+    {
+      "label": "邀请码配置管理",
+      "action": "showCodeConfig",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "邀请码",
+        "prop": "code",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "生成邀请码的用户",
+        "prop": "mobile",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Input",
+        "label": "使用邀请码的用户",
+        "prop": "use_mobile",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "retrieve"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "生成邀请码的用户",
+        "prop": "mobile"
+      },
+      {
+        "label": "使用邀请码的用户",
+        "prop": "use_mobile"
+      },
+      {
+        "label": "邀请码",
+        "prop": "code"
+      },
+      {
+        "label": "创建时间",
+        "prop": "created"
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "retrieve"
+  },
+  "dialogs": {
+    "code": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Input",
+          "label": "生成邀请码的用户赠送的天数",
+          "prop": "user_present_day",
+          "state": {
+            "value": "",
+            "type": "number"
+          }
+        },
+        {
+          "type": "Input",
+          "label": "使用邀请码的用户赠送的天数",
+          "prop": "use_user_present_day",
+          "state": {
+            "value": "",
+            "type": "number"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "更新",
+          "action": "updateCode",
+          "type": "primary"
+        }
+      ],
+      "visible": false
+    }
+  },
+  "actions": {
+    "showCodeConfig": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.code.visible": true
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "getCodeConfig"
+        }
+      ]
+    },
+    "getCodeConfig": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "invite_code_set/edit/",
+          "client_config": {
+            "dialogs.code.items[prop=user_present_day].state.value": "data.result.user_present_day",
+            "dialogs.code.items[prop=use_user_present_day].state.value": "data.result.use_user_present_day"
+          }
+        }
+      ]
+    },
+    "updateCode": {
+      "flows": [
+        {
+          "name": "update",
+          "type": "api",
+          "method": "POST",
+          "url": "invite_code_set/edit/",
+          "request": {
+            "user_present_day": "dialogs.code.items[prop=user_present_day].state.value",
+            "use_user_present_day": "dialogs.code.items[prop=use_user_present_day].state.value"
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "getCodeConfig"
+        }
+      ]
+    }
+  }
+}

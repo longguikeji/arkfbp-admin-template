@@ -53,16 +53,14 @@ import SelectState from './SelectState'
 export default class extends Vue {
   @Prop({ required: true }) state!: SelectState;
   get tagData() {
-    let tagValue
-    const tagValues = []
+    const tagValues: Array<any> = []
     if (this.state.options instanceof Array) {
       if (this.state.value instanceof Array) {
         this.state.options.forEach(o => {
           this.state.value.forEach(v => {
             if (o.value === v) {
-              tagValue = o.label
               tagValues.push({
-                value: tagValue,
+                value: o.label,
                 type: this.state.type || 'info'
               })
             }
@@ -71,9 +69,8 @@ export default class extends Vue {
       } else {
         this.state.options.forEach(o => {
           if (o.value === this.state.value) {
-            tagValue = o.label
             tagValues.push({
-              value: tagValue,
+              value: o.label,
               type: this.state.type || 'info'
             })
           }
