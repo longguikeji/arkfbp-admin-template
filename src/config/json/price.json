@@ -57,6 +57,7 @@
       {
         "label": "操作",
         "prop": "action",
+        "formatterName": "tableButtonStatus",
         "scope": {
           "type": "ButtonArray",
           "state": [
@@ -345,10 +346,6 @@
             "table.data": "data.items",
             "pagination.total": "data.total"
           }
-        },
-        {
-          "name": "buttonStatus",
-          "request": "table.data"
         }
       ]
     },

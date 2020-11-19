@@ -52,6 +52,11 @@
         "title": "invitecode",
         "path": "invitecode",
         "icon": "dashboard"
+      },
+      {
+        "title": "exchange",
+        "path": "exchange",
+        "icon": "dashboard"
       }
     ]
   },

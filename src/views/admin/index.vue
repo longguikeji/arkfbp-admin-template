@@ -33,6 +33,10 @@
       :state="state"
     />
     <TablePage
+      v-if="state.type === 'exchange'"
+      :state="state"
+    />
+    <TablePage
       v-if="state.type === 'secondpage'"
       :state="state"
     />

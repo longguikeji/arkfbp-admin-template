@@ -1,0 +1,156 @@
+{
+  "created": {
+    "actions": [
+      "retrieve"
+    ]
+  },
+  "type": "exchange",
+  "title": "exchange",
+  "buttons": [
+    {
+      "label": "更新允许兑换的万象",
+      "action": "showExchangeWX",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "产品ID号",
+        "prop": "product_id",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "retrieve"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "产品ID",
+        "prop": "product_id"
+      },
+      {
+        "label": "价格",
+        "prop": "price"
+      },
+      {
+        "label": "创建时间",
+        "prop": "created"
+      },
+      {
+        "label": "操作",
+        "prop": "action",
+        "formatterName": "tableButtonStatus",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
+            }
+          ]
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "retrieve"
+  },
+  "dialogs": {
+    "wanxiang": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Select",
+          "label": "请选择万象",
+          "prop": "wanxiang_type",
+          "state": {
+            "value": [],  
+            "options": [],
+            "multiple": true
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "type": "primary"
+        }
+      ],
+      "visible": false
+    }
+  },
+  "actions": {
+    "showExchangeWX": {
+      "flows": [
+        {
+          "name": "assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.wanxiang.visible": true
+          }
+        },
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "wanxiang/drop/",
+          "client_config": {
+            "dialogs.wanxiang.items[prop=wanxiang_type].state.options": "data.items"
+          }
+        },
+        {
+          "name": "changeOptions",
+          "request": "dialogs.wanxiang.items[prop=wanxiang_type].state.options"
+        }
+      ],
+      "next": [
+        {
+          "action": "getExchange"
+        }
+      ]
+    },
+    "getExchange": {
+      "flows": [
+        {
+          "name": "retrieve",
+          "type": "api",
+          "method": "GET",
+          "url": "wanxiang/allowchange/",
+          "client_config": {
+            "dialogs.wanxiang.items[prop=wanxiang_type].state.value": "data.select_wanxiangids"
+          }
+        }
+      ]
+    }
+  }
+}

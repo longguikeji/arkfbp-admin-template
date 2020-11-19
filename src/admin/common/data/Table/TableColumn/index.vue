@@ -27,8 +27,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
-import { type } from 'os'
-import admin from '@/router/modules/admin'
+import { runAction } from '@/arkfbp/index'
 
 @Component({
   name: 'TableColumn',
@@ -39,16 +38,22 @@ import admin from '@/router/modules/admin'
 export default class extends Vue {
   @Prop({ required: true }) state!: TableColumnState;
 
-  getComponentState(scope: any): object {
+  getComponentState(scope: any): Object {
     let adminState: Object
 
     if (this.state.scope.state instanceof Array) {
       let sstate: any = {}
       sstate = JSON.parse(JSON.stringify(this.state.scope))
-      sstate.state.forEach((item: any) => {
+      sstate.state.forEach(async(item: any, index: number) => {
         item.data = scope.row
         item.cloumn = this.state
         item.value = scope.row[this.state.prop]
+        if (this.state.formatterName) {
+          const formatData: any = {}
+          formatData.item = item
+          formatData.index = index
+          await runAction({ flow: `@/flows/${this.state.formatterName}`, inputs: formatData })
+        }
       })
       adminState = sstate
     } else {
