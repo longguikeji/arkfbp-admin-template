@@ -16,6 +16,14 @@
       v-if="state.type === 'price'"
       :state="state"
     />
+    <TablePage
+      v-if="state.type === 'invitecode'"
+      :state="state"
+    />
+    <TablePage
+      v-if="state.type === 'exchange'"
+      :state="state"
+    />
     <!-- <FormPage
       v-if="state.type === 'exampleone'"
       :state="state"
@@ -26,14 +34,6 @@
     />
     <FormPage
       v-if="state.type === 'examplethree'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'invitecode'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'exchange'"
       :state="state"
     />
     <TablePage
@@ -79,7 +79,6 @@ export default class extends Vue {
   async mounted() {
     const requireModule = require.context('@/config/view', false, /\.json$/)
     const files = requireModule.keys().map(e => e.slice(2))
-
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
       const page = file.split('.')[0]
@@ -88,9 +87,7 @@ export default class extends Vue {
         const serveconfig: any = require(`@/config/serve/${page}.json`) // eslint-disable-line
 
         const c: any = new Config(viewconfig, serveconfig, page)
-        console.log('c.config', c.config)
-        console.log('server.config', serveconfig)
-        console.log('page.config', page)
+
         await AdminModule.setAdmin(c.config)
         await AdminModule.adminAction({ action: 'meta' })
       }

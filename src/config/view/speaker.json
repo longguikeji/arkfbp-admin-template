@@ -288,8 +288,8 @@
     "toFilter": {
       "flows": [
         {
-          "name": "flows.filter",
-          "type": "filter",
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
           "method": "GET",
           "url": "speaker/",
           "request": {

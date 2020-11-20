@@ -28,7 +28,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import { runAction } from '@/arkfbp/index'
-
+import tableButtonStatus from '@/utils/tableButtonStatus'
 @Component({
   name: 'TableColumn',
   components: {
@@ -38,22 +38,21 @@ import { runAction } from '@/arkfbp/index'
 export default class extends Vue {
   @Prop({ required: true }) state!: TableColumnState;
 
-  getComponentState(scope: any): Object {
+  getComponentState(scope: any) {
     let adminState: Object
-
     if (this.state.scope.state instanceof Array) {
       let sstate: any = {}
       sstate = JSON.parse(JSON.stringify(this.state.scope))
-      sstate.state.forEach(async(item: any, index: number) => {
+      sstate.state.forEach((item: any, index: number) => {
         item.data = scope.row
         item.cloumn = this.state
         item.value = scope.row[this.state.prop]
-        if (this.state.formatterName) {
-          const formatData: any = {}
-          formatData.item = item
-          formatData.index = index
-          await runAction({ flow: `@/flows/${this.state.formatterName}`, inputs: formatData })
-        }
+        // if (this.state.format) {
+        //   const formatData: any = {}
+        //   formatData.item = item
+        //   formatData.index = index
+        //   await runAction({ flow: `@/flows/${this.state.format}`, inputs: formatData })
+        // }
       })
       adminState = sstate
     } else {
@@ -65,8 +64,12 @@ export default class extends Vue {
         type: this.state.scope.type
       }
     }
-
+    // if (this.state.format) {
+    //   runAction({ flow: `flows.${this.state.format}`, inputs: adminState })
+    // }
+    tableButtonStatus(adminState)
     return adminState
+    // return this.adminComponentState
   }
 }
 </script>

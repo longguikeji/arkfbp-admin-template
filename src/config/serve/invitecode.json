@@ -1,13 +1,13 @@
 {
-  "price": {
-    "name": "price",
-    "type": "price",
+  "invitecode": {
+    "name": "invitecode",
+    "type": "invitecode",
     "meta": {
       "items": {
         "title": "查询结果列表",
         "type": {
           "array": {
-            "array_item": "price"
+            "array_item": "invitecode"
           }
         }
       },
@@ -22,97 +22,44 @@
           }
         }
       },
-      "price": {
-        "title": "返回的价格列表",
+      "invitecode": {
+        "title": "返回的邀请码列表",
         "required": true,
         "type": {
           "object": {
-            "id": "model_price.id",
-            "product_id": "model_price.product_id",
-            "is_remove": "model_price.is_remove", 
-            "created": "model_price.created", 
-            "price": "model_price.price"
+            "code": "model_invitecode.code",
+            "mobile": "model_invitecode.mobile",
+            "use_mobile": "model_invitecode.use_mobile",
+            "created": "model_invitecode.created"
           }
         }
       }
     },
     "api": {
-      "priceinfo/": {
+      "invite_code_set/edit/": {
         "get": {
-          "pagination": true,
-          "name": "价格列表获取",
+          "name": "邀请码配置获取",
           "type": "retrieve",
           "request": {
-            "id": {
-              "src": "model_price.id"
+            "use_user_present_day": {
+              "src": "model_invitecode.use_user_present_day"
             },
-            "product_id": {
-              "src": "model_price.product_id"
-            },
-            "is_remove": {
-              "src": "model_price.is_remove"
-            },
-            "created": {
-              "src": "model_price.created"
-            },
-            "price": {
-              "src": "model_price.price"
-            }
-          }
-        }
-      },
-      "priceinfo/create/": {
-        "post": {
-          "name": "新建价格",
-          "type": "create",
-          "request": {
-            "product_id": {
-              "src": "model_price.product_id"
-            },
-            "price": {
-              "src": "model_price.price"
-            }
-          }
-        }
-      },
-      "priceinfo/<id>/edit/": {
-        "post": {
-          "name": "价格列表新建",
-          "type": "update",
-          "request": {
-            "product_id": {
-              "src": "model_price.product_id"
-            },
-            "price": {
-              "src": "model_price.price"
+            "user_present_day": {
+              "src": "model_invitecode.user_present_day"
             }
           }
         },
-        "get": {
-          "name": "价格列表新建",
-          "type": "retrieve",
+        "post": {
+          "name": "邀请码配置修改",
+          "type": "update",
           "request": {
-            "product_id": {
-              "src": "model_price.product_id"
+            "use_user_present_day": {
+              "src": "model_invitecode.use_user_present_day"
             },
-            "price": {
-              "src": "model_price.price"
+            "user_present_day": {
+              "src": "model_invitecode.user_present_day"
             }
           }
-        }
-      },
-      "priceinfo/<id>/delete/": {
-        "get": {
-          "name": "价格列表新建",
-          "type": "delete",
-          "request": {}
-        }
-      },
-      "priceinfo/drop/": {
-        "get": {
-          "name": "价格列表新建",
-          "type": "retrieve",
-          "request": {}
         }
       }
     }
@@ -181,36 +128,42 @@
     },
     "api": {}
   },
-  "model_price": {
-    "name": "model_price",
+  "model_invitecode": {
+    "name": "model_invitecode",
     "type": "",
     "meta": {
-      "id": {
-        "title": "#",
+      "code": {
+        "title": "邀请码",
         "type": {
           "string": {}
         }
       },
-      "product_id": {
-        "title": "产品ID",
+      "mobile": {
+        "title": "生成邀请码的用户",
         "type": {
           "string": {}
         }
       },
-      "is_remove": {
-        "title": "是否可以删除",
+      "use_mobile": {
+        "title": "使用邀请码的用户",
+        "type": {
+          "string": {}
+        }
+      },
+      "use_user_present_day": {
+        "title": "使用邀请码的用户赠送的天数",
+        "type": {
+          "string": {}
+        }
+      },
+      "user_present_day": {
+        "title": "生成邀请码的用户赠送的天数",
         "type": {
           "string": {}
         }
       },
       "created": {
         "title": "创建时间",
-        "type": {
-          "string": {}
-        }
-      },
-      "price": {
-        "title": "价格",
         "type": {
           "string": {}
         }

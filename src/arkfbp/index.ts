@@ -43,7 +43,6 @@ export async function runAction(action: { flow: string, inputs: any }) {
   if (!action.flow) {
     return
   }
-
   const loading = Loading.service({ fullscreen: true })
   const flow = action.flow.split('.').join('/')
   const outputs = await runFlowByFile(flow, action.inputs)

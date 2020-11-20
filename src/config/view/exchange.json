@@ -18,12 +18,14 @@
     "inline": true,
     "size": "mini",
     "items": [
+      "code",
+      "mobile",
       {
-        "type": "Input",
-        "label": "产品ID号",
-        "prop": "product_id",
+        "type": "Select",
+        "prop": "exchange_type",
         "state": {
-          "value": ""
+          "value": "",
+          "options": []
         }
       },
       {
@@ -38,22 +40,14 @@
   },
   "table": {
     "columns": [
-      {
-        "label": "#",
-        "prop": "id"
-      },
-      {
-        "label": "产品ID",
-        "prop": "product_id"
-      },
-      {
-        "label": "价格",
-        "prop": "price"
-      },
-      {
-        "label": "创建时间",
-        "prop": "created"
-      },
+      "id",
+      "mobile",
+      "use_mobile",
+      "code",
+      "exchange_type",
+      "order",
+      "end_valid_time",
+      "created",
       {
         "label": "操作",
         "prop": "action",
@@ -113,14 +107,14 @@
     "showExchangeWX": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.wanxiang.visible": true
           }
         },
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "wanxiang/drop/",
@@ -142,7 +136,7 @@
     "getExchange": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "wanxiang/allowchange/",
