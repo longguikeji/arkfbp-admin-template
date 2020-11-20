@@ -133,12 +133,6 @@ export class Config {
       return config
     }
 
-    Object.keys(this._viewconfig).forEach((e:any) => {
-      if(e === 'type') {
-
-      }
-    })
-
     if (this._viewconfig.type) {
       config.type = this._viewconfig.type
     } else {
@@ -251,7 +245,7 @@ export class Config {
           if (typeof e === 'string') {
             return {prop: e,  type: 'Input', ...meta[e]}
           } else {
-            return { ...meta[e.prop], ...e } 
+            return { lable: meta[e.prop] ? meta[e.prop].lable : '', ...e } 
           }
         })
       }

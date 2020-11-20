@@ -2,7 +2,7 @@ import { Flow } from 'arkfbp/lib/flow'
 import { Graph } from 'arkfbp/lib/graph'
 import { StartNode } from 'arkfbp/lib/startNode'
 import { StopNode } from 'arkfbp/lib/stopNode'
-import { Retrieve } from './nodes/retrieve'
+import { Fetch } from './nodes/fetch'
 import { Client } from './nodes/client'
 export class Main extends Flow {
   createNodes() {
@@ -11,7 +11,7 @@ export class Main extends Flow {
       id: 'start',
       next: '1'
     }, {
-      cls: Retrieve,
+      cls: Fetch,
       id: '1',
       next: '2'
     }, {

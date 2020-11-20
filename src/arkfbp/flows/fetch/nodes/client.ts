@@ -1,5 +1,6 @@
 import { FunctionNode } from 'arkfbp/lib/functionNode'
 import Filter from '@/utils/filter'
+
 export class Client extends FunctionNode {
   async run() {
     const state = this.$state.fetch()
