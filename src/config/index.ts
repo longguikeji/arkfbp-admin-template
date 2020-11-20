@@ -129,6 +129,10 @@ export class Config {
 
     const config: any = {}
 
+    if (!this._viewconfig) {
+      return config
+    }
+
     if (this._viewconfig.type) {
       config.type = this._viewconfig.type
     } else {
@@ -138,7 +142,7 @@ export class Config {
     if (this._viewconfig.title) {
       config.title = this._viewconfig.title
     } else {
-      config.type = 'tablePage'
+      config.title = 'tablePage'
     }
 
 
@@ -241,7 +245,7 @@ export class Config {
           if (typeof e === 'string') {
             return {prop: e,  type: 'Input', ...meta[e]}
           } else {
-            return { ...meta[e.prop], ...e } 
+            return { lable: meta[e.prop] ? meta[e.prop].lable : '', ...e } 
           }
         })
       }

@@ -10,10 +10,10 @@ export class Assign extends FunctionNode {
       let temp = this.inputs.client
       for (let i = 0; i < ks.length - 1; i++) {
         const k = ks[i]
-        if (k.slice(0, 11) === 'items[prop=') {
+        if (k.includes('items[prop=')) {
           const res = Filter(k, temp)
           temp = temp['items'][res]
-        } else if (k.slice(0, 13) === 'columns[prop=') {
+        } else if (k.includes('columns[prop=')) {
           const col = Filter(k, temp)
           temp = temp['columns'][col]
         } else {
