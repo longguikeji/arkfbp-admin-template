@@ -31,8 +31,9 @@ export class Config {
     if (!this._serveconfig[this._current]) {
       return this._viewconfig
     }
-
+  
     const serverMeta = this._serveconfig[this._current].meta
+    console.log('serverMeta', serverMeta)
     const serverApi = this._serveconfig[this._current].api
     const api: any = {}
     const meta: any = {}
@@ -40,7 +41,7 @@ export class Config {
     const walkMeta = (data: any, map: any) => {
       const name = this._serveconfig[this._current].name
       const type = data[name].type
-  
+      console.log('type', type)
       if (type.object) {
         Object.keys(type.object).forEach((e: any) => {
           if (type.object[e].includes('.')) {
@@ -129,6 +130,10 @@ export class Config {
 
     const config: any = {}
 
+    if (!this._viewconfig) {
+      return config
+    }
+
     if (this._viewconfig.type) {
       config.type = this._viewconfig.type
     } else {
@@ -138,7 +143,7 @@ export class Config {
     if (this._viewconfig.title) {
       config.title = this._viewconfig.title
     } else {
-      config.type = 'tablePage'
+      config.title = 'tablePage'
     }
 
 
@@ -241,7 +246,7 @@ export class Config {
           if (typeof e === 'string') {
             return {prop: e,  type: 'Input', ...meta[e]}
           } else {
-            return { ...meta[e.prop], ...e } 
+            return { lable: meta[e.prop] ? meta[e.prop].lable : '', ...e } 
           }
         })
       }

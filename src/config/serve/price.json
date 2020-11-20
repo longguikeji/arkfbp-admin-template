@@ -1,0 +1,30 @@
+{
+  "price": {
+    "name": "price",
+    "type": "price",
+    "meta": {
+
+    },
+    "api": {
+
+    }
+  },
+  "pagination": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+
+    },
+    "api": {
+
+    }
+  },
+  "model_price": {
+    "name": "model_speaker",
+    "type": "",
+    "meta": {
+
+    },
+    "api": {}
+  }
+}

@@ -1,13 +1,20 @@
 {
   "created": {
     "actions": [
-      "retrieve"
+      "fetch"
     ]
   },
   "name": "speaker",
   "type": "table",
   "title": "讲者管理",
-
+  "buttons": [
+    {
+      "label": "新建讲者",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
   "filter": {
     "inline": true,
     "size": "mini",
@@ -233,7 +240,7 @@
     "meta": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "url": "category/drop/", 
           "method": "GET",
@@ -245,10 +252,10 @@
         }
       ]
     },
-    "retrieve": {
+    "fetch": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "request": {
             "page": "pagination.currentPage", 
@@ -270,7 +277,7 @@
     "showCreateDialog": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.create.visible": true
@@ -281,7 +288,7 @@
     "toFilter": {
       "flows": [
         {
-          "name": "filter",
+          "name": "flows.filter",
           "type": "filter",
           "method": "GET",
           "url": "speaker/",
@@ -305,7 +312,7 @@
     "doFilter": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "speaker/",
@@ -325,14 +332,14 @@
     "showUpdateDialog": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.update.visible": true
           }
         },
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "speaker/<id>/edit/",
@@ -345,7 +352,7 @@
     "edit": {
       "flows": [
         {
-          "name": "update",
+          "name": "arkfbp.flows.update",
           "type": "api",
           "method": "POST",
           "url": "speaker/<id>/edit/",
@@ -362,7 +369,7 @@
     "delete": {
       "flows": [
         {
-          "name": "update",
+          "name": "arkfbp.flows.update",
           "type": "api",
           "method": "GET",
           "url": "speaker/<id>/delete/"
@@ -371,13 +378,13 @@
     },
     "switchStatus": {
       "flows": [{
-        "name": "update", 
+        "name": "arkfbp.flows.update", 
         "type": "api",
         "url": "speaker/{id}/check_status/", 
         "method": "GET" 
       }],
       "next": [{
-        "action": "retrieve"
+        "action": "fetch"
       }]
     }
   }
