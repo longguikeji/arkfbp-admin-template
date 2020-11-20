@@ -6,7 +6,7 @@
     :round="state.round"
     :circle="state.circle"
     :loading="state.loading"
-    :disabled="state.disabled || false"
+    :disabled="state.disabled"
     :icon="state.icon"
     :autofocus="state.autofocus"
     :native-type="state.nativeType"

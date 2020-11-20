@@ -189,6 +189,14 @@
           "state": {
             "value": ""
           }
+        },
+        {
+          "type": "AMap",
+          "label": "地图",
+          "prop": "map",
+          "state": {
+            "value": ["116.46", "39.92"]
+          }
         }
       ],
       "actions": [
