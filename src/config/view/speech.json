@@ -1,0 +1,392 @@
+{
+    "created": {
+      "actions": [
+        "fetch"
+      ]
+    },
+    "name": "speech",
+    "type": "table",
+    "title": "讲者管理",
+    "buttons": [
+      {
+        "label": "新建讲者",
+        "action": "showCreateDialog",
+        "type": "primary",
+        "size": "small"
+      }
+    ],
+    "filter": {
+      "inline": true,
+      "size": "mini",
+      "items": [
+        {
+          "type": "Input",
+          "prop": "name"
+        },
+        {
+          "type": "Select",
+          "prop": "is_valid",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "label": "未发布",
+                "value": 0
+              },
+              {
+                "label": "已发布",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "type": "Button",
+          "state": {
+            "label": "搜索",
+            "type": "primary",
+            "action": "toFilter"
+          }
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        {
+          "prop": "ranking", 
+          "type": "link", 
+          "action": "showUpdateDialog"
+        }, 
+        {
+          "prop": "name", 
+          "type": "link", 
+          "action": "showUpdateDialog"
+        }, 
+        {
+          "prop": "avatar_url",
+          "scope": {
+            "type": "ImageBox",
+            "state": {
+              "value": ""
+            }
+          }
+        }, 
+        {
+          "prop": "periods"
+        }, 
+        {
+          "prop": "scene_type"
+        }, 
+        {
+          "prop": "speechcategory",
+          "scope": {
+            "type": "Select",
+            "state": {
+              "value": "",
+              "readonly": true,
+              "options": []
+            }
+          }
+        },
+        {
+          "prop": "intro", 
+          "width": 500
+        }, 
+        {
+          "label": "排序",
+          "type": "action", 
+          "width": 100, 
+          "actions": [
+            {
+              "icon": "el-icon-top", 
+              "type": "primary", 
+              "circle": true, 
+              "action": "upHandler"
+            }, 
+            {
+              "icon": "el-icon-bottom", 
+              "type": "primary", 
+              "circle": true, 
+              "action": "downHandler"
+            }
+          ]
+        }, 
+        {
+          "prop": "is_valid",
+          "scope": {
+            "type": "Select",
+            "state": {
+              "value": "",
+              "readonly": true,
+              "options": [
+                {
+                  "label": "未发布",
+                  "value": 0
+                },
+                {
+                  "label": "已发布",
+                  "value": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "prop": "action", 
+          "width": 250, 
+          "title": "操作", 
+          "scope": {
+            "type": "ButtonArray",
+            "state": [
+              {
+                "label": "编辑", 
+                "type": "primary", 
+                "action": "showUpdateDialog"
+              }, 
+              {
+                "label": "删除", 
+                "type": "danger", 
+                "action": "delete"
+              }, 
+              {
+                "type": "switch", 
+                "prop": "is_valid", 
+                "labels": {
+                  "0": "上线", 
+                  "1": "下线"
+                }, 
+                "action": "switchStatus"
+              }
+            ]
+          }
+        }
+      ],
+      "data": []
+    },
+    "pagination": {
+      "currentPage": 1,
+      "pageSize": 20,
+      "total": 0,
+      "background": "",
+      "action": "toFilter"
+    },
+    "dialogs": {
+      "create": {
+        "title": "新建",
+        "items": [
+          "name", 
+          "avatar_url", 
+          "cover", 
+          "ranking", 
+          {
+            "type": "Select",
+            "prop": "speechcategory",
+            "state": {
+              "value": "",
+              "options": []
+            }
+          },
+          "scene_type", 
+          "periods", 
+          "intro", 
+          "quotations", 
+          "describe"
+        ],
+        "actions": [
+          {
+            "label": "确定",
+            "action": "create",
+            "close": true,
+            "type": "primary"
+          }
+        ],
+        "visible": false,
+        "attributes": {}
+      },
+      "update": {
+        "titles": "编辑",
+        "items": [
+          "name", 
+          {
+            "type": "Image",
+            "prop": "avatar_url"
+          },
+          "cover", 
+          "ranking",  
+          {
+            "type": "Select",
+            "prop": "speechcategory",
+            "option": []
+          },
+          "scene_type", 
+          "periods", 
+          "intro", 
+          "quotations", 
+          "describe"
+        ],
+        "actions": [
+          {
+            "label": "确定",
+            "action": "edit",
+            "close": true,
+            "type": "primary"
+          }
+        ],
+        "visible": false,
+        "attributes": {}
+      }
+    },
+    "actions": {
+      "meta": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.fetch",
+            "type": "api",
+            "url": "category/drop/", 
+            "method": "GET",
+            "client_config": {
+              "dialogs.create.items[prop=speechcategory].state.options": "data.items",
+              "dialogs.update.items[prop=speechcategory].state.options": "data.items",
+              "table.columns[prop=speechcategory].scope.state.options": "data.items"
+            }
+          }
+        ]
+      },
+      "fetch": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.fetch",
+            "type": "api",
+            "request": {
+              "page": "pagination.currentPage", 
+              "page_size": "pagination.pageSize", 
+              "param_name": "filter.items[prop=name].state.value", 
+              "param_status": "filter.items[prop=is_valid].state.value"
+            }, 
+            "url": "speech/", 
+            "method": "GET",
+            "client_config": {
+              "table.data": "data.items", 
+              "pagination.total": "data.total", 
+              "pagination.currentPage": "data.page", 
+              "pagination.pageSize": "data.page_size"
+            }
+           }
+        ]
+      }, 
+      "showCreateDialog": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.assign",
+            "type": "assign",
+            "client_config": {
+              "dialogs.create.visible": true
+            }
+          }
+        ]
+      },
+      "toFilter": {
+        "flows": [
+          {
+            "name": "flows.filter",
+            "type": "filter",
+            "method": "GET",
+            "url": "speech/",
+            "request": {
+              "page": "pagination.currentPage", 
+              "page_size": "pagination.pageSize", 
+              "param_name": "filter.items[prop=name].state.value", 
+              "param_status": "filter.items[prop=is_valid].state.value"
+            }, 
+            "client_config": {
+              "table.data": "data.items"
+            }
+          }
+        ],
+        "next": [
+          {
+            "action": "doFilter"
+          }
+        ]
+      },
+      "doFilter": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.fetch",
+            "type": "api",
+            "method": "GET",
+            "url": "speech/",
+            "request": {
+              "page": "pagination.currentPage",
+              "page_size": "pagination.pageCount",
+              "param_name": "filter.items[prop=name].state.value",
+              "param_product_id": "",
+              "param_type": ""
+            },
+            "client_config": {
+              "table.data": "data.items"
+            }
+          }
+        ]
+      },
+      "showUpdateDialog": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.assign",
+            "type": "assign",
+            "client_config": {
+              "dialogs.update.visible": true
+            }
+          },
+          {
+            "name": "arkfbp.flows.fetch",
+            "type": "api",
+            "method": "GET",
+            "url": "speech/<id>/edit/",
+            "client_config": {
+              
+            }
+          }
+        ]
+      },
+      "edit": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.update",
+            "type": "api",
+            "method": "POST",
+            "url": "speech/<id>/edit/",
+            "request": {
+              "type_choice": "",
+              "price": "",
+              "product_id": "",
+              "id": "",
+              "name": ""
+            }
+          }
+        ]
+      },
+      "delete": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.update",
+            "type": "api",
+            "method": "GET",
+            "url": "speech/<id>/delete/"
+          }
+        ]
+      },
+      "switchStatus": {
+        "flows": [{
+          "name": "arkfbp.flows.update", 
+          "type": "api",
+          "url": "speech/{id}/check_status/", 
+          "method": "GET" 
+        }],
+        "next": [{
+          "action": "fetch"
+        }]
+      }
+    }
+  }
+  
