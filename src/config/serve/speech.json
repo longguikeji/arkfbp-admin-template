@@ -1,0 +1,293 @@
+{
+    "speech": {
+      "name": "speech",
+      "type": "table",
+      "meta": {
+        "items": {
+          "title": "查询结果列表",
+          "type": {
+            "array": {
+              "array_item": "speech"
+            }
+          }
+        },
+        "data": {
+          "required": false,
+          "type": {
+            "object": {
+              "total": "pagination.total",
+              "page": "pagination.page",
+              "page_size": "pagination.page_size",
+              "items": "items"
+            }
+          }
+        },
+        "speech": {
+          "title": "用于返回的讲者信息",
+          "required": true,
+          "type": {
+            "object": {
+              "id": "model_speech.id"
+           
+            }
+          }
+        }
+      },
+      "api": {
+        "speech/": {
+          "post": {
+            "name": "新建讲者",
+            "type": "create",
+            "request": {
+              "name": {
+                "src": "model_speech.name"
+              },
+              "avatar_url": {
+                "src": "model_speech.avatar_url"
+              },
+              "cover": {
+                "src": "model_speech.cover"
+              },
+              "ranking": {
+                "src": "model_speech.ranking"
+              },
+              "scene_type": {
+                "src": "model_speech.scene_type"
+              },
+              "speechcategory": {
+                "src": "model_speech.speechcategory"
+              },
+              "periods": {
+                "src": "model_speech.periods"
+              },
+              "intro": {
+                "src": "model_speech.intro"
+              },
+              "quotations": {
+                "src": "model_speech.quotations"
+              },
+              "describe": {
+                "src": "model_speech.describe"
+              }
+            },
+            "response": {
+              "speech": "speech"
+            },
+            "debug": false
+          },
+          "get": {
+            "pagination": true,
+            "name": "查询讲者列表",
+            "type": "retrieve",
+            "request": {
+              "name": {
+                "src": "model_speech.name"
+              },
+              "avatar_url": {
+                "src": "model_speech.avatar_url"
+              },
+              "cover": {
+                "src": "model_speech.cover"
+              },
+              "ranking": {
+                "src": "model_speech.ranking"
+              },
+              "scene_type": {
+                "src": "model_speech.scene_type"
+              },
+              "speechcategory": {
+                "src": "model_speech.speechcategory"
+              },
+              "periods": {
+                "src": "model_speech.periods"
+              },
+              "intro": {
+                "src": "model_speech.intro"
+              },
+              "quotations": {
+                "src": "model_speech.quotations"
+              },
+              "describe": {
+                "src": "model_speech.describe"
+              }
+            },
+            "response": {
+              "data": "data"
+            },
+            "debug": false
+          }
+        },
+        "speech/<id>/": {
+          "index": {
+            "id": {
+              "src": "model_speech.id"
+            }
+          },
+          "patch": {
+            "name": "更新讲者",
+            "type": "update",
+            "request": {
+              "name": {
+                "src": "model_speech.name"
+              },
+              "avatar_url": {
+                "src": "model_speech.avatar_url"
+              },
+              "cover": {
+                "src": "model_speech.cover"
+              },
+              "ranking": {
+                "src": "model_speech.ranking"
+              },
+              "scene_type": {
+                "src": "model_speech.scene_type"
+              },
+              "speechcategory": {
+                "src": "model_speech.speechcategory"
+              },
+              "periods": {
+                "src": "model_speech.periods"
+              },
+              "intro": {
+                "src": "model_speech.intro"
+              },
+              "quotations": {
+                "src": "model_speech.quotations"
+              },
+              "describe": {
+                "src": "model_speech.describe"
+              }
+            },
+            "response": {
+              "data": "data"
+            }
+          },
+          "delete": {
+            "name": "删除讲者",
+            "type": "delete",
+            "request": {}
+          }
+        }
+      }
+    },
+    "pagination": {
+      "name": "pagination",
+      "type": "",
+      "meta": {
+        "page": {
+          "title": "页码",
+          "type": {
+            "integer": {}
+          }
+        },
+        "page_size": {
+          "title": "页面大小",
+          "type": {
+            "integer": {
+              "default": 20,
+              "required": false
+            }
+          }
+        },
+        "total": {
+          "title": "总数",
+          "type": {
+            "integer": {}
+          }
+        },
+        "count": {
+          "title": "分页总数",
+          "type": {
+            "integer": {}
+          }
+        },
+        "next": {
+          "title": "下一页地址",
+          "type": {
+            "string": {
+              "allow_null": true
+            }
+          }
+        },
+        "previous": {
+          "title": "前一页地址",
+          "type": {
+            "string": {
+              "allow_null": true
+            }
+          }
+        },
+        "item": {
+          "title": "列表元素",
+          "type": {
+            "any": {}
+          }
+        },
+        "results": {
+          "title": "查询结果列表",
+          "type": {
+            "array": {
+              "array_item": "item"
+            }
+          }
+        }
+      },
+      "api": {}
+    },
+    "model_speech": {
+      "name": "model_speech",
+      "type": "",
+      "meta": {
+        "id": {
+          "title": "ID",
+          "type": {
+            "string": {}
+          }
+        },
+        "title": {
+            "title": "演讲标题",
+            "type": {
+              "string": {}
+            }
+          },
+        "speaker_name": {
+          "title": "讲者",
+          "type": {
+            "integer": {}
+          }
+        },
+        "speechcategory": {
+          "title": "讲着类别",
+          "type": {
+            "string": {}
+          }
+        },
+        "speechcity": {
+          "title": "演讲城市",
+          "type": {
+            "string": {}
+          }
+        },
+        "status": {
+            "title": "状态",
+            "type": {
+              "string": {}
+            }
+          },
+        "is_valid": {
+          "title": "状态",
+          "type": {
+            "integer": {}
+          }
+        },
+        "describe": {
+          "title": "讲者详细介绍",
+          "type": {
+            "string": {}
+          }
+        }   
+      },
+      "api": {}
+    }
+  }
+  
