@@ -43,16 +43,13 @@ export default class extends Vue {
     if (this.state.scope.state instanceof Array) {
       let sstate: any = {}
       sstate = JSON.parse(JSON.stringify(this.state.scope))
-      sstate.state.forEach((item: any, index: number) => {
+      sstate.state.forEach(async(item: any, index: number) => {
         item.data = scope.row
         item.cloumn = this.state
         item.value = scope.row[this.state.prop]
-        // if (this.state.format) {
-        //   const formatData: any = {}
-        //   formatData.item = item
-        //   formatData.index = index
-        //   await runAction({ flow: `@/flows/${this.state.format}`, inputs: formatData })
-        // }
+        if (this.state.format) {
+          await runAction({ flow: `flows.${this.state.format}`, inputs: { item: item, index: index } })
+        }
       })
       adminState = sstate
     } else {
@@ -64,12 +61,7 @@ export default class extends Vue {
         type: this.state.scope.type
       }
     }
-    // if (this.state.format) {
-    //   runAction({ flow: `flows.${this.state.format}`, inputs: adminState })
-    // }
-    tableButtonStatus(adminState)
     return adminState
-    // return this.adminComponentState
   }
 }
 </script>
