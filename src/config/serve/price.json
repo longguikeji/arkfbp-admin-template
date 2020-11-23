@@ -1,0 +1,221 @@
+{
+  "price": {
+    "name": "price",
+    "type": "price",
+    "meta": {
+      "items": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "price"
+          }
+        }
+      },
+      "data": {
+        "required": false,
+        "type": {
+          "object": {
+            "total": "pagination.total",
+            "page": "pagination.page",
+            "page_size": "pagination.page_size",
+            "items": "items"
+          }
+        }
+      },
+      "price": {
+        "title": "返回的价格列表",
+        "required": true,
+        "type": {
+          "object": {
+            "id": "model_price.id",
+            "product_id": "model_price.product_id",
+            "is_remove": "model_price.is_remove", 
+            "created": "model_price.created", 
+            "price": "model_price.price"
+          }
+        }
+      }
+    },
+    "api": {
+      "priceinfo/": {
+        "get": {
+          "pagination": true,
+          "name": "价格列表获取",
+          "type": "retrieve",
+          "request": {
+            "id": {
+              "src": "model_price.id"
+            },
+            "product_id": {
+              "src": "model_price.product_id"
+            },
+            "is_remove": {
+              "src": "model_price.is_remove"
+            },
+            "created": {
+              "src": "model_price.created"
+            },
+            "price": {
+              "src": "model_price.price"
+            }
+          }
+        }
+      },
+      "priceinfo/create/": {
+        "post": {
+          "name": "新建价格",
+          "type": "create",
+          "request": {
+            "product_id": {
+              "src": "model_price.product_id"
+            },
+            "price": {
+              "src": "model_price.price"
+            }
+          }
+        }
+      },
+      "priceinfo/<id>/edit/": {
+        "post": {
+          "name": "价格列表新建",
+          "type": "update",
+          "request": {
+            "product_id": {
+              "src": "model_price.product_id"
+            },
+            "price": {
+              "src": "model_price.price"
+            }
+          }
+        },
+        "get": {
+          "name": "价格列表新建",
+          "type": "retrieve",
+          "request": {
+            "product_id": {
+              "src": "model_price.product_id"
+            },
+            "price": {
+              "src": "model_price.price"
+            }
+          }
+        }
+      },
+      "priceinfo/<id>/delete/": {
+        "get": {
+          "name": "价格列表新建",
+          "type": "delete",
+          "request": {}
+        }
+      },
+      "priceinfo/drop/": {
+        "get": {
+          "name": "价格列表新建",
+          "type": "retrieve",
+          "request": {}
+        }
+      }
+    }
+  },
+  "pagination": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+      "page": {
+        "title": "页码",
+        "type": {
+          "integer": {}
+        }
+      },
+      "page_size": {
+        "title": "页面大小",
+        "type": {
+          "integer": {
+            "default": 20,
+            "required": false
+          }
+        }
+      },
+      "total": {
+        "title": "总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "count": {
+        "title": "分页总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "next": {
+        "title": "下一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "previous": {
+        "title": "前一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "item": {
+        "title": "列表元素",
+        "type": {
+          "any": {}
+        }
+      },
+      "results": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "item"
+          }
+        }
+      }
+    },
+    "api": {}
+  },
+  "model_price": {
+    "name": "model_price",
+    "type": "",
+    "meta": {
+      "id": {
+        "title": "#",
+        "type": {
+          "string": {}
+        }
+      },
+      "product_id": {
+        "title": "产品ID",
+        "type": {
+          "string": {}
+        }
+      },
+      "is_remove": {
+        "title": "是否可以删除",
+        "type": {
+          "string": {}
+        }
+      },
+      "created": {
+        "title": "创建时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "price": {
+        "title": "价格",
+        "type": {
+          "string": {}
+        }
+      }
+    },
+    "api": {}
+  }
+}

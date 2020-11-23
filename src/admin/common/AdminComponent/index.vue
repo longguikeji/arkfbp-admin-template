@@ -1,11 +1,11 @@
 <template>
   <el-badge
-    v-if="badge"
-    :value="badge.value"
-    :max="badge.max"
-    :is-dot="badge.idDot"
-    :hidden="badge.hidden"
-    :type="badge.type"
+    v-if="state.state.badge"
+    :value="state.state.badge.value"
+    :max="state.state.badge.max"
+    :is-dot="state.state.badge.idDot"
+    :hidden="state.state.badge.hidden"
+    :type="state.state.badge.type"
   >
     <component :is="item" />
   </el-badge>
@@ -74,14 +74,6 @@ export default class extends Vue {
   // }
 
   // item?:object
-
-  get badge() {
-    if (this.state.state.badge) {
-      return this.state.state.badge
-    } else {
-      return false
-    }
-  }
 
   get item(): object {
     const state = this.state

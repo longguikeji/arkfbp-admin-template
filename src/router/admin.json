@@ -38,7 +38,7 @@
       }
     ]
   },
-  "testpage": {
+  "ppage": {
     "title": "case",
     "path": "case",
     "icon": "dashboard",

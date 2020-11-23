@@ -31,16 +31,16 @@ export class Config {
     if (!this._serveconfig[this._current]) {
       return this._viewconfig
     }
-
+    
     const serverMeta = this._serveconfig[this._current].meta
+    
     const serverApi = this._serveconfig[this._current].api
     const api: any = {}
     const meta: any = {}
-    
+   
     const walkMeta = (data: any, map: any) => {
       const name = this._serveconfig[this._current].name
       const type = data[name].type
-  
       if (type.object) {
         Object.keys(type.object).forEach((e: any) => {
           if (type.object[e].includes('.')) {
@@ -330,7 +330,7 @@ export class Config {
         ]
       }
     }
-
+    
     if(this._viewconfig.actions) {
       config.actions = this._viewconfig.actions
     } else {

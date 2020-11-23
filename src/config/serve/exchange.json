@@ -1,0 +1,170 @@
+{
+  "exchange": {
+    "name": "exchange",
+    "type": "exchange",
+    "meta": {
+      "items": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "exchange"
+          }
+        }
+      },
+      "data": {
+        "required": false,
+        "type": {
+          "object": {
+            "total": "pagination.total",
+            "page": "pagination.page",
+            "page_size": "pagination.page_size",
+            "items": "items"
+          }
+        }
+      },
+      "exchange": {
+        "title": "返回的邀请码列表",
+        "required": true,
+        "type": {
+          "object": {
+            "use_mobile": "model_exchange.use_mobile",
+            "mobile": "model_exchange.mobile",
+            "code": "model_exchange.code",
+            "exchange_type": "model_exchange.exchange_type",
+            "order": "model_exchange.order",
+            "end_valid_time": "model_exchange.end_valid_time",
+            "created": "model_exchange.created"
+          }
+        }
+      }
+    },
+    "api": {
+      
+    }
+  },
+  "pagination": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+      "page": {
+        "title": "页码",
+        "type": {
+          "integer": {}
+        }
+      },
+      "page_size": {
+        "title": "页面大小",
+        "type": {
+          "integer": {
+            "default": 20,
+            "required": false
+          }
+        }
+      },
+      "total": {
+        "title": "总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "count": {
+        "title": "分页总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "next": {
+        "title": "下一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "previous": {
+        "title": "前一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "item": {
+        "title": "列表元素",
+        "type": {
+          "any": {}
+        }
+      },
+      "results": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "item"
+          }
+        }
+      }
+    },
+    "api": {}
+  },
+  "model_exchange": {
+    "name": "model_exchange",
+    "type": "",
+    "meta": {
+      "code": {
+        "title": "邀请码",
+        "type": {
+          "string": {}
+        }
+      },
+      "mobile": {
+        "title": "生成邀请码的用户",
+        "type": {
+          "string": {}
+        }
+      },
+      "code_type": {
+        "title": "兑换码类型",
+        "type": {
+          "string": {}
+        }
+      },
+      "use_mobile": {
+        "title": "使用者手机",
+        "type": {
+          "string": {}
+        }
+      },
+      "end_valid_time": {
+        "title": "截止的有效期",
+        "type": {
+          "string": {}
+        }
+      },
+      "created": {
+        "title": "创建时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "id": {
+        "title": "#",
+        "type": {
+          "string": {}
+        }
+      },
+      "exchange_type": {
+        "title": "兑换码类型",
+        "type": {
+          "string": {}
+        }
+      },
+      "order": {
+        "title": "订单号",
+        "type": {
+          "string": {}
+        }
+      }
+    },
+    "api": {}
+  }
+}
