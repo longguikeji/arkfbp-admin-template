@@ -105,6 +105,49 @@ export async function runFlow(state: any, flow: any, data: any) {
     return
   }
 
+  if (flow.type === 'client') {
+    let params: any = {}
+    if (typeof flow.client_config === 'string') {
+      let temp = state
+      flow.request.split('.').forEach((v: string) => {
+        temp = temp[v]
+        params = temp
+      })
+    }
+
+    if (typeof flow.request === 'object') {
+      Object.keys(flow.request).forEach(key => {
+        let temp = state
+        const vs = flow.request[key].split('.')
+        vs.forEach((v: string) => {
+          if (v.includes('items[prop=')) {
+            const res = Filter(v, temp)
+            temp = temp['items'][res]
+          } else if (v.includes('columns[prop=')) {
+            const res = Filter(v, temp)
+            temp = temp['cloumns'][res]
+          } else {
+            temp = temp[v]
+          }
+        })
+        params[key] = temp
+      })
+    }
+
+    await runAction({
+      flow: flow.name,
+      inputs: {
+        url: `api/admin/${getUrl(flow.url, data, state)}`,
+        method: flow.method,
+        params: params,
+        data: data,
+        client: state,
+        clientServer: flow.client_config
+      }
+    })
+    return
+  }
+
   let params = state
   if (flow.request) {
     flow.request.split('.').forEach((v: string) => {

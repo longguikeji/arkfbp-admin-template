@@ -67,6 +67,38 @@ export class Config {
       }
     }
 
+    const walkOption = (data: any, map: any) => {
+      const name = this._serveconfig[this._current].name
+      const type = data[name].type
+  
+      if (type.object) {
+        // Object.keys(type.object).forEach((e: any) => {
+        //   if (type.object[e].includes('.')) {
+        //     const arr = type.object[e].split('.')
+        //     const value = this._serveconfig[arr[0]].meta[arr[1]]
+        //     map[e] = {
+        //       label: value.title || e,
+        //       state: {
+        //         value: '',
+        //         option: this._serveconfig[arr[0]].meta[arr[1]].option,
+        //         ...(Object.values(value.type)[0] as Object)
+        //       }
+        //     }
+        //   } else {
+        //     const value = data[type.object[e]]
+        //     map[e] = {
+        //       label: value.title || e,
+        //       state: {
+        //         value: '',
+        //         option: value.option,
+        //         ...(Object.values(value.type)[0] as Object)
+        //       }
+        //     }
+        //   }
+        // })
+      }
+    }
+
     const walkApi = (data: any, map: any) => {
       Object.keys(data).forEach((e: any) => {
         let index: any = {}
@@ -257,25 +289,6 @@ export class Config {
           }),
           {
             type: 'action', 
-            title: '排序', 
-            width: 100, 
-            actions: [
-              {
-                'icon': 'el-icon-top', 
-                'type': 'primary', 
-                'circle': true, 
-                'action': 'upHandler'
-              }, 
-              {
-                'icon': 'el-icon-bottom', 
-                'type': 'primary', 
-                'circle': true, 
-                'action': 'downHandler'
-              }
-            ]
-          },
-          {
-            type: 'action', 
             width: 250, 
             title: '操作', 
             actions: [
@@ -304,7 +317,7 @@ export class Config {
         pageSize: 20,
         total: 0,
         background: '',
-        action: 'toFilter'
+        action: 'retrieve'
       }
     }
 
@@ -349,9 +362,8 @@ export class Config {
               client_config: {
                 'table.data': 'data.items', 
                 'pagination.total': 'data.total', 
-
               }
-             }
+            }
           ]
         }, 
         showCreateDialog: {
@@ -361,45 +373,6 @@ export class Config {
               type: 'assign',
               client_config: {
                 'dialogs.create.visible': true
-              }
-            }
-          ]
-        },
-        'toFilter': {
-          'flows': [
-            {
-              name: 'filter',
-              type: 'filter',
-              method: 'GET',
-              url: 'speaker/',
-              request: {
-                page: 'pagination.currentPage', 
-                page_size: 'pagination.pageSize', 
-              }, 
-              client_config: {
-                'table.data': 'data.items'
-              }
-            }
-          ],
-          'next': [
-            {
-              action: 'doFilter'
-            }
-          ]
-        },
-        'doFilter': {
-          'flows': [
-            {
-              name: 'retrieve',
-              type: 'api',
-              method: 'GET',
-              url: 'speaker/',
-              request: {
-                page: 'pagination.currentPage',
-                page_size: 'pagination.pageCount',
-              },
-              client_config: {
-                'table.data': 'data.items'
               }
             }
           ]
@@ -435,7 +408,7 @@ export class Config {
             }
           ]
         },
-        'delete': {
+        delete: {
           'flows': [
             {
               name: 'update',
