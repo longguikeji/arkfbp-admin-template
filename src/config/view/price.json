@@ -115,6 +115,10 @@
             "table.data": "data.items",
             "pagination.total": "data.total"
           }
+        },
+        {
+          "name": "flows.renderTableColumn",
+          "request": "table.data"
         }
       ]
     },

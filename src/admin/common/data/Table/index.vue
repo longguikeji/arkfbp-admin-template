@@ -33,6 +33,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableState from './TableState'
 import TableColumn from './TableColumn/index.vue'
+import { runAction } from '@/arkfbp/index'
 @Component({
   name: 'Table',
   components: {
@@ -50,5 +51,12 @@ export default class extends Vue {
       this.state.selection.values = val
     }
   }
+
+  // :cell-style="hanldeCellStyle"
+
+  // async hanldeCellStyle(r,c,ri,ci) {
+  //   // console.log(r,c,ri,ci)
+  //   await runAction({ flow: `flows.${this.state.format}`, inputs: r })
+  // }
 }
 </script>

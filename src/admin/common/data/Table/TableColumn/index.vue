@@ -24,11 +24,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import { runAction } from '@/arkfbp/index'
-import tableButtonStatus from '@/utils/tableButtonStatus'
 @Component({
   name: 'TableColumn',
   components: {
@@ -38,20 +37,47 @@ import tableButtonStatus from '@/utils/tableButtonStatus'
 export default class extends Vue {
   @Prop({ required: true }) state!: TableColumnState;
 
+  // private tState: Array<any> = []
+
   getComponentState(scope: any) {
     let adminState: Object
     if (this.state.scope.state instanceof Array) {
-      let sstate: any = {}
-      sstate = JSON.parse(JSON.stringify(this.state.scope))
-      sstate.state.forEach(async(item: any, index: number) => {
+      let cellState: any = {}
+      cellState = JSON.parse(JSON.stringify(this.state.scope))
+      // this.tState[scope.$index] = JSON.parse(JSON.stringify(this.state.scope));
+      // (async () => {
+      //   for (let index = 0; index < this.tState[scope.$index].state.length; index++) {
+      //     // debugger
+      //     const item = this.tState[scope.$index].state[index]
+      //     // debugger
+      //     item.data = scope.row;
+      //     item.cloumn = this.state;
+      //     item.value = scope.row[this.state.prop]
+      //     if (scope.row.actions && scope.row.actions[index]) {
+      //       item.disabled = scope.row.actions[index].disabled;
+      //     }
+      //   }
+      //   // if (this.state.format !== undefined && this.state.format !== "") {
+      //   //   // debugger
+      //   //   // let res = await runAction({ flow: `flows.${this.state.format}`, inputs: { item: itemState, index: index } })
+      //   //   // const res = await runAction({ flow: `flows.${this.state.format}`, inputs: this.tState[scope.$index] })
+      //   //   // debugger
+      //   // }
+      // })()
+      // return this.tState[scope.$index];
+      for (let index = 0, len = cellState.state.length; index < len; index++) {
+        const item = cellState.state[index]
         item.data = scope.row
         item.cloumn = this.state
         item.value = scope.row[this.state.prop]
-        if (this.state.format) {
-          await runAction({ flow: `flows.${this.state.format}`, inputs: { item: item, index: index } })
+        if (scope.row.actionsAttributes && scope.row.actionsAttributes[index]) {
+          const attrs = scope.row.actionsAttributes[index]
+          Object.keys(attrs).forEach((oneAttr) => {
+            item[oneAttr] = attrs[oneAttr]
+          })
         }
-      })
-      adminState = sstate
+      }
+      adminState = cellState
     } else {
       adminState = {
         state: {
