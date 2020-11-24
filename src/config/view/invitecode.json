@@ -4,7 +4,7 @@
       "retrieve"
     ]
   },
-  "type": "invitecode",
+  "type": "table",
   "title": "invitecode",
   "buttons": [
     {
@@ -76,6 +76,14 @@
           "state": {
             "value": "",
             "type": "number"
+          }
+        },
+        {
+          "type": "AMap",
+          "label": "地图组件",
+          "prop": "position_map",
+          "state": {
+            "value": ["116.46", "39.92"]
           }
         }
       ],

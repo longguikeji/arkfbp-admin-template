@@ -1,0 +1,115 @@
+{
+  "comment": {
+    "name": "comment",
+    "type": "table",
+    "meta": {
+      "items": {
+
+      },
+      "data": {
+
+      },
+      "comment": {
+
+      }
+    },
+    "api": {
+
+    }
+  },
+  "pagination": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+      "page": {
+        "title": "页码",
+        "type": {
+          "integer": {}
+        }
+      },
+      "page_size": {
+        "title": "页面大小",
+        "type": {
+          "integer": {
+            "default": 20,
+            "required": false
+          }
+        }
+      },
+      "total": {
+        "title": "总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "count": {
+        "title": "分页总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "next": {
+        "title": "下一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "previous": {
+        "title": "前一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "item": {
+        "title": "列表元素",
+        "type": {
+          "any": {}
+        }
+      },
+      "results": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "item"
+          }
+        }
+      }
+    },
+    "api": {}
+  },
+  "model_comment": {
+    "name": "model_comment",
+    "type": "",
+    "meta": {
+      "content": {
+        "title": "内容",
+        "type": {
+          "string": {}
+        }
+      },
+      "begin_time": {
+        "title": "开始时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "end_time": {
+        "title": "结束时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "mobile": {
+        "title": "手机",
+        "type": {
+          "string": {}
+        }
+      }
+    },
+    "api": {}
+  }
+}

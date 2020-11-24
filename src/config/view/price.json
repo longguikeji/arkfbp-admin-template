@@ -4,7 +4,7 @@
       "retrieve"
     ]
   },
-  "type": "price",
+  "type": "table",
   "title": "price",
   "buttons": [
     {
@@ -37,7 +37,6 @@
       "created",
       {
         "label": "操作",
-        "format": "tableButtonStatus",
         "scope": {
           "type": "ButtonArray",
           "state": [
@@ -115,6 +114,10 @@
             "table.data": "data.items",
             "pagination.total": "data.total"
           }
+        },
+        {
+          "name": "flows.renderTableColumn",
+          "request": "table.data"
         }
       ]
     },

@@ -94,30 +94,6 @@
       }
     ]
   },
-  "examplethree": {
-    "title": "case",
-    "path": "case",
-    "icon": "dashboard",
-    "children": [
-      {
-        "title": "examplethree",
-        "path": "examplethree",
-        "icon": "dashboard"
-      }
-    ]
-  },
-  "examplefour": {
-    "title": "case",
-    "path": "case",
-    "icon": "dashboard",
-    "children": [
-      {
-        "title": "examplefour",
-        "path": "exampletfour",
-        "icon": "dashboard"
-      }
-    ]
-  },
   "secondpage": {
     "title": "case",
     "path": "case",

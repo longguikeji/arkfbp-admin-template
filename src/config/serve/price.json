@@ -1,7 +1,7 @@
 {
   "price": {
     "name": "price",
-    "type": "price",
+    "type": "table",
     "meta": {
       "items": {
         "title": "查询结果列表",

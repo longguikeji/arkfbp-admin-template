@@ -1,7 +1,7 @@
 {
   "invitecode": {
     "name": "invitecode",
-    "type": "invitecode",
+    "type": "table",
     "meta": {
       "items": {
         "title": "查询结果列表",

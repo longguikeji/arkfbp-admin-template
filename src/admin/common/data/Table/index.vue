@@ -33,6 +33,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TableState from './TableState'
 import TableColumn from './TableColumn/index.vue'
+import { runAction } from '@/arkfbp/index'
 @Component({
   name: 'Table',
   components: {

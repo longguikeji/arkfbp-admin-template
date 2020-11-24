@@ -4,7 +4,7 @@
       "retrieve"
     ]
   },
-  "type": "exchange",
+  "type": "table",
   "title": "exchange",
   "buttons": [
     {
