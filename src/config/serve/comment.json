@@ -4,17 +4,64 @@
     "type": "table",
     "meta": {
       "items": {
-
+        "title": "评论列表",
+        "type": {
+          "array": {
+            "array_item": "comment"
+          }
+        }
       },
       "data": {
-
+        "required": false,
+        "type": {
+          "object": {
+            "total": "pagination.total",
+            "page": "pagination.page",
+            "page_size": "pagination.page_size",
+            "items": "items"
+          }
+        }
       },
       "comment": {
-
+        "title": "返回的评论列表",
+        "required": true,
+        "type": {
+          "object": {
+            "id": "model_comment.id",
+            "nickname": "model_comment.nickname",
+            "content": "model_comment.content",
+            "title": "model_comment.title", 
+            "is_selected": "model_comment.is_selected",
+            "created": "model_comment.created",
+            "begin_time": "model_comment.begin_time",
+            "end_time": "model_comment.end_time",
+            "mobile": "model_comment.mobile"
+          }
+        }
       }
     },
     "api": {
-
+      "comment/": {
+        "get": {
+          "pagination": true,
+          "name": "价格列表获取",
+          "type": "retrieve",
+          "request": {
+            "content": {
+              "src": "model_comment.content"
+            },
+            "begin_time": {
+              "src": "model_comment.begin_time"
+            },
+            "end_time": {
+              "src": "model_comment.end_time"
+            },
+            "mobile": {
+              "src": "model_comment.mobile"
+            }
+          }
+        }
+      }
     }
   },
   "pagination": {
@@ -85,6 +132,18 @@
     "name": "model_comment",
     "type": "",
     "meta": {
+      "id": {
+        "title": "#",
+        "type": {
+          "string": {}
+        }
+      },
+      "title": {
+        "title": "标题",
+        "type": {
+          "string": {}
+        }
+      },
       "content": {
         "title": "内容",
         "type": {
@@ -105,6 +164,24 @@
       },
       "mobile": {
         "title": "手机",
+        "type": {
+          "string": {}
+        }
+      },
+      "nickname": {
+        "title": "昵称",
+        "type": {
+          "string": {}
+        }
+      },
+      "is_selected": {
+        "title": "精选状态",
+        "type": {
+          "string": {}
+        }
+      },
+      "created": {
+        "title":"创建时间",
         "type": {
           "string": {}
         }

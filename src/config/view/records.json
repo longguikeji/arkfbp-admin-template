@@ -1,7 +1,7 @@
 {
   "created": {
     "actions": [
-      "retrieve"
+      "fetch"
     ]
   },
   "type": "table",
@@ -301,10 +301,10 @@
     }
   },
   "actions": {
-    "retrieve": {
+    "fetch": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "record/",

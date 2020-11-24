@@ -8,4 +8,5 @@ export default interface TablePageState extends CardState {
   table?: TableState;
   pagination?: PaginationState;
   reliant_values?: any;
+  created: any
 }

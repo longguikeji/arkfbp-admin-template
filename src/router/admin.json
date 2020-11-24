@@ -120,7 +120,7 @@
       }
     ]
   },
-  "fourthpage": {
+  "cm": {
     "title": "case",
     "path": "case",
     "icon": "dashboard",
@@ -132,14 +132,14 @@
       }
     ]
   },
-  "fifthpage": {
+  "re": {
     "title": "case",
     "path": "case",
     "icon": "dashboard",
     "children": [
       {
-        "title": "fifthpage", 
-        "path": "fifthpage", 
+        "title": "records", 
+        "path": "records", 
         "icon": "dashboard" 
       }
     ]

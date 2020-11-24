@@ -223,7 +223,6 @@ export class Config {
           }
         })
       }
-
       if (this._viewconfig.dialogs.update) {
         config.dialogs.update.items = this._viewconfig.dialogs.update.items.map((e: any) => {
           if (typeof e === 'string') {

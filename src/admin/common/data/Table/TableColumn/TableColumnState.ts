@@ -31,4 +31,5 @@ export default interface TableColumnState {
 
   children:Array<TableColumnState>
   scope:AdminComponentState
+  rowRealState: Array<any>
 }

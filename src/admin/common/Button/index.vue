@@ -29,6 +29,7 @@ export default class extends Vue {
 
   @Watch('state', { immediate: true, deep: true })
   fresh() {
+    // console.log('button state 发生变化')
     this.$forceUpdate()
   }
 

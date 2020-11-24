@@ -36,6 +36,7 @@ export default class extends Vue {
   }
 
   async mounted() {
+    // debugger
     const requireModule = require.context('@/config/view', false, /\.json$/)
     const files = requireModule.keys().map(e => e.slice(2))
     for (let i = 0; i < files.length; i++) {
@@ -50,13 +51,17 @@ export default class extends Vue {
         await AdminModule.setAdmin(c.config)
       }
     }
-
-    if (AdminModule.adminState.created) {
-      const actions = AdminModule.adminState.created.actions || []
-      for (let i = 0; i < actions.length; i++) {
-        await AdminModule.adminAction({ action: actions[i] })
-      }
-    }
+    // debugger
   }
+
+  // async mounted() {
+  //   debugger
+  //   if (AdminModule.adminState.created) {
+  //     const actions = AdminModule.adminState.created.actions || []
+  //     for (let i = 0; i < actions.length; i++) {
+  //       await AdminModule.adminAction({ action: actions[i] })
+  //     }
+  //   }
+  // }
 }
 </script>

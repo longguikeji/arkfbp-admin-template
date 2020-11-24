@@ -1,26 +1,27 @@
 {
   "created": {
     "actions": [
-      "retrieve"
+      "fetch"
     ]
   },
   "type": "table",
   "title": "comment",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
   "filter": {
     "inline": true,
     "size": "mini",
     "items": [
-      {
-        "type": "Input",
-        "label": "关键字",
-        "prop": "content",
-        "state": {
-          "value": ""
-        }
-      },
+      "content",
       {
         "type": "DatePicker",
-        "label": "选择时间",
+        "label": "开始时间",
         "prop": "begin_time",
         "state": {
           "value": "",
@@ -31,7 +32,7 @@
       },
       {
         "type": "DatePicker",
-        "label": "选择时间",
+        "label": "结束时间",
         "prop": "end_time",
         "state": {
           "value": "",
@@ -40,20 +41,13 @@
           "type": "datetime"
         }
       },
-      {
-        "type": "Input",
-        "label": "手机号",
-        "prop": "mobile",
-        "state": {
-          "value": ""
-        }
-      },
+      "mobile",
       {
         "type": "Button",
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "retrieve"
+          "action": "fetch"
         }
       },
       {
@@ -73,23 +67,18 @@
     },
     "columns": [
       {
-        "label": "#",
         "prop": "id"
       },
       {
-        "label": "昵称",
         "prop": "nickname"
       },
       {
-        "label": "评论内容",
         "prop": "content"
       },
       {
-        "label": "标题",
         "prop": "title"
       },
       {
-        "label": "精选状态",
         "prop": "is_selected",
         "scope": {
           "type": "Select",
@@ -110,7 +99,6 @@
         }
       },
       {
-        "label": "评论时间",
         "prop": "created"
       },
       {
@@ -143,90 +131,9 @@
     "pageCount": 10,
     "total": 0,
     "background": "",
-    "action": "retrieve"
+    "action": "fetch"
   },
   "dialogs": {
-    "create": {
-      "title": "新建",
-      "items": [
-        {
-          "type": "Input",
-          "label": "枝桠名称",
-          "prop": "name",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "关键字",
-          "prop": "keywords",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Select",
-          "label": "讲者",
-          "prop": "speaker",
-          "state": {
-            "value": "",
-            "options": []
-          }
-        },
-        {
-          "type": "DatePicker",
-          "label": "发布时间",
-          "prop": "name",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Select",
-          "label": "请选择相关枝桠",
-          "prop": "zhiya_recommended",
-          "state": {
-            "value": "",
-            "options": []
-          }
-        },
-        {
-          "type": "Input",
-          "label": "总集数",
-          "prop": "episodes",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "简介",
-          "prop": "intro",
-          "state": {
-            "value": "",
-            "type": "textarea"
-          }
-        },
-        {
-          "type": "AMap",
-          "label": "地图",
-          "prop": "map",
-          "state": {
-            "value": ["116.46", "39.92"]
-          }
-        }
-      ],
-      "actions": [
-        {
-          "label": "确定",
-          "action": "create",
-          "type": "primary"
-        }
-      ],
-      "visible": false,
-      "inline": true
-    },
     "review": {
       "title": "回复",
       "visible": false,
@@ -280,10 +187,10 @@
     }
   },
   "actions": {
-    "retrieve": {
+    "fetch": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "comment/",
@@ -305,7 +212,7 @@
     "showReviewDialog": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.review.visible": true
@@ -332,11 +239,11 @@
     "toReview": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api"
         },
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.review.visible": false
@@ -345,14 +252,14 @@
       ],
       "next": [
         {
-          "action": "retrieve"
+          "action": "fetch"
         }
       ]
     },
     "toMultipleDelete": {
       "flows": [
         {
-          "name": "selection",
+          "name": "flows.selection",
           "type": "api",
           "method": "POST",
           "url": "comment/delete/",
@@ -363,7 +270,7 @@
       ],
       "next": [
         {
-          "action": "retrieve"
+          "action": "fetch"
         }
       ]
     }

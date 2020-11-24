@@ -27,6 +27,7 @@ import Button from '@/admin/common/Button/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
+import { AdminModule } from '@/store/modules/admin'
 @Component({
   name: 'TablePage',
   components: {
@@ -46,6 +47,16 @@ export default class extends Vue {
       this.state.filter.inline = true
     }
     return this.state.filter
+  }
+
+  async mounted() {
+    // debugger
+    if (this.state.created) {
+      const actions = this.state.created.actions || []
+      for (let i = 0; i < actions.length; i++) {
+        await AdminModule.adminAction({ action: actions[i] })
+      }
+    }
   }
 }
 </script>

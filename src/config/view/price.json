@@ -1,7 +1,7 @@
 {
   "created": {
     "actions": [
-      "retrieve"
+      "fetch"
     ]
   },
   "type": "table",
@@ -24,17 +24,25 @@
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "retrieve"
+          "action": "fetch"
         }
       }
     ]
   },
   "table": {
     "columns": [
-      "id",
-      "product_id",
-      "price",
-      "created",
+      {
+        "prop": "id"
+      },
+      {
+        "prop": "product_id"
+      },
+      {
+        "prop": "price"
+      },
+      {
+        "prop": "created"
+      },
       {
         "label": "操作",
         "scope": {
@@ -61,7 +69,7 @@
     "pageCount": 10,
     "total": 0,
     "background": "",
-    "action": "retrieve"
+    "action": "fetch"
   },
   "dialogs": {
     "create": {
@@ -96,7 +104,7 @@
     }
   },
   "actions": {
-    "retrieve": {
+    "fetch": {
       "flows": [
         {
           "name": "arkfbp.flows.fetch",
@@ -116,11 +124,12 @@
           }
         },
         {
-          "name": "flows.renderTableColumn",
-          "request": "table.data"
+          "name": "flows.tableButton",
+          "request": "table"
         }
       ]
     },
+    
     "showCreateDialog": {
       "flows": [
         {

@@ -24,6 +24,7 @@ class Admin extends VuexModule implements IAdminState {
   @Action
   public async adminAction(payload: { action: string, data?: any}) {
     const { action, data } = payload
+
     const adminState = cloneDeep(this.adminState)
 
     if (!adminState.actions || !adminState.actions[action]) {

@@ -1,3 +1,391 @@
 {
-  
+  "records": {
+    "name": "records",
+    "type": "table",
+    "meta": {
+      "items": {
+        "title": "记录列表",
+        "type": {
+          "array": {
+            "array_item": "records"
+          }
+        }
+      },
+      "data": {
+        "required": false,
+        "type": {
+          "object": {
+            "total": "pagination.total",
+            "page": "pagination.page",
+            "page_size": "pagination.page_size",
+            "items": "items"
+          }
+        }
+      },
+      "records": {
+        "title": "返回的记录数据",
+        "required": true,
+        "type": {
+          "object": {
+            "id": "model_records.id",
+            "title": "model_records.title",
+            "is_valid": "model_records.is_valid",
+            "recommended": "model_records.recommended", 
+            "created": "model_records.created",
+            "begin_time": "model_records.begin_time",
+            "end_time": "model_records.end_time",
+            "video": "model_records.video",
+            "total_ipad_count": "model_records.total_ipad_count",
+            "total_web_count": "model_records.total_web_count",
+            "speechdate": "model_records.speechdate",
+            "speaker_name": "model_records.speaker_name",
+            "total_h5_count": "model_records.total_h5_count",
+            "total_app_count": "model_records.total_app_count",
+            "speechcity": "model_records.speechcity",
+            "release_time": "model_records.release_time",
+            "audio": "model_records.audio",
+            "titlelanguage": "model_records.titlelanguage",
+            "additional_share_count": "model_records.additional_share_count",
+            "video_cover_phone_jcrop": "model_records.video_cover_phone_jcrop",
+            "additional_play_count": "model_records.additional_play_count",
+            "additional_collection_count": "model_records.additional_collection_count",
+            "status": "model_records.status",
+            "record_recommended": "model_records.record_recommended",
+            "draft": "model_records.draft",
+            "keywords": "model_records.keywords",
+            "video_cover": "model_records.video_cover",
+            "speaker_id": "model_records.speaker_id"
+          }
+        }
+      }
+    },
+    "api": {
+      "records/": {
+        "get": {
+          "pagination": true,
+          "name": "价格列表获取",
+          "type": "retrieve",
+          "request": {
+            "title": {
+              "src": "model_records.title"
+            },
+            "begin_time": {
+              "src": "model_records.begin_time"
+            },
+            "end_time": {
+              "src": "model_records.end_time"
+            },
+            "recommended": {
+              "src": "model_records.recommended"
+            },
+            "is_valid": {
+              "src": "model_records.is_valid"
+            }
+          },
+          "response": {
+            "data": "data"
+          }
+        }
+      },
+      "record/create/": {
+        "post": {
+          "pagination": false,
+          "name": "记录新建",
+          "type": "create",
+          "request": {
+            "titlelanguage": {
+              "src": "model_records.titlelanguage"
+            },
+            "additional_share_count": {
+              "src": "model_records.additional_share_count"
+            },
+            "title": {
+              "src": "model_records.title"
+            },
+            "additional_play_count": {
+              "src": "model_records.additional_play_count"
+            },
+            "additional_collection_count": {
+              "src": "model_records.additional_collection_count"
+            },
+            "speechcity": {
+              "src": "model_records.speechcity"
+            },
+            "status": {
+              "src": "model_records.status"
+            },
+            "record_recommended": {
+              "src": "model_records.record_recommended"
+            },
+            "video": {
+              "src": "model_records.video"
+            },
+            "draft": {
+              "src": "model_records.draft"
+            },
+            "keywords": {
+              "src": "model_records.keywords"
+            },
+            "release_time": {
+              "src": "model_records.release_time"
+            },
+            "audio": {
+              "src": "model_records.audio"
+            },
+            "speechdate": {
+              "src": "model_records.speechdate"
+            },
+            "id": {
+              "src": "model_records.id"
+            },
+            "video_cover": {
+              "src": "model_records.video_cover"
+            },
+            "speaker_id": {
+              "src": "model_records.speaker_id"
+            }
+          },
+          "response": {
+            "records": "records"
+          }
+        }
+      },
+      "record/<id>/edit/": {
+
+      }
+    }
+  },
+  "pagination": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+      "page": {
+        "title": "页码",
+        "type": {
+          "integer": {}
+        }
+      },
+      "page_size": {
+        "title": "页面大小",
+        "type": {
+          "integer": {
+            "default": 20,
+            "required": false
+          }
+        }
+      },
+      "total": {
+        "title": "总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "count": {
+        "title": "分页总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "next": {
+        "title": "下一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "previous": {
+        "title": "前一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "item": {
+        "title": "列表元素",
+        "type": {
+          "any": {}
+        }
+      },
+      "results": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "item"
+          }
+        }
+      }
+    },
+    "api": {}
+  },
+  "model_records": {
+    "name": "model_records",
+    "type": "",
+    "meta": {
+      "id": {
+        "title": "#",
+        "type": {
+          "integer": {}
+        }
+      },
+      "title": {
+        "title": "标题",
+        "type": {
+          "string": {}
+        }
+      },
+      "begin_time": {
+        "title": "开始时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "end_time": {
+        "title": "结束时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "recommended": {
+        "title": "是否推荐",
+        "type": {
+          "integer": {}
+        }
+      },
+      "is_valid": {
+        "title": "状态",
+        "type": {
+          "integer": {}
+        }
+      },
+      "video": {
+        "title": "视频",
+        "type": {
+          "string": {}
+        }
+      },
+      "total_ipad_count": {
+        "title":"ipad",
+        "type": {
+          "integer": {}
+        }
+      },
+      "total_web_count": {
+        "title":"web",
+        "type": {
+          "integer": {}
+        }
+      },
+      "total_h5_count": {
+        "title":"h5",
+        "type": {
+          "integer": {}
+        }
+      },
+      "total_app_count": {
+        "title":"app",
+        "type": {
+          "integer": {}
+        }
+      },
+      "speechdate": {
+        "title":"演讲时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "speaker_name": {
+        "title": "讲者姓名",
+        "type": {
+          "string": {}
+        }
+      },
+      "speechcity": {
+        "title":"演讲城市",
+        "type": {
+          "string": {}
+        }
+      },
+      "release_time": {
+        "title":"发布时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "audio": {
+        "title":"音频",
+        "type": {
+          "string": {}
+        }
+      },
+      "titlelanguage": {
+        "title":"题语",
+        "type": {
+          "string": {}
+        }
+      },
+      "additional_share_count": {
+        "title": "额外的分享数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "video_cover_phone_jcrop": {
+        "title": "视频封面phone参数",
+        "type": {
+          "string": {}
+        }
+      },
+      "additional_play_count": {
+        "title": "额外的播放量",
+        "type": {
+          "integer": {}
+        }
+      },
+      "additional_collection_count": {
+        "title": "额外的收藏数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "status": {
+        "title": "状态",
+        "type": {
+          "integer": {}
+        }
+      },
+      "record_recommended": {
+        "title": "推荐的记录id",
+        "type": {
+          "string": {}
+        }
+      },
+      "draft": {
+        "title": "演讲稿",
+        "type": {
+          "string": {}
+        }
+      },
+      "keywords": {
+        "title": "关键字",
+        "type": {
+          "string": {}
+        }
+      },
+      "video_cover": {
+        "title": "视频封面",
+        "type": {
+          "string": {}
+        }
+      },
+      "speaker_id": {
+        "title": "讲者id",
+        "type": {
+          "integer": {}
+        }
+      }
+    },
+    "api": {}
+  }
 }

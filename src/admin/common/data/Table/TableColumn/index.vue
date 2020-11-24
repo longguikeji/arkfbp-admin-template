@@ -28,6 +28,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import { runAction } from '@/arkfbp/index'
+import { AdminModule } from '@/store/modules/admin'
 @Component({
   name: 'TableColumn',
   components: {
@@ -38,6 +39,13 @@ export default class extends Vue {
   @Prop({ required: true }) state!: TableColumnState;
 
   getComponentState(scope: any) {
+    // debugger
+    if (!this.state.rowRealState) {
+      this.state.rowRealState = []
+    }
+    if (this.state.rowRealState[scope.$index]) {
+      return this.state.rowRealState[scope.$index]
+    }
     let adminState: Object
     if (this.state.scope.state instanceof Array) {
       let cellState: any = {}
@@ -47,12 +55,6 @@ export default class extends Vue {
         item.data = scope.row
         item.cloumn = this.state
         item.value = scope.row[this.state.prop]
-        if (scope.row.actionsAttributes && scope.row.actionsAttributes[index]) {
-          const attrs = scope.row.actionsAttributes[index]
-          Object.keys(attrs).forEach((oneAttr) => {
-            item[oneAttr] = attrs[oneAttr]
-          })
-        }
       }
       adminState = cellState
     } else {
@@ -64,6 +66,7 @@ export default class extends Vue {
         type: this.state.scope.type
       }
     }
+    this.state.rowRealState[scope.$index] = adminState
     return adminState
   }
 }
