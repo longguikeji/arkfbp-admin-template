@@ -1,7 +1,7 @@
 {
   "exchange": {
     "name": "exchange",
-    "type": "exchange",
+    "type": "table",
     "meta": {
       "items": {
         "title": "查询结果列表",

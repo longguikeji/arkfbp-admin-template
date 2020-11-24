@@ -33,9 +33,6 @@ export default class extends Vue {
   }
 
   private async clickHandler() {
-    console.log('action!!!', this.state.action)
-    console.log('data ', this.state.data)
-    console.log('cloumn ', this.state.cloumn)
     if (this.state.type === 'warning' || this.state.type === 'danger') {
       let headMessage = ''
       let confirmType: any
@@ -55,7 +52,13 @@ export default class extends Vue {
         type: confirmType
       }).then(async() => {
         await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
-      }).catch((err) => { console.log(err) })
+      }).catch((err) => {
+        this.$message({
+          message: err,
+          type: 'error',
+          showClose: true
+        })
+      })
     } else {
       await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
     }
