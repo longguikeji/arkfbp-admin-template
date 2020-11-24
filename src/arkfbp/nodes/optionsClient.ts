@@ -1,7 +1,7 @@
 import { FunctionNode } from 'arkfbp/lib/functionNode'
 import Filter from '@/utils/filter'
 
-export class Client extends FunctionNode {
+export class OptionClient extends FunctionNode {
   async run() {
     const state = this.$state.fetch()
     if (state.clientServer == null) {
@@ -27,8 +27,17 @@ export class Client extends FunctionNode {
       for (let i = 0; i  < vs.length - 1; i++) {
         tempS = tempS[vs[i]]
       }
+
+      if(tempS[vs[vs.length - 1]]) {
+        tempS[vs[vs.length - 1]].forEach((option: any) => {
+          option.value = option.id;
+          option.label = option.title;
+        });
+      }
+
       tempC[ks[ks.length - 1]] = tempS[vs[vs.length - 1]]
     })
+
     return this.inputs
   }
 }

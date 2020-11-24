@@ -1,6 +1,7 @@
 import { FunctionNode } from 'arkfbp/lib/functionNode'
 import Filter from '@/utils/filter'
-export class Client extends FunctionNode {
+
+export class UpdateClient extends FunctionNode {
   async run() {
     const state = this.$state.fetch()
     if (this.inputs.errorCode !== 0) {
@@ -13,7 +14,7 @@ export class Client extends FunctionNode {
 
       let temp = state.client
       for (let i = 0; i < ks.length - 1; i++) {
-        if (ks[i].slice(0, 11) === 'items[prop=') {
+        if (ks[i].includes('items[prop=')) {
           const res = Filter(ks[i], temp)
           temp = temp['items'][res]
         } else {

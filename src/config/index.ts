@@ -274,18 +274,14 @@ export class Config {
       config.table = this._viewconfig.table
       if (this._viewconfig.table.columns) {
         config.table.columns = this._viewconfig.table.columns.map((e: any) => {
-          if (typeof e === 'string') {
-            return {prop: e,  type: 'Input', ...meta[e]}
-          } else {
-            return { lable: meta[e.prop] ? meta[e.prop].lable : '', ...e } 
-          }
+          return { label: meta[e.prop] ? meta[e.prop].label : '', ...e } 
         })
       }
     } else {
       config.table = {
         columns: [
           ...Object.keys(meta).map((e: any) => {
-            return { props: e }
+            return { props: e, label: meta[e] ? meta[e].label : ''  }
           }),
           {
             type: 'action', 

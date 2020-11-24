@@ -24,7 +24,7 @@
         "required": true,
         "type": {
           "object": {
-            "content": "model_wanxaingnote.content"
+            "content": "model_wanxiangnote.content"
           }
         }
       }
@@ -37,31 +37,31 @@
           "request": {},
           "response": {
             "data": "data"
-          },
-          "debug": false
+          }
         },
         "post": {
           "name": "万象笔记更新",
           "type": "retrieve",
           "request": {
             "content": {
-              "src": "model_speaker.content"
+              "src": "model_wanxiangnote.content"
             }
           },
           "response": {
-            "wanxaingnote": "wanxaingnote"
+            "wanxiangnote": "wanxiangnote"
           },
           "debug": false
         }
       }
     }
   },
-  "model_wanxaingnote": {
-    "name": "model_wanxaingnote",
+
+  "model_wanxiangnote": {
+    "name": "model_wanxiangnote",
     "type": "",
     "meta": {
       "content": {
-        "title": "笔记本内容",
+        "title": "内容",
         "type": {
           "string": {}
         }

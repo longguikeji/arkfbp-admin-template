@@ -1,7 +1,8 @@
 {
   "created": {
-    "actions": ["retrieve"]
+    "actions": ["fetch"]
   },
+  "name":"wanxiangnote",
   "type": "form",
   "title": "笔记本管理",
   "buttons": [
@@ -25,7 +26,7 @@
     ]
   },
   "actions": {
-    "retrieve": {
+    "fetch": {
       "flows": [
         {
           "name": "arkfbp.flows.fetch",
@@ -49,12 +50,8 @@
             "content": "form.items[prop=content].state.value"
           }
         }
-      ],
-      "next": [
-        {
-          "action": "retrieve"
-        }
       ]
+     
     }
   }
 }
