@@ -1,7 +1,7 @@
 {
   "comment": {
     "name": "comment",
-    "type": "comment",
+    "type": "table",
     "meta": {
       "items": {
 

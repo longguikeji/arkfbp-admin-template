@@ -4,7 +4,7 @@
       "retrieve"
     ]
   },
-  "type": "price",
+  "type": "table",
   "title": "price",
   "buttons": [
     {

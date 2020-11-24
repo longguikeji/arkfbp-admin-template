@@ -1,6 +1,7 @@
 {
   "created": {
     "actions": [
+      "options",
       "fetch"
     ]
   },
@@ -94,22 +95,22 @@
       }, 
       {
         "label": "排序",
-        "type": "action", 
-        "width": 100, 
-        "actions": [
-          {
-            "icon": "el-icon-top", 
-            "type": "primary", 
-            "circle": true, 
-            "action": "upHandler"
-          }, 
-          {
-            "icon": "el-icon-bottom", 
-            "type": "primary", 
-            "circle": true, 
-            "action": "downHandler"
-          }
-        ]
+        "prop": "sort",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "icon": "el-icon-top",
+              "type": "primary",
+              "action": "upHandler"
+            },
+            {
+              "icon": "el-icon-bottom",
+              "type": "primary",
+              "action": "downHandler"
+            }
+          ]
+        }
       }, 
       {
         "prop": "is_valid",
@@ -237,10 +238,10 @@
     }
   },
   "actions": {
-    "meta": {
+    "options": {
       "flows": [
         {
-          "name": "arkfbp.flows.fetch",
+          "name": "arkfbp.flows.options",
           "type": "api",
           "url": "category/drop/", 
           "method": "GET",
@@ -386,6 +387,50 @@
       "next": [{
         "action": "fetch"
       }]
+    },
+    "upHandler": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "speaker/<id>/up/"
+        }
+      ],
+      "next": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "url": "speaker/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "downHandler": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "speaker/<id>/down/"
+        }
+      ],
+      "next": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "url": "speaker/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
     }
   }
 }

@@ -12,46 +12,6 @@
       v-if="state.type === 'table'"
       :state="state"
     />
-    <TablePage
-      v-if="state.type === 'price'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'invitecode'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'exchange'"
-      :state="state"
-    />
-    <!-- <FormPage
-      v-if="state.type === 'exampleone'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'exampletwo'"
-      :state="state"
-    />
-    <FormPage
-      v-if="state.type === 'examplethree'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'secondpage'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'zhiya'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'comment'"
-      :state="state"
-    />
-    <TablePage
-      v-if="state.type === 'fifthpage'"
-      :state="state"
-    /> -->
   </div>
 </template>
 
@@ -72,7 +32,6 @@ import TablePage from '@/admin/TablePage/index.vue'
 })
 export default class extends Vue {
   private get state() {
-    console.log('AdminModule.adminState', AdminModule.adminState)
     return AdminModule.adminState
   }
 
@@ -89,7 +48,6 @@ export default class extends Vue {
         const c: any = new Config(viewconfig, serveconfig, page)
 
         await AdminModule.setAdmin(c.config)
-        await AdminModule.adminAction({ action: 'meta' })
       }
     }
 

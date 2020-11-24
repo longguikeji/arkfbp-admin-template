@@ -4,7 +4,7 @@
       "retrieve"
     ]
   },
-  "type": "invitecode",
+  "type": "table",
   "title": "invitecode",
   "buttons": [
     {
