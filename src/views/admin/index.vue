@@ -72,7 +72,6 @@ import TablePage from '@/admin/TablePage/index.vue'
 })
 export default class extends Vue {
   private get state() {
-    console.log('AdminModule.adminState', AdminModule.adminState)
     return AdminModule.adminState
   }
 
@@ -89,7 +88,6 @@ export default class extends Vue {
         const c: any = new Config(viewconfig, serveconfig, page)
 
         await AdminModule.setAdmin(c.config)
-        await AdminModule.adminAction({ action: 'meta' })
       }
     }
 
