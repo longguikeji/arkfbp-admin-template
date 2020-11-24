@@ -96,18 +96,6 @@
       }
     ]
   },
-  "secondpage": {
-    "title": "case",
-    "path": "case",
-    "icon": "dashboard",
-    "children": [
-      {
-        "title": "secondpage",
-        "path": "secondpage",
-        "icon": "dashboard"
-      }
-    ]
-  },
   "zhiya": {
     "title": "case",
     "path": "case",
@@ -141,6 +129,28 @@
         "title": "records", 
         "path": "records", 
         "icon": "dashboard" 
+      }
+    ]
+  },
+  "se": {
+    "title": "case",
+    "path": "case", 
+    "children": [
+      {
+        "title": "sence",
+        "path": "sence", 
+        "icon": "dashboard"
+      }
+    ]
+  },
+  "or": {
+    "title": "case",
+    "path": "case", 
+    "children": [
+      {
+        "title": "order",
+        "path": "order", 
+        "icon": "dashboard"
       }
     ]
   }

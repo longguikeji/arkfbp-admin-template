@@ -1,0 +1,297 @@
+{
+  "created": {
+    "actions": [
+      "fetch"
+    ]
+  },
+  "type": "table",
+  "title": "sence",
+  "buttons": [
+    {
+      "label": "创建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      "title",
+      {
+        "type": "Select",
+        "label": "选择状态",
+        "prop": "is_valid",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未发布"
+            },
+            {
+              "value": 1,
+              "label": "已发布"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "label": "现场类型",
+        "prop": "activity_type",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "演讲"
+            },
+            {
+              "value": 1,
+              "label": "大院"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "label": "是否推荐",
+        "prop": "recommended",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "推荐"
+            },
+            {
+              "value": 1,
+              "label": "不推荐"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "fetch"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "prop": "id"
+      },
+      {
+        "prop": "title"
+      },
+      {
+        "prop": "periods"
+      },
+      {
+        "prop": "city"
+      },
+      {
+        "prop": "address"
+      },
+      {
+        "prop": "created"
+      },
+      {
+        "prop": "status",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "未开始"
+              },
+              {
+                "value": 1,
+                "label": "已结束"
+              },
+              {
+                "value": 2,
+                "label": "已售罄"
+              },
+              {
+                "value": 3,
+                "label": "制作中"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "prop": "date"
+      },
+      {
+        "prop": "video",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "delete"
+            },
+            {
+              "label": "精选",
+              "action": "toSelect"
+            },
+            {
+              "label": "回复",
+              "action": "showReviewDialog"
+            }
+          ]
+        }
+      },
+      {
+        "label": "现场状态操作",
+        "prop": "statusAction",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "未开始"
+              },
+              {
+                "value": 1,
+                "label": "已结束"
+              },
+              {
+                "value": 2,
+                "label": "已售罄"
+              },
+              {
+                "value": 3,
+                "label": "制作中"
+              }
+            ],
+            "action": "changeStatus"
+          }
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "fetch"
+  },
+  "dialogs": {
+    "review": {
+      "title": "回复",
+      "visible": false,
+      "inline": false,
+      "items": [
+        {
+          "type": "Input",
+          "label": "演讲",
+          "prop": "title",
+          "state": {
+            "value": "",
+            "disabled": true
+          }
+        },
+        {
+          "type": "Input",
+          "label": "内容",
+          "prop": "content",
+          "state": {
+            "value": "",
+            "disabled": true,
+            "type": "textarea"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "发布身份",
+          "prop": "profile_id",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "回复内容",
+          "prop": "review_content",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "发布",
+          "action": "toReview",
+          "type": "primary"
+        }
+      ]
+    }
+  },
+  "actions": {
+    "fetch": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "activity/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_title": "filter.items[prop=content].state.title",
+            "param_valid": "filter.items[prop=begin_time].state.is_vaild",
+            "param_activity_type": "filter.items[prop=end_time].state.activity_type",
+            "param_recommended": "filter.items[prop=mobile].state.recommended"
+          },
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "changeStatus": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.update",
+          "type": "api",
+          "method": "POST",
+          "url": "",
+          "request": {
+            
+          }
+        }
+      ]
+    }
+  }
+}

@@ -149,13 +149,13 @@
       "id": {
         "title": "#",
         "type": {
-          "string": {}
+          "integer": {}
         }
       },
       "exchange_type": {
         "title": "兑换码类型",
         "type": {
-          "string": {}
+          "integer": {}
         }
       },
       "order": {

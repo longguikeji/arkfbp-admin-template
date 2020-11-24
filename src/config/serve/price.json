@@ -188,7 +188,7 @@
       "id": {
         "title": "#",
         "type": {
-          "string": {}
+          "integer": {}
         }
       },
       "product_id": {
@@ -200,7 +200,7 @@
       "is_remove": {
         "title": "是否可以删除",
         "type": {
-          "string": {}
+          "integer": {}
         }
       },
       "created": {

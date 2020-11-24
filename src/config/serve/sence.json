@@ -1,13 +1,13 @@
 {
-  "comment": {
-    "name": "comment",
+  "sence": {
+    "name": "sence",
     "type": "table",
     "meta": {
       "items": {
         "title": "评论列表",
         "type": {
           "array": {
-            "array_item": "comment"
+            "array_item": "sence"
           }
         }
       },
@@ -22,42 +22,52 @@
           }
         }
       },
-      "comment": {
+      "sence": {
         "title": "返回的评论列表",
         "required": true,
         "type": {
           "object": {
-            "id": "model_comment.id",
-            "nickname": "model_comment.nickname",
-            "content": "model_comment.content",
-            "title": "model_comment.title", 
-            "is_selected": "model_comment.is_selected",
-            "created": "model_comment.created",
-            "begin_time": "model_comment.begin_time",
-            "end_time": "model_comment.end_time",
-            "mobile": "model_comment.mobile"
+            "id": "model_sence.id",
+            "title": "model_sence.title",
+            "is_valid": "model_sence.is_valid",
+            "activity_type": "model_sence.activity_type", 
+            "recommended": "model_sence.recommended",
+            "activity_date_sort": "model_sence.activity_date_sort",
+            "created_sort": "model_sence.created_sort",
+            "status": "model_sence.status",
+            "city": "model_sence.city",
+            "video": "model_sence.video",
+            "periods": "model_sence.periods",
+            "date": "model_sence.date",
+            "address": "model_sence.address"
           }
         }
       }
     },
     "api": {
-      "comment/": {
+      "activity/": {
         "get": {
           "pagination": true,
           "name": "价格列表获取",
           "type": "retrieve",
           "request": {
-            "content": {
-              "src": "model_comment.content"
+            "title": {
+              "src": "model_sence.title"
             },
-            "begin_time": {
-              "src": "model_comment.begin_time"
+            "is_valid": {
+              "src": "model_sence.is_valid"
             },
-            "end_time": {
-              "src": "model_comment.end_time"
+            "activity_type": {
+              "src": "model_sence.activity_type"
             },
-            "mobile": {
-              "src": "model_comment.mobile"
+            "recommended": {
+              "src": "model_sence.recommended"
+            },
+            "activity_date_sort": {
+              "src": "model_sence.activity_date_sort"
+            },
+            "created_sort": {
+              "src": "model_sence.created_sort"
             }
           }
         }
@@ -128,8 +138,8 @@
     },
     "api": {}
   },
-  "model_comment": {
-    "name": "model_comment",
+  "model_sence": {
+    "name": "model_sence",
     "type": "",
     "meta": {
       "id": {
@@ -144,40 +154,70 @@
           "string": {}
         }
       },
-      "content": {
-        "title": "内容",
+      "is_valid": {
+        "title": "状态",
         "type": {
           "string": {}
         }
       },
-      "begin_time": {
-        "title": "开始时间",
-        "type": {
-          "string": {}
-        }
-      },
-      "end_time": {
-        "title": "结束时间",
-        "type": {
-          "string": {}
-        }
-      },
-      "mobile": {
-        "title": "手机",
-        "type": {
-          "string": {}
-        }
-      },
-      "nickname": {
-        "title": "昵称",
-        "type": {
-          "string": {}
-        }
-      },
-      "is_selected": {
-        "title": "精选状态",
+      "activity_type": {
+        "title": "现场类型",
         "type": {
           "integer": {}
+        }
+      },
+      "recommended": {
+        "title": "是否推荐",
+        "type": {
+          "integer": {}
+        }
+      },
+      "activity_date_sort": {
+        "title": "举办时间",
+        "type": {
+          "integer": {}
+        }
+      },
+      "created_sort": {
+        "title": "添加时间",
+        "type": {
+          "integer": {}
+        }
+      },
+      "status": {
+        "title": "活动状态",
+        "type": {
+          "integer": {}
+        }
+      },
+      "city": {
+        "title":"城市",
+        "type": {
+          "string": {}
+        }
+      },
+      "video": {
+        "title":"花絮",
+        "type": {
+          "string": {}
+        }
+      },
+      "periods": {
+        "title":"期数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "date": {
+        "title":"日期",
+        "type": {
+          "string": {}
+        }
+      },
+      "address": {
+        "title":"地址",
+        "type": {
+          "string": {}
         }
       },
       "created": {
