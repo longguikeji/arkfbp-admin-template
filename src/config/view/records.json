@@ -6,21 +6,20 @@
   },
   "type": "table",
   "title": "fifthpage",
+  "buttons": [
+    {
+      "type": "primary",
+      "label": "新建",
+      "action": "showCreateDialog"
+    }
+  ],
   "filter": {
     "inline": true,
     "size": "mini",
     "items": [
-      {
-        "type": "Input",
-        "label": "记录名称",
-        "prop": "title",
-        "state": {
-          "value": ""
-        }
-      },
+      "title",
       {
         "type": "DatePicker",
-        "label": "开始时间",
         "prop": "begin_time",
         "state": {
           "value": "",
@@ -31,7 +30,6 @@
       },
       {
         "type": "DatePicker",
-        "label": "结束时间",
         "prop": "end_time",
         "state": {
           "value": "",
@@ -42,7 +40,6 @@
       },
       {
         "type": "Select",
-        "label": "选择状态",
         "prop": "is_valid",
         "state": {
           "value": "",
@@ -60,7 +57,6 @@
       },
       {
         "type": "Select",
-        "label": "是否推荐",
         "prop": "recommended",
         "state": {
           "value": "",
@@ -81,7 +77,7 @@
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "retrieve"
+          "action": "fetch"
         }
       }
     ]
@@ -89,43 +85,43 @@
   "table": {
     "columns": [
       {
-        "label": "#",
         "prop": "id"
       },
       {
-        "label": "记录名称",
-        "prop": "title"
+        "prop": "title",
+        "scope": {
+          "type": "Button",
+          "state": {
+            "value": "",
+            "type": "text",
+            "action": "showCreateDialog"
+          }
+        }
       },
       {
-        "label": "讲者",
         "prop": "speaker_name"
       },
       {
-        "label": "场次",
-        "prop": "speechdate"
+        "prop": "speechChangci",
+        "label": "场次"
       },
       {
-        "label": "发布时间",
-        "prop": "release_time"
+        "prop": "release_time",
+        "sortable": true
       },
       {
-        "label": "app",
         "prop": "total_app_count"
       },
       {
-        "label": "h5",
         "prop": "total_h5_count"
       },
       {
-        "label": "网站",
         "prop": "total_web_count"
       },
       {
-        "label": "ipad",
         "prop": "total_ipad_count"
       },
       {
-        "label": "状态",
         "prop": "is_valid",
         "scope": {
           "type": "Select",
@@ -146,7 +142,6 @@
         }
       },
       {
-        "label": "推荐",
         "prop": "recommended",
         "scope": {
           "type": "Select",
@@ -167,7 +162,6 @@
         }
       },
       {
-        "label": "视频",
         "prop": "vedio",
         "scope": {
           "type": "Link",
@@ -212,41 +206,17 @@
     "pageCount": 10,
     "total": 0,
     "background": "",
-    "action": "retrieve"
+    "action": "fetch"
   },
   "dialogs": {
     "create": {
       "title": "新建",
       "items": [
+        "title",
+        "titlelanguage",
         {
-          "type": "Input",
-          "label": "枝桠名称",
-          "prop": "name",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "关键字",
-          "prop": "keywords",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Select",
-          "label": "讲者",
-          "prop": "speaker",
-          "state": {
-            "value": "",
-            "options": []
-          }
-        },
-        {
+          "prop": "speechdate",
           "type": "DatePicker",
-          "label": "发布时间",
-          "prop": "name",
           "state": {
             "value": "",
             "valueFormat": "yyyy-MM-dd HH:mm",
@@ -255,37 +225,51 @@
           }
         },
         {
+          "prop": "release_time",
+          "type": "DatePicker",
+          "state": {
+            "value": "",
+            "valueFormat": "yyyy-MM-dd HH:mm",
+            "format": "yyyy-MM-dd HH:mm",
+            "type": "datetime"
+          }
+        },
+        "speechcity",
+        "keywords",
+        {
+          "prop": "speaker_id",
           "type": "Select",
-          "label": "请选择相关枝桠",
-          "prop": "zhiya_recommended",
           "state": {
             "value": "",
             "options": []
           }
         },
         {
+          "prop": "draft",
           "type": "Input",
-          "label": "总集数",
-          "prop": "episodes",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "简介",
-          "prop": "intro",
           "state": {
             "value": "",
             "type": "textarea"
           }
         },
+        "additional_play_count",
+        "additional_collection_count",
+        "additional_share_count",
         {
-          "type": "AMap",
-          "label": "地图",
-          "prop": "map",
+          "prop": "status",
+          "type": "Select",
           "state": {
-            "value": ["116.46", "39.92"]
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "及时发布"
+              },
+              {
+                "value": 1,
+                "label": "草稿"
+              }
+            ]
           }
         }
       ],
@@ -320,6 +304,21 @@
           "client_config": {
             "table.data": "data.items",
             "pagination.total": "data.total"
+          }
+        },
+        {
+          "name": "flows.spliceValue",
+          "request": "table.data"
+        }
+      ]
+    },
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
           }
         }
       ]

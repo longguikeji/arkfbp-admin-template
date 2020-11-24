@@ -151,7 +151,64 @@
         }
       },
       "record/<id>/edit/": {
-
+        "post": {
+          "pagination": false,
+          "name": "编辑记录",
+          "type": "update",
+          "request": {
+            "titlelanguage": {
+              "src": "model_records.titlelanguage"
+            },
+            "additional_share_count": {
+              "src": "model_records.additional_share_count"
+            },
+            "title": {
+              "src": "model_records.title"
+            },
+            "additional_play_count": {
+              "src": "model_records.additional_play_count"
+            },
+            "additional_collection_count": {
+              "src": "model_records.additional_collection_count"
+            },
+            "speechcity": {
+              "src": "model_records.speechcity"
+            },
+            "status": {
+              "src": "model_records.status"
+            },
+            "record_recommended": {
+              "src": "model_records.record_recommended"
+            },
+            "video": {
+              "src": "model_records.video"
+            },
+            "draft": {
+              "src": "model_records.draft"
+            },
+            "keywords": {
+              "src": "model_records.keywords"
+            },
+            "release_time": {
+              "src": "model_records.release_time"
+            },
+            "audio": {
+              "src": "model_records.audio"
+            },
+            "speechdate": {
+              "src": "model_records.speechdate"
+            },
+            "id": {
+              "src": "model_records.id"
+            },
+            "video_cover": {
+              "src": "model_records.video_cover"
+            },
+            "speaker_id": {
+              "src": "model_records.speaker_id"
+            }
+          }
+        }
       }
     }
   },
@@ -257,6 +314,12 @@
         "title": "状态",
         "type": {
           "integer": {}
+        }
+      },
+      "created": {
+        "title": "创建时间",
+        "type": {
+          "string": {}
         }
       },
       "video": {

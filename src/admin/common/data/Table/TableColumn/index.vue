@@ -4,6 +4,7 @@
     :column-key="state.columnKey"
     :label="state.label"
     :prop="state.prop"
+    :sortable="state.sortable"
   >
     <template v-if="state.children">
       <TableColumn

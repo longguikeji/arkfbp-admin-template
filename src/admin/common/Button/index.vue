@@ -12,7 +12,7 @@
     :native-type="state.nativeType"
     @click="clickHandler"
   >
-    {{ state.label }}
+    {{ state.label || state.value }}
   </el-button>
 </template>
 <script lang="ts">
