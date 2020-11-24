@@ -51,12 +51,5 @@ export default class extends Vue {
       this.state.selection.values = val
     }
   }
-
-  // :cell-style="hanldeCellStyle"
-
-  // async hanldeCellStyle(r,c,ri,ci) {
-  //   // console.log(r,c,ri,ci)
-  //   await runAction({ flow: `flows.${this.state.format}`, inputs: r })
-  // }
 }
 </script>

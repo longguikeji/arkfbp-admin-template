@@ -37,7 +37,6 @@
       "created",
       {
         "label": "操作",
-        "format": "tableButtonStatus",
         "scope": {
           "type": "ButtonArray",
           "state": [
