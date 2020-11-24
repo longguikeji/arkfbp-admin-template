@@ -27,18 +27,18 @@
     ]
   },
   "page": {
-    "title": "speaker", 
-    "path": "speaker", 
-    "icon": "dashboard", 
+    "title": "speaker",
+    "path": "speaker",
+    "icon": "dashboard",
     "children": [
       {
-        "title": "speaker", 
-        "path": "speaker", 
-        "icon": "dashboard" 
+        "title": "speaker",
+        "path": "speaker",
+        "icon": "dashboard"
       }
     ]
   },
-  "testpage": {
+  "ppage": {
     "title": "case",
     "path": "case",
     "icon": "dashboard",
@@ -56,6 +56,28 @@
       {
         "title": "exchange",
         "path": "exchange",
+        "icon": "dashboard"
+      }
+    ]
+  },
+  "example": {
+    "title": "case",
+    "path": "case",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "speech",
+        "path": "speech",
+        "icon": "dashboard"
+      },
+      {
+        "title": "category",
+        "path": "category",
+        "icon": "dashboard"
+      },
+      {
+        "title": "wanxiangnote",
+        "path": "wanxiangnote",
         "icon": "dashboard"
       }
     ]
@@ -78,9 +100,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "examplethree", 
-        "path": "examplethree", 
-        "icon": "dashboard" 
+        "title": "examplethree",
+        "path": "examplethree",
+        "icon": "dashboard"
       }
     ]
   },
@@ -90,9 +112,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "examplefour", 
-        "path": "exampletfour", 
-        "icon": "dashboard" 
+        "title": "examplefour",
+        "path": "exampletfour",
+        "icon": "dashboard"
       }
     ]
   },
@@ -114,9 +136,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "zhiya", 
-        "path": "zhiya", 
-        "icon": "dashboard" 
+        "title": "zhiya",
+        "path": "zhiya",
+        "icon": "dashboard"
       }
     ]
   },
@@ -126,9 +148,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "comment", 
-        "path": "comment", 
-        "icon": "dashboard" 
+        "title": "comment",
+        "path": "comment",
+        "icon": "dashboard"
       }
     ]
   },
@@ -138,9 +160,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "fifthpage", 
-        "path": "fifthpage", 
-        "icon": "dashboard" 
+        "title": "fifthpage",
+        "path": "fifthpage",
+        "icon": "dashboard"
       }
     ]
   }

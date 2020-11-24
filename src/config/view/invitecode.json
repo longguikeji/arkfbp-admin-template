@@ -24,30 +24,9 @@
     "inline": true,
     "size": "mini",
     "items": [
-      {
-        "type": "Input",
-        "label": "邀请码",
-        "prop": "code",
-        "state": {
-          "value": ""
-        }
-      },
-      {
-        "type": "Input",
-        "label": "生成邀请码的用户",
-        "prop": "mobile",
-        "state": {
-          "value": ""
-        }
-      },
-      {
-        "type": "Input",
-        "label": "使用邀请码的用户",
-        "prop": "use_mobile",
-        "state": {
-          "value": ""
-        }
-      },
+      "code",
+      "mobile",
+      "use_mobile",
       {
         "type": "Button",
         "state": {
@@ -59,27 +38,14 @@
     ]
   },
   "table": {
+    "index": {
+      "exist": true
+    },
     "columns": [
-      {
-        "label": "#",
-        "prop": "id"
-      },
-      {
-        "label": "生成邀请码的用户",
-        "prop": "mobile"
-      },
-      {
-        "label": "使用邀请码的用户",
-        "prop": "use_mobile"
-      },
-      {
-        "label": "邀请码",
-        "prop": "code"
-      },
-      {
-        "label": "创建时间",
-        "prop": "created"
-      }
+      "mobile",
+      "use_mobile",
+      "code",
+      "created"
     ],
     "data": []
   },
@@ -122,7 +88,7 @@
       ],
       "visible": false
     },
-    "create": {
+    "testselect": {
       "title": "测试Select的相关事件",
       "visible": false,
       "items": [
@@ -161,7 +127,7 @@
     "showCodeConfig": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.code.visible": true
@@ -177,7 +143,7 @@
     "getCodeConfig": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "invite_code_set/edit/",
@@ -191,7 +157,7 @@
     "updateCode": {
       "flows": [
         {
-          "name": "update",
+          "name": "arkfbp.flows.update",
           "type": "api",
           "method": "POST",
           "url": "invite_code_set/edit/",
@@ -210,10 +176,10 @@
     "showSelectDialog": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
-            "dialogs.create.visible": true
+            "dialogs.testselect.visible": true
           }
         }
       ],
@@ -227,7 +193,7 @@
       "flows": [
         {
           "name": "openOrCloseBySelect",
-          "request": "dialogs.create.items"
+          "request": "dialogs.testselect.items"
         }
       ]
     }

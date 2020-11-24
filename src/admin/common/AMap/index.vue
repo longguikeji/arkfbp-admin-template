@@ -29,8 +29,7 @@ export default class extends Vue {
   events: object = {
     dragend: () => {
       const elMap: any = this.$refs.marker
-      const value = elMap.$$getPosition()
-      this.$emit('input', value)
+      this.state.value = elMap.$$getPosition()
     }
   }
 }

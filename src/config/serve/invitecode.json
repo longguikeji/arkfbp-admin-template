@@ -1,13 +1,13 @@
 {
-  "speaker": {
-    "name": "speech",
-    "type": "table",
+  "invitecode": {
+    "name": "invitecode",
+    "type": "invitecode",
     "meta": {
       "items": {
         "title": "查询结果列表",
         "type": {
           "array": {
-            "array_item": "speech"
+            "array_item": "invitecode"
           }
         }
       },
@@ -22,34 +22,44 @@
           }
         }
       },
-      "speech": {
-        "title": "用于返回的演讲信息",
+      "invitecode": {
+        "title": "返回的邀请码列表",
         "required": true,
         "type": {
           "object": {
-            "id": "model_speech.id",
-            "title": "model_speech.title",
-            "speaker_name": "model_speech.speaker_name",
-            "speechcategory": "model_speech.speechcategory",
-            "speechcity": "model_speech.speechcity",
-            "release_time": "model_speech.release_time",
-            "total_play_count": "model_speech.total_play_count",
-            "video_cover": "model_speech.video_cover",
-            "video": "model_speech.video",
-            "audio": "model_speech.audio",
-            "status": "model_speech.status",
-            "recommended": "model_speech.recommended"
+            "code": "model_invitecode.code",
+            "mobile": "model_invitecode.mobile",
+            "use_mobile": "model_invitecode.use_mobile",
+            "created": "model_invitecode.created"
           }
         }
       }
     },
     "api": {
-      "speech/": {
+      "invite_code_set/edit/": {
         "get": {
-          "pagination": true,
-          "name": "演讲列表获取",
+          "name": "邀请码配置获取",
           "type": "retrieve",
-          "request": {}
+          "request": {
+            "use_user_present_day": {
+              "src": "model_invitecode.use_user_present_day"
+            },
+            "user_present_day": {
+              "src": "model_invitecode.user_present_day"
+            }
+          }
+        },
+        "post": {
+          "name": "邀请码配置修改",
+          "type": "update",
+          "request": {
+            "use_user_present_day": {
+              "src": "model_invitecode.use_user_present_day"
+            },
+            "user_present_day": {
+              "src": "model_invitecode.user_present_day"
+            }
+          }
         }
       }
     }
@@ -118,80 +128,42 @@
     },
     "api": {}
   },
-  "model_speech": {
-    "name": "model_speech",
+  "model_invitecode": {
+    "name": "model_invitecode",
     "type": "",
     "meta": {
-      "id": {
-        "title": "ID",
+      "code": {
+        "title": "邀请码",
         "type": {
           "string": {}
         }
       },
-      "title": {
-        "title": "演讲标题",
+      "mobile": {
+        "title": "生成邀请码的用户",
         "type": {
           "string": {}
         }
       },
-      "speaker_name": {
-        "title": "讲者",
-        "type": {
-          "integer": {}
-        }
-      },
-      "speechcategory": {
-        "title": "演讲类别",
+      "use_mobile": {
+        "title": "使用邀请码的用户",
         "type": {
           "string": {}
         }
       },
-      "speechcity": {
-        "title": "演讲城市",
+      "use_user_present_day": {
+        "title": "使用邀请码的用户赠送的天数",
         "type": {
           "string": {}
         }
       },
-      "release_time": {
-        "title": "发布时间",
+      "user_present_day": {
+        "title": "生成邀请码的用户赠送的天数",
         "type": {
           "string": {}
         }
       },
-
-      "total_play_count": {
-        "title": "播放量",
-        "type": {
-          "string": {}
-        }
-      },
-
-      "video_cover": {
-        "title": "视频封面",
-        "type": {
-          "string": {}
-        }
-      },
-      "video": {
-        "title": "视频",
-        "type": {
-          "string": {}
-        }
-      },
-      "audio": {
-        "title": "音频",
-        "type": {
-          "string": {}
-        }
-      },
-      "status": {
-        "title": "演讲状态",
-        "type": {
-          "string": {}
-        }
-      },
-      "recommended": {
-        "title": "推荐",
+      "created": {
+        "title": "创建时间",
         "type": {
           "string": {}
         }

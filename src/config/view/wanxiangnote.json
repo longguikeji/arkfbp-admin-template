@@ -2,7 +2,7 @@
   "created": {
     "actions": ["retrieve"]
   },
-  "type": "table",
+  "type": "form",
   "title": "笔记本管理",
   "buttons": [
     {
@@ -25,13 +25,13 @@
     ]
   },
   "actions": {
-    "meta": {
+    "retrieve": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
-          "url": "wanxiang/note/",
           "method": "GET",
+          "url": "wanxiang/note/",
           "client_config": {
             "form.items[prop=content].state.value": "data.content"
           }
@@ -41,13 +41,18 @@
     "update": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.update",
           "type": "api",
           "method": "POST",
           "url": "wanxiang/note/",
           "request": {
             "content": "form.items[prop=content].state.value"
           }
+        }
+      ],
+      "next": [
+        {
+          "action": "retrieve"
         }
       ]
     }

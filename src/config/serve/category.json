@@ -1,13 +1,13 @@
 {
   "speaker": {
-    "name": "speech",
+    "name": "category",
     "type": "table",
     "meta": {
       "items": {
         "title": "查询结果列表",
         "type": {
           "array": {
-            "array_item": "speech"
+            "array_item": "category"
           }
         }
       },
@@ -22,34 +22,37 @@
           }
         }
       },
-      "speech": {
-        "title": "用于返回的演讲信息",
+      "category": {
+        "title": "返回的价格列表",
         "required": true,
         "type": {
           "object": {
-            "id": "model_speech.id",
-            "title": "model_speech.title",
-            "speaker_name": "model_speech.speaker_name",
-            "speechcategory": "model_speech.speechcategory",
-            "speechcity": "model_speech.speechcity",
-            "release_time": "model_speech.release_time",
-            "total_play_count": "model_speech.total_play_count",
-            "video_cover": "model_speech.video_cover",
-            "video": "model_speech.video",
-            "audio": "model_speech.audio",
-            "status": "model_speech.status",
-            "recommended": "model_speech.recommended"
+            "id": "model_category.id",
+            "title": "model_category.title",
+            "img_url": "model_category.img_url",
+            "is_home": "model_category.is_home",
+            "is_valid": "model_category.is_valid"
           }
         }
       }
     },
     "api": {
-      "speech/": {
+      "category/": {
         "get": {
           "pagination": true,
-          "name": "演讲列表获取",
+          "name": "价格列表获取",
           "type": "retrieve",
-          "request": {}
+          "request": {
+            "title": {
+              "src": "model_category.title"
+            },
+            "is_valid": {
+              "src": "model_category.is_valid"
+            },
+            "is_home": {
+              "src": "model_category.is_home"
+            }
+          }
         }
       }
     }
@@ -118,8 +121,8 @@
     },
     "api": {}
   },
-  "model_speech": {
-    "name": "model_speech",
+  "model_category": {
+    "name": "model_category",
     "type": "",
     "meta": {
       "id": {
@@ -129,69 +132,25 @@
         }
       },
       "title": {
-        "title": "演讲标题",
+        "title": "类别标题",
         "type": {
           "string": {}
         }
       },
-      "speaker_name": {
-        "title": "讲者",
-        "type": {
-          "integer": {}
-        }
-      },
-      "speechcategory": {
-        "title": "演讲类别",
+      "img_url": {
+        "title": "类别图片",
         "type": {
           "string": {}
         }
       },
-      "speechcity": {
-        "title": "演讲城市",
+      "is_home": {
+        "title": "是否显示在首页",
         "type": {
           "string": {}
         }
       },
-      "release_time": {
-        "title": "发布时间",
-        "type": {
-          "string": {}
-        }
-      },
-
-      "total_play_count": {
-        "title": "播放量",
-        "type": {
-          "string": {}
-        }
-      },
-
-      "video_cover": {
-        "title": "视频封面",
-        "type": {
-          "string": {}
-        }
-      },
-      "video": {
-        "title": "视频",
-        "type": {
-          "string": {}
-        }
-      },
-      "audio": {
-        "title": "音频",
-        "type": {
-          "string": {}
-        }
-      },
-      "status": {
-        "title": "演讲状态",
-        "type": {
-          "string": {}
-        }
-      },
-      "recommended": {
-        "title": "推荐",
+      "is_valid": {
+        "title": "是否有效",
         "type": {
           "string": {}
         }

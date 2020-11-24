@@ -1,13 +1,13 @@
 {
-  "speaker": {
-    "name": "speech",
-    "type": "table",
+  "exchange": {
+    "name": "exchange",
+    "type": "exchange",
     "meta": {
       "items": {
         "title": "查询结果列表",
         "type": {
           "array": {
-            "array_item": "speech"
+            "array_item": "exchange"
           }
         }
       },
@@ -22,36 +22,24 @@
           }
         }
       },
-      "speech": {
-        "title": "用于返回的演讲信息",
+      "exchange": {
+        "title": "返回的邀请码列表",
         "required": true,
         "type": {
           "object": {
-            "id": "model_speech.id",
-            "title": "model_speech.title",
-            "speaker_name": "model_speech.speaker_name",
-            "speechcategory": "model_speech.speechcategory",
-            "speechcity": "model_speech.speechcity",
-            "release_time": "model_speech.release_time",
-            "total_play_count": "model_speech.total_play_count",
-            "video_cover": "model_speech.video_cover",
-            "video": "model_speech.video",
-            "audio": "model_speech.audio",
-            "status": "model_speech.status",
-            "recommended": "model_speech.recommended"
+            "use_mobile": "model_exchange.use_mobile",
+            "mobile": "model_exchange.mobile",
+            "code": "model_exchange.code",
+            "exchange_type": "model_exchange.exchange_type",
+            "order": "model_exchange.order",
+            "end_valid_time": "model_exchange.end_valid_time",
+            "created": "model_exchange.created"
           }
         }
       }
     },
     "api": {
-      "speech/": {
-        "get": {
-          "pagination": true,
-          "name": "演讲列表获取",
-          "type": "retrieve",
-          "request": {}
-        }
-      }
+      
     }
   },
   "pagination": {
@@ -118,80 +106,60 @@
     },
     "api": {}
   },
-  "model_speech": {
-    "name": "model_speech",
+  "model_exchange": {
+    "name": "model_exchange",
     "type": "",
     "meta": {
+      "code": {
+        "title": "邀请码",
+        "type": {
+          "string": {}
+        }
+      },
+      "mobile": {
+        "title": "生成邀请码的用户",
+        "type": {
+          "string": {}
+        }
+      },
+      "code_type": {
+        "title": "兑换码类型",
+        "type": {
+          "string": {}
+        }
+      },
+      "use_mobile": {
+        "title": "使用者手机",
+        "type": {
+          "string": {}
+        }
+      },
+      "end_valid_time": {
+        "title": "截止的有效期",
+        "type": {
+          "string": {}
+        }
+      },
+      "created": {
+        "title": "创建时间",
+        "type": {
+          "string": {}
+        }
+      },
       "id": {
-        "title": "ID",
+        "title": "#",
         "type": {
           "string": {}
         }
       },
-      "title": {
-        "title": "演讲标题",
+      "exchange_type": {
+        "title": "兑换码类型",
         "type": {
           "string": {}
         }
       },
-      "speaker_name": {
-        "title": "讲者",
-        "type": {
-          "integer": {}
-        }
-      },
-      "speechcategory": {
-        "title": "演讲类别",
-        "type": {
-          "string": {}
-        }
-      },
-      "speechcity": {
-        "title": "演讲城市",
-        "type": {
-          "string": {}
-        }
-      },
-      "release_time": {
-        "title": "发布时间",
-        "type": {
-          "string": {}
-        }
-      },
-
-      "total_play_count": {
-        "title": "播放量",
-        "type": {
-          "string": {}
-        }
-      },
-
-      "video_cover": {
-        "title": "视频封面",
-        "type": {
-          "string": {}
-        }
-      },
-      "video": {
-        "title": "视频",
-        "type": {
-          "string": {}
-        }
-      },
-      "audio": {
-        "title": "音频",
-        "type": {
-          "string": {}
-        }
-      },
-      "status": {
-        "title": "演讲状态",
-        "type": {
-          "string": {}
-        }
-      },
-      "recommended": {
-        "title": "推荐",
+      "order": {
+        "title": "订单号",
         "type": {
           "string": {}
         }
