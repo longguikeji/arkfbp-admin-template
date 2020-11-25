@@ -59,7 +59,7 @@ export default class extends Vue {
   //   if (AdminModule.adminState.created) {
   //     const actions = AdminModule.adminState.created.actions || []
   //     for (let i = 0; i < actions.length; i++) {
-  //       await AdminModule.adminAction({ action: actions[i] })
+  // await AdminModule.adminAction({ action: actions[i] })
   //     }
   //   }
   // }

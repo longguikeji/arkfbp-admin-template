@@ -3,5 +3,5 @@ export default interface DropdownItemState {
   disabled?: boolean; // 禁用  boolean  —  false
   divided?: boolean; // 显示分割线	false
   icon?: string; // 图标类名
-  content?: any; // 下拉框每一项的内容
+  value?: any; // 下拉框每一项的内容
 }

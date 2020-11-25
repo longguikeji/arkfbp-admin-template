@@ -169,25 +169,26 @@
         "label": "现场状态操作",
         "prop": "statusAction",
         "scope": {
-          "type": "Select",
+          "type": "Dropdown",
           "state": {
-            "value": "",
-            "options": [
+            "title": "现场状态操作",
+            "splitButton": true,
+            "items": [
               {
-                "value": 0,
-                "label": "未开始"
+                "value": "未开始",
+                "command": 0
               },
               {
-                "value": 1,
-                "label": "已结束"
+                "value": "已结束",
+                "command": 1
               },
               {
-                "value": 2,
-                "label": "已售罄"
+                "value": "已售罄",
+                "command": 2
               },
               {
-                "value": 3,
-                "label": "制作中"
+                "value": "制作中",
+                "command": 3
               }
             ],
             "action": "changeStatus"
@@ -215,7 +216,7 @@
           "label": "演讲",
           "prop": "title",
           "state": {
-            "value": "",
+            "value": "123",
             "disabled": true
           }
         },
@@ -234,7 +235,7 @@
           "label": "发布身份",
           "prop": "profile_id",
           "state": {
-            "value": "",
+            "value": "456",
             "options": []
           }
         },
@@ -254,7 +255,10 @@
           "action": "toReview",
           "type": "primary"
         }
-      ]
+      ],
+      "reliant_values": {
+        "id": "1"
+      }
     }
   },
   "actions": {
@@ -285,11 +289,8 @@
         {
           "name": "arkfbp.flows.update",
           "type": "api",
-          "method": "POST",
-          "url": "",
-          "request": {
-            
-          }
+          "method": "GET",
+          "url": "activity/{dialogs.review.items[prop=title].state.value}/<id>/status"
         }
       ]
     }

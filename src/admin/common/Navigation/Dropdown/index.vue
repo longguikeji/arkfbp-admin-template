@@ -13,8 +13,8 @@
       v-if="state.splitButton === true"
       :type="state.type"
     >
-      {{ state.title
-      }}<i
+      {{ state.title }}
+      <i
         v-if="!state.isNeedArrow && state.isNeedArrow !== false"
         class="el-icon-arrow-down el-icon--right"
       />
@@ -23,8 +23,8 @@
       v-else
       class="el-dropdown-link"
     >
-      {{ state.title
-      }}<i
+      {{ state.title }}
+      <i
         v-if="!state.isNeedArrow && state.isNeedArrow !== false"
         class="el-icon-arrow-down el-icon--right"
       />
@@ -38,7 +38,7 @@
         :divided="item.divided"
         :icon="item.icon"
       >
-        {{ item.content }}
+        {{ item.value }}
       </el-dropdown-item>
     </el-dropdown-menu>
     <el-dropdown-menu v-else>
@@ -50,6 +50,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import DropdownState from './DropdownState'
+import { AdminModule } from '@/store/modules/admin'
 
 @Component({
   name: 'Dropdown',
@@ -58,8 +59,12 @@ import DropdownState from './DropdownState'
 export default class extends Vue {
   @Prop({ required: true }) state!: DropdownState;
 
-  handleCommand(command: any) {
-    this.$message('click on item ' + command)
+  async handleCommand(command: any) {
+    console.log('click the value', command)
+    console.log('click the data', this.state.data)
+    if (this.state.action) {
+      await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
+    }
   }
 }
 </script>

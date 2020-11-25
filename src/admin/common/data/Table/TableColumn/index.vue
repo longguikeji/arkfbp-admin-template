@@ -62,7 +62,8 @@ export default class extends Vue {
       adminState = {
         state: {
           ...this.state.scope.state,
-          value: scope.row[this.state.prop]
+          value: scope.row[this.state.prop],
+          data: scope.row
         },
         type: this.state.scope.type
       }

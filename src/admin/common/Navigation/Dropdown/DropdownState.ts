@@ -11,4 +11,6 @@ export default interface DropdownState {
   hideTimeout?: number; // 收起下拉菜单的延时（仅在 trigger 为 hover 时有效）	默认为 150
   tabindex?: number; // Dropdown 组件的 tabindex
   items?: Array<DropdownItemState>; // 下拉选项的内容
+  data?: any; // 与其相关的其他数据内容
+  action?: string; // 点击下拉选项之后触发的事件
 }
