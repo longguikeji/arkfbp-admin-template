@@ -142,16 +142,5 @@
         "icon": "dashboard"
       }
     ]
-  },
-  "or": {
-    "title": "case",
-    "path": "case", 
-    "children": [
-      {
-        "title": "order",
-        "path": "order", 
-        "icon": "dashboard"
-      }
-    ]
   }
 }

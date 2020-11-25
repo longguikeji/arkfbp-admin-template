@@ -2,7 +2,7 @@ import { FunctionNode } from 'arkfbp/lib/functionNode'
 import Filter from '@/utils/filter'
 export class GetUrlNode extends FunctionNode {
 
-  parseUrlBracket(url: string, state: any) {
+  parseUrlBrace(url: string, state: any) {
     const bracketSet = url.match(/{/g) || 0
     const bracketPropsSet = url.match(/({)(\S*?)(?=})/g)
     const bracketNumber = !bracketSet ? 0 : bracketSet.length
@@ -57,14 +57,14 @@ export class GetUrlNode extends FunctionNode {
 
     if (url.indexOf('<') !== -1 && url.indexOf('{') !== -1) {
       const firstUrl = this.parseUrlAngle(url, data);
-      const finalUrl = this.parseUrlBracket(firstUrl, state)
+      const finalUrl = this.parseUrlBrace(firstUrl, state)
       return finalUrl
     }
     if (url.indexOf('<') !== -1) {
       return this.parseUrlAngle(url, data);
     }
     if (url.indexOf('{') !== -1) {
-      return this.parseUrlBracket(url, state)
+      return this.parseUrlBrace(url, state)
     }
     return url
   }

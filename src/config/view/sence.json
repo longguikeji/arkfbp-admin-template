@@ -12,6 +12,12 @@
       "action": "showCreateDialog",
       "type": "primary",
       "size": "small"
+    },
+    {
+      "label": "查看详情",
+      "action": "showDetailsDialog",
+      "type": "primary",
+      "size": "small"
     }
   ],
   "filter": {
@@ -86,10 +92,26 @@
   "table": {
     "columns": [
       {
-        "prop": "id"
+        "prop": "id",
+        "scope": {
+          "type": "Button",
+          "state": {
+            "value": "",
+            "type": "text",
+            "action": "showUpdateDialog"
+          }
+        }
       },
       {
-        "prop": "title"
+        "prop": "title",
+        "scope": {
+          "type": "Button",
+          "state": {
+            "value": "",
+            "type": "text",
+            "action": "showUpdateDialog"
+          }
+        }
       },
       {
         "prop": "periods"
@@ -101,7 +123,8 @@
         "prop": "address"
       },
       {
-        "prop": "created"
+        "prop": "created",
+        "sortable": true
       },
       {
         "prop": "status",
@@ -132,7 +155,8 @@
         }
       },
       {
-        "prop": "date"
+        "prop": "date",
+        "sortable": true
       },
       {
         "prop": "video",
@@ -150,17 +174,23 @@
           "type": "ButtonArray",
           "state": [
             {
+              "label": "编辑",
+              "action": "showUpdateDialog",
+              "type": "primary"
+            },
+            {
+              "label": "场次管理",
+              "action": "showChangciDialog",
+              "type": "primary"
+            },
+            {
               "label": "删除",
               "type": "danger",
               "action": "delete"
             },
             {
-              "label": "精选",
-              "action": "toSelect"
-            },
-            {
-              "label": "回复",
-              "action": "showReviewDialog"
+              "label": "上线",
+              "action": "upordown"
             }
           ]
         }
@@ -206,59 +236,175 @@
     "action": "fetch"
   },
   "dialogs": {
-    "review": {
-      "title": "回复",
+    "details": {
+      "title": "查看详情【测试】",
       "visible": false,
       "inline": false,
       "items": [
+        {
+          "type": "Divider",
+          "state": {
+            "direction": "horizontal",
+            "value": "现场详情信息",
+            "contentPosition": "left",
+            "width": 600
+          }
+        },
         {
           "type": "Input",
           "label": "演讲",
           "prop": "title",
           "state": {
             "value": "123",
-            "disabled": true
+            "readonly": true
           }
         },
         {
           "type": "Input",
-          "label": "内容",
-          "prop": "content",
+          "label": "演讲",
+          "prop": "title",
           "state": {
-            "value": "",
-            "disabled": true,
-            "type": "textarea"
+            "value": "123",
+            "readonly": true
+          }
+        },
+        {
+          "type": "Input",
+          "label": "演讲",
+          "prop": "title",
+          "state": {
+            "value": "123",
+            "readonly": true
+          }
+        },
+        {
+          "type": "Divider",
+          "state": {
+            "direction": "horizontal",
+            "value": "现场详情信息二",
+            "contentPosition": "left"
+          }
+        }
+      ]
+    },
+    "update": {
+      "title": "编辑活动内容",
+      "visible": false,
+      "inline": false,
+      "actions": [
+        {
+          "label": "确定",
+          "action": "update",
+          "type": "primary"
+        }
+      ],
+      "items": [
+        "title",
+        "periods",
+        "pay_title",
+        {
+          "prop": "check_code",
+          "type": "InputNumber"
+        },
+        {
+          "prop": "activity_date",
+          "type": "DatePicker",
+          "state": {
+            "valueFormat": "yyyy-MM-dd HH:mm",
+            "format": "yyyy-MM-dd HH:mm",
+            "type": "datetime"
+          }
+        },
+        {
+          "prop": "city",
+          "type": "Select",
+          "state": {
+            "options": []
+          }
+        },
+        "activity_address",
+        {
+          "label": "地图坐标",
+          "prop": "map_position",
+          "type": "AMap",
+          "state": {
+            "value": ["116.46", "39.92"]
+          }
+        },
+        {
+          "prop": "video",
+          "type": "Upload",
+          "state": {
+            "type": "video",
+            "value": ""
+          }
+        },
+        {
+          "prop": "upload_progress",
+          "label": "上传进度",
+          "type": "Progress",
+          "state": {
+            "value": 0
+          }
+        },
+        {
+          "prop": "video_cover",
+          "type": "Upload",
+          "state": {
+            "type": "image"
+          }
+        },
+        {
+          "type": "Input",
+          "prop": "video_cover_phone_jcrop",
+          "state": {
+            "readonly": true
+          }
+        },
+        {
+          "prop": "cover",
+          "type": "Upload",
+          "state": {
+            "type": "image"
+          }
+        },
+        {
+          "type": "Input",
+          "prop": "cover_phone_jcrop",
+          "state": {
+            "readonly": true
           }
         },
         {
           "type": "Select",
-          "label": "发布身份",
-          "prop": "profile_id",
+          "prop": "activity_type",
           "state": {
-            "value": "456",
-            "options": []
+            "options": [
+              {
+                "value": 0,
+                "label": "演讲"
+              },
+              {
+                "value": 1,
+                "label": "大院"
+              }
+            ]
           }
         },
         {
-          "type": "Input",
-          "label": "回复内容",
-          "prop": "review_content",
-          "state": {
-            "value": "",
-            "type": "textarea"
-          }
-        }
-      ],
-      "actions": [
+          "type": "Rich",
+          "prop": "content"
+        },
+        "keywords",
         {
-          "label": "发布",
-          "action": "toReview",
-          "type": "primary"
+          "type": "Rich",
+          "prop": "video_content"
+        },
+        {
+          "type": "Rich",
+          "prop": "buying_tips"
         }
-      ],
-      "reliant_values": {
-        "id": "1"
-      }
+      ]
     }
   },
   "actions": {
@@ -290,7 +436,55 @@
           "name": "arkfbp.flows.update",
           "type": "api",
           "method": "GET",
-          "url": "activity/{dialogs.review.items[prop=title].state.value}/<id>/status"
+          "url": "activity/<id>/<status>/status"
+        }
+      ]
+    },
+    "showDetailsDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.details.visible": true
+          }
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "url": "activity/<id>/edit/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=video].state.value": "data.video",
+            "dialogs.update.items[prop=title].state.value": "data.title",
+            "dialogs.update.items[prop=periods].state.value": "data.periods",
+            "dialogs.update.items[prop=pay_title].state.value": "data.pay_title",
+            "dialogs.update.items[prop=check_code].state.value": "data.check_code",
+            "dialogs.update.items[prop=activity_date].state.value": "data.activity_date",
+            "dialogs.update.items[prop=city].state.value": "data.city",
+            "dialogs.update.items[prop=activity_address].state.value": "data.activity_address",
+            "dialogs.update.items[prop=video_cover].state.value": "data.video_cover",
+            "dialogs.update.items[prop=cover].state.value": "data.cover",
+            "dialogs.update.items[prop=video_cover_phone_jcrop].state.value": "data.video_cover_phone_jcrop",
+            "dialogs.update.items[prop=cover_phone_jcrop].state.value": "data.cover_phone_jcrop",
+            "dialogs.update.items[prop=activity_type].state.value": "data.activity_type",
+            "dialogs.update.items[prop=content].state.value": "data.content",
+            "dialogs.update.items[prop=video_content].state.value": "data.video_content",
+            "dialogs.update.items[prop=buying_tips].state.value": "data.buying_tips",
+            "dialogs.update.items[prop=map_position].state.value[0]": "data.latitude",
+            "dialogs.update.items[prop=map_position].state.value[1]": "data.longitude"
+          }
         }
       ]
     }

@@ -2,6 +2,7 @@
   <el-divider
     :direction="state.direction"
     :content-position="state.contentPosition"
+    :style="{width: width + 'px'}"
   >
     {{ state.value }}
   </el-divider>
@@ -16,6 +17,15 @@ import DividerState from './DividerState'
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: DividerState;
+
+  get width() {
+    return this.state.width
+  }
 }
 </script>
-<style lang="scss" scoped></style>
+
+<style lang="scss" scoped>
+::v-deep .el-divider__text {
+  position: relative;
+}
+</style>

@@ -34,12 +34,27 @@
             "recommended": "model_sence.recommended",
             "activity_date_sort": "model_sence.activity_date_sort",
             "created_sort": "model_sence.created_sort",
+            "created": "model_sence.created",
             "status": "model_sence.status",
             "city": "model_sence.city",
             "video": "model_sence.video",
             "periods": "model_sence.periods",
             "date": "model_sence.date",
-            "address": "model_sence.address"
+            "address": "model_sence.address",
+            "keywords": "model_sence.keywords",
+            "video_cover_phone_jcrop": "model_sence.video_cover_phone_jcrop",
+            "content": "model_sence.content",
+            "check_code": "model_sence.check_code",
+            "latitude": "model_sence.latitude",
+            "video_content": "model_sence.video_content",
+            "pay_title": "model_sence.pay_title",
+            "video_cover": "model_sence.video_cover",
+            "buying_tips": "model_sence.buying_tips",
+            "activity_date": "model_sence.activity_date",
+            "cover": "model_sence.cover",
+            "longitude": "model_sence.longitude",
+            "activity_address": "model_sence.activity_address",
+            "cover_phone_jcrop": "model_sence.cover_phone_jcrop"
           }
         }
       }
@@ -69,6 +84,85 @@
             "created_sort": {
               "src": "model_sence.created_sort"
             }
+          }
+        }
+      },
+      "activity/<id>/edit/": {
+        "index": {
+          "id": {
+            "src": "model_sence.id"
+          }
+        },
+        "post": {
+          "pagination": false,
+          "name": "价格编辑",
+          "type": "update",
+          "request": {
+            "video": {
+              "src": "model_sence.video"
+            },
+            "periods": {
+              "src": "model_sence.periods"
+            },
+            "keywords": {
+              "src": "model_sence.keywords"
+            },
+            "city": {
+              "src": "model_sence.city"
+            },
+            "video_cover_phone_jcrop": {
+              "src": "model_sence.video_cover_phone_jcrop"
+            },
+            "title": {
+              "src": "model_sence.title"
+            },
+            "content": {
+              "src": "model_sence.content"
+            },
+            "check_code": {
+              "src": "model_sence.check_code"
+            },
+            "latitude": {
+              "src": "model_sence.latitude"
+            },
+            "video_content": {
+              "src": "model_sence.video_content"
+            },
+            "pay_title": {
+              "src": "model_sence.pay_title"
+            },
+            "video_cover": {
+              "src": "model_sence.video_cover"
+            },
+            "buying_tips": {
+              "src": "model_sence.buying_tips"
+            },
+            "activity_date": {
+              "src": "model_sence.activity_date"
+            },
+            "cover": {
+              "src": "model_sence.cover"
+            },
+            "longitude": {
+              "src": "model_sence.longitude"
+            },
+            "activity_address": {
+              "src": "model_sence.activity_address"
+            },
+            "cover_phone_jcrop": {
+              "src": "model_sence.cover_phone_jcrop"
+            },
+            "activity_type": {
+              "src": "model_sence.activity_type"
+            }
+          }
+        },
+        "get": {
+          "pagination": false,
+          "name": "价格编辑获取",
+          "type": "retrieve",
+          "request": {
+            
           }
         }
       }
@@ -222,6 +316,90 @@
       },
       "created": {
         "title":"创建时间",
+        "type": {
+          "string": {}
+        }
+      },
+      "keywords": {
+        "title":"搜索关键词",
+        "type": {
+          "string": {}
+        }
+      },
+      "video_cover_phone_jcrop": {
+        "title":"视频封面iphone裁切参数",
+        "type": {
+          "string": {}
+        }
+      },
+      "content": {
+        "title":"现场描述",
+        "type": {
+          "string": {}
+        }
+      },
+      "check_code": {
+        "title":"用于核销系统登录的Code",
+        "type": {
+          "integer": {}
+        }
+      },
+      "latitude": {
+        "title":"纬度",
+        "type": {
+          "integer": {}
+        }
+      },
+      "video_content": {
+        "title":"现场花絮",
+        "type": {
+          "string": {}
+        }
+      },
+      "pay_title": {
+        "title":"购买标题",
+        "type": {
+          "string": {}
+        }
+      },
+      "video_cover": {
+        "title":"视频封面",
+        "type": {
+          "string": {}
+        }
+      },
+      "buying_tips": {
+        "title":"购买需知",
+        "type": {
+          "string": {}
+        }
+      },
+      "activity_date": {
+        "title":"演讲日期",
+        "type": {
+          "string": {}
+        }
+      },
+      "cover": {
+        "title":"封面",
+        "type": {
+          "string": {}
+        }
+      },
+      "longitude": {
+        "title":"经度",
+        "type": {
+          "integer": {}
+        }
+      },
+      "activity_address": {
+        "title":"举办地址",
+        "type": {
+          "string": {}
+        }
+      },
+      "cover_phone_jcrop": {
+        "title":"封面iphone参数",
         "type": {
           "string": {}
         }

@@ -8,19 +8,19 @@ const arkfbpFlows = require.context('@/arkfbp/flows', true, /index\.ts$/)
 function getUrl(url: string, data: any, state: any) {
   if (url.indexOf('<') !== -1 && url.indexOf('{') !== -1) {
     const firstUrl = parseUrlAngle(url, data);
-    const finalUrl = parseUrlBracket(firstUrl, state)
+    const finalUrl = parseUrlBrace(firstUrl, state)
     return finalUrl
   }
   if (url.indexOf('<') !== -1) {
     return parseUrlAngle(url, data);
   }
   if (url.indexOf('{') !== -1) {
-    return parseUrlBracket(url, state)
+    return parseUrlBrace(url, state)
   }
   return url
 }
 
-function parseUrlBracket(url: string, state: any) {
+function parseUrlBrace(url: string, state: any) {
   const bracketSet = url.match(/{/g) || 0
   const bracketPropsSet = url.match(/({)(\S*?)(?=})/g)
   const bracketNumber = !bracketSet ? 0 : bracketSet.length
@@ -125,6 +125,9 @@ export async function runFlow(state: any, flow: any, data: any) {
           } else if (v.includes('columns[prop=')) {
             const res = Filter(v, temp)
             temp = temp['cloumns'][res]
+          } else if (v.includes('[')) {
+            const res = Filter(v, temp)
+            temp = temp[res]
           } else {
             temp = temp[v]
           }

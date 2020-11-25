@@ -60,8 +60,6 @@ export default class extends Vue {
   @Prop({ required: true }) state!: DropdownState;
 
   async handleCommand(command: any) {
-    console.log('click the value', command)
-    console.log('click the data', this.state.data)
     if (this.state.action) {
       await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
     }
