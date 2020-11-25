@@ -4,7 +4,7 @@ export class Change extends FunctionNode {
     const realState = this.inputs.params.columns[4]
     
     const realStateArr = realState.rowRealState
-    // debugger
+    debugger
     console.log('realState', realState)
     console.log('realStateArr', realStateArr)
     console.log('realStateArr length', realStateArr.length)

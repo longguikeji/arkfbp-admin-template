@@ -35,8 +35,8 @@ export default class extends Vue {
     return AdminModule.adminState
   }
 
-  async mounted() {
-    // debugger
+  async beforeCreate() {
+    debugger
     const requireModule = require.context('@/config/view', false, /\.json$/)
     const files = requireModule.keys().map(e => e.slice(2))
     for (let i = 0; i < files.length; i++) {
@@ -51,10 +51,10 @@ export default class extends Vue {
         await AdminModule.setAdmin(c.config)
       }
     }
-    // debugger
+    debugger
   }
 
-  // async mounted() {
+  // async updated() {
   //   debugger
   //   if (AdminModule.adminState.created) {
   //     const actions = AdminModule.adminState.created.actions || []

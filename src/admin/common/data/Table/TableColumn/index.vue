@@ -39,7 +39,7 @@ export default class extends Vue {
   @Prop({ required: true }) state!: TableColumnState;
 
   getComponentState(scope: any) {
-    // debugger
+    debugger
     if (!this.state.rowRealState) {
       this.state.rowRealState = []
     }

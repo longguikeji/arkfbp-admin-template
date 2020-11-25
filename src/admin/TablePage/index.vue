@@ -49,12 +49,12 @@ export default class extends Vue {
     return this.state.filter
   }
 
-  async mounted() {
-    // debugger
+  mounted() {
+    debugger
     if (this.state.created) {
       const actions = this.state.created.actions || []
       for (let i = 0; i < actions.length; i++) {
-        await AdminModule.adminAction({ action: actions[i] })
+        AdminModule.adminAction({ action: actions[i] })
       }
     }
   }
