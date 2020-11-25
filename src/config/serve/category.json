@@ -1,0 +1,214 @@
+{
+  "category": {
+    "name": "category",
+    "type": "table",
+    "meta": {
+      "items": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "category"
+          }
+        }
+      },
+      "data": {
+        "required": false,
+        "type": {
+          "object": {
+            "total": "pagination.total",
+            "page": "pagination.page",
+            "page_size": "pagination.page_size",
+            "items": "items"
+          }
+        }
+      },
+      "category": {
+        "title": "演讲类别信息",
+        "required": true,
+        "type": {
+          "object": {
+            "id": "model_category.id",
+            "title": "model_category.title",
+            "img_url": "model_category.img_url",
+            "is_home": "model_category.is_home",
+            "is_valid": "model_category.is_valid"
+          }
+        }
+      }
+    },
+    "api": {
+      "category/": {
+        "post": {
+          "name": "新建类别",
+          "type": "create",
+          "request": {
+            "title": {
+              "src": "model_category.title"
+            },
+            "is_home": {
+              "src": "model_category.is_home"
+            },
+            "img_url": {
+              "src": "model_category.img_url"
+            }
+          },
+          "response": {
+            "category": "category"
+          },
+          "debug": false
+        },
+        "get": {
+          "pagination": true,
+          "name": "查询讲者列表",
+          "type": "retrieve",
+          "request": {
+            "title": {
+              "src": "model_category.title"
+            },
+            "is_home": {
+              "src": "model_category.is_home"
+            },
+            "img_url": {
+              "src": "model_category.img_url"
+            }
+          },
+          "response": {
+            "data": "data"
+          },
+          "debug": false
+        }
+      },
+      "category/<id>/": {
+        "index": {
+          "id": {
+            "src": "model_category.id"
+          }
+        },
+        "patch": {
+          "name": "更新类别",
+          "type": "update",
+          "request": {
+            "title": {
+              "src": "model_category.title"
+            },
+            "is_home": {
+              "src": "model_category.is_home"
+            },
+            "img_url": {
+              "src": "model_category.img_url"
+            }
+          },
+          "response": {
+            "data": "data"
+          }
+        },
+        "delete": {
+          "name": "删除类别",
+          "type": "delete",
+          "request": {}
+        }
+      }
+    }
+  },
+  "pagination": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+      "page": {
+        "title": "页码",
+        "type": {
+          "integer": {}
+        }
+      },
+      "page_size": {
+        "title": "页面大小",
+        "type": {
+          "integer": {
+            "default": 20,
+            "required": false
+          }
+        }
+      },
+      "total": {
+        "title": "总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "count": {
+        "title": "分页总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "next": {
+        "title": "下一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "previous": {
+        "title": "前一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "item": {
+        "title": "列表元素",
+        "type": {
+          "any": {}
+        }
+      },
+      "results": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "item"
+          }
+        }
+      }
+    },
+    "api": {}
+  },
+  "model_category": {
+    "name": "model_category",
+    "type": "",
+    "meta": {
+      "id": {
+        "title": "ID",
+        "type": {
+          "string": {}
+        }
+      },
+      "title": {
+        "title": "类别标题",
+        "type": {
+          "string": {}
+        }
+      },
+      "img_url": {
+        "title": "类别图片",
+        "type": {
+          "string": {}
+        }
+      },
+      "is_home": {
+        "title": "是否显示在首页",
+        "type": {
+          "integer": {}
+        }
+      },
+      "is_valid": {
+        "title": "是否有效",
+        "type": {
+          "integer": {}
+        }
+      }
+    },
+    "api": {}
+  }
+}

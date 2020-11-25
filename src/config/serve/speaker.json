@@ -138,7 +138,7 @@
           "type": "update",
           "request": {
             "name": {
-              "src": "model_speaker.name"
+               "src": "model_speaker.name"
             },
             "avatar_url": {
               "src": "model_speaker.avatar_url"

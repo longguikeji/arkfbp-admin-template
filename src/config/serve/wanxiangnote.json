@@ -1,0 +1,144 @@
+{
+  "wanxiangnote": {
+    "name": "wanxiangnote",
+    "type": "form",
+    "meta": {
+      "items": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "wanxiangnote"
+          }
+        }
+      },
+      "data": {
+        "required": false,
+        "type": {
+          "object": {
+            "total": "pagination.total",
+            "page": "pagination.page",
+            "page_size": "pagination.page_size",
+            "items": "items"
+          }
+        }
+      },
+      "wanxiangnote": {
+        "title": "用于返回的讲者信息",
+        "required": true,
+        "type": {
+          "object": {
+            "content": "model_wanxiangnote.content"
+          }
+        }
+      }
+    },
+    "api": {
+      "wanxiangnote/": {
+        "post": {
+          "name": "新建讲者",
+          "type": "create",
+          "request": {
+            "content": {
+              "src": "model_wanxiangnote.content"
+            }
+          },
+          "response": {
+            "wanxiangnote": "wanxiangnote"
+          },
+          "debug": false
+        },
+        "get": {
+          "pagination": true,
+          "name": "查询讲者列表",
+          "type": "retrieve",
+          "request": {
+            "content": {
+              "src": "model_wanxiangnote.content"
+            }
+          },
+          "response": {
+            "data": "data"
+          },
+          "debug": false
+        }
+      }
+    }
+  },
+  "pagination": {
+    "name": "pagination",
+    "type": "",
+    "meta": {
+      "page": {
+        "title": "页码",
+        "type": {
+          "integer": {}
+        }
+      },
+      "page_size": {
+        "title": "页面大小",
+        "type": {
+          "integer": {
+            "default": 20,
+            "required": false
+          }
+        }
+      },
+      "total": {
+        "title": "总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "count": {
+        "title": "分页总数",
+        "type": {
+          "integer": {}
+        }
+      },
+      "next": {
+        "title": "下一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "previous": {
+        "title": "前一页地址",
+        "type": {
+          "string": {
+            "allow_null": true
+          }
+        }
+      },
+      "item": {
+        "title": "列表元素",
+        "type": {
+          "any": {}
+        }
+      },
+      "results": {
+        "title": "查询结果列表",
+        "type": {
+          "array": {
+            "array_item": "item"
+          }
+        }
+      }
+    },
+    "api": {}
+  },
+  "model_wanxiangnote": {
+    "name": "model_wanxiangnote",
+    "type": "",
+    "meta": {
+      "content": {
+        "title": "笔记本内容",
+        "type": {
+          "string": {}
+        }
+      }
+    },
+    "api": {}
+  }
+}

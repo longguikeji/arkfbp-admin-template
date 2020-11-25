@@ -1,9 +1,10 @@
 {
   "created": {
-    "actions": ["retrieve"]
+    "actions": ["fetch"]
   },
-  "type": "examplethree",
-  "title": "笔记本管理",
+  "name": "wanxiangnote",
+  "type": "form",
+  "title": "万象笔记",
   "buttons": [
     {
       "label": "更新",
@@ -25,13 +26,13 @@
     ]
   },
   "actions": {
-    "meta": {
+    "fetch": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
           "type": "api",
-          "url": "wanxiang/note/",
           "method": "GET",
+          "url": "wanxiang/note/",
           "client_config": {
             "form.items[prop=content].state.value": "data.content"
           }
@@ -41,7 +42,7 @@
     "update": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.update",
           "type": "api",
           "method": "POST",
           "url": "wanxiang/note/",

@@ -18,4 +18,8 @@ export default class extends Vue {
   @Prop({ required: true }) state!: DividerState;
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-divider--horizontal {
+  min-width: 600px;
+}
+</style>

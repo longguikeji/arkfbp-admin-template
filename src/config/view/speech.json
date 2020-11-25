@@ -1,12 +1,13 @@
 {
   "created": {
-    "actions": ["retrieve"]
+    "actions": ["options", "fetch"]
   },
-  "type": "exampletwo",
-  "title": "演讲管理",
+  "name": "speech",
+  "type": "table",
+  "title": "讲者管理",
   "buttons": [
     {
-      "label": "新建",
+      "label": "新建演讲",
       "action": "showCreateDialog",
       "type": "primary",
       "size": "small"
@@ -18,23 +19,14 @@
     "items": [
       {
         "type": "Input",
-        "label": "演讲标题",
-        "prop": "title",
-        "state": {
-          "value": ""
-        }
+        "prop": "title"
       },
       {
         "type": "Input",
-        "label": "讲者",
-        "prop": "speaker_name",
-        "state": {
-          "value": ""
-        }
+        "prop": "speaker_name"
       },
       {
         "type": "DatePicker",
-        "label": "开始时间",
         "prop": "begin_time",
         "state": {
           "value": ""
@@ -42,7 +34,6 @@
       },
       {
         "type": "DatePicker",
-        "label": "结束时间",
         "prop": "end_time",
         "state": {
           "value": ""
@@ -50,43 +41,40 @@
       },
       {
         "type": "Select",
-        "label": "状态",
         "prop": "status",
         "state": {
           "value": "",
           "options": [
             {
-              "value": 0,
-              "label": "未发布"
+              "label": "已发布",
+              "value": 0
             },
             {
-              "value": 1,
-              "label": "已发布"
+              "label": "未发布",
+              "value": 1
             }
           ]
         }
       },
       {
         "type": "Select",
-        "label": "推荐",
         "prop": "recommended",
         "state": {
           "value": "",
           "options": [
             {
-              "value": 0,
-              "label": "未推荐"
+              "label": "未推荐",
+              "value": 0
             },
             {
-              "value": 1,
-              "label": "已推荐"
+              "label": "已推荐",
+              "value": 1
             }
           ]
         }
       },
       {
         "type": "Select",
-        "label": "演讲类别",
         "prop": "speechcategory",
         "state": {
           "value": "",
@@ -101,21 +89,21 @@
           "action": "toFilter"
         }
       }
+    
     ]
   },
   "table": {
     "columns": [
       {
-        "label": "#",
         "prop": "id"
       },
       {
-        "label": "演讲标题",
         "prop": "title"
       },
-      { "label": "讲者", "prop": "speaker_name" },
       {
-        "label": "演讲类别",
+        "prop": "speaker_name"
+      },
+      {
         "prop": "speechcategory",
         "scope": {
           "type": "Select",
@@ -127,18 +115,22 @@
           }
         }
       },
-      { "label": "演讲日期", "prop": "speechdate" },
-      { "label": "播放量", "prop": "total_play_count" },
       {
-        "label": "视频封面",
+        "prop": "speechdate"
+      },
+      {
+        "prop": "total_play_count"
+      },
+      {
         "prop": "video_cover",
         "scope": {
           "type": "ImageBox",
-          "state": {}
+          "state": {
+            "value": ""
+          }
         }
       },
       {
-        "label": "视频",
         "prop": "video",
         "scope": {
           "type": "Link",
@@ -148,7 +140,6 @@
         }
       },
       {
-        "label": "音频",
         "prop": "audio",
         "scope": {
           "type": "Link",
@@ -158,7 +149,6 @@
         }
       },
       {
-        "label": "状态",
         "prop": "status",
         "scope": {
           "type": "Select",
@@ -167,19 +157,18 @@
             "readonly": true,
             "options": [
               {
-                "value": 0,
-                "label": "已发布"
+                "label": "已发布",
+                "value": 0
               },
               {
-                "value": 1,
-                "label": "未发布"
+                "label": "未发布",
+                "value": 1
               }
             ]
           }
         }
       },
       {
-        "label": "推荐",
         "prop": "recommended",
         "scope": {
           "type": "Select",
@@ -188,20 +177,21 @@
             "readonly": true,
             "options": [
               {
-                "value": 0,
-                "label": "未推荐"
+                "label": "未推荐",
+                "value": 0
               },
               {
-                "value": 1,
-                "label": "推荐"
+                "label": "已推荐",
+                "value": 1
               }
             ]
           }
         }
       },
       {
-        "label": "操作",
         "prop": "action",
+        "width": 250,
+        "title": "操作",
         "scope": {
           "type": "ButtonArray",
           "state": [
@@ -223,18 +213,17 @@
   },
   "pagination": {
     "currentPage": 1,
-    "pageCount": 10,
+    "pageSize": 20,
     "total": 0,
     "background": "",
     "action": "toFilter"
   },
   "dialogs": {
     "create": {
-      "title": "新建",
+      "title": "新建演讲",
       "items": [
         {
           "type": "Select",
-          "label": "第一类别",
           "prop": "first_speechcategory",
           "state": {
             "value": "",
@@ -243,33 +232,16 @@
         },
         {
           "type": "Select",
-          "label": "演讲类别",
           "prop": "speechcategory",
           "state": {
             "value": "",
             "options": []
           }
         },
-        {
-          "type": "Input",
-          "label": "演讲标题",
-          "prop": "title",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "题语",
-          "prop": "titlelanguage",
-          "state": {
-            "type": "textarea",
-            "value": ""
-          }
-        },
+        "title",
+        "titlelanguage",
         {
           "type": "InputNumber",
-          "label": "期数",
           "prop": "periods",
           "state": {
             "value": ""
@@ -277,7 +249,6 @@
         },
         {
           "type": "DatePicker",
-          "label": "演讲日期",
           "prop": "speechdate",
           "state": {
             "value": ""
@@ -285,49 +256,25 @@
         },
         {
           "type": "DatePicker",
-          "label": "发布时间",
           "prop": "release_time",
           "state": {
             "value": "",
             "type": "datetime"
           }
         },
-        {
-          "type": "Input",
-          "label": "演讲城市",
-          "prop": "speechcity",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "关键字（空格分隔）",
-          "prop": "keywords",
-          "state": {
-            "value": ""
-          }
-        },
+        "speechcity",
+        "keywords",
         {
           "type": "Select",
-          "label": "讲者ID",
           "prop": "speaker",
           "state": {
             "value": "",
             "options": []
           }
         },
-        {
-          "type": "Input",
-          "label": "爬取演讲稿地址",
-          "prop": "link",
-          "state": {
-            "value": ""
-          }
-        },
+        "link",
         {
           "type": "Rich",
-          "label": "演讲稿",
           "prop": "draft",
           "state": {
             "value": ""
@@ -335,15 +282,6 @@
         },
         {
           "type": "InputNumber",
-          "label": "额外的播放量",
-          "prop": "additional_play_count",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "InputNumber",
-          "label": "额外的收藏量",
           "prop": "additional_collection_count",
           "state": {
             "value": ""
@@ -351,45 +289,41 @@
         },
         {
           "type": "InputNumber",
-          "label": "额外的分享量",
+          "prop": "additional_play_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "InputNumber",
           "prop": "additional_share_count",
           "state": {
             "value": ""
           }
         },
+
         {
-          "type": "Select",
-          "label": "选择推荐演讲",
-          "prop": "video_recommended",
-          "state": {
-            "value": "",
-            "options": []
-          }
-        },  {
-          "type": "Upload",
-          "label": "视频",
+          "type": "upload",
           "prop": "video",
           "state": {
-            "type": "video",
-            "value": ""
+            "value": "",
+            "type": "video"
           }
         },
         {
-          "type": "Upload",
-          "label": "视频封面",
+          "type": "upload",
           "prop": "video_cover",
           "state": {
-            "type": "image",
-            "value": ""
+            "value": "",
+            "type": "image"
           }
         },
         {
-          "type": "Upload",
-          "label": "音频",
+          "type": "upload",
           "prop": "audio",
           "state": {
-            "type": "video",
-            "value": ""
+            "value": "",
+            "type": "video"
           }
         }
       ],
@@ -405,11 +339,10 @@
       "attributes": {}
     },
     "update": {
-      "title": "编辑",
+      "titles": "编辑",
       "items": [
         {
           "type": "Select",
-          "label": "第一类别",
           "prop": "first_speechcategory",
           "state": {
             "value": "",
@@ -418,33 +351,16 @@
         },
         {
           "type": "Select",
-          "label": "演讲类别",
           "prop": "speechcategory",
           "state": {
             "value": "",
             "options": []
           }
         },
-        {
-          "type": "Input",
-          "label": "演讲标题",
-          "prop": "title",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "题语",
-          "prop": "titlelanguage",
-          "state": {
-            "type": "textarea",
-            "value": ""
-          }
-        },
+        "title",
+        "titlelanguage",
         {
           "type": "InputNumber",
-          "label": "期数",
           "prop": "periods",
           "state": {
             "value": ""
@@ -452,7 +368,6 @@
         },
         {
           "type": "DatePicker",
-          "label": "演讲日期",
           "prop": "speechdate",
           "state": {
             "value": ""
@@ -460,49 +375,25 @@
         },
         {
           "type": "DatePicker",
-          "label": "发布时间",
           "prop": "release_time",
           "state": {
             "value": "",
             "type": "datetime"
           }
         },
-        {
-          "type": "Input",
-          "label": "演讲城市",
-          "prop": "speechcity",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "Input",
-          "label": "关键字（空格分隔）",
-          "prop": "keywords",
-          "state": {
-            "value": ""
-          }
-        },
+        "speechcity",
+        "keywords",
         {
           "type": "Select",
-          "label": "讲者ID",
           "prop": "speaker",
           "state": {
             "value": "",
             "options": []
           }
         },
-        {
-          "type": "Input",
-          "label": "爬取演讲稿地址",
-          "prop": "link",
-          "state": {
-            "value": ""
-          }
-        },
+        "link",
         {
           "type": "Rich",
-          "label": "演讲稿",
           "prop": "draft",
           "state": {
             "value": ""
@@ -510,15 +401,6 @@
         },
         {
           "type": "InputNumber",
-          "label": "额外的播放量",
-          "prop": "additional_play_count",
-          "state": {
-            "value": ""
-          }
-        },
-        {
-          "type": "InputNumber",
-          "label": "额外的收藏量",
           "prop": "additional_collection_count",
           "state": {
             "value": ""
@@ -526,53 +408,47 @@
         },
         {
           "type": "InputNumber",
-          "label": "额外的分享量",
+          "prop": "additional_play_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "InputNumber",
           "prop": "additional_share_count",
           "state": {
             "value": ""
           }
         },
         {
-          "type": "Select",
-          "label": "选择推荐演讲",
-          "prop": "video_recommended",
-          "state": {
-            "value": "",
-            "options": []
-          }
-        },
-        {
-          "type": "Upload",
-          "label": "视频",
+          "type": "upload",
           "prop": "video",
           "state": {
-            "type": "video",
-            "value": ""
+            "value": "",
+            "type": "video"
           }
         },
         {
-          "type": "Upload",
-          "label": "视频封面",
+          "type": "upload",
           "prop": "video_cover",
           "state": {
-            "type": "image",
-            "value": ""
+            "value": "",
+            "type": "image"
           }
         },
         {
-          "type": "Upload",
-          "label": "音频",
+          "type": "upload",
           "prop": "audio",
           "state": {
-            "type": "video",
-            "value": ""
+            "value": "",
+            "type": "video"
           }
         }
       ],
       "actions": [
         {
           "label": "确定",
-          "action": "update",
+          "action": "edit",
           "close": true,
           "type": "primary"
         }
@@ -582,20 +458,10 @@
     }
   },
   "actions": {
-    "meta": {
+    "options": {
       "flows": [
         {
-          "name": "retrieve",
-          "type": "api",
-          "url": "speech/",
-          "method": "GET",
-          "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
-          }
-        },
-        {
-          "name": "retrieve",
+          "name": "arkfbp.flows.options",
           "type": "api",
           "url": "category/drop/",
           "method": "GET",
@@ -606,10 +472,66 @@
         }
       ]
     },
+    "fetch": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_title": "filter.items[prop=title].state.value",
+            "speaker_name": "filter.items[prop=speaker_name].state.value",
+            "param_begin_time": "filter.items[prop=begin_time].state.value",
+            "param_end_time": "filter.items[prop=end_time].state.value",
+            "param_status": "filter.items[prop=status].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value",
+            "param_speechcategory": "filter.items[prop=speechcategory].state.value"
+          },
+          "url": "speech/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total",
+            "pagination.currentPage": "data.page",
+            "pagination.pageSize": "data.page_size"
+          }
+        }
+      ]
+    },
     "toFilter": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "speech/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageSize",
+            "param_title": "filter.items[prop=title].state.value",
+            "speaker_name": "filter.items[prop=speaker_name].state.value",
+            "param_begin_time": "filter.items[prop=begin_time].state.value",
+            "param_end_time": "filter.items[prop=end_time].state.value",
+            "param_status": "filter.items[prop=status].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value",
+            "param_speechcategory": "filter.items[prop=speechcategory].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "doFilter"
+        }
+      ]
+    },
+    "doFilter": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "speech/",
@@ -625,8 +547,7 @@
             "param_speechcategory": "filter.items[prop=speechcategory].state.value"
           },
           "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
+            "table.data": "data.items"
           }
         }
       ]
@@ -634,14 +555,14 @@
     "showCreateDialog": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.create.visible": true
           }
         },
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.options",
           "type": "api",
           "url": "category/drop/",
           "method": "GET",
@@ -651,7 +572,7 @@
           }
         },
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.options",
           "type": "api",
           "url": "speech/drop/",
           "method": "GET",
@@ -660,7 +581,7 @@
           }
         },
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.options",
           "type": "api",
           "url": "speaker/drop/",
           "method": "GET",
@@ -673,10 +594,10 @@
     "create": {
       "flows": [
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.update",
           "type": "api",
           "method": "POST",
-          "url": "speech/create/",
+          "url": "speech/",
           "request": {}
         }
       ]
@@ -684,20 +605,45 @@
     "showUpdateDialog": {
       "flows": [
         {
-          "name": "assign",
+          "name": "arkfbp.flows.assign",
           "type": "assign",
           "client_config": {
             "dialogs.update.visible": true
           }
         },
         {
-          "name": "retrieve",
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "url": "category/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=first_speechcategory].state.options": "data.items",
+            "dialogs.update.items[prop=speechcategory].state.options": "data.items"
+          }
+        },
+        {
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "url": "speech/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=video_recommended].state.options": "data.items"
+          }
+        },
+        {
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "url": "speaker/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=speaker].state.options": "data.items"
+          }
+        },
+        {
+          "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
           "url": "speech/<id>/edit/",
-          "index": {
-            "id": ""
-          },
           "client_config": {
             "dialogs.update.items[prop=title].state.value": "data.title",
             "dialogs.update.items[prop=periods].state.value": "data.periods",
@@ -713,8 +659,33 @@
             "dialogs.update.items[prop=additional_share_count].state.value": "data.additional_share_count",
             "dialogs.update.items[prop=video_cover].state.value": "data.video_cover",
             "dialogs.update.items[prop=video].state.value": "data.video",
-            "dialogs.update.items[prop=audio].state.value": "data.audio"
+            "dialogs.update.items[prop=audio].state.value": "data.audio",
+            "dialogs.update.items[prop=speaker].state.value": "data.speaker",
+            "dialogs.update.items[prop=video_recommended].state.value": "data.video_recommended",
+            "dialogs.update.items[prop=first_speechcategory].state.value": "data.first_speechcategory",
+            "dialogs.update.items[prop=speechcategory].state.value": "data.speechcategory"
           }
+        }
+      ]
+    },
+    "edit": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.update",
+          "type": "api",
+          "method": "POST",
+          "url": "speech/<id>/edit/",
+          "request": {}
+        }
+      ]
+    },
+    "delete": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.update",
+          "type": "api",
+          "method": "GET",
+          "url": "speech/<id>/delete/"
         }
       ]
     }

@@ -94,5 +94,4 @@ export default class extends Vue {
 ::v-deep .el-form-item__label {
   width: 100px;
 }
-
 </style>

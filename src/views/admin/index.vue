@@ -42,15 +42,12 @@ export default class extends Vue {
       const file = files[i]
       const page = file.split('.')[0]
       if (window.location.href.includes(page)) {
-        const viewconfig: any = require(`@/config/view/${page}.json`) // eslint-disable-line
-        const serveconfig: any = require(`@/config/serve/${page}.json`) // eslint-disable-line
-
+        const viewconfig: any = require(`@/config/view/${page}.json`); // eslint-disable-line
+        const serveconfig: any = require(`@/config/serve/${page}.json`); // eslint-disable-line
         const c: any = new Config(viewconfig, serveconfig, page)
-
         await AdminModule.setAdmin(c.config)
       }
     }
-
     if (AdminModule.adminState.created) {
       const actions = AdminModule.adminState.created.actions || []
       for (let i = 0; i < actions.length; i++) {

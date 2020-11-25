@@ -27,14 +27,14 @@
     ]
   },
   "page": {
-    "title": "speaker", 
-    "path": "speaker", 
-    "icon": "dashboard", 
+    "title": "speaker",
+    "path": "speaker",
+    "icon": "dashboard",
     "children": [
       {
-        "title": "speaker", 
-        "path": "speaker", 
-        "icon": "dashboard" 
+        "title": "speaker",
+        "path": "speaker",
+        "icon": "dashboard"
       }
     ]
   },
@@ -60,39 +60,25 @@
       }
     ]
   },
-  "exampletwo": {
-    "title": "exampletwo",
-    "path": "exampletwo",
+  "example": {
+    "title": "case",
+    "path": "case",
     "icon": "dashboard",
     "children": [
       {
-        "title": "exampletwo",
-        "path": "exampletwo",
+        "title": "speech",
+        "path": "speech",
         "icon": "dashboard"
-      }
-    ]
-  },
-  "examplethree": {
-    "title": "case",
-    "path": "case",
-    "icon": "dashboard",
-    "children": [
+      },
       {
-        "title": "examplethree", 
-        "path": "examplethree", 
-        "icon": "dashboard" 
-      }
-    ]
-  },
-  "examplefour": {
-    "title": "case",
-    "path": "case",
-    "icon": "dashboard",
-    "children": [
+        "title": "category",
+        "path": "category",
+        "icon": "dashboard"
+      },
       {
-        "title": "examplefour", 
-        "path": "exampletfour", 
-        "icon": "dashboard" 
+        "title": "wanxiangnote",
+        "path": "wanxiangnote",
+        "icon": "dashboard"
       }
     ]
   },
@@ -114,9 +100,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "zhiya", 
-        "path": "zhiya", 
-        "icon": "dashboard" 
+        "title": "zhiya",
+        "path": "zhiya",
+        "icon": "dashboard"
       }
     ]
   },
@@ -126,9 +112,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "comment", 
-        "path": "comment", 
-        "icon": "dashboard" 
+        "title": "comment",
+        "path": "comment",
+        "icon": "dashboard"
       }
     ]
   },
@@ -138,9 +124,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "fifthpage", 
-        "path": "fifthpage", 
-        "icon": "dashboard" 
+        "title": "fifthpage",
+        "path": "fifthpage",
+        "icon": "dashboard"
       }
     ]
   }
