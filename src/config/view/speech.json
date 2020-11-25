@@ -89,6 +89,7 @@
           "action": "toFilter"
         }
       }
+    
     ]
   },
   "table": {
@@ -597,9 +598,7 @@
           "type": "api",
           "method": "POST",
           "url": "speech/",
-          "request": {
-           
-          }
+          "request": {}
         }
       ]
     },
@@ -676,9 +675,7 @@
           "type": "api",
           "method": "POST",
           "url": "speech/<id>/edit/",
-          "request": {
-           
-          }
+          "request": {}
         }
       ]
     },

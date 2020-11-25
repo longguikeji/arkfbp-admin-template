@@ -1,13 +1,13 @@
 {
-  "wanxiangnote": {
-    "name": "wanxiangnote",
-    "type": "form",
+  "speaker": {
+    "name": "speaker",
+    "type": "table",
     "meta": {
       "items": {
         "title": "查询结果列表",
         "type": {
           "array": {
-            "array_item": "wanxiangnote"
+            "array_item": "speaker"
           }
         }
       },
@@ -22,28 +22,30 @@
           }
         }
       },
-      "wanxiangnote": {
+      "speaker": {
         "title": "用于返回的讲者信息",
         "required": true,
         "type": {
           "object": {
-            "content": "model_wanxiangnote.content"
+            "id": "model_speaker.id"
+         
           }
         }
       }
     },
     "api": {
-      "wanxiangnote/": {
+      "speaker/": {
         "post": {
           "name": "新建讲者",
           "type": "create",
           "request": {
-            "content": {
-              "src": "model_wanxiangnote.content"
+            "name": {
+              "src": "model_speaker.name"
             }
+            
           },
           "response": {
-            "wanxiangnote": "wanxiangnote"
+            "speaker": "speaker"
           },
           "debug": false
         },
@@ -52,14 +54,38 @@
           "name": "查询讲者列表",
           "type": "retrieve",
           "request": {
-            "content": {
-              "src": "model_wanxiangnote.content"
+            "name": {
+              "src": "model_speaker.name"
             }
           },
           "response": {
             "data": "data"
           },
           "debug": false
+        }
+      },
+      "speaker/<id>/": {
+        "index": {
+          "id": {
+            "src": "model_speaker.id"
+          }
+        },
+        "patch": {
+          "name": "更新讲者",
+          "type": "update",
+          "request": {
+            "name": {
+               "src": "model_speaker.name"
+            }
+          },
+          "response": {
+            "data": "data"
+          }
+        },
+        "delete": {
+          "name": "删除讲者",
+          "type": "delete",
+          "request": {}
         }
       }
     }
@@ -128,16 +154,17 @@
     },
     "api": {}
   },
-  "model_wanxiangnote": {
-    "name": "model_wanxiangnote",
+  "model_speaker": {
+    "name": "model_speaker",
     "type": "",
     "meta": {
-      "content": {
-        "title": "笔记本内容",
+      "id": {
+        "title": "讲者ID",
         "type": {
           "string": {}
         }
       }
+   
     },
     "api": {}
   }

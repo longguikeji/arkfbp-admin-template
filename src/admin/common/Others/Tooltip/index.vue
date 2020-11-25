@@ -16,16 +16,19 @@
     :hide-after="state.hideAfter"
     :tabindex="state.tabindex"
   >
-    <el-button>{{ state.btn }}</el-button>
+    <AdminComponent :state="state" />
   </el-tooltip>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import TooltipState from './TooltipState'
-
+import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 @Component({
-  name: 'Tooltip'
+  name: 'Tooltip',
+  components: {
+    AdminComponent
+  }
 })
 export default class extends Vue {
   @Prop({ required: true }) state!: TooltipState;

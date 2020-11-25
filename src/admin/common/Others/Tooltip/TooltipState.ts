@@ -13,5 +13,4 @@ export default interface TooltipState {
   enterable: boolean; //	鼠标是否可进入到 tooltip 中	Boolean	—	true
   hideAfter: number; //	Tooltip 出现后自动隐藏延时，单位毫秒，为 0 则不会自动隐藏	number	—	0
   tabindex: number; //	Tooltip 组件的 tabindex	number	—	0
-  btn:string;
 }
