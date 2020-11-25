@@ -1,5 +1,5 @@
 {
-  "speaker": {
+  "wanxiangnote": {
     "name": "wanxiangnote",
     "type": "form",
     "meta": {
@@ -34,7 +34,11 @@
         "get": {
           "name": "万象笔记获取",
           "type": "retrieve",
-          "request": {},
+          "request": {
+            "content": {
+              "src": "model_wanxiangnote.content"
+            }
+          },
           "response": {
             "data": "data"
           }

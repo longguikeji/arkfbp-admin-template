@@ -1,57 +1,58 @@
 {
-  "created": {
-    "actions": ["fetch"]
-  },
-  "name":"wanxiangnote",
-  "type": "form",
-  "title": "笔记本管理",
-  "buttons": [
-    {
-      "label": "更新",
-      "action": "update",
-      "type": "primary",
-      "size": "small"
-    }
-  ],
-  "form": {
-    "items": [
+    "created": {
+      "actions": ["fetch"]
+    },
+    "name":"wanxiangnote",
+    "type": "form",
+    "title": "笔记本管理",
+    "buttons": [
       {
-        "type": "Rich",
-        "label": "笔记本内容",
-        "prop": "content",
-        "state": {
-          "value": ""
-        }
+        "label": "更新",
+        "action": "update",
+        "type": "primary",
+        "size": "small"
       }
-    ]
-  },
-  "actions": {
-    "fetch": {
-      "flows": [
+    ],
+    "form": {
+      "items": [
         {
-          "name": "arkfbp.flows.fetch",
-          "type": "api",
-          "method": "GET",
-          "url": "wanxiang/note/",
-          "client_config": {
-            "form.items[prop=content].state.value": "data.content"
+          "type": "Rich",
+          "prop": "content",
+          "state": {
+            "value": ""
           }
         }
       ]
     },
-    "update": {
-      "flows": [
-        {
-          "name": "arkfbp.flows.update",
-          "type": "api",
-          "method": "POST",
-          "url": "wanxiang/note/",
-          "request": {
-            "content": "form.items[prop=content].state.value"
+    "actions": {
+      "fetch": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.fetch",
+            "type": "api",
+            "method": "GET",
+            "url": "wanxiang/note/",
+            "client_config": {
+              "form.items[prop=content].state.value": "data.content"
+            }
           }
-        }
-      ]
-     
+        ]
+      },
+      "update": {
+        "flows": [
+          {
+            "name": "arkfbp.flows.update",
+            "type": "api",
+            "method": "POST",
+            "url": "wanxiang/note/",
+            "request": {
+              "content": "form.items[prop=content].state.value"
+            }
+          }
+        ]
+       
+      }
     }
   }
-}
+  
+  

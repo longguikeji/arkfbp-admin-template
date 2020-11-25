@@ -1,13 +1,14 @@
 {
   "created": {
-    "actions": ["retrieve"]
+    "actions": ["fetch"]
   },
+  "name": "category",
   "type": "table",
   "title": "类别管理",
   "buttons": [
     {
-      "label": "编辑",
-      "action": "showUpdateDialogs",
+      "label": "新建类别",
+      "action": "showCreateDialog",
       "type": "primary",
       "size": "small"
     }
@@ -18,9 +19,40 @@
     "items": [
       {
         "type": "Input",
-        "prop": "title",
+        "prop": "title"
+      },
+      {
+        "type": "Select",
+        "prop": "is_valid",
         "state": {
-          "value": ""
+          "value": "",
+          "options": [
+            {
+              "label": "无效",
+              "value": 0
+            },
+            {
+              "label": "有效",
+              "value": 1
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "prop": "is_home",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "label": "否",
+              "value": 0
+            },
+            {
+              "label": "是",
+              "value": 1
+            }
+          ]
         }
       },
       {
@@ -28,7 +60,7 @@
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "retrieve"
+          "action": "toFilter"
         }
       }
     ]
@@ -49,23 +81,37 @@
         }
       },
       {
+        "type": "Select",
         "prop": "is_home",
-        "scope": {
-          "type": "Select",
-          "state": {
-            "value": "",
-            "readonly": true,
-            "options": [
-              {
-                "value": 0,
-                "label": "否"
-              },
-              {
-                "value": 1,
-                "label": "是"
-              }
-            ]
-          }
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "label": "否",
+              "value": 0
+            },
+            {
+              "label": "是",
+              "value": 1
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "prop": "is_valid",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "label": "无效",
+              "value": 0
+            },
+            {
+              "label": "有效",
+              "value": 1
+            }
+          ]
         }
       },
       {
@@ -88,29 +134,9 @@
         }
       },
       {
-        "label": "是否有效",
-        "prop": "is_valid",
-        "scope": {
-          "type": "Select",
-          "state": {
-            "value": "",
-            "readonly": true,
-            "options": [
-              {
-                "value": 0,
-                "label": "否"
-              },
-              {
-                "value": 1,
-                "label": "是"
-              }
-            ]
-          }
-        }
-      },
-      {
-        "label": "操作",
         "prop": "action",
+        "width": 250,
+        "title": "操作",
         "scope": {
           "type": "ButtonArray",
           "state": [
@@ -132,13 +158,117 @@
   },
   "pagination": {
     "currentPage": 1,
-    "pageCount": 10,
+    "pageSize": 20,
     "total": 0,
     "background": "",
-    "action": "retrieve"
+    "action": "toFilter"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        "title",
+        {
+          "type": "Select",
+          "prop": "is_home",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "label": "否",
+                "value": 0
+              },
+              {
+                "label": "是",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "type": "upload",
+          "prop": "img_url",
+          "state": {
+            "value": "",
+            "type": "image"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "create",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
+    },
+    "update": {
+      "titles": "编辑",
+      "items": [
+        "title",
+        {
+          "type": "Select",
+          "prop": "is_home",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "label": "否",
+                "value": 0
+              },
+              {
+                "label": "是",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "type": "upload",
+          "prop": "img_url",
+          "state": {
+            "value": "",
+            "type": "image"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "edit",
+          "close": true,
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "attributes": {}
+    }
   },
   "actions": {
-    "retrieve": {
+    "fetch": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageSize"
+          },
+          "url": "category/",
+          "method": "GET",
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total",
+            "pagination.currentPage": "data.page",
+            "pagination.pageSize": "data.page_size"
+          }
+        }
+      ]
+    },
+    "toFilter": {
       "flows": [
         {
           "name": "arkfbp.flows.fetch",
@@ -147,12 +277,113 @@
           "url": "category/",
           "request": {
             "page": "pagination.currentPage",
-            "page_size": "pagination.pageCount"
+            "page_size": "pagination.pageSize",
+            "param_title": "filter.items[prop=title].state.value",
+            "param_is_home": "filter.items[prop=is_home].state.value",
+            "param_is_valid": "filter.items[prop=is_valid].state.value"
           },
           "client_config": {
-            "table.data": "data.items",
-            "pagination.total": "data.total"
+            "table.data": "data.items"
           }
+        }
+      ],
+      "next": [
+        {
+          "action": "doFilter"
+        }
+      ]
+    },
+    "doFilter": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "category/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_title": "filter.items[prop=title].state.value",
+            "param_is_home": "filter.items[prop=is_home].state.value",
+            "param_is_valid": "filter.items[prop=is_valid].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items"
+          }
+        }
+      ]
+    },
+    "upHandler": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "category/<id>/up/"
+        }
+      ]
+    },
+    "downHandler": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "category/<id>/down/"
+        }
+      ]
+    },
+    "delete": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.update",
+          "type": "api",
+          "method": "GET",
+          "url": "category/<id>/delete/"
+        }
+      ]
+    },
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "category/<id>/edit/",
+          "client_config": {
+            "dialogs.update.items[prop=title].state.value": "data.title",
+            "dialogs.update.items[prop=img_url].state.value": "data.img",
+            "dialogs.update.items[prop=is_home].state.value": "data.is_home"
+          }
+        }
+      ]
+    },
+    "edit": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.update",
+          "type": "api",
+          "method": "POST",
+          "url": "category/<id>/edit/",
+          "request": {}
         }
       ]
     }
