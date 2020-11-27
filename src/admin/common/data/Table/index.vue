@@ -30,10 +30,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import TableState from './TableState'
 import TableColumn from './TableColumn/index.vue'
 import { runAction } from '@/arkfbp/index'
+import TableColumnState from './TableColumn/TableColumnState'
 @Component({
   name: 'Table',
   components: {

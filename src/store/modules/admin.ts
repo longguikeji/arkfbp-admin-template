@@ -25,7 +25,8 @@ class Admin extends VuexModule implements IAdminState {
   public async adminAction(payload: { action: string, data?: any}) {
     const { action, data } = payload
 
-    const adminState = cloneDeep(this.adminState)
+    // const adminState = cloneDeep(this.adminState)
+    const adminState = this.adminState
 
     if (!adminState.actions || !adminState.actions[action]) {
       return
@@ -34,9 +35,11 @@ class Admin extends VuexModule implements IAdminState {
     const flows = adminState.actions[action].flows
 
     for (let i = 0; i < flows.length; i++) {
+      // debugger
       await runFlow(adminState, flows[i], data)
     }
 
+    // const newAdminState = cloneDeep(this.adminState)
     this.CHANGE_ADMIN(adminState)
 
     if (adminState.actions[action].next) {
@@ -48,7 +51,6 @@ class Admin extends VuexModule implements IAdminState {
         })
       }
     }
-
   }
 }
 

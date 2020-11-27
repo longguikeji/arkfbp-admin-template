@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
 import TablePageState from './TablePageState'
 import Card from '@/admin/common/Card/index.vue'
 import Table from '@/admin/common/data/Table/index.vue'
@@ -28,6 +28,8 @@ import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
 import { AdminModule } from '@/store/modules/admin'
+import BaseVue from '../base/BaseVue'
+import { mapGetters } from 'vuex'
 @Component({
   name: 'TablePage',
   components: {
@@ -39,7 +41,7 @@ import { AdminModule } from '@/store/modules/admin'
     Dialog
   }
 })
-export default class extends Vue {
+export default class extends Mixins(BaseVue) {
   @Prop({ required: true }) state!: TablePageState;
 
   getFilterFormState() {
@@ -49,15 +51,15 @@ export default class extends Vue {
     return this.state.filter
   }
 
-  mounted() {
-    debugger
-    if (this.state.created) {
-      const actions = this.state.created.actions || []
-      for (let i = 0; i < actions.length; i++) {
-        AdminModule.adminAction({ action: actions[i] })
-      }
-    }
-  }
+  // mounted() {
+  //   //debugger
+  //   if (this.state.created) {
+  //     const actions = this.state.created.actions || []
+  //     for (let i = 0; i < actions.length; i++) {
+  //       AdminModule.adminAction({ action: actions[i] })
+  //     }
+  //   }
+  // }
 }
 </script>
 

@@ -38,7 +38,7 @@ export default class extends mixins(ResizeMixin) {
   private initChart() {
     this.chart = echarts.init(document.getElementById(this.id) as HTMLDivElement)
     const xData = (function() {
-      const data = []
+      const data:Array<string> = []
       for (let i = 1; i < 13; i++) {
         data.push(i + 'month')
       }

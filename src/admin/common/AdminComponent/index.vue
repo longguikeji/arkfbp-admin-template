@@ -1,6 +1,6 @@
 <template>
   <el-badge
-    v-if="state.state.badge"
+    v-if="state.state && state.state.badge"
     :value="state.state.badge.value"
     :max="state.state.badge.max"
     :is-dot="state.state.badge.idDot"

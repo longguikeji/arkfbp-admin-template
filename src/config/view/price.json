@@ -129,7 +129,14 @@
         }
       ]
     },
-    
+    "tableButton":{
+      "flows":[
+        {
+          "name": "flows.tableButton",
+          "request": "table"
+        }
+      ]
+    },
     "showCreateDialog": {
       "flows": [
         {
