@@ -1,3 +1,4 @@
+
 {
   "case": {
     "title": "case",
@@ -109,8 +110,8 @@
     ]
   },
   "zhiya": {
-    "title": "case",
-    "path": "case",
+    "title": "zhiya",
+    "path": "zhiya",
     "icon": "dashboard",
     "children": [
       {

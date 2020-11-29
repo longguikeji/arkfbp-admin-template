@@ -1,5 +1,5 @@
 {
-  "type": "form",
+  "type": "FormPage",
   "title": "ExampleOne",
   "form": {
     "inline": false,

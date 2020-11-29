@@ -49,7 +49,7 @@ export default class extends Mixins(BaseVue) {
         cancelButtonText: '取消',
         type: confirmType
       }).then(async() => {
-        await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
+        await AdminModule.adminAction({ action: this.state.action, data: this.state.data, router: this.$router })
       }).catch((err) => {
         this.$message({
           message: err,
@@ -58,7 +58,7 @@ export default class extends Mixins(BaseVue) {
         })
       })
     } else {
-      await AdminModule.adminAction({ action: this.state.action, data: this.state.data })
+      await AdminModule.adminAction({ action: this.state.action, data: this.state.data, router: this.$router })
     }
   }
 }

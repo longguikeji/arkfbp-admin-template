@@ -4,7 +4,7 @@
       "fetch"
     ]
   },
-  "type": "table",
+  "type": "TablePage",
   "title": "comment",
   "buttons": [
     {

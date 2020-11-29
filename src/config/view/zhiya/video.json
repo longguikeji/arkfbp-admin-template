@@ -1,0 +1,532 @@
+{
+  "created": {
+    "actions": [
+      "fetch"
+    ]
+  },
+  "type": "TablePage",
+  "title": "zhiyaVideo",
+  "buttons": [
+    {
+      "label": "新建",
+      "type": "primary",
+      "action": "showCreateVideoDialog"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "视频名称",
+        "prop": "title",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "开始时间",
+        "prop": "begin_time",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "DatePicker",
+        "label": "结束时间",
+        "prop": "end_time",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "选择状态",
+        "prop": "is_valid",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未发布"
+            },
+            {
+              "value": 1,
+              "label": "已发布"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "fetch"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "视频名称",
+        "prop": "title"
+      },
+      {
+        "label": "讲者",
+        "prop": "speaker_name"
+      },
+      {
+        "label": "集数",
+        "prop": "episode"
+      },
+      {
+        "label": "发布时间",
+        "prop": "created"
+      },
+      {
+        "label": "app",
+        "prop": "total_app_count"
+      },
+      {
+        "label": "h5",
+        "prop": "total_h5_count"
+      },
+      {
+        "label": "网站",
+        "prop": "total_web_count"
+      },
+      {
+        "label": "ipad",
+        "prop": "total_ipad_count"
+      },
+      {
+        "label": "视频",
+        "prop": "video",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "音频",
+        "prop": "audio",
+        "scope": {
+          "type": "Link",
+          "state": {
+            "value": ""
+          }
+        }
+      },
+      {
+        "label": "状态",
+        "prop": "is_valid",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "未发布"
+              },
+              {
+                "value": 1,
+                "label": "已发布"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "操作",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateVideoDialog"
+            },
+            {
+              "label": "热门评论",
+              "action": "wacthHotComments"
+            },
+            {
+              "label": "删除",
+              "action": "deleteOneVideo",
+              "type": "danger"
+            },
+            {
+              "label": "上线",
+              "action": "upordownVideo"
+            }
+          ]
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "retrieveVedio"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建视频",
+      "visible": false,
+      "inline": true,
+      "modal": false,
+      "items": [
+        {
+          "type": "Input",
+          "label": "标题",
+          "prop": "title",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "题语",
+          "prop": "titlelanguage",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "讲者",
+          "prop": "speaker_id",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "集数",
+          "prop": "episode",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "额外播放次数",
+          "prop": "additional_play_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "额外收藏次数",
+          "prop": "additional_collection_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "额外分享次数",
+          "prop": "additional_share_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "选择状态",
+          "prop": "status",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "及时发布"
+              },
+              {
+                "value": 1,
+                "label": "草稿"
+              }
+            ]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "createVideo",
+          "type": "primary"
+        }
+      ]
+    },
+    "update": {
+      "title": "新建视频",
+      "visible": false,
+      "inline": true,
+      "modal": false,
+      "items": [
+        {
+          "type": "Input",
+          "label": "标题",
+          "prop": "title",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "题语",
+          "prop": "titlelanguage",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "讲者",
+          "prop": "speaker_id",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "集数",
+          "prop": "episode",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "额外播放次数",
+          "prop": "additional_play_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "额外收藏次数",
+          "prop": "additional_collection_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "额外分享次数",
+          "prop": "additional_share_count",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "选择状态",
+          "prop": "status",
+          "state": {
+            "value": "",
+            "options": [
+              {
+                "value": 0,
+                "label": "及时发布"
+              },
+              {
+                "value": 1,
+                "label": "草稿"
+              }
+            ]
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "updateVideo",
+          "type": "primary"
+        }
+      ]
+    }
+  },
+  "reliant_values": {
+  },
+  "actions": {
+    "fetch": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/[reliant_values.id]/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_title": "filter.items[prop=title].state.value",
+            "param_begin_time": "filter.items[prop=begin_time].state.value",
+            "param_end_time": "filter.items[prop=end_time].state.value",
+            "param_is_valid": "filter.items[prop=is_valid].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "showCreateVideoDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        },
+        {
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "method": "GET",
+          "url": "speaker/drop/",
+          "client_config": {
+            "dialogs.create.items[prop=speaker_id].state.options": "data.items"
+          }
+        }
+      ]
+    },
+    "createVideo": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "POST",
+          "url": "zhiya/video/[reliant_values.id]/create/",
+          "request": {
+            "titlelanguage": "dialogs.create.items[prop=titlelanguage].state.value",
+            "additional_share_count": "dialogs.create.items[prop=additional_share_count].state.value",
+            "episode": "dialogs.create.items[prop=episode].state.value",
+            "title": "dialogs.create.items[prop=title].state.value",
+            "additional_play_count": "dialogs.create.items[prop=additional_play_count].state.value",
+            "additional_collection_count": "dialogs.create.items[prop=additional_collection_count].state.value",
+            "status": "dialogs.create.items[prop=status].state.value",
+            "speaker_id": "dialogs.create.items[prop=speaker_id].state.value"
+          }
+        },
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": false
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "fetch"
+        }
+      ]
+    },
+    "showUpdateVideoDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "method": "GET",
+          "url": "speaker/drop/",
+          "client_config": {
+            "dialogs.update.items[prop=speaker_id].state.options": "data.items"
+          }
+        },
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/[reliant_values.id]/edit/",
+          "client_config": {
+            "dialogs.update.items[prop=title].state.value": "data.title",
+            "dialogs.update.items[prop=titlelanguage].state.value": "data.titlelanguage",
+            "dialogs.update.items[prop=additional_share_count].state.value": "data.additional_share_count",
+            "dialogs.update.items[prop=episode].state.value": "data.episode",
+            "dialogs.update.items[prop=additional_play_count].state.value": "data.additional_play_count",
+            "dialogs.update.items[prop=additional_collection_count].state.value": "data.additional_collection_count",
+            "dialogs.update.items[prop=status].state.value": "data.status",
+            "dialogs.update.items[prop=speaker_id].state.value": "data.speaker_id"
+          }
+        }
+      ]
+    },
+    "updateVideo": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "POST",
+          "url": "zhiya/video/[reliant_values.id]/edit/",
+          "request": {
+            "title": "dialogs.update.items[prop=title].state.value",
+            "titlelanguage": "dialogs.update.items[prop=titlelanguage].state.value",
+            "additional_share_count": "dialogs.update.items[prop=additional_share_count].state.value",
+            "episode": "dialogs.update.items[prop=episode].state.value",
+            "additional_play_count": "dialogs.update.items[prop=additional_play_count].state.value",
+            "additional_collection_count": "dialogs.update.items[prop=additional_collection_count].state.value",
+            "status": "dialogs.update.items[prop=status].state.value",
+            "speaker_id": "dialogs.update.items[prop=speaker_id].state.value"
+          }
+        },
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": false
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "fetch"
+        }
+      ]
+    },
+    "deleteOneVideo": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/video/<id>/delete/"
+        }
+      ],
+      "next": [
+        {
+          "action": "fetch"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+
+{
+  "zhiya": {
+    "title": "zhiya",
+    "path": "zhiya",
+    "icon": "dashboard",
+    "children": [
+      {
+        "title": "video", 
+        "path": "video", 
+        "icon": "dashboard" 
+      }
+    ]
+  }
+}

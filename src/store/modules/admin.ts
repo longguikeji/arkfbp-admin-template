@@ -9,7 +9,7 @@ export interface IAdminState {
 
 @Module({ dynamic: true, store, name: 'admin' })
 class Admin extends VuexModule implements IAdminState {
-  public adminState: any = {}
+  public adminState: any = null
 
   @Mutation
   public CHANGE_ADMIN(payload: any) {
@@ -22,9 +22,8 @@ class Admin extends VuexModule implements IAdminState {
   }
 
   @Action
-  public async adminAction(payload: { action: string, data?: any}) {
-    const { action, data } = payload
-
+  public async adminAction(payload: { action: string, data?: any, router?: any}) {
+    const { action, data, router } = payload
     // const adminState = cloneDeep(this.adminState)
     const adminState = this.adminState
 
@@ -35,8 +34,7 @@ class Admin extends VuexModule implements IAdminState {
     const flows = adminState.actions[action].flows
 
     for (let i = 0; i < flows.length; i++) {
-      // debugger
-      await runFlow(adminState, flows[i], data)
+      await runFlow(adminState, flows[i], data, router)
     }
 
     // const newAdminState = cloneDeep(this.adminState)

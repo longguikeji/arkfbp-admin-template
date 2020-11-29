@@ -50,13 +50,27 @@ export async function runAction(action: { flow: string, inputs: any }) {
   return outputs
 }
 
-export async function runFlow(state: any, flow: any, data: any) {
+export async function runFlow(state: any, flow: any, data: any, router:any) {
   if (flow.type === 'assign') {
     await runAction({
       flow: flow.name,
       inputs: {
         client: state,
         clientServer: flow.client_config
+      }
+    })
+
+    return
+  }
+
+  if (flow.type === 'router') {
+    await runAction({
+      flow: flow.name,
+      inputs: {
+        client: state,
+        clientServer: flow.request,
+        data: data,
+        router: router
       }
     })
 

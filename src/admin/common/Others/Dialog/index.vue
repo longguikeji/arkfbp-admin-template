@@ -77,6 +77,10 @@ export default class extends Mixins(BaseVue) {
     return super.$state as DialogState
   }
 
+  get tableDialogState() {
+    return ''
+  }
+
   get cancelButtonSize() {
     if (this.state.actions && this.state.actions.length > 0) {
       return this.state.actions[0].size

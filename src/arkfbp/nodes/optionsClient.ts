@@ -28,14 +28,12 @@ export class OptionClient extends FunctionNode {
         tempS = tempS[vs[i]]
       }
 
-      if(tempS[vs[vs.length - 1]]) {
-        tempS[vs[vs.length - 1]].forEach((option: any) => {
-          option.value = option.id;
-          option.label = option.title;
-        });
-      }
-
-      tempC[ks[ks.length - 1]] = tempS[vs[vs.length - 1]]
+      tempC[ks[ks.length - 1]] = tempS[vs[vs.length - 1]].map((option: any) => {
+        return {
+          value: option.id,
+          label: option.title || option.name
+        }
+      });
     })
 
     return this.inputs

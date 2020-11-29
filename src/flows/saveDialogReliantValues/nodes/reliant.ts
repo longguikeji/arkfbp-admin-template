@@ -5,6 +5,7 @@ export class Reliant extends FunctionNode {
     if (this.inputs === null) {
       return this.inputs
     }
+
     Object.keys(this.inputs.params).forEach((paramsKey: any) => {
       this.inputs.params[paramsKey] = this.inputs.client[paramsKey]
     })

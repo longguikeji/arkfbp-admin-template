@@ -6,7 +6,7 @@
     ]
   },
   "name": "speaker",
-  "type": "table",
+  "type": "TablePage",
   "title": "讲者管理",
   "buttons": [
     {
@@ -46,7 +46,7 @@
         "state": {
           "label": "搜索",
           "type": "primary",
-          "action": "toFilter"
+          "action": "fetch"
         }
       }
     ]
@@ -169,7 +169,7 @@
     "pageSize": 20,
     "total": 0,
     "background": "",
-    "action": "toFilter"
+    "action": "fetch"
   },
   "dialogs": {
     "create": {
@@ -282,50 +282,6 @@
           "type": "assign",
           "client_config": {
             "dialogs.create.visible": true
-          }
-        }
-      ]
-    },
-    "toFilter": {
-      "flows": [
-        {
-          "name": "arkfbp.flows.fetch",
-          "type": "api",
-          "method": "GET",
-          "url": "speaker/",
-          "request": {
-            "page": "pagination.currentPage", 
-            "page_size": "pagination.pageSize", 
-            "param_name": "filter.items[prop=name].state.value", 
-            "param_status": "filter.items[prop=is_valid].state.value"
-          }, 
-          "client_config": {
-            "table.data": "data.items"
-          }
-        }
-      ],
-      "next": [
-        {
-          "action": "doFilter"
-        }
-      ]
-    },
-    "doFilter": {
-      "flows": [
-        {
-          "name": "arkfbp.flows.fetch",
-          "type": "api",
-          "method": "GET",
-          "url": "speaker/",
-          "request": {
-            "page": "pagination.currentPage",
-            "page_size": "pagination.pageCount",
-            "param_name": "filter.items[prop=name].state.value",
-            "param_product_id": "",
-            "param_type": ""
-          },
-          "client_config": {
-            "table.data": "data.items"
           }
         }
       ]

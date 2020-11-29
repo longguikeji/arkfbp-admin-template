@@ -1,6 +1,6 @@
 import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-decorators'
 import { RouteConfig } from 'vue-router'
-import { asyncRoutes, constantRoutes } from '@/router'
+import { asyncRoutes, menuRoutes } from '@/router'
 import store from '@/store'
 
 const hasPermission = (roles: string[], route: RouteConfig) => {
@@ -37,7 +37,7 @@ class Permission extends VuexModule implements IPermissionState {
 
   @Mutation
   private SET_ROUTES(routes: RouteConfig[]) {
-    this.routes = constantRoutes.concat(routes)
+    this.routes = menuRoutes.concat(routes)
     this.dynamicRoutes = routes
   }
 

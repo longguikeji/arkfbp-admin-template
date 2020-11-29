@@ -1,0 +1,531 @@
+{
+  "created": {
+    "actions": [
+      "fetch"
+    ]
+  },
+  "type": "TablePage",
+  "title": "zhiya",
+  "buttons": [
+    {
+      "label": "新建",
+      "action": "showCreateDialog",
+      "type": "primary",
+      "size": "small"
+    }
+  ],
+  "filter": {
+    "inline": true,
+    "size": "mini",
+    "items": [
+      {
+        "type": "Input",
+        "label": "名称",
+        "prop": "name",
+        "state": {
+          "value": ""
+        }
+      },
+      {
+        "type": "Select",
+        "label": "选择状态",
+        "prop": "is_valid",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "未发布"
+            },
+            {
+              "value": 1,
+              "label": "已发布"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Select",
+        "label": "是否推荐",
+        "prop": "recommended",
+        "state": {
+          "value": "",
+          "options": [
+            {
+              "value": 0,
+              "label": "不推荐"
+            },
+            {
+              "value": 1,
+              "label": "已推荐"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Button",
+        "state": {
+          "label": "搜索",
+          "type": "primary",
+          "action": "fetch"
+        }
+      }
+    ]
+  },
+  "table": {
+    "columns": [
+      {
+        "label": "#",
+        "prop": "id"
+      },
+      {
+        "label": "名称",
+        "prop": "name"
+      },
+      {
+        "label": "讲者",
+        "prop": "speaker_name"
+      },
+      {
+        "label": "总集数",
+        "prop": "episodes"
+      },
+      {
+        "label": "上传集数",
+        "prop": "video_count"
+      },
+      {
+        "prop": "release_time",
+        "label": "发布时间"
+      },
+      {
+        "label": "状态",
+        "prop": "is_valid",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "未发布"
+              },
+              {
+                "value": 1,
+                "label": "已发布"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "推荐",
+        "prop": "recommended",
+        "scope": {
+          "type": "Select",
+          "state": {
+            "value": "",
+            "readonly": true,
+            "options": [
+              {
+                "value": 0,
+                "label": "未推荐"
+              },
+              {
+                "value": 1,
+                "label": "已推荐"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "操作",
+        "prop": "action",
+        "scope": {
+          "type": "ButtonArray",
+          "state": [
+            {
+              "label": "编辑",
+              "type": "primary",
+              "action": "showUpdateDialog"
+            },
+            {
+              "label": "删除",
+              "type": "danger",
+              "action": "deleteZhiya"
+            },
+            {
+              "label": "上线",
+              "action": "upordown"
+            },
+            {
+              "label": "视频管理",
+              "action": "videoManage"
+            }
+          ]
+        }
+      }
+    ],
+    "data": []
+  },
+  "pagination": {
+    "currentPage": 1,
+    "pageCount": 10,
+    "total": 0,
+    "background": "",
+    "action": "fetch"
+  },
+  "dialogs": {
+    "create": {
+      "title": "新建",
+      "items": [
+        {
+          "type": "Input",
+          "label": "枝桠名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "关键字",
+          "prop": "keywords",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "讲者",
+          "prop": "speaker",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "DatePicker",
+          "label": "发布时间",
+          "prop": "release_time",
+          "state": {
+            "value": "",
+            "format": "yyyy-MM-dd HH:mm",
+            "valueFormat": "yyyy-MM-dd HH:mm",
+            "type": "datetime"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "请选择相关枝桠",
+          "prop": "zhiya_recommended",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "总集数",
+          "prop": "episodes",
+          "state": {
+            "value": 0,
+            "type": "number"
+          }
+        },
+        {
+          "type": "Input",
+          "label": "简介",
+          "prop": "intro",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "createZhiya",
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "inline": true
+    },
+    "update": {
+      "title": "编辑",
+      "items": [
+        {
+          "type": "Input",
+          "label": "枝桠名称",
+          "prop": "name",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Input",
+          "label": "关键字",
+          "prop": "keywords",
+          "state": {
+            "value": ""
+          }
+        },
+        {
+          "type": "Select",
+          "label": "讲者",
+          "prop": "speaker",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "DatePicker",
+          "label": "发布时间",
+          "prop": "release_time",
+          "state": {
+            "value": "",
+            "format": "yyyy-MM-dd HH:mm"
+          }
+        },
+        {
+          "type": "Select",
+          "label": "请选择相关枝桠",
+          "prop": "zhiya_recommended",
+          "state": {
+            "value": "",
+            "options": []
+          }
+        },
+        {
+          "type": "Input",
+          "label": "总集数",
+          "prop": "episodes",
+          "state": {
+            "value": 0,
+            "type": "number"
+          }
+        },
+        {
+          "type": "Input",
+          "label": "简介",
+          "prop": "intro",
+          "state": {
+            "value": "",
+            "type": "textarea"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "label": "确定",
+          "action": "updateZhiya",
+          "type": "primary"
+        }
+      ],
+      "visible": false,
+      "inline": true
+    }
+  },
+  "actions": {
+    "fetch": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/",
+          "request": {
+            "page": "pagination.currentPage",
+            "page_size": "pagination.pageCount",
+            "param_name": "filter.items[prop=name].state.value",
+            "param_is_valid": "filter.items[prop=is_valid].state.value",
+            "param_recommended": "filter.items[prop=recommended].state.value"
+          },
+          "client_config": {
+            "table.data": "data.items",
+            "pagination.total": "data.total"
+          }
+        }
+      ]
+    },
+    "showCreateDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": true
+          }
+        },
+        {
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "url": "speaker/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=speaker].state.options": "data.items"
+          }
+        },
+        {
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "url": "zhiya/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.create.items[prop=zhiya_recommended].state.options": "data.items"
+          }
+        }
+      ]
+    },
+    "createZhiya": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.update",
+          "type": "api",
+          "method": "POST",
+          "url": "zhiya/create/",
+          "request": {
+            "name": "dialogs.create.items[prop=name].state.value",
+            "keywords": "dialogs.create.items[prop=keywords].state.value",
+            "speaker": "dialogs.create.items[prop=speaker].state.value",
+            "release_time": "dialogs.create.items[prop=release_time].state.value",
+            "episodes": "dialogs.create.items[prop=episodes].state.value",
+            "intro": "dialogs.create.items[prop=intro].state.value",
+            "zhiya_recommended": "dialogs.create.items[prop=zhiya_recommended].state.value"
+          }
+        },
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.create.visible": false,
+            "dialogs.create.items[prop=name].state.value": "",
+            "dialogs.create.items[prop=keywords].state.value": "",
+            "dialogs.create.items[prop=speaker].state.value": "",
+            "dialogs.create.items[prop=release_time].state.value": "",
+            "dialogs.create.items[prop=episodes].state.value": "",
+            "dialogs.create.items[prop=intro].state.value": "",
+            "dialogs.create.items[prop=zhiya_recommended].state.value": ""
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "fetch"
+        }
+      ]
+    },
+    "showUpdateDialog": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": true
+          }
+        },
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "url": "speaker/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=speaker].state.options": "data.items"
+          }
+        },
+        {
+          "name": "changeSpeakerOptions",
+          "request": "dialogs.update.items[prop=speaker].state.options"
+        },
+        {
+          "name": "arkfbp.flows.options",
+          "type": "api",
+          "url": "zhiya/drop/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=zhiya_recommended].state.options": "data.items"
+          }
+        },
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "url": "zhiya/<id>/edit/",
+          "method": "GET",
+          "client_config": {
+            "dialogs.update.items[prop=name].state.value": "data.name",
+            "dialogs.update.items[prop=keywords].state.value": "data.keywords",
+            "dialogs.update.items[prop=speaker].state.value": "data.speaker",
+            "dialogs.update.items[prop=release_time].state.value": "data.release_time",
+            "dialogs.update.items[prop=zhiya_recommended].state.value": "data.zhiya_recommended",
+            "dialogs.update.items[prop=episodes].state.value": "data.episodes",
+            "dialogs.update.items[prop=intro].state.value": "data.intro"
+          }
+        }
+      ]
+    },
+    "updateZhiya": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "url": "zhiya/<id>/edit/",
+          "method": "GET",
+          "request": {
+            "name": "dialogs.update.items[prop=name].state.value",
+            "keywords": "dialogs.update.items[prop=keywords].state.value",
+            "speaker": "dialogs.update.items[prop=speaker].state.value",
+            "release_time": "dialogs.update.items[prop=release_time].state.value",
+            "episodes": "dialogs.update.items[prop=episodes].state.value",
+            "intro": "dialogs.update.items[prop=intro].state.value",
+            "zhiya_recommended": "dialogs.update.items[prop=zhiya_recommended].state.value"
+          }
+        },
+        {
+          "name": "arkfbp.flows.assign",
+          "type": "assign",
+          "client_config": {
+            "dialogs.update.visible": false
+          }
+        }
+      ],
+      "next": [
+        {
+          "action": "fetch"
+        }
+      ]
+    },
+    "deleteZhiya": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.fetch",
+          "type": "api",
+          "method": "GET",
+          "url": "zhiya/<id>/delete/"
+        }
+      ],
+      "next": [
+        {
+          "action": "fetch"
+        }
+      ]
+    },
+    "videoManage": {
+      "flows": [
+        {
+          "name": "arkfbp.flows.jumpRouter",
+          "type": "router",
+          "request": {
+            "path": "zhiya.video",
+            "src": "config.view.zhiya.video",
+            "data": "reliant_values"
+          }
+        }
+      ]
+    }
+  }
+}

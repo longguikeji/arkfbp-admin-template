@@ -1,45 +1,102 @@
-import { cloneDeep } from 'lodash'
-import tableJson from './json/table.json'
-
 export class Config {
-  private _current: any
-  private _viewconfig: any
-  private _serveconfig: any
-  private _config: any
+  private _current: any = {}
+  private _viewconfig: any = {}
+  private _serveconfig: any = {}
+  private _config: any = {}
 
-  constructor(viewconfig: any, serveconfig: any, current: string) {
+  private _serveApi: any = {}
+  private _serveMeta: any = {}
+
+  constructor(viewconfig: any, serveconfig: any, current: string|undefined) {
     this._viewconfig = viewconfig
     this._serveconfig = serveconfig
     this._current = current
 
-    this._config = this.getConfig()
+    this.getConfig()
   }
 
   get config(): any {
     return this._config
   }
 
-  get viewconfig(): any {
-    return this._viewconfig
+  private getSrcMeta(params: any) {
+    const map: any = {}
+    Object.keys(params).forEach((p: any) => {
+      if (typeof params[p] === 'object') {
+        if (params[p].src.includes('.')) {
+          const arr = params[p].src.split('.')
+          const data = this._serveconfig[arr[0]].meta[arr[1]]
+          map[p] = {
+            label: data.title,
+            state: {
+              value: '',
+              ...(Object.values(data.type)[0] as Object)
+            }
+          }
+        }
+      } else {
+        map[p] = {
+          state: {
+            value: ''
+          }
+        }
+      }
+    })
+    return map
   }
 
-  get serveconfig(): any {
-    return this._serveconfig
-  }
+  private getSeverApi() {
+    const api = this._serveconfig[this._current].api
 
-  private getConfig(): any {
-    if (!this._serveconfig[this._current]) {
-      return this._viewconfig
+    if (!api) {
+      return
     }
 
-    const serverMeta = this._serveconfig[this._current].meta
+    const walkApi = (data: any, map: any) => {
+      Object.keys(data).forEach((e: any) => {
+        let index: any = {}
+        if (data[e].index) {
+          index = this.getSrcMeta(data[e].index)
+        }
+        Object.keys(data[e]).forEach((k: any) => {
+          if (data[e][k].type) {
+            if (map[data[e][k].type]) {
+              map[data[e][k].type].push({
+                url: e,
+                index,
+                method: k.toUpperCase(),
+                label: data[e][k].name,
+                action: data[e][k].type,
+                request: this.getSrcMeta(data[e][k].request)
+              })
+            } else {
+              map[data[e][k].type] = []
+              map[data[e][k].type].push({
+                url: e,
+                index,
+                method: k.toUpperCase(),
+                label: data[e][k].name,
+                action: data[e][k].type,
+                request: this.getSrcMeta(data[e][k].request)
+              })
+            }
+          }
+        })
+      })
+    }
 
-    const serverApi = this._serveconfig[this._current].api
-    const api: any = {}
-    const meta: any = {}
+    walkApi(api, this._serveApi)
+  }
+
+  private getSeverMeta() {
+    const name = this._serveconfig[this._current].name
+    const meta = this._serveconfig[this._current].meta
+
+    if (!meta) {
+      return
+    }
 
     const walkMeta = (data: any, map: any) => {
-      const name = this._serveconfig[this._current].name
       const type = data[name].type
       if (type.object) {
         Object.keys(type.object).forEach((e: any) => {
@@ -67,181 +124,126 @@ export class Config {
       }
     }
 
-    const walkOption = (data: any, map: any) => {
-      const name = this._serveconfig[this._current].name
-      const type = data[name].type
+    walkMeta(meta, this._serveMeta)
+  }
 
-      if (type.object) {
-        // Object.keys(type.object).forEach((e: any) => {
-        //   if (type.object[e].includes('.')) {
-        //     const arr = type.object[e].split('.')
-        //     const value = this._serveconfig[arr[0]].meta[arr[1]]
-        //     map[e] = {
-        //       label: value.title || e,
-        //       state: {
-        //         value: '',
-        //         option: this._serveconfig[arr[0]].meta[arr[1]].option,
-        //         ...(Object.values(value.type)[0] as Object)
-        //       }
-        //     }
-        //   } else {
-        //     const value = data[type.object[e]]
-        //     map[e] = {
-        //       label: value.title || e,
-        //       state: {
-        //         value: '',
-        //         option: value.option,
-        //         ...(Object.values(value.type)[0] as Object)
-        //       }
-        //     }
-        //   }
-        // })
-      }
+  private getConfig(): any {
+    if (!this._viewconfig) {
+      this._config = this.initConfig()
     }
 
-    const walkApi = (data: any, map: any) => {
-      Object.keys(data).forEach((e: any) => {
-        let index: any = {}
-        if (data[e].index) {
-          index = getSrcMeta(data[e].index)
-        }
-        Object.keys(data[e]).forEach((k: any) => {
-          if (data[e][k].type) {
-            if (map[data[e][k].type]) {
-              map[data[e][k].type].push({
-                url: e,
-                index,
-                label: data[e][k].name,
-                action: data[e][k].type,
-                request: getSrcMeta(data[e][k].request)
+    if (!this._serveconfig[this._current]) {
+      this._config = this._viewconfig
+      return
+    }
+
+    this.getSeverApi()
+    this.getSeverMeta()
+
+    Object.keys(this._viewconfig).map((key: string) => {
+      switch (key) {
+        case 'buttons':
+          this._config[key] = this._viewconfig[key]
+          break;
+        case 'filter':
+          this._config[key] = this._viewconfig[key]
+          this._config[key].items = this._viewconfig[key].items.map((e: any) => {
+            if (typeof e === 'string') {
+              return { prop: e, type: 'Input', ...this._serveMeta[e] }
+            } else {
+              return { ...this._serveMeta[e.prop], ...e } 
+            }
+          })
+          break;
+        case 'dialogs':
+          this._config[key] = this._viewconfig[key]
+
+          Object.keys(this._viewconfig.dialogs).map((dialog: string) => {
+            if(dialog === 'create' || dialog === 'update') {
+              this._config.dialogs[dialog].items = this._viewconfig.dialogs[dialog].items.map((e: any) => {
+                if (typeof e === 'string') {
+                  return { prop: e, type: 'Input', ...this._serveApi[dialog][0].request[e] }
+                } else {
+                  return { ...this._serveApi[dialog][0].request[e.prop],  ...e } 
+                }
               })
             } else {
-              map[data[e][k].type] = []
-              map[data[e][k].type].push({
-                url: e,
-                index,
-                label: data[e][k].name,
-                action: data[e][k].type,
-                request: getSrcMeta(data[e][k].request)
-              })
+              
             }
-          }
-        })
-      })
-    }
+          })
 
-    const getSrcMeta = (params: any) => {
-      const map: any = {}
-      Object.keys(params).forEach((p: any) => {
-        if (typeof params[p] === 'object') {
-          if (params[p].src.includes('.')) {
-            const arr = params[p].src.split('.')
-            const data = this._serveconfig[arr[0]].meta[arr[1]]
-            map[p] = {
-              label: data.title,
-              state: {
-                value: '',
-                ...(Object.values(data.type)[0] as Object)
+          if (this._viewconfig.dialogs.create) {
+            this._config.dialogs.create.items = this._viewconfig.dialogs.create.items.map((e: any) => {
+              if (typeof e === 'string') {
+                return { prop: e, type: 'Input', ...this._serveApi.create[0].request[e] }
+              } else {
+                return { ...this._serveApi.create[0].request[e.prop],  ...e } 
               }
-            }
+            })
           }
-        } else {
-          map[p] = {
-            state: {
-              value: ''
-            }
+    
+          if (this._viewconfig.dialogs.update) {
+            this._config.dialogs.update.items = this._viewconfig.dialogs.update.items.map((e: any) => {
+              if (typeof e === 'string') {
+                return { prop: e, type: 'Input', ...this._serveApi.update[0].request[e] }
+              } else {
+                return { ...this._serveApi.update[0].request[e.prop],  ...e }
+              }
+            })
           }
-        }
-      })
-      return map
-    }
+          break;
+        case 'table':
+          this._config[key] = this._viewconfig[key]
+          if (this._viewconfig.table.columns) {
+            this._config.table.columns = this._viewconfig.table.columns.map((e: any) => {
+              return { label: this._serveMeta[e.prop] ? this._serveMeta[e.prop].label : '', ...e } 
+            })
+          }
+          break;
+        default:
+          this._config[key] = this._viewconfig[key]
+          break;
+      }
+    })
+  }
 
-    walkMeta(serverMeta, meta)
-    walkApi(serverApi, api)
+  private initConfig(): any {
+    const type = this._serveconfig[this._current].type
+    const name = this._serveconfig[this._current].name
 
-    const config: any = {}
-
-    if (!this._viewconfig) {
-      return config
-    }
-
-    if (this._viewconfig.type) {
-      config.type = this._viewconfig.type
-    } else {
-      config.type = 'table'
-    }
-
-    if (this._viewconfig.title) {
-      config.title = this._viewconfig.title
-    } else {
-      config.title = 'tablePage'
-    }
-
-    if (this._viewconfig.buttons) {
-      config.buttons = this._viewconfig.buttons
-    } else {
-      config.buttons = api.create.map((e:any) => {
+    return {
+      type: `${type.slice(0,1).toUpperCase()}${type.slice(1)}Page`,
+      title: `${name}Page`,
+      created: {
+        actions: [
+          'fetch'
+        ]
+      },
+      buttons: this._serveApi.create.map((e:any) => {
         return {
           label: e.label,
           action: 'showCreateDialog',
           type: 'primary',
           size: 'small'
         }
-      })
-    }
-
-    if (this._viewconfig.filter) {
-      config.filter = this._viewconfig.filter
-      if (this._viewconfig.filter.items) {
-        config.filter.items = this._viewconfig.filter.items.map((e: any) => {
-          if (typeof e === 'string') {
-            return { prop: e, type: 'Input', ...meta[e] }
-          } else {
-            return { ...meta[e.prop], ...e }
-          }
-        })
-      }
-    } else {
-      config.filter = {
+      }),
+      filter: {
         inline: true,
         size: 'mini',
-        items: Object.keys(meta).map((e: any) => {
-          return { prop: e, type: 'Input', ...api.retrieve[0].request[e] }
+        items: Object.keys(this._serveMeta).map((e: any) => {
+          return { prop: e, type: 'Input', ...this._serveApi.retrieve[0].request[e] }
         })
-      }
-    }
-
-    if (this._viewconfig.dialogs) {
-      config.dialogs = this._viewconfig.dialogs
-      if (this._viewconfig.dialogs.create) {
-        config.dialogs.create.items = this._viewconfig.dialogs.create.items.map((e: any) => {
-          if (typeof e === 'string') {
-            return { prop: e, type: 'Input', ...api.create[0].request[e] }
-          } else {
-            return { ...api.create[0].request[e.prop], ...e }
-          }
-        })
-      }
-      if (this._viewconfig.dialogs.update) {
-        config.dialogs.update.items = this._viewconfig.dialogs.update.items.map((e: any) => {
-          if (typeof e === 'string') {
-            return { prop: e, type: 'Input', ...api.update[0].request[e] }
-          } else {
-            return { ...api.update[0].request[e.prop], ...e }
-          }
-        })
-      }
-    } else {
-      config.dialogs = {
+      },
+      dialogs: {
         create: {
           titles: '新建',
-          items: Object.keys(api.create[0].request).map((e: any) => {
-            return { prop: e, type: 'Input', ...api.create[0].request[e] }
+          items: Object.keys(this._serveApi.create[0].request).map((e: any) => {
+            return { prop: e, type: 'Input', ...this._serveApi.create[0].request[e] }
           }),
           actions: [
             {
               label: '确定',
-              action: 'edit',
+              action: 'submit',
               close: true,
               type: 'primary'
             }
@@ -251,13 +253,13 @@ export class Config {
         },
         update: {
           titles: '编辑',
-          items: Object.keys(api.update[0].request).map((e: any) => {
-            return { prop: e, type: 'Input', ...api.update[0].request[e] }
+          items: Object.keys(this._serveApi.update[0].request).map((e: any) => {
+            return { prop: e, type: 'Input', ...this._serveApi.update[0].request[e] }
           }),
           actions: [
             {
               label: '确定',
-              action: 'edit',
+              action: 'submit',
               close: true,
               type: 'primary'
             }
@@ -265,94 +267,26 @@ export class Config {
           visible: false,
           attributes: {}
         }
-      }
-    }
-
-    if (this._viewconfig.table) {
-      config.table = this._viewconfig.table
-      if (this._viewconfig.table.columns) {
-        config.table.columns = this._viewconfig.table.columns.map((e: any) => {
-          return { label: meta[e.prop] ? meta[e.prop].label : '', ...e }
-        })
-      }
-    } else {
-      config.table = {
-        columns: [
-          ...Object.keys(meta).map((e: any) => {
-            return { props: e, label: meta[e] ? meta[e].label : '' }
-          }),
-          {
-            type: 'action',
-            width: 250,
-            title: '操作',
-            actions: [
-              {
-                label: '编辑',
-                type: 'primary',
-                action: 'showUpdateDialog'
-              },
-              {
-                label: '删除',
-                type: 'danger',
-                action: 'deleteItem'
-              }
-            ]
-          }
-        ],
-        data: []
-      }
-    }
-
-    if (this._viewconfig.pagination) {
-      config.pagination = this._viewconfig.pagination
-    } else {
-      config.pagination = {
+      },
+      pagination: {
         currentPage: 1,
         pageSize: 20,
         total: 0,
         background: '',
-        action: 'retrieve'
-      }
-    }
-
-    if (this._viewconfig.created) {
-      config.created = this._viewconfig.created
-    } else {
-      config.created = {
-        actions: [
-          'retrieve'
-        ]
-      }
-    }
-
-    if (this._viewconfig.actions) {
-      config.allActions = this._viewconfig.actions
-    } else {
-      config.allActions = {
-        meta: {
+        action: 'fetch'
+      },
+      actions: {
+        fetch: {
           flows: [
             {
-              name: 'retrieve',
-              type: 'api',
-              url: 'category/drop/',
-              method: 'GET',
-              client_config: {
-                'dialogs.create.speechcategory.options': 'data.items'
-              }
-            }
-          ]
-        },
-        retrieve: {
-          flows: [
-            {
-              name: 'retrieve',
+              name: 'arkfbp.flows.fetch',
               type: 'api',
               request: {
-                page: 'pagination.currentPage',
-                page_size: 'pagination.pageSize'
-              },
-              url: 'speaker/',
-              method: 'GET',
+                page: 'pagination.currentPage', 
+                page_size: 'pagination.pageSize', 
+              }, 
+              url: this._serveApi.retrieve[0].url, 
+              method: this._serveApi.retrieve[0].method,
               client_config: {
                 'table.data': 'data.items',
                 'pagination.total': 'data.total'
@@ -363,7 +297,7 @@ export class Config {
         showCreateDialog: {
           flows: [
             {
-              name: 'assign',
+              name: 'arkfbp.flows.assign',
               type: 'assign',
               client_config: {
                 'dialogs.create.visible': true
@@ -374,14 +308,14 @@ export class Config {
         showUpdateDialog: {
           flows: [
             {
-              name: 'assign',
+              name: 'arkfbp.flows.assign',
               type: 'assign',
               client_config: {
                 'dialogs.update.visible': true
               }
             },
             {
-              name: 'retrieve',
+              name: 'arkfbp.flows.fetch',
               type: 'api',
               method: 'GET',
               url: 'speaker/<id>/edit/',
@@ -391,10 +325,10 @@ export class Config {
             }
           ]
         },
-        edit: {
+        submit: {
           flows: [
             {
-              name: 'update',
+              name: 'arkfbp.flows.update',
               type: 'api',
               method: 'POST',
               url: 'speaker/<id>/edit/',
@@ -405,7 +339,7 @@ export class Config {
         delete: {
           flows: [
             {
-              name: 'update',
+              name: 'arkfbp.flows.update',
               type: 'api',
               method: 'GET',
               url: 'speaker/<id>/delete/'
@@ -414,7 +348,5 @@ export class Config {
         }
       }
     }
-
-    return config
   }
 }

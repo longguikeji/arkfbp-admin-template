@@ -25,6 +25,8 @@ export default {
     draggableSelect: '可拖拽选择',
     charts: '图表',
     case: '实例',
+    video: '视频',
+    zhiya: '枝桠',
     formpage: ' 表单',
     tablepage: '表格',
     exampleone: "事例一",

@@ -35,7 +35,7 @@ import { SettingsModule } from '@/store/modules/settings'
 import SidebarItem from './SidebarItem.vue'
 import SidebarLogo from './SidebarLogo.vue'
 import variables from '@/styles/_variables.scss'
-import { constantRoutes } from '@/router/index'
+import { menuRoutes } from '@/router/index'
 
 @Component({
   name: 'SideBar',
@@ -51,7 +51,7 @@ export default class extends Vue {
 
   get routes() {
     // return PermissionModule.routes
-    return constantRoutes
+    return menuRoutes
   }
 
   get showLogo() {

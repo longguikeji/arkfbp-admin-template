@@ -119,6 +119,9 @@ export default class extends Mixins(BaseVue) {
         Rich,
         AMap,
         Markdown
+        // TablePage,
+        // FormPage,
+        // DashboardPage
       },
       render: (h: Function) => {
         return h(state.type, {

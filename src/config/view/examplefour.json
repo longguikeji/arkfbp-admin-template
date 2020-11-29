@@ -2,7 +2,7 @@
   "created": {
     "actions": ["retrieve"]
   },
-  "type": "table",
+  "type": "TablePage",
   "title": "类别管理",
   "buttons": [
     {

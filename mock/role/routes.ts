@@ -1,6 +1,6 @@
 // Just a mock data
 
-export const constantRoutes = [
+export const menuRoutes = [
   {
     path: '/redirect',
     component: 'Layout',
