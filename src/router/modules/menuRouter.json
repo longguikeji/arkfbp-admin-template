@@ -40,6 +40,8 @@
         "title": "speaker", 
         "path": "speaker",
         "viewconfig": "view.speaker",
+        "serveconfig": "serve.speaker",
+        "current": "speaker",
         "icon": "dashboard" 
       }
     ]

@@ -20,7 +20,9 @@ export function initRouterFromConfig(path: string) {
       meta: {
         title: routerconfig[e].title,
         icon: routerconfig[e].icon,
-        config: routerconfig[e].config
+        viewconfig: routerconfig[e].viewconfig,
+        serveconfig: routerconfig[e].serveconfig,
+        current: routerconfig[e].current
       },
       children: routerconfig[e].children ? getChildren(routerconfig[e].children, e) : undefined
     })
@@ -42,7 +44,9 @@ function getChildren(routerconfig: any, name: string) {
       meta: {
         title: c.title,
         icon: c.icon,
-        config: c.config
+        viewconfig: c.viewconfig,
+        serveconfig: c.serveconfig,
+        current: c.current
       },
       children: c.children ? getChildren(c.children, name + '.' + c.path) : undefined
     }

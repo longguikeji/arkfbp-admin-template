@@ -11,7 +11,7 @@
       <Dialog
         v-for="dialogName in Object.keys(state.dialogs)"
         :key="dialogName"
-        :path="getChildPath('dialogs.'+dialogName)"
+        :path="getChildPath('dialogs.' + dialogName)"
       />
     </template>
   </Card>

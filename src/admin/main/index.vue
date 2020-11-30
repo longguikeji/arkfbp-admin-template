@@ -2,15 +2,15 @@
   <div v-if="state">
     <DashboardPage
       v-if="state.type === 'DashboardPage'"
-      :state="state"
+      :path="'admin.adminState'"
     />
     <FormPage
       v-if="state.type === 'FormPage'"
-      :state="state"
+      :path="'admin.adminState'"
     />
     <TablePage
       v-if="state.type === 'TablePage'"
-      :state="state"
+      :path="'admin.adminState'"
     />
   </div>
 </template>
@@ -22,6 +22,7 @@ import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
+import TablePageModule from '@/admin/TablePage/TablePageState'
 @Component({
   name: 'Admin',
   components: {
@@ -35,28 +36,14 @@ export default class extends Vue {
     return AdminModule.adminState
   }
 
-  async mounted() {
+  async beforeCreate() {
     const route = this.$route
-    const requireModule = require.context('@/config/view', true, /\.json$/)
-    const files = requireModule.keys().map(e => e.slice(2))
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i]
-      const page = file.split('.')[0]
-      if (window.location.href.includes(page)) {
-        const viewconfig: any = require(`@/config/view/${page}.json`) // eslint-disable-line
-        const serveconfig: any = require(`@/config/serve/${page}.json`) // eslint-disable-line
 
-        const c: any = new Config(viewconfig, serveconfig, page.split('/').pop())
-        await AdminModule.setAdmin(c.config)
-      }
-    }
+    const viewconfig = require(`@/config/${route.meta.viewconfig.split('.').join('/')}.json`) // eslint-disable-line
+    const serveconfig = require(`@/config/${route.meta.serveconfig.split('.').join('/')}.json`) // eslint-disable-line
 
-    if (AdminModule.adminState.created) {
-      const actions = AdminModule.adminState.created.actions || []
-      for (let i = 0; i < actions.length; i++) {
-        await AdminModule.adminAction({ action: actions[i] })
-      }
-    }
+    const c: any = new Config(viewconfig, serveconfig, route.meta.current)
+    await AdminModule.setAdmin(c.config)
   }
 }
 </script>

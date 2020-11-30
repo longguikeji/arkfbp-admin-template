@@ -1,6 +1,5 @@
 export default function getDataByPath(data: any, path: string):any {
   // path: a.b[0].c[key=value]
-  // debugger
   let temp = data
   let key = ''
   for (const p of path) {
