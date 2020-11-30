@@ -17,7 +17,7 @@
     :center="state.center"
     :destory-on-close="state.destoryOnClose"
   >
-    <TablePage :state="state" />
+    <TablePage :path="getChildPath('')" />
   </el-dialog>
   <el-dialog
     v-else
@@ -37,7 +37,7 @@
     :center="state.center"
     :destory-on-close="state.destoryOnClose"
   >
-    <Form :state="state" />
+    <Form :path="getChildPath('')" />
 
     <span
       slot="footer"
@@ -51,7 +51,7 @@
       <ButtonArray
         v-if="state.actions && state.actions.length > 0"
         class="dialog__actions__button"
-        :state="state.actions"
+        :path="getChildPath('actions')"
       />
     </span>
   </el-dialog>

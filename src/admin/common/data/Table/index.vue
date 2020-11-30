@@ -22,9 +22,9 @@
       label="#"
     />
     <TableColumn
-      v-for="child in state.columns"
-      :key="state.columns.indexOf(child)"
-      :state="child"
+      v-for="(child, index) in state.columns"
+      :key="index"
+      :path="getChildPath('columns['+index+']')"
     />
   </el-table>
 </template>

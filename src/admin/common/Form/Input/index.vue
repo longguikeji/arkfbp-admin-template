@@ -18,15 +18,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import BaseVue from '@/admin/base/BaseVue'
+import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
 import InputState from './InputState'
 
 @Component({
   name: 'Input',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: InputState;
+export default class extends Mixins(BaseVue) {
+  get state(): InputState {
+    return this.$state as InputState
+  }
 }
 </script>
 

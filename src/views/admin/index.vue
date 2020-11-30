@@ -2,11 +2,11 @@
   <div v-if="state">
     <DashboardPage
       v-if="state.type === 'dashboard'"
-      :state="state"
+      :path="'admin.adminState'"
     />
     <FormPage
       v-if="state.type === 'form'"
-      :state="state"
+      :path="'admin.adminState'"
     />
     <TablePage
       v-if="state.type === 'table'"

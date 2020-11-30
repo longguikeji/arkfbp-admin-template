@@ -38,9 +38,10 @@ export default class extends Vue {
 
   getChildPath(path:String | Number) {
     let sp = this.path
-    if (path instanceof Number) {
+    if (typeof path === 'number') {
+      // debugger
       sp += '[' + path + ']'
-    } else if (path.charAt(0) === '[') {
+    } else if (path[0] === '[') {
       sp += path
     } else if (path !== '') {
       sp += '.' + path

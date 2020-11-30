@@ -8,14 +8,15 @@
       v-if="state.label"
       slot="label"
     >{{ state.label }}</span>
-    <AdminComponent :state="state" />
+    <AdminComponent :path="getChildPath('')" />
   </el-form-item>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins, Prop, Vue, Watch } from 'vue-property-decorator'
 import FormItemState from './FormItemState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'FormItem',
@@ -23,8 +24,10 @@ import AdminComponent from '@/admin/common/AdminComponent/index.vue'
     AdminComponent
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: FormItemState;
+export default class extends Mixins(BaseVue) {
+  get state(): FormItemState {
+    return this.$state as FormItemState
+  }
 }
 </script>
 <style lang="scss" scoped>

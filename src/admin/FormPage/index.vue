@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Card :state="state">
-      <Form :state="state.form" />
+    <Card :path="getChildPath('')">
+      <Form :path="getChildPath('form')" />
     </Card>
   </div>
 </template>

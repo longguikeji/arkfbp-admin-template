@@ -7,14 +7,14 @@
   >
     <template v-if="state.children">
       <TableColumn
-        v-for="child in state.children"
-        :key="state.children.indexOf(child)"
-        :state="child"
+        v-for="(child, index) in state.children"
+        :key="index"
+        :path="getChildPath('children['+index+']')"
       />
     </template>
     <template slot-scope="scope">
       <template v-if="isScope">
-        <AdminComponent :state="getComponentState(scope)" />
+        <AdminComponent :path="getChildPath('scopeRowState['+scope.$index+']')" />
       </template>
       <template v-else>
         <span>{{ scope.row[state.prop] }}</span>
@@ -35,25 +35,13 @@ import BaseVue from '@/admin/base/BaseVue'
   }
 })
 export default class extends BaseVue {
-  @Prop({ required: true }) state!: TableColumnState;
-
-  // @Watch('state', { deep: true, immediate: true })
-  // fresh() {
-  //   this.$forceUpdate()
-  // }
+  get state(): TableColumnState {
+    return this.$state as TableColumnState
+  }
 
   get isScope() {
     // debugger
     return Boolean(this.state.scopeRowState)
-  }
-
-  getComponentState(scope: any) {
-    // debugger
-    if (this.isScope && this.state.scopeRowState[scope.$index]) {
-      const state = this.state.scopeRowState[scope.$index]
-      console.log(state)
-      return state
-    }
   }
 
   // @Watch('state.data')

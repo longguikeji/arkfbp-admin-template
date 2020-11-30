@@ -123,7 +123,7 @@ export default class extends Mixins(BaseVue) {
       render: (h: Function) => {
         return h(state.type, {
           props: {
-            state: state.state
+            path: this.getChildPath('state')
           }
         })
       }

@@ -30,12 +30,6 @@ export default class extends Mixins(BaseVue) {
     return super.$state as ButtonState
   }
 
-  @Watch('state', { immediate: true, deep: true })
-  fresh() {
-    // console.log('button state 发生变化')
-    this.$forceUpdate()
-  }
-
   private async clickHandler() {
     if (this.state.type === 'warning' || this.state.type === 'danger') {
       let headMessage = ''
