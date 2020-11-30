@@ -16,16 +16,19 @@
   </el-button>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins, Prop, Vue, Watch } from 'vue-property-decorator'
 import { AdminModule } from '@/store/modules/admin'
 import ButtonState from './ButtonState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Button',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: ButtonState;
+export default class extends Mixins(BaseVue) {
+  get state(): ButtonState {
+    return super.$state as ButtonState
+  }
 
   @Watch('state', { immediate: true, deep: true })
   fresh() {

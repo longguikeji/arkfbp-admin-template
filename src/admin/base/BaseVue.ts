@@ -1,7 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import getDataByPath from '@/utils/datapath'
-import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators'
-import { runFlow } from '@/arkfbp'
+import { AdminModule } from '@/store/modules/admin';
 
 export interface Hook {
   actions:Array<string>
@@ -21,53 +20,33 @@ export interface BaseState {
     destroyed?: Hook
 }
 
-@Module
-export class BaseModule extends VuexModule implements BaseState {
-  created?: Hook
-  beforeMount?: Hook
-  mounted?: Hook
-  beforeUpdate?: Hook
-  updated?: Hook
-  beforeDestroy?: Hook
-  destroyed?: Hook
-
-  @Mutation
-  async runFlow(name: string) {
-    await runFlow(this, name, {})
-  }
-
-  @Action
-  runAction(name: string) {
-    this.context.commit('runFlow', this.context.rootState.allActions[name])
-  }
-}
-
 @Component({
   name: 'BaseVue'
 })
 export default class extends Vue {
-  @Prop({ required: true }) storePath!: string;
-
-  // @Prop({ required: true }) state!: BaseState;
+  @Prop({ required: true }) path!: string;
 
   get state():BaseState {
-    return this.$store.state[this.storePath] as BaseState
+    return this.$state
   }
 
-  get createdHook():Hook {
-    return this.state.created as Hook
+  get $state():BaseState {
+    const s = getDataByPath(this.$store.state, this.path)
+    console.log(this.$store.state, this.path, s)
+    return s
   }
 
-  getChildStorePath(path:string, module: BaseModule) {
-    const sp = this.storePath + path
-    this.$store.registerModule(sp, module)
+  getChildPath(path:String | Number) {
+    let sp = this.path
+    if (path instanceof Number) {
+      sp += '[' + path + ']'
+    } else if (path.charAt(0) === '[') {
+      sp += path
+    } else if (path !== '') {
+      sp += '.' + path
+    }
     return sp
   }
-
-  // @Watch('state', { immediate: true, deep: false })
-  // fresh() {
-  //   this.$forceUpdate()
-  // }
 
   created() {
     this.runHook(this.state.created)
@@ -100,7 +79,8 @@ export default class extends Vue {
   runHook(hook?:Hook) {
     if (hook && hook.actions) {
       hook.actions.forEach((actionName) => {
-        this.$store.dispatch(this.storePath + '/runAction', actionName)
+        AdminModule.adminAction({ action: actionName, data: this.path })
+        // this.$store.dispatch(this.path + '/runAction', actionName)
       })
     }
   }

@@ -15,10 +15,11 @@
   </el-button>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import { AdminModule } from '@/store/modules/admin'
 import SwitchButtonState from './SwitchButtonState'
 import Button from '@/admin/common/Button/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'SwitchButton',
@@ -26,8 +27,10 @@ import Button from '@/admin/common/Button/index.vue'
     Button
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!:SwitchButtonState;
+export default class extends Mixins(BaseVue) {
+  get state():SwitchButtonState {
+    return super.$state as SwitchButtonState
+  }
 
   switchLabel() {
     let label = this.state.labels[this.state.data[this.state.prop]]

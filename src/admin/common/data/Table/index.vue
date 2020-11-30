@@ -30,19 +30,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
 import TableState from './TableState'
 import TableColumn from './TableColumn/index.vue'
-import { runAction } from '@/arkfbp/index'
-import TableColumnState from './TableColumn/TableColumnState'
+import BaseVue from '@/admin/base/BaseVue'
+
 @Component({
   name: 'Table',
   components: {
     TableColumn
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: TableState;
+export default class extends Mixins(BaseVue) {
+  get state(): TableState {
+    return this.$state as TableState
+  }
+
   get tableData() {
     return this.state.data
   }

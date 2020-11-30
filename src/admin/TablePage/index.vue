@@ -1,18 +1,17 @@
 <template>
-  <Card :state="state">
+  <Card :path="getChildPath('')">
     <div>
-      <Form :state="getFilterFormState()" />
+      <Form :path="filterPath" />
     </div>
-    <Table :state="state.table" />
+    <Table :path="getChildPath('table')" />
     <Pagination
-      :state="state.pagination"
-      class="__tablepage__pagination__"
+      :path="getChildPath('pagination')"
     />
     <template v-if="state.dialogs">
       <Dialog
         v-for="dialogName in Object.keys(state.dialogs)"
         :key="dialogName"
-        :state="state.dialogs[dialogName]"
+        :path="getChildPath('dialogs.'+dialogName)"
       />
     </template>
   </Card>
@@ -20,16 +19,15 @@
 
 <script lang="ts">
 import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
-import TablePageState from './TablePageState'
 import Card from '@/admin/common/Card/index.vue'
 import Table from '@/admin/common/data/Table/index.vue'
 import Button from '@/admin/common/Button/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
-import { AdminModule } from '@/store/modules/admin'
 import BaseVue from '../base/BaseVue'
-import { mapGetters } from 'vuex'
+import TablePageState from './TablePageState'
+
 @Component({
   name: 'TablePage',
   components: {
@@ -42,24 +40,16 @@ import { mapGetters } from 'vuex'
   }
 })
 export default class extends Mixins(BaseVue) {
-  @Prop({ required: true }) state!: TablePageState;
+  get state():TablePageState {
+    return this.$state as TablePageState
+  }
 
-  getFilterFormState() {
+  get filterPath():string {
     if (this.state.filter) {
       this.state.filter.inline = true
     }
-    return this.state.filter
+    return this.getChildPath('filter')
   }
-
-  // mounted() {
-  //   //debugger
-  //   if (this.state.created) {
-  //     const actions = this.state.created.actions || []
-  //     for (let i = 0; i < actions.length; i++) {
-  //       AdminModule.adminAction({ action: actions[i] })
-  //     }
-  //   }
-  // }
 }
 </script>
 

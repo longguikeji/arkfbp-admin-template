@@ -58,11 +58,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
 import DialogState from './DialogState'
 import Form from '@/admin/common/Form/index.vue'
 import FormItem from '@/admin/common/Form/FormItem/index.vue'
 import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
 @Component({
   name: 'Dialog',
   components: {
@@ -71,8 +72,10 @@ import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
     ButtonArray
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: DialogState;
+export default class extends Mixins(BaseVue) {
+  get state(): DialogState {
+    return super.$state as DialogState
+  }
 
   get cancelButtonSize() {
     if (this.state.actions && this.state.actions.length > 0) {

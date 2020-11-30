@@ -49,10 +49,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import FormState, { FormItemStateArray } from './FormState'
+import { Component, Mixins } from 'vue-property-decorator'
+import FormState from './FormState'
 
 import FormItem from './FormItem/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Form',
@@ -60,8 +61,10 @@ import FormItem from './FormItem/index.vue'
     FormItem
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!:FormState;
+export default class extends Mixins(BaseVue) {
+  get state():FormState {
+    return super.$state as FormState
+  }
 }
 </script>
 

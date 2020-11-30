@@ -4,21 +4,22 @@
       <SwitchButton
         v-if="button.type === 'switch'"
         :key="'switch' + index"
-        :state="button"
+        :path="getChildPath(index)"
       />
       <Button
         v-else
         :key="index"
-        :state="button"
+        :path="getChildPath(index)"
       />
     </template>
   </div>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import ButtonArrayState from './ButtonArrayState'
 import Button from '@/admin/common/Button/index.vue'
 import SwitchButton from '@/admin/common/Button/SwitchButton/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'ButtonArray',
@@ -27,7 +28,9 @@ import SwitchButton from '@/admin/common/Button/SwitchButton/index.vue'
     SwitchButton
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!:ButtonArrayState;
+export default class extends Mixins(BaseVue) {
+  get state():ButtonArrayState {
+    return super.$state as ButtonArrayState
+  }
 }
 </script>

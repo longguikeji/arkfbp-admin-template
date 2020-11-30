@@ -10,7 +10,7 @@
     />
     <TablePage
       v-if="state.type === 'table'"
-      :state="state"
+      :path="'admin.adminState'"
     />
   </div>
 </template>
@@ -22,6 +22,7 @@ import { AdminModule } from '@/store/modules/admin'
 import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
+import TablePageModule from '@/admin/TablePage/TablePageState'
 @Component({
   name: 'Admin',
   components: {
@@ -47,7 +48,6 @@ export default class extends Vue {
         const serveconfig: any = require(`@/config/serve/${page}.json`) // eslint-disable-line
 
         const c: any = new Config(viewconfig, serveconfig, page)
-
         await AdminModule.setAdmin(c.config)
       }
     }

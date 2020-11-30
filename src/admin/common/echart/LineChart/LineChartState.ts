@@ -1,10 +1,12 @@
+import { BaseState } from '@/admin/base/BaseVue'
+
 interface LineData {
   name?: string
 
   data?: number[]
 }
 
-export default interface LineChartState {
+export default interface LineChartState extends BaseState {
 
   xAxis?: string[]
 

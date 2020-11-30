@@ -4,7 +4,7 @@
       <span>{{ state.title }}</span>
       <ButtonArray
         class="buttons"
-        :state="state.buttons"
+        :path="getChildPath('buttons')"
       />
     </div>
     <slot />
@@ -12,9 +12,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import CardState from './CardState'
+import { Component, Mixins } from 'vue-property-decorator'
 import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
+import CardState from './CardState'
 
 @Component({
   name: 'Card',
@@ -22,11 +23,9 @@ import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
     ButtonArray
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: CardState;
-  @Watch('state', { immediate: true, deep: true })
-  fresh() {
-    this.$forceUpdate()
+export default class extends Mixins(BaseVue) {
+  get state(): CardState {
+    return super.$state as CardState
   }
 }
 </script>

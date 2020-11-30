@@ -31,13 +31,13 @@ export class Config {
     if (!this._serveconfig[this._current]) {
       return this._viewconfig
     }
-    
+
     const serverMeta = this._serveconfig[this._current].meta
-    
+
     const serverApi = this._serveconfig[this._current].api
     const api: any = {}
     const meta: any = {}
-   
+
     const walkMeta = (data: any, map: any) => {
       const name = this._serveconfig[this._current].name
       const type = data[name].type
@@ -70,7 +70,7 @@ export class Config {
     const walkOption = (data: any, map: any) => {
       const name = this._serveconfig[this._current].name
       const type = data[name].type
-  
+
       if (type.object) {
         // Object.keys(type.object).forEach((e: any) => {
         //   if (type.object[e].includes('.')) {
@@ -177,7 +177,6 @@ export class Config {
       config.title = 'tablePage'
     }
 
-
     if (this._viewconfig.buttons) {
       config.buttons = this._viewconfig.buttons
     } else {
@@ -198,7 +197,7 @@ export class Config {
           if (typeof e === 'string') {
             return { prop: e, type: 'Input', ...meta[e] }
           } else {
-            return { ...meta[e.prop], ...e } 
+            return { ...meta[e.prop], ...e }
           }
         })
       }
@@ -219,7 +218,7 @@ export class Config {
           if (typeof e === 'string') {
             return { prop: e, type: 'Input', ...api.create[0].request[e] }
           } else {
-            return { ...api.create[0].request[e.prop],  ...e } 
+            return { ...api.create[0].request[e.prop], ...e }
           }
         })
       }
@@ -228,7 +227,7 @@ export class Config {
           if (typeof e === 'string') {
             return { prop: e, type: 'Input', ...api.update[0].request[e] }
           } else {
-            return { ...api.update[0].request[e.prop],  ...e }
+            return { ...api.update[0].request[e.prop], ...e }
           }
         })
       }
@@ -273,29 +272,29 @@ export class Config {
       config.table = this._viewconfig.table
       if (this._viewconfig.table.columns) {
         config.table.columns = this._viewconfig.table.columns.map((e: any) => {
-          return { label: meta[e.prop] ? meta[e.prop].label : '', ...e } 
+          return { label: meta[e.prop] ? meta[e.prop].label : '', ...e }
         })
       }
     } else {
       config.table = {
         columns: [
           ...Object.keys(meta).map((e: any) => {
-            return { props: e, label: meta[e] ? meta[e].label : ''  }
+            return { props: e, label: meta[e] ? meta[e].label : '' }
           }),
           {
-            type: 'action', 
-            width: 250, 
-            title: '操作', 
+            type: 'action',
+            width: 250,
+            title: '操作',
             actions: [
               {
-                'label': '编辑', 
-                'type': 'primary', 
-                'action': 'showUpdateDialog'
-              }, 
+                label: '编辑',
+                type: 'primary',
+                action: 'showUpdateDialog'
+              },
               {
-                'label': '删除', 
-                'type': 'danger', 
-                'action': 'deleteItem'
+                label: '删除',
+                type: 'danger',
+                action: 'deleteItem'
               }
             ]
           }
@@ -325,17 +324,17 @@ export class Config {
         ]
       }
     }
-    
-    if(this._viewconfig.actions) {
-      config.actions = this._viewconfig.actions
+
+    if (this._viewconfig.actions) {
+      config.allActions = this._viewconfig.actions
     } else {
-      config.actions = {
+      config.allActions = {
         meta: {
           flows: [
             {
               name: 'retrieve',
               type: 'api',
-              url: 'category/drop/', 
+              url: 'category/drop/',
               method: 'GET',
               client_config: {
                 'dialogs.create.speechcategory.options': 'data.items'
@@ -349,18 +348,18 @@ export class Config {
               name: 'retrieve',
               type: 'api',
               request: {
-                page: 'pagination.currentPage', 
-                page_size: 'pagination.pageSize', 
-              }, 
-              url: 'speaker/', 
+                page: 'pagination.currentPage',
+                page_size: 'pagination.pageSize'
+              },
+              url: 'speaker/',
               method: 'GET',
               client_config: {
-                'table.data': 'data.items', 
-                'pagination.total': 'data.total', 
+                'table.data': 'data.items',
+                'pagination.total': 'data.total'
               }
             }
           ]
-        }, 
+        },
         showCreateDialog: {
           flows: [
             {
@@ -387,7 +386,7 @@ export class Config {
               method: 'GET',
               url: 'speaker/<id>/edit/',
               client_config: {
-                'dialogs.update.values': 'data',
+                'dialogs.update.values': 'data'
               }
             }
           ]
@@ -404,7 +403,7 @@ export class Config {
           ]
         },
         delete: {
-          'flows': [
+          flows: [
             {
               name: 'update',
               type: 'api',

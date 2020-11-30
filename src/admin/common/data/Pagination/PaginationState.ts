@@ -1,11 +1,13 @@
-export default interface PaginationState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface PaginationState extends BaseState {
   currentPage:number //  当前页数，支持 .sync 修饰符  number  —  1
-  pageCount:Number //  
+  pageCount:Number //
   total:number //  总条目数  num总页数，total 和 page-count 设置任意一个就可以达到显示页码的功能；如果要支持 page-sizes 的更改，则需要使用 total 属性  Number  —  —
-  
+
   pageSize:number //  每页显示条目个数，支持 .sync 修饰符  number  —  10ber  —  —
   pageSizes:number[] //  每页显示个数选择器的选项设置  number[]  —  [10, 20, 30, 40, 50, 100]
-  
+
   layout:string //  组件布局，子组件名用逗号分隔  String  sizes, prev, pager, next, jumper, ->, total, slot  'prev, pager, next, jumper, ->, total'
 
   small:boolean //  是否使用小型分页样式  boolean  —  false

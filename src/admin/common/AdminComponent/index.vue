@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
 import SwitchButton from '@/admin/common/Button/SwitchButton/index.vue'
@@ -61,19 +61,16 @@ import Backtop from '@/admin/common/Others/Backtop/index.vue'
 import Rich from '@/admin/common/Rich/index.vue'
 import AMap from '@/admin/common/AMap/index.vue'
 import Markdown from '@/admin/common/Markdown/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
+
 @Component({
   name: 'AdminComponent',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: AdminComponentState;
-  // @Watch('state', { immediate: true, deep: true })
-  // fresh() {
-  //   this.item = this.getItem()
-  //   this.$forceUpdate()
-  // }
-
-  // item?:object
+export default class extends Mixins(BaseVue) {
+  get state():AdminComponentState {
+    return super.$state as AdminComponentState
+  }
 
   get item(): object {
     const state = this.state

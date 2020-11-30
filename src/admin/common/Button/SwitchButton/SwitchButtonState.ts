@@ -1,4 +1,6 @@
-export default interface SwitchButtonState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface SwitchButtonState extends BaseState {
   prop:string // switch绑定的字段
   labels:string[] // 存在多种label显示
   size:string // 尺寸  string  medium / small / mini —
@@ -12,6 +14,6 @@ export default interface SwitchButtonState {
   nativeType:string // 原生 type 属性 string button / submit / reset button
   value:any // action时会传的参数
   action:string // flow name
-  data?: any; // 绑定的一些其他所需数据
-  cloumn?: any; // 
+  data?: any // 绑定的一些其他所需数据
+  cloumn?: any //
 }

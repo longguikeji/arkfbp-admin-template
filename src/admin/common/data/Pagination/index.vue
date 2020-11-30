@@ -20,16 +20,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import PaginationState from './PaginationState'
 import { AdminModule } from '@/store/modules/admin'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Pagination',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!:PaginationState;
+export default class extends Mixins(BaseVue) {
+  get state():PaginationState {
+    return super.$state as PaginationState
+  }
 
   get initLayout() {
     if (this.state.layout) {
