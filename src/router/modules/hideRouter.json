@@ -6,8 +6,9 @@
     "icon": "dashboard",
     "children": [
       {
-        "title": "video", 
-        "path": "video", 
+        "title": "video",
+        "path": "video",
+        "config": "view.zhiya.video",
         "icon": "dashboard" 
       }
     ]

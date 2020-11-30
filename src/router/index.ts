@@ -4,12 +4,8 @@ import Router, { RouteConfig } from 'vue-router'
 /* Layout */
 import Layout from '@/layout/index.vue'
 
-/* AdminPage */
-import Admin from '@/views/admin/index.vue'
-
-/* Router modules */
-import menuRouterConfig from '@/router/modules/menuRouter.json'
-import hideRouterConfig from '@/router/modules/hideRouter.json'
+/* Init Admin Router */
+import { initRouterFromConfig } from '@/admin/router/index.ts'
 
 /* Solve the problem of router repeatedly jumping to the same route */
 const originalPush = Router.prototype.push
@@ -68,15 +64,13 @@ export const menuRoutes: RouteConfig[] = [
       }
     ]
   },
-  ...initRouterFromConfig(menuRouterConfig),
+  ...initRouterFromConfig('router.modules.menuRouter'),
 ]
 
 /**
   HideRoutes
 */
-export const hideRoutes: RouteConfig[] = [
-  ...initRouterFromConfig(hideRouterConfig),
-]
+export const hideRoutes: RouteConfig[] = initRouterFromConfig('router.modules.hideRouter')
 
 const createRouter = () => new Router({
   mode: 'hash', // Disabled due to Github Pages doesn't support this, enable this if you need.
@@ -97,45 +91,6 @@ const router = createRouter()
 export function resetRouter() {
   const newRouter = createRouter();
   (router as any).matcher = (newRouter as any).matcher // reset router
-}
-
-export function initRouterFromConfig(configs: any) {
-  const routers: RouteConfig[] = []
-
-  Object.keys(configs).forEach(e => {
-    routers.push({
-      path: '/' + e,
-      redirect: 'admin',
-      component: Layout,
-      name: e,
-      meta: {
-        title: configs[e].title,
-        icon: configs[e].icon
-      },
-      children: configs[e].children ? getChildren(configs[e].children, e) : undefined
-    })
-  })
-
-  return routers
-}
-
-export function getChildren(configs: any, name: string) {
-  if (!configs) {
-    return []
-  }
-
-  return configs.map((c: any) => {
-    return {
-      path: c.path,
-      component: Admin,
-      name: name + '.' + c.path,
-      meta: {
-        title: c.title,
-        icon: c.icon
-      },
-      children: c.children ? getChildren(c.children, name + '.' + c.path) : undefined
-    }
-  })
 }
 
 export default router
