@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
 import { AdminModule } from '@/store/modules/admin'

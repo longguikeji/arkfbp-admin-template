@@ -1,6 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import getDataByPath from '@/utils/datapath'
-import { AdminModule } from '@/store/modules/admin';
+import { AdminModule } from '@/store/modules/admin'
 
 export interface Hook {
   actions:Array<string>

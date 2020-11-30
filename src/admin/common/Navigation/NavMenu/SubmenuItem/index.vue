@@ -17,7 +17,7 @@
     <template v-for="(child, index) in state.children">
       <SubmenuItem
         :key="child.title + index"
-        :state="child"
+        :path="getChildPath('children['+index+']')"
       />
     </template>
   </el-submenu>
@@ -35,16 +35,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import SubmenuState from './SubmenuState'
-import MenuItemState from './MenuItemState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'SubmenuItem',
-  components: {}
+  components: {
+  }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: any;
+export default class extends Mixins(BaseVue) {
+  get state(): SubmenuState {
+    return this.$state as SubmenuState
+  }
 }
 </script>
 

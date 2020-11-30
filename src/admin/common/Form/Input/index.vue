@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import BaseVue from '@/admin/base/BaseVue'
-import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import InputState from './InputState'
 
 @Component({
