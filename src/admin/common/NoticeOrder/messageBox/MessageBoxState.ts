@@ -1,4 +1,6 @@
-export default interface MessageBoxState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface MessageBoxState extends BaseState {
   title?: string; // MessageBox 标题 
   message?: any; // MessageBox 消息正文内容
   dangerouslyUseHTMLString?: boolean; // 是否将 message 属性作为 HTML 片段处理 

@@ -15,14 +15,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import ImageState from './ImageState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'ImageBox'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: ImageState;
+export default class extends Mixins(BaseVue) {
+  get state(): ImageState {
+    return this.$state as ImageState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

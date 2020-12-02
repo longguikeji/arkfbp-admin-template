@@ -34,15 +34,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins, Watch } from 'vue-property-decorator'
 import TreeState from './TreeState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Tree',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: Array<TreeState>;
+export default class extends Mixins(BaseVue) {
+  get state(): Array<TreeState> {
+    return this.$state as Array<TreeState>
+  }
 
   private filterText = '';
 

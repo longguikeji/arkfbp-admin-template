@@ -26,14 +26,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import CascaderState from './CascaderState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Cascader',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: CascaderState;
+export default class extends Mixins(BaseVue) {
+  get state(): CascaderState {
+    return this.$state as CascaderState
+  }
 }
 </script>

@@ -18,15 +18,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import Card from '@/admin/common/Card/index.vue'
 import Table from '@/admin/common/data/Table/index.vue'
 import Button from '@/admin/common/Button/index.vue'
 import Form from '@/admin/common/Form/index.vue'
 import Pagination from '@/admin/common/data/Pagination/index.vue'
 import Dialog from '@/admin/common/Others/Dialog/index.vue'
-import BaseVue from '../base/BaseVue'
 import TablePageState from './TablePageState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'TablePage',
@@ -40,11 +40,11 @@ import TablePageState from './TablePageState'
   }
 })
 export default class extends Mixins(BaseVue) {
-  get state():TablePageState {
+  get state(): TablePageState {
     return this.$state as TablePageState
   }
 
-  get filterPath():string {
+  get filterPath(): string {
     if (this.state.filter) {
       this.state.filter.inline = true
     }

@@ -17,17 +17,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import CollapseState from './CollapseState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Collapse'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: CollapseState;
+export default class extends Mixins(BaseVue) {
+  get state(): CollapseState {
+    return this.$state as CollapseState
+  }
 
   handleChange() {
-    console.log(this.state.activeNames)
+    // console.log(this.state.activeNames)
   }
 }
 </script>

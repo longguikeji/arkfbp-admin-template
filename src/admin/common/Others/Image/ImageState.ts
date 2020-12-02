@@ -1,4 +1,6 @@
-export default interface ImageState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface ImageState extends BaseState {
   value?: string; // 图片源，同原生 string — -
   fit: string; // 确定图片如何适应容器框，同原生 object-fit string fill / contain / cover / none / scale-down -
   alt: string; // 原生 alt string - -

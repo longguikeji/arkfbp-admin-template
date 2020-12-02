@@ -24,15 +24,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import TabsState from './TabsState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Tabs',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: TabsState;
+export default class extends Mixins(BaseVue) {
+  get state(): TabsState {
+    return this.$state as TabsState
+  }
 
   editableTabsValue = '2';
   editableTabs: Array<any> = this.state.items.slice(0);

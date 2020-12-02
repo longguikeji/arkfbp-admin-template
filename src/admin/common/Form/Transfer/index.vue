@@ -16,15 +16,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import TransferState from './TransferState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Transfer',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: TransferState;
+export default class extends Mixins(BaseVue) {
+  get state(): TransferState {
+    return this.$state as TransferState
+  }
 }
 </script>
 

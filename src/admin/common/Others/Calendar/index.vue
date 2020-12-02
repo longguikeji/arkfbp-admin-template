@@ -7,14 +7,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import CalendarState from './CalendarState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Calendar'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: CalendarState;
+export default class extends Mixins(BaseVue) {
+  get state(): CalendarState {
+    return this.$state as CalendarState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

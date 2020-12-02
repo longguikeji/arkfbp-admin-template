@@ -17,14 +17,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import TimelineState from './TimelineState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Timeline'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: TimelineState;
+export default class extends Mixins(BaseVue) {
+  get state(): TimelineState {
+    return this.$state as TimelineState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

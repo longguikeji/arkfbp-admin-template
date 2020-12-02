@@ -1,7 +1,9 @@
 import SubmenuState from './SubmenuItem/SubmenuState'
 import MenuItemState from './SubmenuItem/MenuItemState'
-export default interface NavMenuState {
-  children: Array<SubmenuState> | Array<MenuItemState>; // 导航栏每一项菜单对应的数据选项
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface NavMenuState extends BaseState {
+  children: Array<SubmenuState>|Array<MenuItemState>; // 导航栏每一项菜单对应的数据选项
   mode?: string; // 模式  horizontal / vertical   vertical
   collapse?: boolean; // 是否水平折叠收起菜单（仅在 mode 为 vertical 时可用） 
   backgroundColor?: string; // 菜单的背景色（仅支持 hex 格式） #ffffff

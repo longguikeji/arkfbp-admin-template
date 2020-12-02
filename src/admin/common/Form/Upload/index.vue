@@ -160,18 +160,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import UploadState from './UploadState'
 import { runAction } from '@/arkfbp'
 import { VueCropper } from 'vue-cropper'
 import XLSX from 'xlsx'
 import processTableData from '@/utils/readexcel'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Upload',
   components: { VueCropper }
 })
-export default class extends Vue {
+export default class extends Mixins(BaseVue) {
   btnText = '上传文件';
   dialogVisible = false;
   fileList = [] as any[];
@@ -191,7 +192,9 @@ export default class extends Vue {
   tableHeader = [] as any[];
   tableBody = [] as any[];
 
-  @Prop({ required: true }) state!: UploadState;
+  get state(): UploadState {
+    return this.$state as UploadState
+  }
 
   get currentPageTableBody() {
     return this.tableBody.slice(

@@ -29,13 +29,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import RadioGroupState from './RadioGroupState'
+import BaseVue from '@/admin/base/BaseVue'
+
 @Component({
   name: 'RadioGroup',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: RadioGroupState;
+export default class extends Mixins(BaseVue) {
+  get state(): RadioGroupState {
+    return this.$state as RadioGroupState
+  }
 }
 </script>

@@ -14,15 +14,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import ProgressState from './ProgressState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Progress',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: ProgressState
+export default class extends Mixins(BaseVue) {
+  get state(): ProgressState {
+    return this.$state as ProgressState
+  }
 }
 </script>
 

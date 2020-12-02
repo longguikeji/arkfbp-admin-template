@@ -12,15 +12,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import AlertState from './AlertState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Alert',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: AlertState;
+export default class extends Mixins(BaseVue) {
+  get state(): AlertState {
+    return this.$state as AlertState
+  }
 }
 </script>
 

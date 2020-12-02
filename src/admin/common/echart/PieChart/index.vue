@@ -4,16 +4,18 @@
 
 <script lang="ts">
 import echarts, { EChartOption } from 'echarts'
-import { Component, Prop, Watch } from 'vue-property-decorator'
-import { mixins } from 'vue-class-component'
+import { Component, Mixins, Watch } from 'vue-property-decorator'
 import ResizeMixin from '@/components/Charts/mixins/resize'
 import PieChartState from './PieChartState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'PieChart'
 })
-export default class extends mixins(ResizeMixin) {
-  @Prop({ required: true }) private state!: PieChartState;
+export default class extends Mixins(ResizeMixin, BaseVue) {
+  get state(): PieChartState {
+    return this.$state as PieChartState
+  }
 
   mounted() {
     setTimeout(() => {

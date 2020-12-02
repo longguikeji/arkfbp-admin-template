@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import FormItemState from './FormItemState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import BaseVue from '@/admin/base/BaseVue'
@@ -36,7 +36,6 @@ export default class extends Mixins(BaseVue) {
 }
 ::v-deep .el-form-item__content {
   display: inline-block !important;
-
 }
 
 </style>

@@ -1,4 +1,6 @@
-export default interface TabPaneState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface TabPaneState extends BaseState {
   label?: string; // 选项卡标题 
   disabled?: boolean; // 是否禁用 
   name?: string; // 与选项卡绑定值 value 对应的标识符，表示选项卡别名 

@@ -1,6 +1,6 @@
 import FormState from '@/admin/common/Form/FormState'
-import TablePageState from '@/admin/TablePage/TablePageState'
-export default interface DialogState extends FormState, TablePageState {
+
+export default interface DialogState extends FormState {
   values?: Object; // 对话框每一项的值
   actions?: Array<any>; // 底部按钮对应的事件
   visible?: boolean; // 弹出框的显示与隐藏

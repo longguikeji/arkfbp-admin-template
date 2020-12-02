@@ -23,14 +23,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import PopoverState from './PopoverState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Popover'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: PopoverState;
+export default class extends Mixins(BaseVue) {
+  get state(): PopoverState {
+    return this.$state as PopoverState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

@@ -24,15 +24,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import SliderState from './SliderState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Slider',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: SliderState;
+export default class extends Mixins(BaseVue) {
+  get state(): SliderState {
+    return this.$state as SliderState
+  }
 
   formatTooltip() {
     // console.log(this.state.value);

@@ -1,4 +1,6 @@
-export default interface NotificationState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface NotificationState extends BaseState {
   title?: string; // 标题
   message?: any; // 说明文字 
   dangerouslyUseHTMLString?: boolean; // 是否将 message 属性作为 HTML 片段处理 

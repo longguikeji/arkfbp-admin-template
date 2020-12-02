@@ -92,10 +92,9 @@
         "label": "是否显示在首页",
         "prop": "is_home",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,
@@ -113,10 +112,9 @@
         "label": "是否有效",
         "prop": "is_valid",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,

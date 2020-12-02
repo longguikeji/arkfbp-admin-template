@@ -16,14 +16,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import PopconfirmState from './PopconfirmState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Popconfirm'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: PopconfirmState;
+export default class extends Mixins(BaseVue) {
+  get state(): PopconfirmState {
+    return this.$state as PopconfirmState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

@@ -81,10 +81,9 @@
       {
         "prop": "speechcategory",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": []
           }
         }
@@ -115,10 +114,9 @@
       {
         "prop": "is_valid",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "label": "未发布",

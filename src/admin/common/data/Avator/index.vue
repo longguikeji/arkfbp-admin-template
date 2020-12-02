@@ -16,15 +16,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import AvatorState from './AvatorState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Avator',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: AvatorState;
+export default class extends Mixins(BaseVue) {
+  get state(): AvatorState {
+    return this.$state as AvatorState
+  }
 }
 </script>
 

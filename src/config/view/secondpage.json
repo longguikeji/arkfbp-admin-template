@@ -122,10 +122,9 @@
         "label": "付费类型",
         "prop": "pay_type",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,
@@ -143,10 +142,9 @@
         "label": "单独购买",
         "prop": "is_single_buy",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,
@@ -164,10 +162,9 @@
         "label": "状态",
         "prop": "is_valid",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,
@@ -185,10 +182,9 @@
         "label": "上架状态",
         "prop": "is_putaway",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,
@@ -206,10 +202,9 @@
         "label": "推荐",
         "prop": "recommended",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,

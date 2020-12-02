@@ -1,4 +1,6 @@
-export default interface UploadState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface UploadState extends BaseState {
   action?: string; //必选参数，上传的地址
   headers: object; // 设置上传的请求头部
   multiple: boolean; // 是否支持多选文件

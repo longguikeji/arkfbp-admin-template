@@ -1,5 +1,7 @@
-export default interface InputNumberState {
-  value: string | number | boolean;
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface InputNumberState extends BaseState {
+  value: string|number|boolean;
   min: number; //设置计数器允许的最小值
   max: number; //设置计数器允许的最大值
   step: number; //计数器步长

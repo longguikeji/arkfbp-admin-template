@@ -1,6 +1,8 @@
 import StepState from './StepState'
-export default interface StepsState {
-  space?: number | string; // 每个 step 的间距，不填写将自适应间距。支持百分比。 
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface StepsState extends BaseState {
+  space?: number|string; // 每个 step 的间距，不填写将自适应间距。支持百分比。 
   direction?: string; // 显示方向 vertical/horizontal  horizontal
   active?: number; // 设置当前激活步骤 
   processStatus?: string; // 设置当前步骤的状态 wait / process / finish / error / success  process

@@ -1,10 +1,5 @@
 <template>
-  <Tag
-    v-if="state.readonly"
-    :state="tagData"
-  />
   <el-select
-    v-else
     v-model="state.value"
     :placeholder="state.placeholder"
     :multiple="state.multiple"
@@ -42,11 +37,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
 import { AdminModule } from '@/store/modules/admin'
 import BaseVue from '@/admin/base/BaseVue'
+
 @Component({
   name: 'Select',
   components: {
@@ -56,34 +52,6 @@ import BaseVue from '@/admin/base/BaseVue'
 export default class extends Mixins(BaseVue) {
   get state(): SelectState {
     return this.$state as SelectState
-  }
-
-  get tagData() {
-    const tagValues: Array<any> = []
-    if (this.state.options instanceof Array) {
-      if (this.state.value instanceof Array) {
-        this.state.options.forEach(o => {
-          this.state.value.forEach(v => {
-            if (o.value === v) {
-              tagValues.push({
-                value: o.label,
-                type: this.state.type || 'info'
-              })
-            }
-          })
-        })
-      } else {
-        this.state.options.forEach(o => {
-          if (o.value === this.state.value) {
-            tagValues.push({
-              value: o.label,
-              type: this.state.type || 'info'
-            })
-          }
-        })
-      }
-    }
-    return tagValues
   }
 
   async changeSelectValue(val) {

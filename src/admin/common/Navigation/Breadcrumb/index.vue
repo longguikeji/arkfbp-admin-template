@@ -15,15 +15,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import BreadcrumbState from './BreadcrumbState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Breadcrumb',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: BreadcrumbState;
+export default class extends Mixins(BaseVue) {
+  get state(): BreadcrumbState {
+    return this.$state as BreadcrumbState
+  }
 }
 </script>
 

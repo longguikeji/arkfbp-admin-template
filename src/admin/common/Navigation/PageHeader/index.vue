@@ -7,18 +7,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import PageHeaderState from './PageHeaderState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'PageHeader',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: PageHeaderState;
+export default class extends Mixins(BaseVue) {
+  get state(): PageHeaderState {
+    return this.$state as PageHeaderState
+  }
 
   goBack() {
-    console.log('go back')
+    // console.log('go back')
   }
 }
 </script>

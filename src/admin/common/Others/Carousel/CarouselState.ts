@@ -1,4 +1,6 @@
-export default interface CarouselState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface CarouselState extends BaseState {
   height: string; // 走马灯的高度 string — —
   initialIndex: number; // 初始状态激活的幻灯片的索引，从 0 开始 number — 0
   trigger: string; // 指示器的触发方式 string click —

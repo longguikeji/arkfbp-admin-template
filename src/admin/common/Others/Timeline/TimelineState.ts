@@ -1,4 +1,6 @@
-export default interface TimelineState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface TimelineState extends BaseState {
   data: object;
   reverse: boolean; //指定节点排序方向，默认为正序 boolean — false
   timestamp: string; // 时间戳 string - —

@@ -9,12 +9,18 @@
       <TableColumn
         v-for="(child, index) in state.children"
         :key="index"
-        :path="getChildPath('children['+index+']')"
+        :path="getChildPath('children[' + index + ']')"
       />
     </template>
     <template slot-scope="scope">
       <template v-if="isScope">
-        <AdminComponent :path="getChildPath('scopeRowState['+scope.$index+']')" />
+        <template v-if="isOption">
+          <span>{{ getOption(scope) }}</span>
+        </template>
+        <AdminComponent
+          v-else
+          :path="getScopePath(scope)"
+        />
       </template>
       <template v-else>
         <span>{{ scope.row[state.prop] }}</span>
@@ -24,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import BaseVue from '@/admin/base/BaseVue'
@@ -34,13 +40,56 @@ import BaseVue from '@/admin/base/BaseVue'
     AdminComponent
   }
 })
-export default class extends BaseVue {
+export default class extends Mixins(BaseVue) {
   get state(): TableColumnState {
     return this.$state as TableColumnState
   }
 
   get isScope() {
-    return Boolean(this.state.scopeRowState)
+    return Boolean(this.state.scope)
+  }
+
+  get isOption() {
+    return Boolean(this.state.scope.type === 'Option')
+  }
+
+  getOption(scope) {
+    const options = this.state.scope.state.options
+    const key = scope.row[this.state.prop]
+
+    let value = ''
+
+    if (options instanceof Array) {
+      if (key instanceof Array) {
+        options.forEach(o => {
+          key.forEach(v => {
+            if (o.key === v) {
+              value = value + '' + o.label
+            }
+          })
+        })
+      } else {
+        options.forEach(o => {
+          if (o.value === key) {
+            value = o.label
+          }
+        })
+      }
+    }
+
+    return value
+  }
+
+  getScopePath(scope: any) {
+    if (scope.row[this.state.prop]) {
+      this.state.scope.state.value = scope.row[this.state.prop]
+    }
+
+    if (this.state.scopeRowState) {
+      return this.getChildPath('scopeRowState[' + scope.$index + ']')
+    } else {
+      return this.getChildPath('scope')
+    }
   }
 }
 </script>

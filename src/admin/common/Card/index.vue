@@ -25,7 +25,7 @@ import CardState from './CardState'
 })
 export default class extends Mixins(BaseVue) {
   get state(): CardState {
-    return super.$state as CardState
+    return this.$state as CardState
   }
 }
 </script>

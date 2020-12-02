@@ -1,4 +1,6 @@
-export default interface MessageState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface MessageState extends BaseState {
   message: any; // 消息文字 
   type?: string; // 主题  success/warning/info/error 
   iconClass?: string; //  自定义图标的类名，会覆盖 type 

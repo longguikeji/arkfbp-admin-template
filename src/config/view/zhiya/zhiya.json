@@ -102,10 +102,9 @@
         "label": "状态",
         "prop": "is_valid",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,
@@ -123,10 +122,9 @@
         "label": "推荐",
         "prop": "recommended",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,

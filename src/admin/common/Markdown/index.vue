@@ -11,17 +11,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { AppModule } from '@/store/modules/app'
+import { Component, Mixins } from 'vue-property-decorator'
 import MarkdownEditor from '@/components/MarkdownEditor/index.vue'
 import MarkdownState from './MarkdownState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Markdown',
   components: { MarkdownEditor }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: MarkdownState;
+export default class extends Mixins(BaseVue) {
+  get state(): MarkdownState {
+    return this.$state as MarkdownState
+  }
+
   mounted() {
     window.scrollTo(0, 0)
   }

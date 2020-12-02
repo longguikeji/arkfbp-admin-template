@@ -8,14 +8,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import DividerState from './DividerState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Divider'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: DividerState;
+export default class extends Mixins(BaseVue) {
+  get state(): DividerState {
+    return this.$state as DividerState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

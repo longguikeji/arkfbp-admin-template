@@ -5,10 +5,11 @@
 </template>
 <script lang="ts">
 import DashboardItemState from '@/admin/DashboardPage/DashboardItem/DashboardItemState'
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import CardPanel from '@/admin/common/panel/CardPanel/index.vue'
 import LineChart from '@/admin/common/echart/LineChart/index.vue'
 import PieChart from '@/admin/common/echart/PieChart/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'DashboardItem',
@@ -18,19 +19,12 @@ import PieChart from '@/admin/common/echart/PieChart/index.vue'
     PieChart
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!:DashboardItemState;
-
-  @Watch('state', { immediate: true, deep: true })
-  fresh() {
-    this.item = this.getItem()
-    console.log('fresh', this.item)
-    this.$forceUpdate()
+export default class extends Mixins(BaseVue) {
+  get state(): DashboardItemState {
+    return this.$state as DashboardItemState
   }
 
-  item?:object
-
-  getItem():object {
+  get item(): object {
     return {
       components: {
         CardPanel,

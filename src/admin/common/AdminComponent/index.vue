@@ -19,7 +19,6 @@
 import { Component, Mixins } from 'vue-property-decorator'
 import AdminComponentState from './AdminComponentState'
 import Button from '@/admin/common/Button/index.vue'
-import SwitchButton from '@/admin/common/Button/SwitchButton/index.vue'
 import ButtonArray from '@/admin/common/Button/ButtonArray/index.vue'
 import Link from '@/admin/common/Link/index.vue'
 import Input from '@/admin/common/Form/Input/index.vue'
@@ -68,8 +67,8 @@ import BaseVue from '@/admin/base/BaseVue'
   components: {}
 })
 export default class extends Mixins(BaseVue) {
-  get state():AdminComponentState {
-    return super.$state as AdminComponentState
+  get state(): AdminComponentState {
+    return this.$state as AdminComponentState
   }
 
   get item(): object {
@@ -77,7 +76,6 @@ export default class extends Mixins(BaseVue) {
     return {
       components: {
         Button,
-        SwitchButton,
         ButtonArray,
         Link,
         Input,
@@ -119,9 +117,6 @@ export default class extends Mixins(BaseVue) {
         Rich,
         AMap,
         Markdown
-        // TablePage,
-        // FormPage,
-        // DashboardPage
       },
       render: (h: Function) => {
         return h(state.type, {

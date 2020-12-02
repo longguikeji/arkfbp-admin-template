@@ -1,4 +1,6 @@
-export default interface ColorPickerState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface ColorPickerState extends BaseState {
   value: string;
   disabled: boolean; //是否禁用
   size: string; // 尺寸 string — medium / small / mini

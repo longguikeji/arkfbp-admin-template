@@ -25,14 +25,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import CarouselState from './CarouselState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Carousel'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: CarouselState;
+export default class extends Mixins(BaseVue) {
+  get state(): CarouselState {
+    return this.$state as CarouselState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

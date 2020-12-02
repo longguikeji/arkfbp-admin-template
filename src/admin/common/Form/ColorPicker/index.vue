@@ -11,15 +11,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import ColorPickerState from './ColorPickerState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'ColorPicker',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: ColorPickerState;
+export default class extends Mixins(BaseVue) {
+  get state(): ColorPickerState {
+    return this.$state as ColorPickerState
+  }
 }
 </script>
 

@@ -1,8 +1,10 @@
 import MenuItemState from './MenuItemState'
-export default interface SubmenuState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface SubmenuState extends BaseState {
   title?: string; // 下拉菜单的主标题
-  children?: Array<MenuItemState> | SubmenuState; // 菜单下拉内容下面的子选项
-  index?: string | null; // 唯一标志  null
+  children?: Array<MenuItemState>|SubmenuState; // 菜单下拉内容下面的子选项
+  index?: string|null; // 唯一标志  null
   popperClass?: string; // 弹出菜单的自定义类名 
   showTimeout?: number; // 展开 sub-menu 的延时  300
   hideTimeout?: number; // 收起 sub-menu 的延时  300

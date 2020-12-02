@@ -1,4 +1,6 @@
-export default interface LinkState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface LinkState extends BaseState {
   type?: string; // 类型 primary / success / warning / danger / info
   underline?: boolean; // 是否下划线 
   disabled?: boolean; // 是否禁用状态 

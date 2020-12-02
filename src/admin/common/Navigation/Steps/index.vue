@@ -9,26 +9,29 @@
     :space="state.space"
   >
     <el-step
-      v-for="(stepItem, stepIndex) in state.step"
-      :key="stepIndex"
-      :title="stepItem.title"
-      :description="stepItem.description"
-      :status="stepItem.status"
-      :icon="stepItem.icon"
+      v-for="(item, index) in state.step"
+      :key="index"
+      :title="item.title"
+      :description="item.description"
+      :status="item.status"
+      :icon="item.icon"
     />
   </el-steps>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import StepsState from './StepsState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Steps',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: StepsState;
+export default class extends Mixins(BaseVue) {
+  get state(): StepsState {
+    return this.$state as StepsState
+  }
 }
 </script>
 

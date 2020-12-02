@@ -29,7 +29,7 @@
         <template v-for="(secChildItem, secChildIndex) in childItem.children">
           <SubmenuItem
             :key="secChildIndex"
-            :state="secChildItem"
+            :state="getChildPath('children[' + childIndex + '].children[' + secChildIndex + ']')"
           />
         </template>
       </el-submenu>
@@ -47,9 +47,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import SubmenuItem from './SubmenuItem/index.vue'
 import NavMenuState from './NavMenuState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'NavMenu',
@@ -57,8 +58,10 @@ import NavMenuState from './NavMenuState'
     SubmenuItem
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: NavMenuState;
+export default class extends Mixins(BaseVue) {
+  get state(): NavMenuState {
+    return this.$state as NavMenuState
+  }
 }
 </script>
 

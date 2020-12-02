@@ -55,6 +55,8 @@
         "title": "price",
         "path": "price",
         "viewconfig": "view.price",
+        "serveconfig": "serve.price",
+        "current": "price",
         "icon": "dashboard"
       },
       {

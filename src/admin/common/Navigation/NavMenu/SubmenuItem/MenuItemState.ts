@@ -1,4 +1,6 @@
-export default interface MenuItemState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface MenuItemState extends BaseState {
   title: string; // 不需要下拉菜单的主标题
   index?: string; // 唯一标识
   route?: Object; // vue-router 路径对象

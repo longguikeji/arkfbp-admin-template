@@ -48,15 +48,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import DropdownState from './DropdownState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Dropdown',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: DropdownState;
+export default class extends Mixins(BaseVue) {
+  get state(): DropdownState {
+    return this.$state as DropdownState
+  }
 
   handleCommand(command: any) {
     this.$message('click on item ' + command)

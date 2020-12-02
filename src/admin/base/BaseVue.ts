@@ -3,7 +3,7 @@ import getDataByPath from '@/utils/datapath'
 import { AdminModule } from '@/store/modules/admin';
 
 export interface Hook {
-  actions:Array<string>
+  actions: Array<string>
 }
 
 export interface Action {
@@ -26,17 +26,17 @@ export interface BaseState {
 export default class extends Vue {
   @Prop({ required: true }) path!: string;
 
-  get state():BaseState {
+  get state(): BaseState {
     return this.$state
   }
 
-  get $state():BaseState {
+  get $state(): BaseState {
     const s = getDataByPath(this.$store.state, this.path)
     console.log(this.$store.state, this.path, s)
     return s
   }
 
-  getChildPath(path:String | Number) {
+  getChildPath(path: String|Number) {
     let sp = this.path
     if (typeof path === 'number') {
       sp += '[' + path + ']'

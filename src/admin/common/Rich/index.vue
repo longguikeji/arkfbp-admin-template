@@ -8,9 +8,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import Tinymce from '@/components/Tinymce/index.vue'
 import RichState from './RichState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Rich',
@@ -18,8 +19,10 @@ import RichState from './RichState'
     Tinymce
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: RichState;
+export default class extends Mixins(BaseVue) {
+  get state(): RichState {
+    return this.$state as RichState
+  }
 }
 </script>
 <style lang="scss">

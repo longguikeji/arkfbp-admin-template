@@ -1,5 +1,6 @@
 import { MessageBox as MsgBox } from 'element-ui';
 import MessageBoxState from './MessageBoxState';
+
 export function MessageBox(type: string, inputs: MessageBoxState) {
   switch (type) {
     case "alert":

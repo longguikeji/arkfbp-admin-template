@@ -22,14 +22,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import BacktopState from './BacktopState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Backtop'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: BacktopState;
+export default class extends Mixins(BaseVue) {
+  get state(): BacktopState {
+    return this.$state as BacktopState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

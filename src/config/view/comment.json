@@ -81,10 +81,9 @@
       {
         "prop": "is_selected",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": false,

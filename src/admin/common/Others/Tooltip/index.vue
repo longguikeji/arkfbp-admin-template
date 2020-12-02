@@ -21,14 +21,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import TooltipState from './TooltipState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Tooltip'
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: TooltipState;
+export default class extends Mixins(BaseVue) {
+  get state(): TooltipState {
+    return this.$state as TooltipState
+  }
 }
 </script>
 <style lang="scss" scoped></style>

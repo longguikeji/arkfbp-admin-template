@@ -29,15 +29,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import DrawerState from './DrawerState'
 import Form from '@/admin/common/Form/index.vue'
+import BaseVue from '@/admin/base/BaseVue'
+
 @Component({
   name: 'Drawer',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: DrawerState;
+export default class extends Mixins(BaseVue) {
+  get state(): DrawerState {
+    return this.$state as DrawerState
+  }
+
   drawer = false;
   beforeClose() {
     this.drawer = false

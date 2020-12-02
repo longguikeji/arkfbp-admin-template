@@ -14,16 +14,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import AMapState from './AMapState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'AMap',
   components: {
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: AMapState;
+export default class extends Mixins(BaseVue) {
+  get state(): AMapState {
+    return this.$state as AMapState
+  }
 
   zoom = 15
   events: object = {

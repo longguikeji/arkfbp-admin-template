@@ -16,7 +16,7 @@
   </el-button>
 </template>
 <script lang="ts">
-import { Component, Mixins, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import { AdminModule } from '@/store/modules/admin'
 import ButtonState from './ButtonState'
 import BaseVue from '@/admin/base/BaseVue'

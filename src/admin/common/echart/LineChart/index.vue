@@ -4,16 +4,18 @@
 
 <script lang="ts">
 import echarts, { EChartOption } from 'echarts'
-import { Component, Prop, Watch } from 'vue-property-decorator'
-import { mixins } from 'vue-class-component'
+import { Component, Mixins, Watch } from 'vue-property-decorator'
 import ResizeMixin from '@/components/Charts/mixins/resize'
 import LineChartState from './LineChartState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'LineChart'
 })
-export default class extends mixins(ResizeMixin) {
-  @Prop({ required: true }) private state!: LineChartState;
+export default class extends Mixins(ResizeMixin, BaseVue) {
+  get state(): LineChartState {
+    return this.$state as LineChartState
+  }
 
   @Watch('state', { deep: true })
   private onChartDataChange(value: LineChartState) {

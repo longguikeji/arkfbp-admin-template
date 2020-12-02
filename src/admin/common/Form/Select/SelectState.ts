@@ -1,5 +1,7 @@
 import OptionType from './OptionType'
-export default interface SelectState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface SelectState extends BaseState {
   value: any; // 绑定值
   type?: string; // el-group-option && el-option
   readonly?: boolean; // 是否只读

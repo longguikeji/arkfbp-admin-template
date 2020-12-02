@@ -96,7 +96,6 @@
         "type": "Select",
         "state": {
           "value": "Read Only Select",
-          "readonly": true,
           "placeholder": "请选择相关内容",
           "multiple": true,
           "disabled": true,

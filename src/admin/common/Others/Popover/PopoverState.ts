@@ -1,8 +1,10 @@
-export default interface PopoverState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface PopoverState extends BaseState {
   trigger: string; //触发方式 String click/focus/hover/manual click
   title: string; // 标题 String — —
   content: string; // 显示的内容，也可以通过 slot 传入 DOM String — —
-  width: string | number; // 宽度 String, Number — 最小宽度 150px
+  width: string|number; // 宽度 String, Number — 最小宽度 150px
   placement: string; // 出现位置 String top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end bottom
   disabled: boolean; // Popover 是否可用 Boolean — false
   value: boolean; // / v-model 状态是否可见 Boolean — false
@@ -14,5 +16,5 @@ export default interface PopoverState {
   openDelay: number; // 触发方式为 hover 时的显示延迟，单位为毫秒 Number — —
   closeDelay: number; // 触发方式为 hover 时的隐藏延迟，单位为毫秒 number — 200
   tabindex: number; // Popover 组件的 tabindex number — 0
-  btn:string;
+  btn: string;
 }

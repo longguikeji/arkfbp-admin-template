@@ -121,8 +121,6 @@
           "type": "Select",
           "state": {
             "value": "",
-            "multiple": true,
-            "readonly": true,
             "options": []
           }
         }
@@ -161,10 +159,9 @@
         "label": "状态",
         "prop": "status",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,
@@ -182,10 +179,9 @@
         "label": "推荐",
         "prop": "recommended",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,

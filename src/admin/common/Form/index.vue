@@ -8,40 +8,40 @@
     :label-width="state.labelWidth"
   >
     <template v-if="state.inline">
-      <template v-for="(item,x) in state.items">
+      <template v-for="(item, x) in state.items">
         <template v-if="(item instanceof Array)">
-          <template v-for="(it,y) in item">
+          <template v-for="(it, y) in item">
             <form-item
               :key="x +','+ y"
-              :path="getChildPath('items['+x+']['+y+']')"
+              :path="getChildPath('items[' + x + '][' + y + ']')"
             />
           </template>
         </template>
         <template v-else>
           <form-item
             :key="x"
-            :path="getChildPath('items['+x+']')"
+            :path="getChildPath('items[' + x + ']')"
           />
         </template>
       </template>
     </template>
     <template v-else>
       <div
-        v-for="(item,x) in state.items"
+        v-for="(item, x) in state.items"
         :key="x"
         class="row"
       >
         <template v-if="(item instanceof Array)">
           <div
-            v-for="(it,y) in item"
+            v-for="(it, y) in item"
             :key="y"
             class="col"
           >
-            <form-item :path="getChildPath('items['+x+']['+y+']')" />
+            <form-item :path="getChildPath('items[' + x + '][' + y + ']')" />
           </div>
         </template>
         <template v-else>
-          <form-item :path="getChildPath('items['+x+']')" />
+          <form-item :path="getChildPath('items[' + x + ']')" />
         </template>
       </div>
     </template>

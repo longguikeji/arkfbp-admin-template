@@ -21,17 +21,18 @@
         :i="item.i"
         @resized="resizedHandler"
       >
-        <DashboardItem :state="state.items[item.i]" />
+        <DashboardItem :path="getChildPath('items[' + item.i + ']')" />
       </grid-item>
     </grid-layout>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
+import { Component, Mixins, Watch } from 'vue-property-decorator'
 import DashboardItem from './DashboardItem/index.vue'
 import DashboardPageState from './DashboardPageState'
 import VueGridLayout from 'vue-grid-layout'
+import BaseVue from '@/admin/base/BaseVue'
 
 // 将屏幕width分为8份，每份为一标准高宽，允许内部所有组件高宽只能是整数倍
 @Component({
@@ -42,8 +43,10 @@ import VueGridLayout from 'vue-grid-layout'
     GridItem: VueGridLayout.GridItem
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!:DashboardPageState;
+export default class extends Mixins(BaseVue) {
+  get state(): DashboardPageState {
+    return this.$state as DashboardPageState
+  }
 
   private layout?:any[] = [];// 必须有初始值
 

@@ -131,10 +131,9 @@
         "label": "状态",
         "prop": "is_valid",
         "scope": {
-          "type": "Select",
+          "type": "Option",
           "state": {
             "value": "",
-            "readonly": true,
             "options": [
               {
                 "value": 0,

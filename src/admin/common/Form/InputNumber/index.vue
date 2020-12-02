@@ -20,15 +20,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import InputNumberState from './InputNumberState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'InputNumber',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: InputNumberState;
+export default class extends Mixins(BaseVue) {
+  get state(): InputNumberState {
+    return this.$state as InputNumberState
+  }
+
   actionHandler(actionName: string) {
     // console.log(actionName);
   }

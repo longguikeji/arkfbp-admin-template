@@ -26,14 +26,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import DatePickerState from './DatePickerState'
+import BaseVue from '@/admin/base/BaseVue'
+
 @Component({
   name: 'DatePicker',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: DatePickerState;
+export default class extends Mixins(BaseVue) {
+  get state(): DatePickerState {
+    return this.$state as DatePickerState
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -48,15 +48,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import TimeSelectState from './TimeSelectState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'Time',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: TimeSelectState;
+export default class extends Mixins(BaseVue) {
+  get state(): TimeSelectState {
+    return this.$state as TimeSelectState
+  }
 }
 </script>
 

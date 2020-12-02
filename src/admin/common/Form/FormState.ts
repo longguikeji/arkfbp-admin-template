@@ -1,12 +1,8 @@
 import { BaseState } from '@/admin/base/BaseVue'
 import FormItemState from './FormItem/FormItemState'
 
-export interface FormItemStateArray {
-  [index: number]: FormItemState
-}
-
 export default interface FormState extends BaseState {
-  items?: [FormItemState | FormItemStateArray]
+  items?: [FormItemState|Array<FormItemState>]
 
   inline?: boolean
   size?: string

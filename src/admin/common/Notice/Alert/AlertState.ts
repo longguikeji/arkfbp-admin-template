@@ -1,4 +1,6 @@
-export default interface AlertState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface AlertState extends BaseState {
   title?: string // 标题
   type?: string // 主题 success/warning/info/error  info
   description?: string // 辅助性文字。也可通过默认 slot 传入

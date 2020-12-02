@@ -1,4 +1,6 @@
-export default interface TreeProps {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface TreeProps extends BaseState {
   label?: string // 指定节点标签为节点对象的某个属性值
   children?: TreeProps // 指定子树为节点对象的某个属性值
   disabled?: boolean // 指定节点选择框是否禁用为节点对象的某个属性值

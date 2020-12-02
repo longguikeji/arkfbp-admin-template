@@ -39,15 +39,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import CheckBoxGroupState from './CheckBoxGroupState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'CheckBoxGroup',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: CheckBoxGroupState;
+export default class extends Mixins(BaseVue) {
+  get state(): CheckBoxGroupState {
+    return this.$state as CheckBoxGroupState
+  }
 }
 </script>
 <style lang="scss" scoped>

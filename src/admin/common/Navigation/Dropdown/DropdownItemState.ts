@@ -1,4 +1,6 @@
-export default interface DropdownItemState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface DropdownItemState extends BaseState {
   command?: any; // 指令 string/number/object 
   disabled?: boolean; // 禁用  boolean  —  false
   divided?: boolean; // 显示分割线 false

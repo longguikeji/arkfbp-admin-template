@@ -16,14 +16,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import LinkState from './LinkState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'TableColumn',
   components: {}
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!: LinkState;
+export default class extends Mixins(BaseVue) {
+  get state(): LinkState {
+    return this.$state as LinkState
+  }
 }
 </script>

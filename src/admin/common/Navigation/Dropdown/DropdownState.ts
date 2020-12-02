@@ -1,5 +1,7 @@
 import DropdownItemState from './DropdownItemState'
-export default interface DropdownState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface DropdownState extends BaseState {
   title?: string; // 下拉菜单出发按钮内容
   type?: string; // 菜单按钮类型，同 Button 组件(只在split-button为 true 的情况下有效) 
   size?: string; // 菜单尺寸，在split-button为 true 的情况下也对触发按钮生效 

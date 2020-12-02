@@ -29,9 +29,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Mixins } from 'vue-property-decorator'
 import CountTo from 'vue-count-to'
 import CardPanelState from './CardPanelState'
+import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
   name: 'CardPanel',
@@ -39,8 +40,10 @@ import CardPanelState from './CardPanelState'
     CountTo
   }
 })
-export default class extends Vue {
-  @Prop({ required: true }) state!:CardPanelState;
+export default class extends Mixins(BaseVue) {
+  get state(): CardPanelState {
+    return this.$state as CardPanelState
+  }
 
   private clickHandler() {
     // if (this.state.action) { (this.$store as ArkfbpStore).runAction(this.state.action) }

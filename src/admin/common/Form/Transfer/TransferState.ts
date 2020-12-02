@@ -1,4 +1,6 @@
-export default interface TransferState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface TransferState extends BaseState {
   value: Array<any>;
   data: Array<any>; //Transfer 的数据源 array[{ key, label, disabled }] — [ ]
   filterable: boolean; // 是否可搜索 boolean — false

@@ -1,4 +1,6 @@
-export default interface SliderState {
+import { BaseState } from '@/admin/base/BaseVue'
+
+export default interface SliderState extends BaseState {
   value: number;
   min: number; //最小值
   max: number; //最大值
