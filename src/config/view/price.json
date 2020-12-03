@@ -124,15 +124,7 @@
           }
         },
         {
-          "name": "flows.tableButton",
-          "request": "table"
-        }
-      ]
-    },
-    "tableButton":{
-      "flows":[
-        {
-          "name": "flows.tableButton",
+          "name": "flows.priceTableButton",
           "request": "table"
         }
       ]

@@ -81,10 +81,6 @@ export default class extends Mixins(BaseVue) {
   }
 
   getScopePath(scope: any) {
-    if (scope.row[this.state.prop]) {
-      this.state.scope.state.value = scope.row[this.state.prop]
-    }
-
     if (this.state.scopeRowState) {
       return this.getChildPath('scopeRowState[' + scope.$index + ']')
     } else {

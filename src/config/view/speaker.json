@@ -133,7 +133,7 @@
       {
         "prop": "action", 
         "width": 250, 
-        "title": "操作", 
+        "label": "操作", 
         "scope": {
           "type": "ButtonArray",
           "state": [
@@ -146,15 +146,13 @@
               "label": "删除", 
               "type": "danger", 
               "action": "delete"
-            }, 
+            },
             {
-              "type": "switch", 
-              "prop": "is_valid", 
-              "labels": {
+              "action": "switchStatus",
+              "option": {
                 "0": "上线", 
                 "1": "下线"
-              }, 
-              "action": "switchStatus"
+              }
             }
           ]
         }
@@ -270,7 +268,15 @@
             "pagination.currentPage": "data.page", 
             "pagination.pageSize": "data.page_size"
           }
-         }
+        },
+        {
+          "name": "arkfbp.flows.tableRowState",
+          "request": "table"
+        },
+        {
+          "name": "flows.speakerTableButton",
+          "request": "table"
+        }
       ]
     }, 
     "showCreateDialog": {
