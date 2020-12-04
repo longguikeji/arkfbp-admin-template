@@ -5,7 +5,7 @@ export class TableRowState extends FunctionNode {
   async run() {
     const table: TableState = this.inputs.params
 
-    table.columns!.forEach(column => {
+    table.columns = table.columns!.map(column => {
       const scopeRowState: Array<any> = []
 
       if (column.scope) {
@@ -17,8 +17,14 @@ export class TableRowState extends FunctionNode {
             type: column.scope.type
           }))
         })
-        column.scopeRowState = scopeRowState
+
+        return {
+          ...column, 
+          scopeRowState
+        }
       }
+
+      return column
     })
 
     return this.inputs

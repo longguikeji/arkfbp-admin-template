@@ -1,5 +1,5 @@
 <template>
-  <Card :path="getChildPath('')">
+  <Card :path="getChildPath('card')">
     <div>
       <Form :path="filterPath" />
     </div>

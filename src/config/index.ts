@@ -142,7 +142,7 @@ export class Config {
 
     Object.keys(this._viewconfig).map((key: string) => {
       switch (key) {
-        case 'buttons':
+        case 'card':
           this._config[key] = this._viewconfig[key]
           break;
         case 'filter':
@@ -213,20 +213,22 @@ export class Config {
 
     return {
       type: `${type.slice(0,1).toUpperCase()}${type.slice(1)}Page`,
-      title: `${name}Page`,
       created: {
         actions: [
           'fetch'
         ]
       },
-      buttons: this._serveApi.create.map((e:any) => {
-        return {
-          label: e.label,
-          action: 'showCreateDialog',
-          type: 'primary',
-          size: 'small'
-        }
-      }),
+      card: {
+        title: `${name}Page`,
+        buttons: this._serveApi.create.map((e:any) => {
+          return {
+            label: e.label,
+            action: 'showCreateDialog',
+            type: 'primary',
+            size: 'small'
+          }
+        })
+      },
       filter: {
         inline: true,
         size: 'mini',

@@ -1,4 +1,7 @@
 export default function getDataByPath(data: any, path: string):any {
+  if (!data) {
+    return {}
+  }
   // path: a.b[0].c[key=value]
   let temp = data
   let key = ''

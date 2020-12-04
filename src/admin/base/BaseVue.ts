@@ -32,7 +32,7 @@ export default class extends Vue {
 
   get $state(): BaseState {
     const s = getDataByPath(this.$store.state, this.path)
-    console.log(this.$store.state, this.path, s)
+    // console.log(this.$store.state, this.path, s)
     return s
   }
 

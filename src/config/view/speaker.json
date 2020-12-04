@@ -7,15 +7,17 @@
   },
   "name": "speaker",
   "type": "TablePage",
-  "title": "讲者管理",
-  "buttons": [
-    {
-      "label": "新建讲者",
-      "action": "showCreateDialog",
-      "type": "primary",
-      "size": "small"
-    }
-  ],
+  "card": {
+    "title": "讲者管理",
+    "buttons": [
+      {
+        "label": "新建讲者",
+        "action": "showCreateDialog",
+        "type": "primary",
+        "size": "small"
+      }
+    ]
+  },
   "filter": {
     "inline": true,
     "size": "mini",

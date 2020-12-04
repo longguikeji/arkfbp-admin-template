@@ -1,6 +1,5 @@
 import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-decorators'
 import { runFlow } from '@/arkfbp'
-import { cloneDeep } from 'lodash'
 import store from '@/store'
 
 export interface IAdminState {
@@ -24,7 +23,6 @@ class Admin extends VuexModule implements IAdminState {
   @Action
   public async adminAction(payload: { action: string, data?: any, router?: any}) {
     const { action, data, router } = payload
-    // const adminState = cloneDeep(this.adminState)
     const adminState = this.adminState
 
     if (!adminState.actions || !adminState.actions[action]) {
@@ -36,9 +34,6 @@ class Admin extends VuexModule implements IAdminState {
     for (let i = 0; i < flows.length; i++) {
       await runFlow(adminState, flows[i], data, router)
     }
-
-    // const newAdminState = cloneDeep(this.adminState)
-    this.CHANGE_ADMIN(adminState)
 
     if (adminState.actions[action].next) {
       const next = adminState.actions[action].next
