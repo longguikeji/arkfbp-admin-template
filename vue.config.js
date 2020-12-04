@@ -50,6 +50,14 @@ module.exports = {
         pathRewrite: {
           '^api/': 'api/'
         }
+      },
+
+      '/serve': {
+        target: 'http://localhost:8000/arkfbp-admin/meta_config',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/serve': ''
+        }
       }
     }
   },

@@ -1,3 +1,7 @@
+import axios from 'axios'
+
+const http = axios.create();
+
 export class Config {
   private _current: any = {}
   private _viewconfig: any = {}
@@ -7,16 +11,22 @@ export class Config {
   private _serveApi: any = {}
   private _serveMeta: any = {}
 
-  constructor(viewconfig: any, serveconfig: any, current: string|undefined) {
+   constructor(viewconfig: any, serveconfig: any, current: string|undefined) {
     this._viewconfig = viewconfig
     this._serveconfig = serveconfig
     this._current = current
 
+    this.getSever()
     this.getConfig()
   }
 
   get config(): any {
     return this._config
+  }
+
+  private async getSever() {
+    const respose = await http.get('/serve/user/')
+    // this._serveconfig = respose.data
   }
 
   private getSrcMeta(params: any) {
