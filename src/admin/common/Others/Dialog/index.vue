@@ -53,7 +53,7 @@ import BaseVue from '@/admin/base/BaseVue'
 })
 export default class extends Mixins(BaseVue) {
   get state(): DialogState {
-    return super.$state as DialogState
+    return this.$state as DialogState
   }
 
   get cancelButtonSize() {

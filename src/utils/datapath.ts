@@ -1,7 +1,4 @@
 export default function getDataByPath(data: any, path: string):any {
-  if (!data) {
-    return {}
-  }
   // path: a.b[0].c[key=value]
   let temp = data
   let key = ''
@@ -10,7 +7,7 @@ export default function getDataByPath(data: any, path: string):any {
       case '.':
       case '[':
         if (key === '') break
-        temp = temp[key]
+        temp = getTemp(temp, key)
         key = ''
         break
       case ']':
@@ -25,7 +22,7 @@ export default function getDataByPath(data: any, path: string):any {
             }
           }
         } else {
-          temp = temp[Number(key)]
+          temp = getTemp(temp, Number(key))
         }
         key = ''
         break
@@ -35,7 +32,15 @@ export default function getDataByPath(data: any, path: string):any {
     }
   }
   if (key !== '') {
-    temp = temp[key]
+    temp = getTemp(temp, key)
   }
   return temp
+}
+
+function getTemp(temp: any, key: string|number) {
+  if (!temp) {
+    return {}
+  }
+
+  return temp[key]
 }
