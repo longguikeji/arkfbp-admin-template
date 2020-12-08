@@ -24,6 +24,7 @@
     <TableColumn
       v-for="(child, index) in state.columns"
       :key="index"
+      :data="tableData"
       :path="getChildPath('columns[' + index + ']')"
     />
   </el-table>

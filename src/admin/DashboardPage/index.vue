@@ -60,7 +60,6 @@ export default class extends Mixins(BaseVue) {
       if (item.position) { item.position.i = i }
       this.layout?.push(item.position)
     }
-    console.log('freshLayout', this.layout)
   }
 
   resizedHandler(i:number, newH:number, newW:number) {

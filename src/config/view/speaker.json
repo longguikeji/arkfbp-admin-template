@@ -272,10 +272,6 @@
           }
         },
         {
-          "name": "arkfbp.flows.tableRowState",
-          "request": "table"
-        },
-        {
           "name": "flows.speakerTableButton",
           "request": "table"
         }

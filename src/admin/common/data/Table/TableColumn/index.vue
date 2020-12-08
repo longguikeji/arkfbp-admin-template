@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins } from 'vue-property-decorator'
+import { Component, Prop, Mixins } from 'vue-property-decorator'
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import BaseVue from '@/admin/base/BaseVue'
@@ -41,6 +41,8 @@ import BaseVue from '@/admin/base/BaseVue'
   }
 })
 export default class extends Mixins(BaseVue) {
+  @Prop({ required: true }) data!: Array<any>;
+
   get state(): TableColumnState {
     return this.$state as TableColumnState
   }
@@ -81,7 +83,22 @@ export default class extends Mixins(BaseVue) {
   }
 
   getScopePath(scope: any) {
-    if (this.state.scopeRowState && this.state.scopeRowState.length > 0) {
+    const scopeRowState: Array<any> = []
+
+    if (this.state.scope && !this.state.scopeRowState) {
+      this.data.forEach((item, index) => {
+        scopeRowState[index] = JSON.parse(JSON.stringify({
+          state: item[this.state.prop] ? {
+            value: item[this.state.prop]
+          } : this.state.scope.state,
+          type: this.state.scope.type
+        }))
+      })
+
+      this.state.scopeRowState = scopeRowState
+    }
+
+    if (this.state.scopeRowState.length > 0) {
       return this.getChildPath('scopeRowState[' + scope.$index + ']')
     } else {
       return this.getChildPath('scope')

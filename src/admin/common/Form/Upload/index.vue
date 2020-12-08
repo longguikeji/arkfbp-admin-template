@@ -253,7 +253,6 @@ export default class extends Mixins(BaseVue) {
   submitUpload() {
     // 上传文件
     const file = this.fileList[0].raw
-    console.log('上传文件', file)
     runAction({
       flow: '@/flows/qiniu/upload',
       inputs: {
