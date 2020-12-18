@@ -87,12 +87,24 @@ export default class extends Mixins(BaseVue) {
 
     if (this.state.scope && !this.state.scopeRowState) {
       this.data.forEach((item, index) => {
-        scopeRowState[index] = JSON.parse(JSON.stringify({
-          state: item[this.state.prop] ? {
-            value: item[this.state.prop]
-          } : this.state.scope.state,
-          type: this.state.scope.type
-        }))
+        if (Array.isArray(this.state.scope.state)) {
+          scopeRowState[index] = JSON.parse(JSON.stringify({
+            state: this.state.scope.state.map((e) => {
+              return {
+                data: item,
+                ...e
+              }
+            }),
+            type: this.state.scope.type
+          }))
+        } else {
+          scopeRowState[index] = JSON.parse(JSON.stringify({
+            state: item[this.state.prop] ? {
+              value: item[this.state.prop]
+            } : this.state.scope.state,
+            type: this.state.scope.type
+          }))
+        }
       })
 
       this.state.scopeRowState = scopeRowState

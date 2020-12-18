@@ -109,7 +109,7 @@ export async function runFlow(state: any, flow: any, data: any, router:any) {
     await runAction({
       flow: flow.name,
       inputs: {
-        url: `api/admin/${getUrl(flow.url, data, state)}`,
+        url: `${getUrl(flow.url, data, state)}`,
         method: flow.method,
         params: params,
         client: state,
@@ -151,7 +151,7 @@ export async function runFlow(state: any, flow: any, data: any, router:any) {
     await runAction({
       flow: flow.name,
       inputs: {
-        url: `api/admin/${getUrl(flow.url, data, state)}`,
+        url: `${getUrl(flow.url, data, state)}`,
         method: flow.method,
         params: params,
         data: data,

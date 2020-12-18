@@ -262,7 +262,7 @@
             "param_name": "filter.items[prop=name].state.value", 
             "param_status": "filter.items[prop=is_valid].state.value"
           }, 
-          "url": "speaker/", 
+          "url": "api/admin/speaker/", 
           "method": "GET",
           "client_config": {
             "table.data": "data.items", 
@@ -301,7 +301,7 @@
           "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
-          "url": "speaker/<id>/edit/",
+          "url": "api/admin/speaker/<id>/edit/",
           "client_config": {
             
           }
@@ -314,7 +314,7 @@
           "name": "arkfbp.flows.update",
           "type": "api",
           "method": "POST",
-          "url": "speaker/<id>/edit/",
+          "url": "api/admin/speaker/<id>/edit/",
           "request": {
             "type_choice": "",
             "price": "",
@@ -331,7 +331,7 @@
           "name": "arkfbp.flows.update",
           "type": "api",
           "method": "GET",
-          "url": "speaker/<id>/delete/"
+          "url": "api/admin/speaker/<id>/delete/"
         }
       ]
     },
@@ -339,7 +339,7 @@
       "flows": [{
         "name": "arkfbp.flows.update", 
         "type": "api",
-        "url": "speaker/{id}/check_status/", 
+        "url": "api/admin/speaker/{id}/check_status/", 
         "method": "GET" 
       }],
       "next": [{
@@ -352,14 +352,14 @@
           "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
-          "url": "speaker/<id>/up/"
+          "url": "api/admin/speaker/<id>/up/"
         }
       ],
       "next": [
         {
           "name": "arkfbp.flows.fetch",
           "type": "api",
-          "url": "speaker/",
+          "url": "api/admin/speaker/",
           "method": "GET",
           "client_config": {
             "table.data": "data.items",
@@ -374,14 +374,14 @@
           "name": "arkfbp.flows.fetch",
           "type": "api",
           "method": "GET",
-          "url": "speaker/<id>/down/"
+          "url": "api/admin/speaker/<id>/down/"
         }
       ],
       "next": [
         {
           "name": "arkfbp.flows.fetch",
           "type": "api",
-          "url": "speaker/",
+          "url": "api/admin/speaker/",
           "method": "GET",
           "client_config": {
             "table.data": "data.items",

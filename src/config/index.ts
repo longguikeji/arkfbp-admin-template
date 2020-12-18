@@ -1,6 +1,4 @@
-import axios from 'axios'
-
-const http = axios.create();
+import { type } from "os"
 
 export class Config {
   private _current: any = {}
@@ -8,25 +6,25 @@ export class Config {
   private _serveconfig: any = {}
   private _config: any = {}
 
-  private _serveApi: any = {}
+  private _serveApi: any = {
+    create: [],
+    update: [],
+    retrieve: [],
+    search: [],
+    delete: []
+  }
   private _serveMeta: any = {}
 
-   constructor(viewconfig: any, serveconfig: any, current: string|undefined) {
+   constructor(current: string, viewconfig: any, serveconfig: any) {
     this._viewconfig = viewconfig
     this._serveconfig = serveconfig
     this._current = current
 
-    this.getSever()
     this.getConfig()
   }
 
   get config(): any {
     return this._config
-  }
-
-  private async getSever() {
-    const respose = await http.get('/serve/user/')
-    // this._serveconfig = respose.data
   }
 
   private getSrcMeta(params: any) {
@@ -62,52 +60,64 @@ export class Config {
       return
     }
 
-    const walkApi = (data: any, map: any) => {
-      Object.keys(data).forEach((e: any) => {
-        let index: any = {}
-        if (data[e].index) {
-          index = this.getSrcMeta(data[e].index)
-        }
-        Object.keys(data[e]).forEach((k: any) => {
-          if (data[e][k].type) {
-            if (map[data[e][k].type]) {
-              map[data[e][k].type].push({
-                url: e,
-                index,
-                method: k.toUpperCase(),
-                label: data[e][k].name,
-                action: data[e][k].type,
-                request: this.getSrcMeta(data[e][k].request)
-              })
-            } else {
-              map[data[e][k].type] = []
-              map[data[e][k].type].push({
-                url: e,
-                index,
-                method: k.toUpperCase(),
-                label: data[e][k].name,
-                action: data[e][k].type,
-                request: this.getSrcMeta(data[e][k].request)
-              })
-            }
-          }
-        })
+    
+    const getApiMap = (url: string, methed: string, index: any, type: string) => {
+      this._serveApi[type].push({
+        url: url,
+        index,
+        method: methed.toUpperCase(),
+        label: api[url][methed].name,
+        action: type,
+        request: this.getSrcMeta(api[url][methed].request)
       })
     }
 
-    walkApi(api, this._serveApi)
+    Object.keys(api).forEach((url: any) => {
+      let index: any = {}
+      if (api[url].index) {
+        index = this.getSrcMeta(api[url].index)
+      }
+      Object.keys(api[url]).forEach((methed: any) => {
+        if(url.includes('id')) {
+          switch (methed) {
+            case 'get':
+              getApiMap(url, methed, index, 'search')
+              break;
+            case 'delete':
+              getApiMap(url, methed, index, 'delete')
+              break;
+            case 'patch':
+              getApiMap(url, methed, index, 'update')
+              break;
+            default:
+              break;
+          }
+        } else {
+          switch (methed) {
+            case 'get':
+              getApiMap(url, methed, index, 'retrieve')
+              break;
+            case 'post':
+              getApiMap(url, methed, index, 'create')
+              break;
+            default:
+              break;
+          }
+        }
+      })
+    })
   }
 
   private getSeverMeta() {
-    const name = this._serveconfig[this._current].name
     const meta = this._serveconfig[this._current].meta
 
     if (!meta) {
       return
     }
 
-    const walkMeta = (data: any, map: any) => {
+    const walkMeta = (data: any, name: string, map: any) => {
       const type = data[name].type
+
       if (type.object) {
         Object.keys(type.object).forEach((e: any) => {
           if (type.object[e].includes('.')) {
@@ -134,7 +144,23 @@ export class Config {
       }
     }
 
-    walkMeta(meta, this._serveMeta)
+    Object.keys(meta).forEach((e: any) => {
+      if(meta[e].type.object) {
+        walkMeta(meta, e, this._serveMeta)
+      } else {
+        Object.keys(meta).forEach((e: any) => {
+          const value = meta[e]
+  
+          this._serveMeta[e] = {
+            label: value.title || e,
+            state: {
+              value: '',
+              ...(Object.values(value.type)[0] as Object)
+            }
+          }
+        })
+      }
+    })
   }
 
   private getConfig(): any {
@@ -169,7 +195,7 @@ export class Config {
           this._config[key] = this._viewconfig[key]
 
           Object.keys(this._viewconfig.dialogs).map((dialog: string) => {
-            if(dialog === 'create' || dialog === 'update') {
+            if(this._serveApi[dialog]) {
               this._config.dialogs[dialog].items = this._viewconfig.dialogs[dialog].items.map((e: any) => {
                 if (typeof e === 'string') {
                   return { prop: e, type: 'Input', ...this._serveApi[dialog][0].request[e] }
@@ -177,30 +203,8 @@ export class Config {
                   return { ...this._serveApi[dialog][0].request[e.prop],  ...e } 
                 }
               })
-            } else {
-              
             }
           })
-
-          if (this._viewconfig.dialogs.create) {
-            this._config.dialogs.create.items = this._viewconfig.dialogs.create.items.map((e: any) => {
-              if (typeof e === 'string') {
-                return { prop: e, type: 'Input', ...this._serveApi.create[0].request[e] }
-              } else {
-                return { ...this._serveApi.create[0].request[e.prop],  ...e } 
-              }
-            })
-          }
-    
-          if (this._viewconfig.dialogs.update) {
-            this._config.dialogs.update.items = this._viewconfig.dialogs.update.items.map((e: any) => {
-              if (typeof e === 'string') {
-                return { prop: e, type: 'Input', ...this._serveApi.update[0].request[e] }
-              } else {
-                return { ...this._serveApi.update[0].request[e.prop],  ...e }
-              }
-            })
-          }
           break;
         case 'table':
           this._config[key] = this._viewconfig[key]
@@ -261,7 +265,7 @@ export class Config {
             }
           ],
           visible: false,
-          attributes: {}
+          data: {}
         },
         update: {
           titles: '编辑',
@@ -277,7 +281,7 @@ export class Config {
             }
           ],
           visible: false,
-          attributes: {}
+          data: {}
         }
       },
       pagination: {
@@ -330,7 +334,7 @@ export class Config {
               name: 'arkfbp.flows.fetch',
               type: 'api',
               method: 'GET',
-              url: 'speaker/<id>/edit/',
+              url: this._serveApi.get[0].url,
               client_config: {
                 'dialogs.update.values': 'data'
               }
@@ -343,7 +347,7 @@ export class Config {
               name: 'arkfbp.flows.update',
               type: 'api',
               method: 'POST',
-              url: 'speaker/<id>/edit/',
+              url: this._serveApi.update[0].url,
               request: {}
             }
           ]
@@ -354,7 +358,7 @@ export class Config {
               name: 'arkfbp.flows.update',
               type: 'api',
               method: 'GET',
-              url: 'speaker/<id>/delete/'
+              url: this._serveApi.delete[0].url
             }
           ]
         }

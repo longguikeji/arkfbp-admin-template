@@ -99,8 +99,6 @@ class User extends VuexModule implements IUserState {
     setToken(token)
     await this.GetUserInfo()
     resetRouter()
-    // Generate dynamic accessible routes based on roles
-    PermissionModule.GenerateRoutes(this.roles)
     // Add generated routes
     router.addRoutes(PermissionModule.dynamicRoutes)
     // Reset visited views and cached views

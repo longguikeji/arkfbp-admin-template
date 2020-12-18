@@ -23,6 +23,8 @@ import DashboardPage from '@/admin/DashboardPage/index.vue'
 import FormPage from '@/admin/FormPage/index.vue'
 import TablePage from '@/admin/TablePage/index.vue'
 import TablePageModule from '@/admin/TablePage/TablePageState'
+import { runAction } from '@/arkfbp'
+
 @Component({
   name: 'Admin',
   components: {
@@ -36,14 +38,34 @@ export default class extends Vue {
     return AdminModule.adminState
   }
 
-  async beforeCreate() {
+  async created() {
     const route = this.$route
 
-    const viewconfig = require(`@/config/${route.meta.viewconfig.split('.').join('/')}.json`) // eslint-disable-line
-    const serveconfig = require(`@/config/${route.meta.serveconfig.split('.').join('/')}.json`) // eslint-disable-line
+    let serveconfig = {}
 
-    const c: any = new Config(viewconfig, serveconfig, route.meta.current)
+    if (!route.meta.viewconfig) {
+      return
+    }
+
+    if (route.meta.serveconfig) {
+      serveconfig = route.meta.serveconfig ? require(`@/config/${route.meta.serveconfig.split('.').join('/')}.json`) : '' // eslint-disable-line
+    } else {
+      serveconfig = await runAction({
+        flow: 'arkfbp.flows.serveConfig',
+        inputs: {
+          url: `/serve/${route.meta.current}/`
+        }
+      })
+    }
+
+    const viewconfig = require(`@/config/${route.meta.viewconfig.split('.').join('/')}.json`) // eslint-disable-line
+
+    const c: any = new Config(route.meta.current, viewconfig, serveconfig)
     await AdminModule.setAdmin(c.config)
+  }
+
+  async destroyed() {
+    await AdminModule.setAdmin(null)
   }
 }
 </script>

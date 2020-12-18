@@ -28,6 +28,7 @@ export class FetchClient extends FunctionNode {
       }
       tempC[ks[ks.length - 1]] = tempS[vs[vs.length - 1]]
     })
+
     return this.inputs
   }
 }

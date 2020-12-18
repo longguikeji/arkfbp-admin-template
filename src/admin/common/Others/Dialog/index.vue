@@ -30,7 +30,7 @@
       <ButtonArray
         v-if="state.actions && state.actions.length > 0"
         class="dialog__actions__button"
-        :path="getChildPath('actions')"
+        :path="getActionPath()"
       />
     </span>
   </el-dialog>
@@ -62,6 +62,17 @@ export default class extends Mixins(BaseVue) {
     } else {
       return 'small'
     }
+  }
+
+  getActionPath() {
+    const data = this.state.data as any
+    if (this.state.actions) {
+      this.state.actions.forEach((e: any) => {
+        e.data = data
+      })
+    }
+
+    return this.getChildPath('actions')
   }
 }
 </script>
