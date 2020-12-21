@@ -7,6 +7,7 @@ export class FetchClient extends FunctionNode {
     if (state.clientServer == null) {
       return this.inputs
     }
+
     Object.keys(state.clientServer).forEach((key) => {
       const ks = key.split('.')
       let tempC = state.client

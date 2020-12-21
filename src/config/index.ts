@@ -60,7 +60,6 @@ export class Config {
       return
     }
 
-    
     const getApiMap = (url: string, methed: string, index: any, type: string) => {
       this._serveApi[type].push({
         url: url,
@@ -117,6 +116,10 @@ export class Config {
 
     const walkMeta = (data: any, name: string, map: any) => {
       const type = data[name].type
+
+      if(name !== this._current) {
+        return
+      }
 
       if (type.object) {
         Object.keys(type.object).forEach((e: any) => {

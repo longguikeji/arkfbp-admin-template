@@ -8,7 +8,7 @@ export class Update extends TokenAPINode {
 
     this.$state.commit((state: any) => {
       state.client = this.inputs.client
-      state.clientConfig = this.inputs.clientConfig
+      state.clientServer = this.inputs.clientServer
     })
 
     const outputs = await super.run()

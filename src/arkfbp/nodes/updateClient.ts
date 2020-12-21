@@ -4,8 +4,8 @@ import Filter from '@/utils/filter'
 export class UpdateClient extends FunctionNode {
   async run() {
     const state = this.$state.fetch()
-    if (this.inputs.errorCode !== 0) {
-      throw new Error(this.inputs.errorMsg)
+    if (state.clientServer == null) {
+      return this.inputs
     }
 
     Object.keys(state.clientServer).forEach((key) => {
