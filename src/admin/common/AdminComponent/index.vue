@@ -60,6 +60,8 @@ import Backtop from '@/admin/common/Others/Backtop/index.vue'
 import Rich from '@/admin/common/Rich/index.vue'
 import AMap from '@/admin/common/AMap/index.vue'
 import Markdown from '@/admin/common/Markdown/index.vue'
+import QuillEditor from '../QuillEditor/index.vue'
+import ImageEditor from '../ImageEditor/index.vue'
 import BaseVue from '@/admin/base/BaseVue'
 
 @Component({
@@ -116,7 +118,9 @@ export default class extends Mixins(BaseVue) {
         Backtop,
         Rich,
         AMap,
-        Markdown
+        Markdown,
+        QuillEditor,
+        ImageEditor
       },
       render: (h: Function) => {
         return h(state.type, {

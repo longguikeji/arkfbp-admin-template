@@ -51,7 +51,6 @@
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator'
 import FormState from './FormState'
-
 import FormItem from './FormItem/index.vue'
 import BaseVue from '@/admin/base/BaseVue'
 
@@ -62,7 +61,7 @@ import BaseVue from '@/admin/base/BaseVue'
   }
 })
 export default class extends Mixins(BaseVue) {
-  get state():FormState {
+  get state(): FormState {
     return super.$state as FormState
   }
 }

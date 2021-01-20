@@ -78,7 +78,7 @@ export default class extends Vue {
   runHook(hook?:Hook) {
     if (hook && hook.actions) {
       hook.actions.forEach((actionName) => {
-        AdminModule.adminAction({ action: actionName, data: this.path })
+        AdminModule.adminAction({ action: actionName, data: this.path, route: this.$route, router: this.$router })
         // this.$store.dispatch(this.path + '/runAction', actionName)
       })
     }

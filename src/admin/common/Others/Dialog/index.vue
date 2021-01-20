@@ -16,8 +16,14 @@
     :center="state.center"
     :destory-on-close="state.destoryOnClose"
   >
-    <Form :path="getChildPath('')" />
-
+    <TablePage
+      v-if="state.type === 'TablePage'"
+      :path="getChildPath('content')"
+    />
+    <Form
+      v-else
+      :path="getChildPath('')"
+    />
     <span
       slot="footer"
       class="dialog-footer"
@@ -66,6 +72,7 @@ export default class extends Mixins(BaseVue) {
 
   getActionPath() {
     const data = this.state.data as any
+
     if (this.state.actions) {
       this.state.actions.forEach((e: any) => {
         e.data = data

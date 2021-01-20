@@ -1,10 +1,14 @@
 <template>
-  <Card :path="getChildPath('card')">
+  <Card
+    class="table-card"
+    :path="getChildPath('card')"
+  >
     <div>
       <Form :path="filterPath" />
     </div>
     <Table :path="getChildPath('table')" />
     <Pagination
+      class="table-pagination"
       :path="getChildPath('pagination')"
     />
     <template v-if="state.dialogs">
@@ -54,7 +58,11 @@ export default class extends Mixins(BaseVue) {
 </script>
 
 <style lang="scss" scoped>
-.__tablepage__pagination__ {
-  margin-top: 20px;
+.table-card {
+  height: 100%;
+
+  .table-pagination {
+    margin-top: 20px;
+  }
 }
 </style>

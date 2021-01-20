@@ -1,5 +1,8 @@
 <template>
-  <div v-if="state">
+  <div
+    v-if="state"
+    class="main"
+  >
     <DashboardPage
       v-if="state.type === 'DashboardPage'"
       :path="'admin.adminState'"
@@ -69,3 +72,10 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.main {
+  width: 100%;
+  height: calc(100vh - 84px);
+}
+</style>

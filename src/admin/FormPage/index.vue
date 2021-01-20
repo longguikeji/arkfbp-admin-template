@@ -1,7 +1,13 @@
 <template>
   <div>
-    <Card :path="getChildPath('')">
-      <Form :path="getChildPath('form')" />
+    <Card
+      class="form-card"
+      :path="getChildPath('card')"
+    >
+      <Form
+        class="form"
+        :path="getChildPath('form')"
+      />
     </Card>
   </div>
 </template>
@@ -27,6 +33,15 @@ export default class extends Mixins(BaseVue) {
 }
 </script>
 <style lang="scss" scoped>
+.form-card {
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  .form{
+    height: 100vh;
+  }
+}
 ::v-deep .tox .tox-menubar {
   width: 1000px;
 }

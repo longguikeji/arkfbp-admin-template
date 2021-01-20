@@ -4,6 +4,7 @@ import BadgeState from '../data/Badge/BadgeState'
 
 export default interface ButtonState extends BaseState {
   label: string
+  isHide: boolean // 是否隐藏 boolean — true
   size: string // 尺寸  string  medium / small / mini —
   type: string // 类型 string primary / success / warning / danger / info / text  —
   plain: boolean // 是否朴素按钮 boolean — false

@@ -42,6 +42,7 @@ import Tag from '@/admin/common/data/Tag/index.vue'
 import SelectState from './SelectState'
 import { AdminModule } from '@/store/modules/admin'
 import BaseVue from '@/admin/base/BaseVue'
+import { SizeModule } from '../../../../store/modules/size'
 
 @Component({
   name: 'Select',

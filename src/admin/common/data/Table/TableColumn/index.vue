@@ -17,6 +17,9 @@
         <template v-if="isOption">
           <span>{{ getOption(scope) }}</span>
         </template>
+        <template v-if="isDate">
+          <span>{{ getDate(scope) }}</span>
+        </template>
         <AdminComponent
           v-else
           :path="getScopePath(scope)"
@@ -31,9 +34,12 @@
 
 <script lang="ts">
 import { Component, Prop, Mixins } from 'vue-property-decorator'
+import moment from 'moment'
+
 import TableColumnState from './TableColumnState'
 import AdminComponent from '@/admin/common/AdminComponent/index.vue'
 import BaseVue from '@/admin/base/BaseVue'
+
 @Component({
   name: 'TableColumn',
   components: {
@@ -55,6 +61,10 @@ export default class extends Mixins(BaseVue) {
     return Boolean(this.state.scope.type === 'Option')
   }
 
+  get isDate() {
+    return Boolean(this.state.scope.type === 'Date')
+  }
+
   getOption(scope) {
     const options = this.state.scope.state.options
     const key = scope.row[this.state.prop]
@@ -66,7 +76,7 @@ export default class extends Mixins(BaseVue) {
         options.forEach(o => {
           key.forEach(v => {
             if (o.key === v) {
-              value = value + '' + o.label
+              value = value + ' ' + o.label
             }
           })
         })
@@ -82,10 +92,19 @@ export default class extends Mixins(BaseVue) {
     return value
   }
 
+  getDate(scope) {
+    const data = scope.row[this.state.prop]
+    if (moment(data)) {
+      return moment(data).format('YYYY-MM-DD HH:mm:ss')
+    }
+
+    return data
+  }
+
   getScopePath(scope: any) {
     const scopeRowState: Array<any> = []
 
-    if (this.state.scope && !this.state.scopeRowState) {
+    if (this.state.scope) {
       this.data.forEach((item, index) => {
         if (Array.isArray(this.state.scope.state)) {
           scopeRowState[index] = JSON.parse(JSON.stringify({

@@ -39,7 +39,6 @@
     "screenfull": "^5.0.2",
     "script-loader": "^0.7.2",
     "sortablejs": "^1.10.2",
-    "tinymce": "^5.4.2",
     "tui-editor": "^1.4.10",
     "vue": "^2.6.12",
     "vue-amap": "^0.5.10",
@@ -57,7 +56,9 @@
     "vuex": "^3.5.1",
     "vuex-module-decorators": "^0.17.0",
     "xlsx": "^0.16.8",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "vue-img-cutter": "^2.1.10",
+    "vue-quill-editor": "^3.0.6"
   },
   "devDependencies": {
     "@types/clipboard": "^2.0.1",
